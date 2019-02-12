@@ -1,0 +1,19 @@
+# plotly                             3.6.1
+# dash                               0.36.0
+# dash-core-components               0.43.0
+# dash-dangerously-set-inner-html    0.0.2
+# dash-html-components               0.13.5
+# dash-renderer                      0.17.0
+# dash-table                         3.4.0
+
+gunicorn
+xmlschema
+scipy
+dash
+pandas
+dash_table
+pyyaml
+dash_core_components
+dash_html_components
+dash-dangerously-set-inner-html
+yattag
