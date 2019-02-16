@@ -53,6 +53,9 @@ class IjalLine:
    def getTable(self):
      return(self.tbl)
 
+   def getSpeakerImage(self):
+      return("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9gIBBQ7IwhRfZIAAALJSURBVEjH7ZbNaxRBEMV/tbM7ySoaEoUgETQEhXgIKoknL+IlIZAgBi8q5qCgHj0ogiK5KCqCYEQQ9Cx40T/As5Cjgn+CQcQvxIibnZQHX8dmsjNR1iCIDU1/zHS/eq+rqtvcnXaKmVWBzN3dzDrc/ZvmDai4e9ZqXYU2i7s3/af1mUATzS0VrWsb2Mxq9qMk7t7UdCqjCuW0dqUuMMYkfbJmUguoEiSOQA3wtZS66u5LkjaL5E3D/Jo5lwzoiZhXy9j+Sal7gVFgSOCZuzdWBY4srQfnMLM0/haBJGZ22symItZvgLfAGWA62jcpk2pFVeDH45rODOA48A6YEEAvMBX9ex6YabVvXCvyPnJtEtgqJBbdvWFmJ4CHQI/O0AEDBsxs1sxG3P0G0DSzibBnKWMgybHs0KYVjaeBz8pGDTHeAGzS993APaAP2ArcDSq1qtUQd+6e6UwcWA+cFXjDzLYBJyVtUKQBbAEum9mcu98xs6cy8CrwEpgEHhc6ZcQqUdsPvI7kbAIL6n9Sf1xr68AMMKbxLSlxGLhWeMZiGwI9xN6H3DgALAAb1U+19ivwBNiv5PEF2A7MA12F4ZRzgNDvBOIkEEKqLokBsmhtt4wKEfBeF0W9EFh5Nc3Faw34KMDAflGGpdF/qZmNAceAR2bWLb+YBzYDr34rjnXOw8Cg2gPAnO7bcM+OA3uBC8Cg1lwHjsrg+0Bfyf4rkkVdMltufg/wXMwdmAwOKSUuAec0PghcKQun5UyVNyBkLLVVtQPACzE+JMBdwG3glAzeCTwA+ssyF7mNTTWM06gfQm0IeAYc0b+dwDr1R4GbwL7gD6syjphbPpOJSTU6ihFgOPreBVwEZoEdq+XpZeCIbRLJm7QwoCd3cYR/OoGh/BGVVdPiLHqy1Nx9MX4vhbmi91X+YadXSbP0Dl+Lx96vlAp/qfwH/veBvwOfu2maZzzx2gAAAABJRU5ErkJggg==")
+
    #----------------------------------------------------------------------------------------------------
    def show(self):
 
@@ -78,7 +81,7 @@ class IjalLine:
 
      if(self.morphemeRows == []):
         return([])
-     
+
      assert(self.morphemePacking in ["tiers", "tabs"])
 
      if(self.morphemePacking == "tiers"):
@@ -110,12 +113,12 @@ class IjalLine:
    def getMorphemes (self):
 
       return(self.morphemes)
-   
+
    #----------------------------------------------------------------------------------------------------
    def getMorphemeGlosses (self):
 
       return(self.morphemeGlosses)
-   
+
    #----------------------------------------------------------------------------------------------------
    def calculateMorphemeSpacing(self):
 
@@ -151,7 +154,8 @@ class IjalLine:
       audioTag = '<audio id="%s"><source src="%s/%s.wav"/></audio>' % (lineID, audioDirectory, lineID)
       htmlDoc.asis(audioTag)
       imageURL = "https://www.americanlinguistics.org/wp-content/uploads/speaker.png"
-      buttonTag = '<button onclick="playSample(\'%s\')"><img src=\'%s\'/></button>' % (lineID, imageURL)
+      onError = "this.style.display=\'none\'"
+      buttonTag = '<button onclick="playSample(\'%s\')"><img src="%s"/></button>' % (lineID, self.getSpeakerImage())
       htmlDoc.asis(buttonTag)
 
 
@@ -179,7 +183,7 @@ class IjalLine:
                                 mg = MorphemeGloss(morphemeGloss, self.grammaticalTerms)
                                 mg.parse()
                                 mg.toHTML(htmlDoc)
-                              
+
                     with htmlDoc.tag("div", klass="freeTranslation-tier"):
                         htmlDoc.text(self.getTranslation())
 

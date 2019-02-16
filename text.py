@@ -4,6 +4,7 @@
 import re
 import sys
 import os
+from yattag import *
 import yaml
 import unittest
 from ijalLine import *
@@ -89,6 +90,18 @@ class Text:
          tbl = x.getTable()
          print("%d: %d tiers" % (i, tbl.shape[0]))
 
+   def getCSS(self):
+      cssFilename = os.path.join(os.path.split(os.path.abspath(__file__))[0], "ijal.css")
+      assert(os.path.exists(cssFilename))
+      css = "<style>\n%s</style>" % open(cssFilename).read()
+      return(css)
+
+   def getJavascript(self):
+      jsFilename = os.path.join(os.path.split(os.path.abspath(__file__))[0], "ijalUtils.js")
+      assert(os.path.exists(jsFilename))
+      jsSource = "<script>\n%s</script>" % open(jsFilename).read()
+      return(jsSource)
+
    def toHTML(self, lineNumber=None):
 
      htmlDoc = Doc()
@@ -102,8 +115,8 @@ class Text:
      with htmlDoc.tag('html', lang="en"):
         with htmlDoc.tag('head'):
             htmlDoc.asis('<meta charset="UTF-8">')
-            htmlDoc.asis('<link rel="stylesheet" href="http://pshannon.net/ijal/ijal.css">')
-            htmlDoc.asis('<script src="http://pshannon.net/ijal/ijalUtils.js"></script>')
+            htmlDoc.asis(self.getCSS())
+            htmlDoc.asis(self.getJavascript())
             with htmlDoc.tag('body'):
                 for i in lineNumbers:
                     if(not self.quiet):
