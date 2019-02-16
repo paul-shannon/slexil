@@ -23,6 +23,10 @@ from text import *
 UPLOAD_DIRECTORY = "./UPLOADS"
 PROJECTS_DIRECTORY = "./PROJECTS"
 #----------------------------------------------------------------------------------------------------
+# the webapp requires a PROJECTS_DIRECTORY in the current working directory.  this is
+#
+assert(os.path.exists(PROJECTS_DIRECTORY))
+#----------------------------------------------------------------------------------------------------
 from dash.dependencies import Input, Output, State
 import dash_core_components as dcc
 import dash_html_components as html
