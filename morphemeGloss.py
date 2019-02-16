@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+#
 # MorphemeGloss.py: a class to capture, and render into HTML, the morphemes of the spoken text, using
 # standard grammatical terms
 #
@@ -28,14 +30,11 @@
 #    morph), and < > (for infixes). Another thing that we haven’t come up against yet is that there are
 #    sometimes subscripts, most commonly used to label something as belonging to a particular class.
 #------------------------------------------------------------------------------------------------------------------------
-# -*- coding: utf-8 -*-
-#------------------------------------------------------------------------------------------------------------------------
 import re
 from pprint import pprint
 from yattag import *
 import pdb
 
-# -*- coding: utf-8 -*-
 
 #------------------------------------------------------------------------------------------------------------------------
 class MorphemeGloss:
