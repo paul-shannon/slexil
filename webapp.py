@@ -20,8 +20,8 @@ import sys
 from audioExtractor import *
 from text import *
 #----------------------------------------------------------------------------------------------------
-UPLOAD_DIRECTORY = "./UPLOADS"
-PROJECTS_DIRECTORY = "./PROJECTS"
+UPLOAD_DIRECTORY = "UPLOADS"
+PROJECTS_DIRECTORY = "PROJECTS"
 #----------------------------------------------------------------------------------------------------
 # the webapp requires a PROJECTS_DIRECTORY in the current working directory.  this is
 #
@@ -226,9 +226,8 @@ def create_webPageCreationTab():
             'border-radius': '5px',
             'padding': '10px'}
 
-   createButton =  html.Button('Create Web Page', id='createWebPageButton', style={"margin": "20px"})
-   displayButton =  html.Button('Display Web Page', id='displayIJALTextButton', style={"margin": "20px"})
-   downloadWebpageButton =  html.Button('Download Page', id='downloadWebpageButton', style={"margin": "20px"})
+   createButton =  html.Button('Create Web Page', id='createWebPageButton', style={"margin": "20px", "margin-top": 0})
+   displayButton =  html.Button('Display Web Page', id='displayIJALTextButton', style={"margin": "20px", "margin-top": 0})
 
    createWebpageStatus = html.Span(id="createWebPageStatus", children="cwpita", style={"margin-left": 10})
 
@@ -239,10 +238,20 @@ def create_webPageCreationTab():
                                               #alue="",
                                               #style={'width': 600, 'height': 30})
 
-   children = [html.Br(), createButton, displayButton, downloadWebpageButton, html.Br(), createWebpageStatus,
+   confirmDownLoadObject = dcc.ConfirmDialogProvider(
+        children=html.Button('Save...'),
+        id='confirmDownLoadObject',
+        message='Save HTML, audio and CSS to your local computer?'
+    )
+
+   buttonDiv = html.Div(children=[createButton, displayButton, confirmDownLoadObject],
+                        style={'display': 'flex', 'justify-content': 'left'})
+
+   children = [html.Br(), buttonDiv,
+               html.Br(), createWebpageStatus,
                html.Br(), saveWebpageStatus, webPageIframe]
 
-   div = html.Div(children=children, id='createWebPageDiv', style={'display': 'block'})
+   div = html.Div(children=children, id='createWebPageDiv')
 
    return div
 
@@ -736,26 +745,15 @@ def displayText(n_clicks, projectDirectory):
    pathToHTML = os.path.join(projectDirectory, "text.html")
    return(pathToHTML)
 
-@app.callback(
-    Output('saveWebpageProgressTextArea', 'value'),
-    [Input('downloadWebpageButton', 'n_clicks'),
-     Input('projectTitle_hiddenStorage', 'children')])
-def saveWebpage(n_clicks, projectTitle):
-   if n_clicks is None:
-      return("")
-   createZipFile(projectTitle)
-   return("wrote web page as zip file")
-
 # @app.callback(
-#     Output('tierMapGui-div', 'children'),
-#     [Input("eafFilename_hiddenStorage", 'children')])
-#def populateTierGuidePulldowns(filename):
-#    print("=== populateTierGuidePulldowns: %s" % filename)
-#    if filename == '':
-#        return ''
-#    # pdb.set_trace()
-#    return createTierMappingMenus("../inferno-threeLines/inferno-threeLines.eaf")
-#    #return html.Div(html.H3("hobo")) #createTierMappingMenus("../inferno-threeLines/inferno-threeLines.eaf")
+#    Output('saveWebpageProgressTextArea', 'value'),
+#    [Input('downloadWebpageButton', 'n_clicks'),
+#     Input('projectTitle_hiddenStorage', 'children')])
+# def saveWebpage(n_clicks, projectTitle):
+#    if n_clicks is None:
+#       return("")
+#    createZipFile(projectTitle)
+#   return("wrote web page as zip file")
 
 
 @app.callback(
@@ -819,6 +817,16 @@ def saveTierMappingSelection(n_clicks, speechTier, translationTier, morphemeTier
     print("morphemePacking: %s" % morphemePacking)
     saveTierGuide(projectDirectory, speechTier, translationTier, morphemeTier, morphemeGlossTier, morphemePacking)
     return("Saved your selection to 'tierGuide.yaml'")
+
+@app.callback(Output('saveWebpageProgressTextArea', 'children'),
+              [Input('confirmDownLoadObject', 'submit_n_clicks')],
+              [State('projectTitle_hiddenStorage', 'children')])
+def confirmDownload(submit_n_clicks, projectTitle):
+    if not submit_n_clicks:
+        return ''
+    print("creating zip file")
+    fullPath = createZipFile(projectTitle)
+    return("saved web page: %s" % fullPath)
 
 #----------------------------------------------------------------------------------------------------
 def saveTierGuide(projectDirectory, speechTier, translationTier, morphemeTier, morphemeGlossTier, morphemePacking):
@@ -884,6 +892,7 @@ def createZipFile(projectName):
    filesToSave.insert(0, "text.html")
 
    zipFilename = "webpage.zip"
+   zipFilenameFullPath = os.path.join(currentDirectoryOnEntry, PROJECTS_DIRECTORY, projectName, zipFilename)
    zipHandle = ZipFile(zipFilename, 'w')
 
    for file in filesToSave:
@@ -892,6 +901,7 @@ def createZipFile(projectName):
    zipHandle.close()
 
    os.chdir(currentDirectoryOnEntry)
+   return(zipFilenameFullPath)
 
 #----------------------------------------------------------------------------------------------------
 server = app.server
