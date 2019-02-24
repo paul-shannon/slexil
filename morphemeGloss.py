@@ -9,7 +9,8 @@
 #  grammatical terms are commonly abbreviated and printed in SMALL CAPITALS to keep them distinct
 #  from translations,  especially when they are frequent or important for analysis.
 #
-# also see the Leipzig Glossing Rules: https://www.eva.mpg.de/lingua/resources/glossing-rules.php
+#  for IJAL style requirements of interlinear glosses, see http://www.americanlinguistics.org/?page_id=93
+#  also see the Leipzig Glossing Rules: https://www.eva.mpg.de/lingua/resources/glossing-rules.php
 #
 # in interlienar morphological glosses, punctuation separate the glosses:
 #
