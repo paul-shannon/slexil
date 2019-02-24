@@ -12,14 +12,14 @@
 #  for IJAL style requirements of interlinear glosses, see http://www.americanlinguistics.org/?page_id=93
 #  also see the Leipzig Glossing Rules: https://www.eva.mpg.de/lingua/resources/glossing-rules.php
 #
-# in interlienar morphological glosses, punctuation separate the glosses:
+# in interlinear morphological glosses, punctuation separating the glosses:
 #
 #        .  equivalent to a space (separating words) in the morpheme line
-#        -  or _ when a source language word corresponds to a phrase in the glossing language
+#        _  when a source language word corresponds to a phrase in the glossing language
 #        =  separates clitics (a morpheme with syntactic characteristics of a word, but which
 #           depends phonologically upon another word or phrase)
 #        ~  reduplication
-#        - and more...
+#        -- and more...
 #
 # david beck (email 12 aug 2018):
 #
@@ -35,6 +35,7 @@ import re
 from pprint import pprint
 from yattag import *
 import pdb
+import formatting
 
 
 #------------------------------------------------------------------------------------------------------------------------
@@ -64,6 +65,7 @@ class MorphemeGloss:
       """
       with htmlDoc.tag("div", klass="morpheme-gloss"):
          for part in self.parts:
+#            part = formatting.cleanUpInterlinears(part)
             if(part in self.grammaticalTerms):
                with htmlDoc.tag("span", klass="grammatical-term"):
                   htmlDoc.text(part)
@@ -75,12 +77,6 @@ class MorphemeGloss:
 # non-class functions
 #------------------------------------------------------------------------------------------------------------------------
 def _extractParts(delimiters, string):
-   parts = _cleanUpString(string)
    parts = re.split(delimiters, string)
    parts_noEmptyStrings = [part for part in parts if part != ""]
    return(parts_noEmptyStrings)
-
-def _cleanUpString(string):
-   string = string.replace(" ","")
-   string = string.replace("-","–")
-   return string
