@@ -7,12 +7,12 @@
 # from https://en.wikipedia.org/wiki/Interlinear_gloss#Structure
 #
 #  grammatical terms are commonly abbreviated and printed in SMALL CAPITALS to keep them distinct
-#  from translations, especially when they are frequent or important for analysis.
+#  from translations,  especially when they are frequent or important for analysis.
 #
-#  for IJAL style requirements for interlinear glosses, see http://www.americanlinguistics.org/?page_id=93
+#  for IJAL style requirements of interlinear glosses, see http://www.americanlinguistics.org/?page_id=93
 #  also see the Leipzig Glossing Rules: https://www.eva.mpg.de/lingua/resources/glossing-rules.php
 #
-# in interlinear morphological glosses, punctuation separate the glosses:
+# in interlienar morphological glosses, punctuation separate the glosses:
 #
 #        .  equivalent to a space (separating words) in the morpheme line
 #        -  or _ when a source language word corresponds to a phrase in the glossing language
@@ -49,7 +49,6 @@ class MorphemeGloss:
      self.grammaticalTerms = grammaticalTerms;
 
    def show(self):
-
       pprint(vars(self))
 
    def parse(self):
@@ -60,8 +59,8 @@ class MorphemeGloss:
       return(self.parts)
 
    def toHTML(self, htmlDoc):
-      """ iterate over the parts list, idenitfy each grammaticalTerm
-          wrap each of those in a <span class='grammticalTerm'> tag
+      """ iterate over the parts list, identify each grammaticalTerm
+          wrap each of those in a <span class='grammaticalTerm'> tag
       """
       with htmlDoc.tag("div", klass="morpheme-gloss"):
          for part in self.parts:
@@ -76,7 +75,12 @@ class MorphemeGloss:
 # non-class functions
 #------------------------------------------------------------------------------------------------------------------------
 def _extractParts(delimiters, string):
-
+   parts = _cleanUpString(string)
    parts = re.split(delimiters, string)
    parts_noEmptyStrings = [part for part in parts if part != ""]
    return(parts_noEmptyStrings)
+
+def _cleanUpString(string):
+   string = string.replace(" ","")
+   string = string.replace("-","–")
+   return string
