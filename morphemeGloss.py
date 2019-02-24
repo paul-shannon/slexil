@@ -7,12 +7,12 @@
 # from https://en.wikipedia.org/wiki/Interlinear_gloss#Structure
 #
 #  grammatical terms are commonly abbreviated and printed in SMALL CAPITALS to keep them distinct
-#  from translations,  especially when they are frequent or important for analysis.
+#  from translations, especially when they are frequent or important for analysis.
 #
-#  for IJAL style requirements of interlinear glosses, see http://www.americanlinguistics.org/?page_id=93
+#  for IJAL style requirements for interlinear glosses, see http://www.americanlinguistics.org/?page_id=93
 #  also see the Leipzig Glossing Rules: https://www.eva.mpg.de/lingua/resources/glossing-rules.php
 #
-# in interlienar morphological glosses, punctuation separate the glosses:
+# in interlinear morphological glosses, punctuation separate the glosses:
 #
 #        .  equivalent to a space (separating words) in the morpheme line
 #        -  or _ when a source language word corresponds to a phrase in the glossing language
