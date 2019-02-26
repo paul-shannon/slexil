@@ -4,6 +4,7 @@ from morphemeGloss import *
 from pprint import pprint
 from yattag import *
 import pdb
+import formatting
 #------------------------------------------------------------------------------------------------------------------------
 # -*- coding: utf-8 -*-
 #------------------------------------------------------------------------------------------------------------------------
@@ -91,6 +92,7 @@ class IjalLine:
         # pdb.set_trace()
         rawMorphemeText = self.tbl["TEXT"].iloc[self.morphemeRows].tolist()[0]
         # pdb.set_trace()
+        rawMorphemeText = formatting.cleanUpInterlinears(rawMorphemeText)
         morphemes = rawMorphemeText.split("\t")
         return(morphemes)
 
@@ -106,6 +108,7 @@ class IjalLine:
      if(self.morphemePacking == "tabs"):
         rawMorphemeGlossText = self.tbl["TEXT"].iloc[self.morphemeGlossRows].tolist()[0]
         # pdb.set_trace()
+        rawMorphemeGlossText = formatting.cleanUpInterlinears(rawMorphemeGlossText)
         morphemeGlosses = rawMorphemeGlossText.split("\t")
         return(morphemeGlosses)
 

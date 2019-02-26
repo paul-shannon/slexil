@@ -37,7 +37,7 @@
     <TIER LINGUISTIC_TYPE_REF="phonemic" PARENT_REF="italianSpeech" TIER_ID="morphemes">
         <ANNOTATION>
             <REF_ANNOTATION ANNOTATION_ID="a5" ANNOTATION_REF="a1">
-                <ANNOTATION_VALUE>en=il	mezzo	de=il	cammin	di	nostr–a	vita</ANNOTATION_VALUE>
+                <ANNOTATION_VALUE>en=il	mezzo	de=il	cammin	di	nostr-a	vita</ANNOTATION_VALUE>
              </REF_ANNOTATION>
          </ANNOTATION>
 
@@ -64,13 +64,13 @@
 
         <ANNOTATION>
             <REF_ANNOTATION ANNOTATION_ID="a10" ANNOTATION_REF="a6">
-              <ANNOTATION_VALUE>I:DAT	found–1SG:INDEF:REM:PAST	for	INDEF:FEM:SG	forest-FEM	dark–FEM:SG</ANNOTATION_VALUE>
+              <ANNOTATION_VALUE>I:DAT	found–1SG:INDEF:REM.PAST	for	INDEF:FEM:SG	forest-FEM	dark–FEM:SG</ANNOTATION_VALUE>
             </REF_ANNOTATION>
         </ANNOTATION>
 
         <ANNOTATION>
             <REF_ANNOTATION ANNOTATION_ID="a11" ANNOTATION_REF="a7">
-              <ANNOTATION_VALUE>that	def:FEM:SG	straight-FEM:SG	path-FEM	be:3SG:IMPF	lose–PARTIC:FEM:SG</ANNOTATION_VALUE>
+              <ANNOTATION_VALUE>that	DEF:FEM:SG	straight–FEM:SG	path-FEM	be:3SG:IMPF	lose–PARTIC–FEM:SG</ANNOTATION_VALUE>
             </REF_ANNOTATION>
         </ANNOTATION>
  
