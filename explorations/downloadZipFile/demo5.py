@@ -1,10 +1,7 @@
-# from https://community.plot.ly/t/allowing-users-to-download-csv-on-click/5550/13
-import io
-
+# derived from https://community.plot.ly/t/allowing-users-to-download-csv-on-click/5550/13
 import flask
 import dash
 import dash_html_components as html
-#from dash.dependencies import Output, Input
 
 app = dash.Dash(__name__)
 
