@@ -35,7 +35,6 @@ class IjalLine:
      self.tbl = standardizeTable(self.tblRaw, self.tierGuide)
      self.tbl.index = range(len(self.tbl.index))
      self.morphemePacking = self.tierGuide["morphemePacking"]
-
      self.categories = categories = self.tbl["category"].tolist()
      self.speechRow = self.categories.index("speech")
      self.translationRow = self.categories.index("translation")
@@ -75,7 +74,9 @@ class IjalLine:
      #categories = self.tbl["category"].tolist()
      #row = categories.index("translation")
      #pdb.set_trace()
-     return(self.tbl.ix[self.translationRow, "TEXT"])
+      translation = self.tbl.ix[self.translationRow, "TEXT"]
+      translation = formatting.manageQuotes(translation)
+      return(translation)
 
    #----------------------------------------------------------------------------------------------------
    def extractMorphemes(self):
