@@ -176,8 +176,9 @@ class IjalLine:
                     if(len(morphemes) > 0):
                        with htmlDoc.tag("div", klass="morpheme-tier", style=styleString):
                           for morpheme in morphemes:
+                             print(morpheme)
                              with htmlDoc.tag("div", klass="morpheme-cell"):
-                                htmlDoc.text(morpheme)
+                                htmlDoc.asis(morpheme)
 
                     morphemeGlosses = self.getMorphemeGlosses()
                     if(len(morphemeGlosses) > 0):

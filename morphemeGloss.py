@@ -68,7 +68,7 @@ class MorphemeGloss:
 #            part = formatting.cleanUpInterlinears(part)
             if(part in self.grammaticalTerms):
                with htmlDoc.tag("span", klass="grammatical-term"):
-                  htmlDoc.text(part)
+                  htmlDoc.asis(part)
             else:
                htmlDoc.text(part)
 
