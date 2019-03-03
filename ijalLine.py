@@ -25,7 +25,6 @@ class IjalLine:
      self.lineNumber = lineNumber
      self.tierGuide = tierGuide
      self.grammaticalTerms = self.getGrammaticalTerms(grammaticalTerms)
-     print(self.grammaticalTerms)
      self.rootElement = self.doc.findall("TIER/ANNOTATION/ALIGNABLE_ANNOTATION")[lineNumber]
      self.allElements = findChildren(self.doc, self.rootElement)
      self.tblRaw = buildTable(doc, self.allElements)
@@ -43,6 +42,16 @@ class IjalLine:
      # pdb.set_trace()
      self.morphemeRows = [i for i in range(tierCount) if self.categories[i] == "morpheme"]
      self.morphemeGlossRows = [i for i in range(tierCount) if self.categories[i] == "morphemeGloss"]
+     #handle the case of a secondary translation
+     try:
+        self.translation2Row = self.categories.index("translation2")
+     except ValueError:
+        pass
+     #handle the case of a second transcription line
+     try:
+        self.transcription2Row = self.categories.index("transcription2")
+     except ValueError:
+        pass
      self.morphemes = self.extractMorphemes()
      self.morphemeGlosses = self.extractMorphemeGlosses()
      self.calculateMorphemeSpacing()
@@ -79,6 +88,22 @@ class IjalLine:
       translation = formatting.manageQuotes(translation)
       return(translation)
 
+   #----------------------------------------------------------------------------------------------------
+   def getTranslation2(self):
+      try:
+         translation2 = self.tbl.ix[self.translation2Row, "TEXT"]
+      except AttributeError:
+         return('')
+      translation2 = formatting.manageQuotes(translation2)
+      return(translation2)
+   #----------------------------------------------------------------------------------------------------
+   def getTranscription2(self):
+      try:
+         transcription2 = self.tbl.ix[self.transcription2Row, "TEXT"]
+      except AttributeError:
+         return('')
+      #transcription2 = formatting.manageQuotes(transcription2)
+      return(transcription2)
    #----------------------------------------------------------------------------------------------------
    def extractMorphemes(self):
 
@@ -184,6 +209,11 @@ class IjalLine:
                 with htmlDoc.tag("div", klass="speech-tier"):
                     htmlDoc.text(self.getSpokenText())
 
+                    transcription2 = self.getTranscription2()
+                    if(len(transcription2) > 0):
+                       with htmlDoc.tag("div", klass="secondTranscription-tier"):
+                          htmlDoc.asis(self.getTranscription2())                      
+
                     morphemes = self.getMorphemes()
                     if(len(morphemes) > 0):
                        with htmlDoc.tag("div", klass="morpheme-tier", style=styleString):
@@ -202,7 +232,12 @@ class IjalLine:
                                 mg.toHTML(htmlDoc)
 
                     with htmlDoc.tag("div", klass="freeTranslation-tier"):
-                        htmlDoc.text(self.getTranslation())
+                        htmlDoc.asis(self.getTranslation())
+
+                    translation2 = self.getTranslation2()
+                    if(len(translation2) > 0):  
+                        with htmlDoc.tag("div", klass="freeTranslation-tier"):
+                            htmlDoc.text(translation2)
 
 
 #------------------------------------------------------------------------------------------------------------------------

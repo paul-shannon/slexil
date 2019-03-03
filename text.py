@@ -57,7 +57,6 @@ class Text:
      countList = []
      for i in range(0,tblSize):
         countList.append(0)
-     print(countList)
      tbl['count'] = countList
      #tbl['count'] = [0, 0, 0, 0]
      for i in range(tblSize):

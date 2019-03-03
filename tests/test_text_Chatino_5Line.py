@@ -30,7 +30,7 @@ def test_constructor():
     text = createText()
     assert(text.validInputs())
     tbl = text.getTierSummary()
-    print(list(tbl['count']))
+    print(list(tbl['key']))
     assert(tbl.shape == (5,3))
     assert(list(tbl['key']) == ['speech', 'translation', 'morpheme', 'morphemeGloss','translation2'])
     assert(list(tbl['value']) == ['SZC-Chatino', 'English Translation-cp-cp', 'Tokenization-cp', 'POS-cp','SZC-presandhi'])
