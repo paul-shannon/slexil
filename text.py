@@ -48,17 +48,30 @@ class Text:
      tierIDs = [tier.attrib["TIER_ID"] for tier in tmpDoc.findall("TIER")]
      tiers = tmpDoc.findall("TIER")
      #print(self.tierGuide)
-     tbl = pd.DataFrame(list(self.tierGuide.items()), columns=['key', 'value']).ix[0:3]
-     tbl['count'] = [0, 0, 0, 0]
+     itemList = pd.DataFrame(list(self.tierGuide.items()), columns=['key', 'value'])
+     tbl = itemList[:-1].copy()
+     #print(tbl)
+     #tbl = pd.DataFrame(list(self.tierGuide.items()), columns=['key', 'value']).ix[0:3]
      tierValues = tbl["value"].tolist()
-     for i in range(4):
-        tier = tiers[i]
-        tierValue = tierValues[i]
-        tierID = tier.attrib["TIER_ID"]
-        count = len(tier.findall("ANNOTATION"))
-        rowNumber = tbl[tbl['value']==tierValue].index.item()
-        tbl.ix[rowNumber, 'count'] = count
-        #print(" %30s: %4d" % (tierID, count))
+     tblSize = len(tierValues)
+     countList = []
+     for i in range(0,tblSize):
+        countList.append(0)
+     print(countList)
+     tbl['count'] = countList
+     #tbl['count'] = [0, 0, 0, 0]
+     for i in range(tblSize):
+        try:
+           #exception raised by None tiers
+           tier = tiers[i]
+           tierValue = tierValues[i]
+           tierID = tier.attrib["TIER_ID"]
+           count = len(tier.findall("ANNOTATION"))
+           rowNumber = tbl[tbl['value']==tierValue].index.item()
+           tbl.ix[rowNumber, 'count'] = count
+           #print(" %30s: %4d" % (tierID, count))
+        except IndexError:
+           break
      self.tierTable = tbl
      return(tbl)
 

@@ -20,3 +20,11 @@ def manageQuotes(string):
          string = string[:-1]
    string = "‘" + string.strip() + "’"
    return string
+
+def correctCapitalization(string):
+   exceptions  = ["A","S","O","P"]
+   if string in exceptions:
+      return string
+   newString = string.lower()
+   return newString
+   

@@ -24,7 +24,8 @@ class IjalLine:
      self.doc = doc
      self.lineNumber = lineNumber
      self.tierGuide = tierGuide
-     self.grammaticalTerms = grammaticalTerms
+     self.grammaticalTerms = self.getGrammaticalTerms(grammaticalTerms)
+     print(self.grammaticalTerms)
      self.rootElement = self.doc.findall("TIER/ANNOTATION/ALIGNABLE_ANNOTATION")[lineNumber]
      self.allElements = findChildren(self.doc, self.rootElement)
      self.tblRaw = buildTable(doc, self.allElements)
@@ -119,6 +120,17 @@ class IjalLine:
       return(self.morphemes)
 
    #----------------------------------------------------------------------------------------------------
+   def getGrammaticalTerms(self,terms):
+      try:
+         if terms[-1] == '':
+            terms = terms[:-1]
+            persons = ['1','2','3','4']
+            terms.extend(persons)
+         return terms
+      except IndexError:
+         return
+
+   #----------------------------------------------------------------------------------------------------
    def getMorphemeGlosses (self):
 
       return(self.morphemeGlosses)
@@ -176,7 +188,7 @@ class IjalLine:
                     if(len(morphemes) > 0):
                        with htmlDoc.tag("div", klass="morpheme-tier", style=styleString):
                           for morpheme in morphemes:
-                             print(morpheme)
+                             #print(morpheme)
                              with htmlDoc.tag("div", klass="morpheme-cell"):
                                 htmlDoc.asis(morpheme)
 

@@ -47,7 +47,7 @@ class MorphemeGloss:
 
    def __init__(self, rawText, grammaticalTerms):
      self.rawText = rawText
-     self.grammaticalTerms = grammaticalTerms;
+     self.grammaticalTerms = grammaticalTerms#.extend(['1','2','3'])
 
    def show(self):
       pprint(vars(self))
@@ -65,8 +65,10 @@ class MorphemeGloss:
       """
       with htmlDoc.tag("div", klass="morpheme-gloss"):
          for part in self.parts:
-#            part = formatting.cleanUpInterlinears(part)
+            #print(part)
             if(part in self.grammaticalTerms):
+               if part.isupper():
+                  part = formatting.correctCapitalization(part)
                with htmlDoc.tag("span", klass="grammatical-term"):
                   htmlDoc.asis(part)
             else:
