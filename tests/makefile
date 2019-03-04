@@ -1,4 +1,4 @@
-all: morphemeGloss ijalLine audioExtractor text_daylight text_monkeyAndThunder  text_PlumedSerpent text_prayer 
+all: morphemeGloss ijalLine audioExtractor text_daylight text_monkeyAndThunder  text_PlumedSerpent text_prayer test_chatino5 test_chatino6
 
 morphemeGloss:
 	python test_MorphemeGloss.py
@@ -25,5 +25,8 @@ text_prayer:
 text_lokono:
 	python test_text_lokono.py
 
+test_chatino5:
+	python test_text_Chatino_5Line.py
 
-
+test_chatino6:
+	test_text_Chatino_5Line.py
