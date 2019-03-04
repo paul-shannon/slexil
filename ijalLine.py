@@ -93,7 +93,7 @@ class IjalLine:
       try:
          translation2 = self.tbl.ix[self.translation2Row, "TEXT"]
       except AttributeError:
-         return('')
+         return(None)
       translation2 = formatting.manageQuotes(translation2)
       return(translation2)
    #----------------------------------------------------------------------------------------------------
@@ -101,7 +101,7 @@ class IjalLine:
       try:
          transcription2 = self.tbl.ix[self.transcription2Row, "TEXT"]
       except AttributeError:
-         return('')
+         return(None)
       #transcription2 = formatting.manageQuotes(transcription2)
       return(transcription2)
    #----------------------------------------------------------------------------------------------------
@@ -210,7 +210,7 @@ class IjalLine:
                     htmlDoc.text(self.getSpokenText())
 
                     transcription2 = self.getTranscription2()
-                    if(len(transcription2) > 0):
+                    if transcription2 != None:
                        with htmlDoc.tag("div", klass="secondTranscription-tier"):
                           htmlDoc.asis(self.getTranscription2())                      
 
@@ -235,7 +235,7 @@ class IjalLine:
                         htmlDoc.asis(self.getTranslation())
 
                     translation2 = self.getTranslation2()
-                    if(len(translation2) > 0):  
+                    if translation2 != None:  
                         with htmlDoc.tag("div", klass="freeTranslation-tier"):
                             htmlDoc.text(translation2)
 
