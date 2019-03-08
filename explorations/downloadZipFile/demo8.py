@@ -11,7 +11,7 @@ app = dash.Dash(__name__)
 
 app.layout = html.Div([
     html.Div(id='projectDirectory_hiddenStorage', children="abc", style={'display': 'none'}),
-    html.A(html.Button('Download the Inferno Demo', style=buttonStyle), href='infernoDemo.zip'),
+    html.A(html.Button('Download the Inferno Demo', style=buttonStyle), href='demos/infernoDemo.zip'),
     html.H4("choose a project to assemble: ", style={"margin-left": 30}),
     dcc.Dropdown(id='projectChooser',
                  options=[{'label': 'Lokono', 'value': 'lokono'}, {'label': 'Daylight', 'value': 'daylight'}],
@@ -55,9 +55,10 @@ def downloadProjectZipFile(urlpath):
 # we may want to further qualify the route path to something like '/demos/<filename>'
 # for better separation in the slexil webapp direcotry structure
 #----------------------------------------------------------------------------------------------------
-@app.server.route('/<filename>')
+@app.server.route('/demos/<filename>')
 def downloadZip(filename):
-    return flask.send_file(filename,
+    path = os.path.join("demos", filename)
+    return flask.send_file(path,
                            mimetype='application/zip',
                            as_attachment=True)
 
