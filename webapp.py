@@ -41,17 +41,52 @@ app.title = "IJAL Text Upload"
 app.scripts.config.serve_locally = True
 
 #------------------------------------------------------------------------------------------------------------------------
+# this route handles the download of zipped up "demo input" zip file,
+# in this case, infernoDemo.zip, which a new slexil user can run through the webapp to
+# learn the ropes
+# we may want to further qualify the route path to something like '/demos/<filename>'
+# for better separation in the slexil webapp direcotry structure
+#----------------------------------------------------------------------------------------------------
+@app.server.route('/demos/<filename>')
+def downloadZip(filename):
+    path = os.path.join("demos", filename)
+    return flask.send_file(path,
+                           mimetype='application/zip',
+                           as_attachment=True)
 
+
+
+#----------------------------------------------------------------------------------------------------
+# this route handles the download of zipped up assembled slexil projects
+# which, by convention, are  ./PROJECTS/<someName>/webpage.zip:
+#    PROJECTS/daylight/webpage.zip
+#    PROJECTS/lokono/webpage.zip
+# we do not actually do the assembly here in this demo exploratory app. instead an appropriate
+# file has been placed, ahead of time, in the appropriate directory.
+#----------------------------------------------------------------------------------------------------
 @app.server.route('/PROJECTS/<path:urlpath>')
-def serve_static_file(urlpath):
+def downloadProjectZipFile(urlpath):
    print("--- serve_static_file")
    print("urlpath:  %s" % urlpath)
    fullPath = os.path.join("PROJECTS", urlpath)
    dirname = os.path.dirname(fullPath)
    filename = os.path.basename(fullPath)
    print("about to send %s, %s" % (dirname, filename))
-   return flask.send_from_directory(dirname, filename)
+   return flask.send_file(fullPath,
+                          mimetype='application/zip',
+                          as_attachment=True)
 
+
+# @app.server.route('/PROJECTS/<path:urlpath>')
+# def serve_static_file(urlpath):
+#    print("--- serve_static_file")
+#    print("urlpath:  %s" % urlpath)
+#    fullPath = os.path.join("PROJECTS", urlpath)
+#    dirname = os.path.dirname(fullPath)
+#    filename = os.path.basename(fullPath)
+#    print("about to send %s, %s" % (dirname, filename))
+#    return flask.send_from_directory(dirname, filename)
+#
 
 buttonStyle = {'width': '140px',
                'height': '60px',
@@ -228,6 +263,11 @@ def create_webPageCreationTab():
 
    createButton =  html.Button('Create Web Page', id='createWebPageButton', style={"margin": "20px", "margin-top": 0})
    displayButton =  html.Button('Display Web Page', id='displayIJALTextButton', style={"margin": "20px", "margin-top": 0})
+   downloadLinkAndButton = html.A(id="downloadURL",
+                                  children=[html.Button('Download newly assembled text',
+                                                        id="downloadAssembledTextButton",
+                                                        style={"width": 300})], # ,disabled="False")],
+                                  href='')
 
    createWebpageStatus = html.Span(id="createWebPageStatus", children="cwpita", style={"margin-left": 10})
 
@@ -244,7 +284,7 @@ def create_webPageCreationTab():
         message='Save HTML, audio and CSS to your local computer?'
     )
 
-   buttonDiv = html.Div(children=[createButton, displayButton, confirmDownLoadObject],
+   buttonDiv = html.Div(children=[createButton, displayButton, downloadLinkAndButton], #confirmDownLoadObject],
                         style={'display': 'flex', 'justify-content': 'left'})
 
    children = [html.Br(), buttonDiv,
@@ -315,15 +355,12 @@ def create_tierMapGui():
 #----------------------------------------------------------------------------------------------------
 def create_allDivs():
 
-   style = {'border': '1px solid purple',
-            'border-radius': '5px',
-            'padding': '1px'}
-
-
-   style = {'margin': 20,
+   style = {'margin': 2,
             'border': '1px solid #aaa;',
             'border-radius': 4,
             'padding': '.5em .5em 0'}
+
+   style = {'margin': 2, "padding": 0}
 
    children = [
        html.H4("IJAL Upload", style={'text-align': 'center'}, id='pageTitleH4'),
@@ -430,6 +467,9 @@ def parse_eaf_upload(contents, filename, date):
 #----------------------------------------------------------------------------------------------------
 app.layout = html.Div(
     children=[
+        html.A(html.Button('Download the 3-line Inferno Demo',
+                           style={"margin-left": 30, "margin-top": 20, "width": 320, "font-size": 12}),
+               href='demos/infernoDemo.zip'),
         create_allDivs(),
         html.P(id='projectTitle_hiddenStorage',              children="", style={'display': 'none'}),
         html.P(id='projectDirectory_hiddenStorage',          children="", style={'display': 'none'}),
@@ -672,7 +712,7 @@ def createWebPageCallback(n_clicks, soundFileName, eafFileName, projectDirectory
     file = open(absolutePath, "w")
     file.write(html)
     file.close()
-
+    createZipFile(projectDirectory)
     #url = 'http://0.0.0.0:8050/%s/text.html' % projectDirectory
     #webbrowser.open(url, new=2)
     return("wrote file")
@@ -829,6 +869,19 @@ def confirmDownload(submit_n_clicks, projectTitle):
     return("saved web page: %s" % fullPath)
 
 #----------------------------------------------------------------------------------------------------
+# there can be multiple dash callbacks triggered by the same Input event.
+# here we execute a second change to the webpage, returning the path to the project-specific
+# webpage.zip, which is written into the href field of the html.A (or link) which nests the
+# assembleTextButton
+#----------------------------------------------------------------------------------------------------
+@app.callback(Output('downloadURL', 'href'),
+              [Input('projectDirectory_hiddenStorage', 'children')])
+def updateDownloadTextButtonHref(directory):
+   print("============= projectDirectory_hiddenStorage changed, updateDownloadTextButtonHref: %s" % directory)
+   return("%s/webpage.zip" % directory)
+
+
+#----------------------------------------------------------------------------------------------------
 def saveTierGuide(projectDirectory, speechTier, translationTier, morphemeTier, morphemeGlossTier, morphemePacking):
 
     dict = {"speech": speechTier,
@@ -881,10 +934,10 @@ def createWebPage(eafFileName, projectDirectory, grammaticalTermsFileName, tierG
     return(text.toHTML())
 
 #----------------------------------------------------------------------------------------------------
-def createZipFile(projectName):
+def createZipFile(projectDir):
 
    currentDirectoryOnEntry = os.getcwd()
-   projectDir = os.path.join(PROJECTS_DIRECTORY, projectName)
+   #projectDir = os.path.join(PROJECTS_DIRECTORY, projectName)
    os.chdir(projectDir)
 
    audioDir = "audio"
@@ -892,7 +945,7 @@ def createZipFile(projectName):
    filesToSave.insert(0, "text.html")
 
    zipFilename = "webpage.zip"
-   zipFilenameFullPath = os.path.join(currentDirectoryOnEntry, PROJECTS_DIRECTORY, projectName, zipFilename)
+   zipFilenameFullPath = os.path.join(currentDirectoryOnEntry, projectDir, zipFilename)
    zipHandle = ZipFile(zipFilename, 'w')
 
    for file in filesToSave:
