@@ -34,6 +34,8 @@ def test_standardizeTranslationLine():
        # untested regex!
     regex = re.compile("‘\S.+\S’")   # opening curly single quote, no whitespace, any characters, no whitespace, closing curly single quote
     for case in cases:
-       assert(len(regex.findall(case)) == 1)
+       translationLine = TranslationLine(case)
+       standardizedLine = translationLine.getStandardized()
+       assert(len(regex.findall(standardizedLine)) == 1)
     
 #----------------------------------------------------------------------------------------------------
