@@ -1240,12 +1240,12 @@ ndiyo14si10
     <TIER ANNOTATOR="Hilaria Cruz" DEFAULT_LOCALE="en" LINGUISTIC_TYPE_REF="en" PARENT_REF="SZC-Chatino" PARTICIPANT="Simón Zurita Cruz" TIER_ID="English Translation-cp-cp">
         <ANNOTATION>
             <REF_ANNOTATION ANNOTATION_ID="a481" ANNOTATION_REF="a1">
-                <ANNOTATION_VALUE>‘Punctuation outside quote’.</ANNOTATION_VALUE>
+                <ANNOTATION_VALUE>‘correct quotes.’</ANNOTATION_VALUE>
             </REF_ANNOTATION>
         </ANNOTATION>
         <ANNOTATION>
             <REF_ANNOTATION ANNOTATION_ID="a482" ANNOTATION_REF="a2">
-                <ANNOTATION_VALUE>‘correct quotes.’</ANNOTATION_VALUE>
+                <ANNOTATION_VALUE>‘Punctuation outside quote’.</ANNOTATION_VALUE>
             </REF_ANNOTATION>
         </ANNOTATION>
         <ANNOTATION>
@@ -1280,7 +1280,7 @@ ndiyo14si10
         </ANNOTATION>
         <ANNOTATION>
             <REF_ANNOTATION ANNOTATION_ID="a489" ANNOTATION_REF="a9">
-                <ANNOTATION_VALUE>‘In the whole community you are my father, you are my mother, you are our father, God’.</ANNOTATION_VALUE>
+                <ANNOTATION_VALUE>a line with no quotes at all</ANNOTATION_VALUE>
             </REF_ANNOTATION>
         </ANNOTATION>
     </TIER>
