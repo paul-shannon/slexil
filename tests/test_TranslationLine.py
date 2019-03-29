@@ -26,8 +26,6 @@ def runTests():
     childElements = doc.findall(pattern)
     assert(len(childElements) >= 9)
     cases = [element.text for element in childElements]
-       # untested regex!
-    #regex = re.compile("‘\S.+\S’")   # opening curly single quote, no whitespace, any characters, no whitespace, closing curly single quote
     for case in cases:
         translationLine = TranslationLine(case)
         standardizedLine = translationLine.getStandardized()
@@ -37,22 +35,22 @@ def runTests():
         test_punctuation_outside_quote(standardizedLine)
         test_straight_apostrophes(standardizedLine)
         test_straight_dquo(standardizedLine)
-    
+        test_thin_spaces(standardizedLine)
 #----------------------------------------------------------------------------------------------------
 def test_begins_and_ends_with_squo(standardizedLine):
     '''makes sure the first and last character of the translation is a single quote'''
     
-    # untested regex!
-    regex = re.compile("‘\S.+\S’")   # opening curly single quote, no whitespace, any characters, no whitespace, closing curly single quote
-    assert(len(regex.findall(standardizedLine)) == 1)
-    
+    try:
+        assert(standardizedLine[0] == '‘' and standardizedLine[-1] == '’')
+    except AssertionError as e:
+        raise Exception(standardizedLine) from e
 #----------------------------------------------------------------------------------------------------
 def test_extraneous_whitespace(standardizedLine):
     '''checks to make sure author did not have whitespaces at either end of the translation line'''
     
-    regex = re.compile("‘\s")   # opening curly single quote followed by whitespace
+    regex = re.compile(u'‘\u0020')   # opening curly single quote followed by whitespace
     assert(len(regex.findall(standardizedLine)) == 0)
-    regex = re.compile("\s’")   # close curly single quote preceded by whitespace
+    regex = re.compile(u'\u0020’')   # close curly single quote preceded by whitespace
     assert(len(regex.findall(standardizedLine)) == 0)
     
 #----------------------------------------------------------------------------------------------------
@@ -78,6 +76,18 @@ def test_straight_dquo(standardizedLine):
     regex = re.compile('"')   # check for double quotes
     assert(len(regex.findall(standardizedLine)) == 0)
     
+#----------------------------------------------------------------------------------------------------
+def test_thin_spaces(standardizedLine):
+    '''checks to make sure thin spaces separate quotes'''
+    
+    regex = re.compile('‘“')   # check for adjacent lsquo and ldquo
+    regex2 = re.compile('”’')   # check for adjacent rsquo and rdquo
+    try:
+        assert(len(regex.findall(standardizedLine)) == 0)
+        assert(len(regex2.findall(standardizedLine)) == 0)
+    except AssertionError as e:
+        raise Exception(standardizedLine) from e
+
 #----------------------------------------------------------------------------------------------------
 if __name__ == '__main__':
     runTests()

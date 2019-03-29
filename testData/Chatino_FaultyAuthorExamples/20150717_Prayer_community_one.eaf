@@ -1270,7 +1270,7 @@ ndiyo14si10
         </ANNOTATION>
         <ANNOTATION>
             <REF_ANNOTATION ANNOTATION_ID="a487" ANNOTATION_REF="a7">
-                <ANNOTATION_VALUE>a line with no quotes but a non-English word'</ANNOTATION_VALUE>
+                <ANNOTATION_VALUE>‘[a] child, a woman as well.'</ANNOTATION_VALUE>
             </REF_ANNOTATION>
         </ANNOTATION>
         <ANNOTATION>
@@ -1283,7 +1283,12 @@ ndiyo14si10
                 <ANNOTATION_VALUE>a line with no quotes at all</ANNOTATION_VALUE>
             </REF_ANNOTATION>
         </ANNOTATION>
-    </TIER>
+            <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a490" ANNOTATION_REF="a9">
+                <ANNOTATION_VALUE>‘“a line with no thin space between squo and dquo.”’</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        </TIER>
     <LINGUISTIC_TYPE GRAPHIC_REFERENCES="false" LINGUISTIC_TYPE_ID="default-lt" TIME_ALIGNABLE="true"/>
     <LINGUISTIC_TYPE CONSTRAINTS="Symbolic_Subdivision" GRAPHIC_REFERENCES="false" LINGUISTIC_TYPE_ID="pos" TIME_ALIGNABLE="false"/>
     <LINGUISTIC_TYPE CONSTRAINTS="Symbolic_Subdivision" GRAPHIC_REFERENCES="false" LINGUISTIC_TYPE_ID="en" TIME_ALIGNABLE="false"/>

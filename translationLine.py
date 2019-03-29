@@ -40,6 +40,13 @@ class TranslationLine:
          string = re.sub('\s"',' “',string)
          string = string.replace('"','”')
       string = "‘" + string.strip() + "’"
+      #ensure single and double quotes separated by &thinsp;
+      #needs to be done here because strip() seems to remove final thin space
+      if string[1] == '“':
+         string = u'‘\u2009' + string[1:]
+      if string[-2] == '”':
+         thinquotes = '”' + u'\u2009' + '’'
+         string = string.replace('”’',thinquotes).strip()
       return string
 
    def getRaw(self):
