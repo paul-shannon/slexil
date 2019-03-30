@@ -35,7 +35,6 @@ import re
 from pprint import pprint
 from yattag import *
 import pdb
-import formatting
 
 
 #------------------------------------------------------------------------------------------------------------------------
@@ -65,10 +64,7 @@ class MorphemeGloss:
       """
       with htmlDoc.tag("div", klass="morpheme-gloss"):
          for part in self.parts:
-            #print(part)
             if(self.grammaticalTerms) and (part in self.grammaticalTerms):
-               if part.isupper():
-                  part = formatting.correctCapitalization(part)
                with htmlDoc.tag("span", klass="grammatical-term"):
                   htmlDoc.asis(part)
             else:
