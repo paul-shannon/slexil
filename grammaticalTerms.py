@@ -28,7 +28,7 @@ class GrammaticalTerms:
     def parse(self):
         """ identify terms, delimiters, plain words """
         parts = _extractParts(self.delimiters, self.rawText)
-        self.addNumberedAbbreviations(parts)
+        self.addNumberedAbbreviations(parts) #extends self.grammaticalTerms 
         self.parts = self.makePartsLowerCase(parts)
 
     def getParts(self):
