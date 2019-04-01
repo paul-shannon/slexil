@@ -89,8 +89,7 @@ class GrammaticalTerms:
         return(newParts)
 
     def replaceHyphensWithNDashes(self, text):
-        ''' makes sure the grammatical glosses are in lower case
-            but leaves lexical glosses and exceptions alone
+        ''' replace hyphens with n-dashes
         ''' 
         text = text.replace('-','–')          
         return(text)
