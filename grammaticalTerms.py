@@ -16,7 +16,7 @@ class GrammaticalTerms:
 
     rawText = ""
     grammaticalTerms = []
-    delimiters = "([=•\-\.–~])"   # more to come: ^ < >, subscripts recognition?
+    delimiters = "([=•\-\.–~]|<sub>|</sub>|<sup>|</sup>)"   # more to come: ^ < >, subscripts recognition√
 
     def __init__(self, rawText, grammaticalTerms):
         self.rawText = self.replaceHyphensWithNDashes(rawText)

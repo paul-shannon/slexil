@@ -9,14 +9,13 @@ sampleLines = ["HAB=3A=MOUTH•cry",
                "HAB=3A=work=IAM",
                "PROG=1A=know–INTR",
                "more",
-               "1OBJ",
+               "1OBJ"
                ]
 
 
 #----------------------------------------------------------------------------------------------------
 grammaticalTermsFiles = ["../testData/monkeyAndThunder/grammaticalTerms.txt",
-                         "../testData/inferno-threeLines/grammaticalTerms.txt",
-                         "../testData/lokono/grammaticalTerms.txt"]
+                         "../testData/inferno-threeLines/grammaticalTerms.txt"]
 grammaticalTerms = []
 for file in grammaticalTermsFiles:
    newTerms = open(file).read().split("\n")
@@ -36,7 +35,8 @@ def runTests():
     test_toHTML_sampleLine_4()
     test_toHTML_sampleLine_5()
     test_nDashes()
-
+    test_Sub_and_Sup()
+    
 def test_constructor():
 
     #grammaticalTerms = open(grammaticalTermsFile).read().split("\n")
@@ -212,7 +212,10 @@ def test_toHTML_sampleLine_5(displayPage=False):
     gt = GrammaticalTerms(sampleLines[5], grammaticalTerms)
     gt.parse()
     gt.getParts()
-    assert(gt.getParts() == ['1obj'])
+    try:
+       assert(gt.getParts() == ['1obj'])
+    except AssertionError as e:
+       raise Exception(gt.getParts()) from e
 
     htmlDoc = Doc()
 
@@ -266,13 +269,24 @@ def test_inferno(displayPage=False):
 
 def test_nDashes(displayPage=False):
     """
-      a bunch of new terms came with this text.  test them all out here
+      test for hyphens
     """
     print("--- test_nDashes")
 
     gt = GrammaticalTerms("in=DEF-MASC-3SG", grammaticalTerms)
     gt.parse()
     assert(gt.getParts() ==  ['in', '=', 'def', '–', 'masc', '–', '3sg'])
+
+def test_Sub_and_Sup(displayPage=False):
+    """
+      test input with subscripts and superscripts
+    """
+    print("--- test_Sub_and_Sup")
+
+    gt = GrammaticalTerms("gu<sup>1</sup>hin<sub>MASC</sub>-PL", ["masc","pl"])
+    gt.parse()
+    assert(gt.getParts() ==  ['gu', '<sup>', '1', '</sup>', 'hin', '<sub>', 'masc', '</sub>', '–', 'pl'])
+
 
 if __name__ == '__main__':
     runTests()
