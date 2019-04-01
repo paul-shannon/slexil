@@ -3,6 +3,7 @@
 # GrammaticalTerms: a class to handle formatting of abbreviations used
 # in interlinearizations, specifically to standardize all abbreviations as
 # lowercase, to be rendered as small caps by the CSS style .grammatical-term
+# and to ensure hyphens are replaced by n-dashes
 #----------------------------------------------------------------------------------------------------
 import re
 from pprint import pprint
@@ -18,7 +19,7 @@ class GrammaticalTerms:
     delimiters = "([=•\-\.–~])"   # more to come: ^ < >, subscripts recognition?
 
     def __init__(self, rawText, grammaticalTerms):
-        self.rawText = rawText
+        self.rawText = self.replaceHyphensWithNDashes(rawText)
         self.grammaticalTerms = self.makeAbbreviationsLowerCase(grammaticalTerms)
 
     def show(self):
@@ -86,6 +87,13 @@ class GrammaticalTerms:
             else:
                 newParts.append(part)          
         return(newParts)
+
+    def replaceHyphensWithNDashes(self, text):
+        ''' makes sure the grammatical glosses are in lower case
+            but leaves lexical glosses and exceptions alone
+        ''' 
+        text = text.replace('-','–')          
+        return(text)
 
 #------------------------------------------------------------------------------------------------------------------------
 # non-class functions
