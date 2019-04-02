@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import sys
+import sys,os
 sys.path.append("..")
 from grammaticalTerms import *
 #------------------------------------------------------------------------------------------------------------------------
@@ -9,7 +9,8 @@ sampleLines = ["HAB=3A=MOUTH•cry",
                "HAB=3A=work=IAM",
                "PROG=1A=know–INTR",
                "more",
-               "1OBJ"
+               "1OBJ",
+               "PL^black.dog<masc>+pl"
                ]
 
 
@@ -36,6 +37,8 @@ def runTests():
     test_toHTML_sampleLine_5()
     test_nDashes()
     test_Sub_and_Sup()
+    test_Additional_Delimiters()
+    test_toHTML_sampleLine_6()
     
 def test_constructor():
 
@@ -286,6 +289,55 @@ def test_Sub_and_Sup(displayPage=False):
     gt = GrammaticalTerms("gu<sup>1</sup>hin<sub>MASC</sub>-PL", ["masc","pl"])
     gt.parse()
     assert(gt.getParts() ==  ['gu', '<sup>', '1', '</sup>', 'hin', '<sub>', 'masc', '</sub>', '–', 'pl'])
+
+def test_Additional_Delimiters(displayPage=False):
+    """
+      customizable test to make sure added delimiters don't cause problems
+      Currently configured for: ^, +, < >
+    """
+    print("--- test_Additional_Delimiters")
+
+    gt = GrammaticalTerms("PL^Dog<masc>+pl", ["masc","pl"])
+    gt.parse()
+    try:
+       assert(gt.getParts() ==  ['pl', '^', 'Dog', '<', 'masc','>', '+', 'pl'])
+    except AssertionError as e:
+       raise Exception(gt.getParts()) from e
+
+def test_toHTML_sampleLine_6(displayPage=True):
+    """
+      create an empty htmlDoc, then render the MorhphemeGloss into it
+    """
+    print("--- test_toHTML_sampleLine_6")
+
+    #grammaticalTerms = open(grammaticalTermsFile).read().split("\n")
+    gt = GrammaticalTerms(sampleLines[6], ["masc","pl"])
+    gt.parse()
+    gt.getParts()
+    try:
+       assert(gt.getParts() ==  ['pl', '^', 'black', '.', 'dog', '<', 'masc', '>', '+', 'pl'])
+    except AssertionError as e:
+       raise Exception(gt.getParts()) from e
+       pass
+
+    htmlDoc = Doc()
+
+    htmlDoc.asis('<!DOCTYPE html>')
+    with htmlDoc.tag('html', lang="en"):
+        with htmlDoc.tag('head'):
+            htmlDoc.asis('<link rel="stylesheet" href="ijal.css">')
+            with htmlDoc.tag('body'):
+                gt.toHTML(htmlDoc)
+
+    htmlText = htmlDoc.getvalue()
+    #print(htmlText.count('<span class="grammatical-term">'))
+    assert(htmlText.count('<span class="grammatical-term">') == 3)  # PRO
+
+    if(displayPage):
+        f = open("morphemeGloss.html", "w")
+        f.write(indent(htmlText))
+        f.close()
+        os.system("open %s" % "morphemeGloss.html")
 
 
 if __name__ == '__main__':
