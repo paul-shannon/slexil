@@ -17,7 +17,7 @@ def runTests():
 def createText():
     text = Text("../testData/plumedSerpent/TRS_Plumed_Serpent_Legend_05-15-2017.eaf",
                 None, #"../testData/plumedSerpent/audioPhrases",
-                grammaticalTermsFile=None,
+                grammaticalTermsFile="../testData/plumedSerpent/grammaticalTerms.txt",
                 tierGuideFile="../testData/plumedSerpent/tierGuide.yaml",
                 quiet=False)
     return(text)

@@ -29,4 +29,4 @@ test_chatino5:
 	python test_text_Chatino_5Line.py
 
 test_chatino6:
-	test_text_Chatino_5Line.py
+	python test_text_Chatino_5Line.py

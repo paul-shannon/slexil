@@ -5,6 +5,8 @@ from pprint import pprint
 from yattag import *
 import pdb
 import formatting
+from translationLine import *
+
 #------------------------------------------------------------------------------------------------------------------------
 # -*- coding: utf-8 -*-
 #------------------------------------------------------------------------------------------------------------------------
@@ -85,8 +87,9 @@ class IjalLine:
      #row = categories.index("translation")
      #pdb.set_trace()
       translation = self.tbl.ix[self.translationRow, "TEXT"]
-      translation = formatting.manageQuotes(translation)
-      return(translation)
+      translationLine = TranslationLine(translation)
+      #translation = formatting.manageQuotes(translation)
+      return(translationLine.getStandardized())
 
    #----------------------------------------------------------------------------------------------------
    def getTranslation2(self):
@@ -119,7 +122,7 @@ class IjalLine:
         # pdb.set_trace()
         rawMorphemeText = self.tbl["TEXT"].iloc[self.morphemeRows].tolist()[0]
         # pdb.set_trace()
-        rawMorphemeText = formatting.cleanUpInterlinears(rawMorphemeText)
+        rawMorphemeText = replaceHyphensWithNDashes(rawMorphemeText)
         morphemes = rawMorphemeText.split("\t")
         return(morphemes)
 
@@ -135,7 +138,7 @@ class IjalLine:
      if(self.morphemePacking == "tabs"):
         rawMorphemeGlossText = self.tbl["TEXT"].iloc[self.morphemeGlossRows].tolist()[0]
         # pdb.set_trace()
-        rawMorphemeGlossText = formatting.cleanUpInterlinears(rawMorphemeGlossText)
+        rawMorphemeGlossText = replaceHyphensWithNDashes(rawMorphemeGlossText)
         morphemeGlosses = rawMorphemeGlossText.split("\t")
         return(morphemeGlosses)
 
@@ -353,5 +356,9 @@ def standardizeTable(tbl, tierGuide):
    return(tbl_final)
 
 #------------------------------------------------------------------------------------------------------------------------
-
+def replaceHyphensWithNDashes(text):
+     ''' replace hyphens with n-dashes
+     ''' 
+     text = text.replace('-','–')          
+     return(text)
 

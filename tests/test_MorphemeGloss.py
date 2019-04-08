@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 
-import sys
+import sys,os
 sys.path.append("..")
 from morphemeGloss import *
+
+
 #------------------------------------------------------------------------------------------------------------------------
 sampleLines = ["HAB=3A=MOUTH•cry",
                "1S=walk–INC",
@@ -34,19 +36,24 @@ def runTests():
     test_toHTML_sampleLine_3()
     test_toHTML_sampleLine_4()
     test_toHTML_sampleLine_5()
-
+    test_nDashes()
+    test_Sub_and_Sup()
+    test_Additional_Delimiters()
+    test_toHTML_sampleLine_6()
 
 def test_constructor():
-
+   
+    print("--- test_constructor")
     #grammaticalTerms = open(grammaticalTermsFile).read().split("\n")
     mg = MorphemeGloss(sampleLines[0], grammaticalTerms)
 
 def test_parse():
 
     #grammaticalTerms = open(grammaticalTermsFile).read().split("\n")
+    print("--- test_parse")
     mg = MorphemeGloss(sampleLines[0], grammaticalTerms)
     mg.parse()
-    assert(mg.getParts() == ['HAB', '=', '3', 'A', '=', 'MOUTH', '•', 'cry'])
+    assert(mg.getParts() == ['hab', '=', '3A', '=', 'mouth', '•', 'cry'])
 
 def test_toHTML_sampleLine_0(displayPage=False):
     """
@@ -57,7 +64,7 @@ def test_toHTML_sampleLine_0(displayPage=False):
     #grammaticalTerms = open(grammaticalTermsFile).read().split("\n")
     mg = MorphemeGloss(sampleLines[0], grammaticalTerms)
     mg.parse()
-    assert(mg.getParts() == ['HAB', '=', '3', 'A', '=', 'MOUTH', '•', 'cry'])
+    assert(mg.getParts() == ['hab', '=', '3A', '=', 'mouth', '•', 'cry'])
 
     htmlDoc = Doc()
 
@@ -86,7 +93,7 @@ def test_toHTML_sampleLine_1(displayPage=False):
     #grammaticalTerms = open(grammaticalTermsFile).read().split("\n")
     mg = MorphemeGloss(sampleLines[1], grammaticalTerms)
     mg.parse()
-    assert(mg.getParts() == ['1', 'S', '=', 'walk', '–', 'INC'])
+    assert(mg.getParts() == ['1S', '=', 'walk', '–', 'inc'])
 
     htmlDoc = Doc()
 
@@ -116,7 +123,7 @@ def test_toHTML_sampleLine_2(displayPage=False):
     mg = MorphemeGloss(sampleLines[2], grammaticalTerms)
     mg.parse()
     mg.getParts()
-    assert(mg.getParts() == ['HAB', '=', '3', 'A', '=', 'work', '=', 'IAM'])
+    assert(mg.getParts() == ['hab', '=', '3A', '=', 'work', '=', 'iam'])
 
     htmlDoc = Doc()
 
@@ -146,7 +153,7 @@ def test_toHTML_sampleLine_3(displayPage=False):
     mg = MorphemeGloss(sampleLines[3], grammaticalTerms)
     mg.parse()
     mg.getParts()
-    assert(mg.getParts() == ['PROG', '=', '1', 'A', '=', 'know', '–', 'INTR'])
+    assert(mg.getParts() == ['prog', '=', '1A', '=', 'know', '–', 'intr'])
 
     htmlDoc = Doc()
 
@@ -207,7 +214,7 @@ def test_toHTML_sampleLine_5(displayPage=False):
     mg = MorphemeGloss(sampleLines[5], grammaticalTerms)
     mg.parse()
     mg.getParts()
-    assert(mg.getParts() == ['1', 'PRO'])
+    assert(mg.getParts() == ['1pro'])
 
     htmlDoc = Doc()
 
@@ -236,30 +243,91 @@ def test_inferno(displayPage=False):
 
     mg = MorphemeGloss("in=DEF-MASC-SG", grammaticalTerms)
     mg.parse()
-    assert(mg.getParts() == ['in', '=', 'DEF', '-', 'MASC', '-', 'SG'])
+    assert(mg.getParts() == ['in', '=', 'def', '–', 'masc', '–', 'sg'])
 
     mg = MorphemeGloss("middle-MASC", grammaticalTerms); mg.parse()
-    assert(mg.getParts() == ['middle', '-', 'MASC'])
+    assert(mg.getParts() == ['middle', '–', 'masc'])
 
     mg = MorphemeGloss("of=DEF-MASC-SG", grammaticalTerms); mg.parse();
-    assert(mg.getParts() == ['of', '=', 'DEF', '-', 'MASC', '-', 'SG'])
+    assert(mg.getParts() == ['of', '=', 'def', '–', 'masc', '–', 'sg'])
 
     mg = MorphemeGloss("journey-MASC", grammaticalTerms); mg.parse();
-    assert(mg.getParts() == ['journey', '-', 'MASC'])
+    assert(mg.getParts() == ['journey', '–', 'masc'])
 
     mg = MorphemeGloss("our-FEM-SG", grammaticalTerms); mg.parse();
-    assert(mg.getParts() == ['our', '-', 'FEM', '-', 'SG'])
+    assert(mg.getParts() == ['our', '–', 'fem', '–', 'sg'])
 
     mg = MorphemeGloss("life-FEM", grammaticalTerms); mg.parse();
-    assert(mg.getParts() == ['life', '-', 'FEM'])
+    assert(mg.getParts() == ['life', '–', 'fem'])
 
     mg = MorphemeGloss("be-3SG-IMPF", grammaticalTerms); mg.parse();
-    assert(mg.getParts() == ['be', '-', '3', 'SG', '-', 'IMPF'])
+    assert(mg.getParts() == ['be', '–', '3sg', '–', 'impf'])
 
     mg = MorphemeGloss("found–1SG-INDEF-REM-PAST", grammaticalTerms); mg.parse();
-    assert(mg.getParts() ==  ['found', '–', '1', 'SG', '-', 'INDEF', '-', 'REM', '-', 'PAST'])
+    assert(mg.getParts() ==  ['found', '–', '1sg', '–', 'indef', '–', 'rem', '–', 'past'])
+
+def test_nDashes(displayPage=False):
+    """
+      test for hyphens
+    """
+    print("--- test_nDashes")
+
+    gt = MorphemeGloss("in=DEF-MASC-3SG", grammaticalTerms)
+    gt.parse()
+    assert(gt.getParts() ==  ['in', '=', 'def', '–', 'masc', '–', '3sg'])
+
+def test_Sub_and_Sup(displayPage=False):
+    """
+      test input with subscripts and superscripts
+    """
+    print("--- test_Sub_and_Sup")
+
+    gt = MorphemeGloss("gu<sup>1</sup>hin<sub>MASC</sub>-PL", ["masc","pl"])
+    gt.parse()
+    assert(gt.getParts() ==  ['gu', '<sup>', '1', '</sup>', 'hin', '<sub>', 'masc', '</sub>', '–', 'pl'])
+
+def test_Additional_Delimiters(displayPage=False):
+    """
+      customizable test to make sure added delimiters don't cause problems
+      Currently configured for: ^, +, < >
+    """
+    print("--- test_Additional_Delimiters")
+
+    gt = MorphemeGloss("PL^Dog<masc>+pl", ["masc","pl"])
+    gt.parse()
+    assert(gt.getParts() ==  ['pl', '^', 'Dog', '<', 'masc','>', '+', 'pl'])
+
+def test_toHTML_sampleLine_6(displayPage=False):
+    """
+      create an empty htmlDoc, then render the MorphemeGloss into it
+    """
+    print("--- test_toHTML_sampleLine_6")
+
+    #grammaticalTerms = open(grammaticalTermsFile).read().split("\n")
+    gt = MorphemeGloss("PL^black.dog<sub>masc</sub>+pl", ["masc","pl"])
+    gt.parse()
+    gt.getParts()
+    assert(gt.getParts() ==  ['pl', '^', 'black', '.', 'dog', '<sub>', 'masc', '</sub>', '+', 'pl'])
 
 
+    htmlDoc = Doc()
+
+    htmlDoc.asis('<!DOCTYPE html>')
+    with htmlDoc.tag('html', lang="en"):
+        with htmlDoc.tag('head'):
+            htmlDoc.asis('<link rel="stylesheet" href="ijal.css">')
+            with htmlDoc.tag('body'):
+                gt.toHTML(htmlDoc)
+
+    htmlText = htmlDoc.getvalue()
+    #print(htmlText.count('<span class="grammatical-term">'))
+    assert(htmlText.count('<span class="grammatical-term">') == 3)
+
+    if(displayPage):
+        f = open("morphemeGloss.html", "w")
+        f.write(indent(htmlText))
+        f.close()
+        os.system("open %s" % "morphemeGloss.html")
 
 if __name__ == '__main__':
     runTests()

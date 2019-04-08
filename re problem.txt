@@ -1,0 +1,5 @@
+>>> delimiters = "([=•\-\.–~])|<sub>|<sub/>"
+>>> string = 'perro<sub>masc<sub/>–pl'
+>>> print(re.split(delimiters, string))
+['perro', None, 'masc', None, '', '–', 'pl']
+>>> 

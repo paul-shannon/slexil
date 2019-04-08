@@ -72,7 +72,8 @@ def test_lokono_line_3():
     with open(tierGuideFile, 'r') as f:
        tierGuide = yaml.load(f)
 
-    x3 = IjalLine(doc, 3, tierGuide)
+    grammaticalTerms = ['fem','poss','indf']
+    x3 = IjalLine(doc, 3, tierGuide,grammaticalTerms)
     x3.parse()
 
     assert(x3.speechRow == 0)
@@ -81,7 +82,10 @@ def test_lokono_line_3():
     assert(x3.morphemeGlossRows == [3, 5, 7, 9])
 
     assert(x3.getSpokenText() == 'thusa, aba hiyaro kiba.')
-    assert(x3.getTranslation() == "‘[a] child, a woman as well.'")
+    try: 
+        assert(x3.getTranslation() == "‘[a] child, a woman as well.’")
+    except AssertionError as e:
+        raise Exception(x3.getTranslation()) from e
     assert(x3.getMorphemes() == ['tʰ–ɨsa', 'aba', 'hijaro', 'kiba'])
     assert(x3.getMorphemeGlosses() == ['3FEM.POSS–child', 'INDF', 'woman', 'too'])
     assert(x3.getMorphemeSpacing() == [16, 5, 7, 5])   # word width + 1
@@ -122,8 +126,9 @@ def test_lokono_toHTML(displayPage=False, sampleOfLinesOnly=True):
     else:
         maxLines = lineCount
 
+    grammarTerms = ["hab","past"]
     for i in range(maxLines):
-       line = IjalLine(xmlDoc, i, tierGuide)
+       line = IjalLine(xmlDoc, i, tierGuide, grammarTerms)
        if(line.tierCount < 4):
           print("skipping line %d, tierCount %d" %(i, line.tierCount))
        else:
@@ -229,6 +234,9 @@ def test_monkeyAndThunder_toHTML(displayPage=False):
     print("--- test_monkeyAndThunder_toHTML")
 
     filename = "../testData/monkeyAndThunder/AYA1_MonkeyandThunder.eaf"
+    grammaticalTermFile = "../testData/monkeyAndThunder/grammaticalTerms.txt"
+    with open(grammaticalTermFile,'r') as f:
+        grammaticalTerms = f.read()
     xmlDoc = etree.parse(filename)
     lineCount = len(xmlDoc.findall("TIER/ANNOTATION/ALIGNABLE_ANNOTATION"))  # 41
 
@@ -238,7 +246,7 @@ def test_monkeyAndThunder_toHTML(displayPage=False):
 
     lines = []
     for i in range(lineCount):
-        line = IjalLine(xmlDoc, i, tierGuide)
+        line = IjalLine(xmlDoc, i, tierGuide,grammaticalTerms)
         #if(line.tierCount < 4):
         #    print("skipping line %d, tierCount %d" %(i, line.tierCount))
         #else:
@@ -310,8 +318,9 @@ def test_plumedSerpent_toHTML(displayPage=False):
        tierGuide = yaml.load(f)
 
     lines = []
+    grammaticalTerms = ["hab","past"]
     for i in range(lineCount):
-        line = IjalLine(xmlDoc, i, tierGuide)
+        line = IjalLine(xmlDoc, i, tierGuide,grammaticalTerms)
         if(line.tierCount < 4):
             print("skipping line %d, tierCount %d" %(i, line.tierCount))
         else:
@@ -364,8 +373,9 @@ def test_prayer_toHTML(displayPage=False):
        tierGuide = yaml.load(f)
 
     lines = []
+    grammaticalTerms = ["hab","past"]
     for i in range(lineCount):
-        line = IjalLine(xmlDoc, i, tierGuide)
+        line = IjalLine(xmlDoc, i, tierGuide,grammaticalTerms)
         if(line.tierCount < 4):
             print("skipping line %d, tierCount %d" %(i, line.tierCount))
         else:

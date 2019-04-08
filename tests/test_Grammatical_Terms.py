@@ -306,12 +306,12 @@ def test_Additional_Delimiters(displayPage=False):
 
 def test_toHTML_sampleLine_6(displayPage=True):
     """
-      create an empty htmlDoc, then render the MorhphemeGloss into it
+      create an empty htmlDoc, then render the MorphemeGloss into it
     """
     print("--- test_toHTML_sampleLine_6")
 
     #grammaticalTerms = open(grammaticalTermsFile).read().split("\n")
-    gt = GrammaticalTerms(sampleLines[6], ["masc","pl"])
+    gt = MorphemeGloss("PL^black.dog<masc>+pl", ["masc","pl"])
     gt.parse()
     gt.getParts()
     try:

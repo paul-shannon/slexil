@@ -35,18 +35,20 @@ import re
 from pprint import pprint
 from yattag import *
 import pdb
-
+from grammaticalTerms import *
 
 #------------------------------------------------------------------------------------------------------------------------
 class MorphemeGloss:
 
    rawText = ""
    grammaticalTerms = []
-   delimiters = "([=•\d\-\.–~])"   # more to come: ^ < >, subscripts recognition?
+   delimiters = "(<sub>|</sub>|<sup>|</sup>|[=•\-\.–~\^+<>])"
 
    def __init__(self, rawText, grammaticalTerms):
      self.rawText = rawText
-     self.grammaticalTerms = grammaticalTerms#.extend(['1','2','3'])
+     #next step will be removed when ijalLine takes over this function
+     self.rawText = _replaceHyphensWithNDashes(self.rawText)
+     self.grammaticalTerms = _makeAbbreviationListLowerCase(grammaticalTerms)
 
    def show(self):
       pprint(vars(self))
@@ -54,21 +56,48 @@ class MorphemeGloss:
    def parse(self):
       """ identify terms, delimiters, plain words """
       self.parts = _extractParts(self.delimiters, self.rawText)
+      self.addNumberedAbbreviations() #extends self.grammaticalTerms
+      self.gtObjectList = []
+      for part in self.parts:
+         gt = GrammaticalTerms(part,self.grammaticalTerms)
+         self.gtObjectList.append(gt)
+
+   def addNumberedAbbreviations(self):
+      ''' adds number + abbreviation combinations used
+         in the text (e.g., 1sg, 3obj) to grammaticalTerms list
+         and ensures these are in the correct case
+      ''' 
+      newTerms = [part for part in self.parts if any(i.isdigit() for i in part)]
+      for term in newTerms:
+         if term[0].isdigit() and term[1:].lower() in self.grammaticalTerms:
+             self.grammaticalTerms.append(term.lower())
+         elif term[-1].isdigit() and term[:-1].lower() in self.grammaticalTerms:
+             self.grammaticalTerms.append(term.lower())
+         elif not term in self.grammaticalTerms:
+             self.grammaticalTerms.append(term)           
 
    def getParts(self):
-      return(self.parts)
+      parts = []
+      for gt in self.gtObjectList:
+         part = gt.getTerm()
+         parts.append(part)
+      return(parts)
+
+   def getTermsList(self):
+      return(self.grammaticalTerms)
 
    def toHTML(self, htmlDoc):
       """ iterate over the parts list, identify each grammaticalTerm
           wrap each of those in a <span class='grammaticalTerm'> tag
       """
       with htmlDoc.tag("div", klass="morpheme-gloss"):
-         for part in self.parts:
+         for term in self.gtObjectList:
+            part = term.getTerm()
             if(self.grammaticalTerms) and (part in self.grammaticalTerms):
                with htmlDoc.tag("span", klass="grammatical-term"):
                   htmlDoc.asis(part)
             else:
-               htmlDoc.text(part)
+               htmlDoc.asis(part)
 
 
 #------------------------------------------------------------------------------------------------------------------------
@@ -78,3 +107,31 @@ def _extractParts(delimiters, string):
    parts = re.split(delimiters, string)
    parts_noEmptyStrings = [part for part in parts if part != ""]
    return(parts_noEmptyStrings)
+
+def _replaceHyphensWithNDashes(text):
+   ''' replace hyphens with n-dashes
+   '''
+   #will be removed when IjalLine takes over
+   #needed for now because tests don't use ijalLine.py
+   text = text.replace('-','–')          
+   return(text)
+
+def _makeAbbreviationListLowerCase(terms):
+   ''' ensures grammatical terms in user list are lower case '''
+   exceptions  = ["A","S","O","P"]
+   newTerms = []
+   for term in terms:
+      if "<sub>" in term:
+         term = term.replace("<sub>","")
+         term = term.replace("</sub>","")
+      if "<sup>" in term:
+         term = term.replace("<sup>","")
+         term = term.replace("</sup>","")
+      if term in exceptions:
+         newTerms.append(term)
+      elif term.isupper():
+         newTerm = term.lower()
+         newTerms.append(newTerm)
+      else:
+         newTerms.append(term)
+   return(newTerms)

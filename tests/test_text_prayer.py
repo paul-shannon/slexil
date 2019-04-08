@@ -13,7 +13,7 @@ def createText():
 
     text = Text("../testData/prayer/20150717_Prayer_community_one.eaf",
                 None, #"../testData/prayer/audioPhrases",
-                grammaticalTermsFile=None,
+                grammaticalTermsFile="../testData/prayer/grammaticalTerms.txt",
                 tierGuideFile="../testData/prayer/tierGuide.yaml",
                 quiet=True)
     return(text)

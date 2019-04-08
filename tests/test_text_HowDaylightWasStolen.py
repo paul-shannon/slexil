@@ -13,7 +13,7 @@ def createText():
 
     text = Text("../testData/harryMosesDaylight/daylight_1_4.eaf",
                 "../testData/harryMosesDaylight/audioPhrases",
-                grammaticalTermsFile=None,
+                grammaticalTermsFile="../testData/harryMosesDaylight/grammaticalTerms.txt",
                 tierGuideFile="../testData/harryMosesDaylight/tierGuide.yaml")
     return(text)
     
