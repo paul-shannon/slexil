@@ -42,12 +42,13 @@ class MorphemeGloss:
 
    rawText = ""
    grammaticalTerms = []
-   delimiters = "(<sub>|</sub>|<sup>|</sup>|[=•\-\.–~\^+<>])"
+   delimiters = "(<sub>|</sub>|<sup>|</sup>|[=•\-\.–~\^+<>:])"
 
    def __init__(self, rawText, grammaticalTerms):
      self.rawText = rawText
-     #next step will be removed when ijalLine takes over this function
+     #next step will be removed, ijalLine takes over this function once tests decommisioned
      self.rawText = _replaceHyphensWithNDashes(self.rawText)
+     #next step will be removed, ijalLine takes over this function once tests decommisioned
      self.grammaticalTerms = _makeAbbreviationListLowerCase(grammaticalTerms)
 
    def show(self):
@@ -118,6 +119,8 @@ def _replaceHyphensWithNDashes(text):
 
 def _makeAbbreviationListLowerCase(terms):
    ''' ensures grammatical terms in user list are lower case '''
+   #can be removed when IjalLine takes over
+   #needed for now because tests don't use ijalLine.py
    exceptions  = ["A","S","O","P"]
    newTerms = []
    for term in terms:
