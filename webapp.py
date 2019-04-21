@@ -261,11 +261,11 @@ def create_webPageCreationTab():
             'border-radius': '5px',
             'padding': '10px'}
 
-   createButton =  html.Button('Create Web Page', id='createWebPageButton', style={"margin": "20px", "margin-top": 0})
+   #createButton =  html.Button('Create Web Page', id='createWebPageButton', style={"margin": "20px", "margin-top": 0})
    createAndDisplayButton =  html.Button('Create & Display', id='createAndDisplayWebPageButton',
                                          style={"margin": "20px", "margin-top": 0})
 
-   displayButton =  html.Button('Display Web Page', id='displayIJALTextButton', style={"margin": "20px", "margin-top": 0})
+   #displayButton =  html.Button('Display Web Page', id='displayIJALTextButton', style={"margin": "20px", "margin-top": 0})
    downloadLinkAndButton = html.A(id="downloadURL",
                                   children=[html.Button('Download newly assembled text',
                                                         id="downloadAssembledTextButton",
@@ -287,7 +287,7 @@ def create_webPageCreationTab():
         message='Save HTML, audio and CSS to your local computer?'
     )
 
-   buttonDiv = html.Div(children=[createButton, createAndDisplayButton, displayButton, downloadLinkAndButton],
+   buttonDiv = html.Div(children=[createAndDisplayButton, downloadLinkAndButton],
                         style={'display': 'flex', 'justify-content': 'left'})
 
    children = [html.Br(), buttonDiv,
@@ -694,7 +694,7 @@ def update_output(value):
 #----------------------------------------------------------------------------------------------------
 @app.callback(
     Output('createWebPageStatus', 'children'),
-    [Input('createWebPageButton', 'n_clicks')],
+    [Input('createAndDisplayWebPageButton', 'n_clicks')],
     [State('sound_filename_hiddenStorage', 'children'),
      State('eaf_filename_hiddenStorage',   'children'),
      State('projectDirectory_hiddenStorage', 'children'),
@@ -705,8 +705,8 @@ def createWebPageCallback(n_clicks, soundFileName, eafFileName, projectDirectory
     if n_clicks is None:
         return("")
     print("=== create web page callback")
-    print("        eaf: %s", eafFileName)
-    print(" phrases in: %s", projectDirectory)
+    print("        eaf: %s" % eafFileName)
+    print(" phrases in: %s" % projectDirectory)
     if(grammaticalTermsFile == ""):
         grammaticalTermsFile = None
     html = createWebPage(eafFileName, projectDirectory, grammaticalTermsFile,
@@ -767,24 +767,17 @@ def update_pageTitle(projectDirectory):
     newProjectTitle = newProjectTitle.replace("/", "")
     return("IJAL Upload: %s" % newProjectTitle)
 
-# @app.callback(
-# Output('writeTierGuideFileTextArea', 'value'),
-#    [Input('submitInteractiveTierMapButton', 'n_clicks'),
-#     Input('tierGuideMenu', 'children')])
-# def saveTierGuideToFile(n_clicks, menuValue):
-#    if n_clicks is None:
-#       return("")
-#    print("need to saveTierGuidToFile");
-#    return("pretese: saved choices")
 
 @app.callback(
     Output('storyIFrame', 'src'),
-    [Input('displayIJALTextButton', 'n_clicks'),
+    [Input('createWebPageStatus', 'children'),
      Input('projectDirectory_hiddenStorage', 'children')])
-def displayText(n_clicks, projectDirectory):
-   if n_clicks is None:
+def displayText(createWebPageStatus, projectDirectory):
+   print("=== displayText '%s'" % createWebPageStatus)
+   if createWebPageStatus is None:
       return("")
-   print("=== displayText")
+   if(len(createWebPageStatus) == 0):
+      return("")
    pathToHTML = os.path.join(projectDirectory, "text.html")
    return(pathToHTML)
 
