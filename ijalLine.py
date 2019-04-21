@@ -45,15 +45,19 @@ class IjalLine:
      self.morphemeRows = [i for i in range(tierCount) if self.categories[i] == "morpheme"]
      self.morphemeGlossRows = [i for i in range(tierCount) if self.categories[i] == "morphemeGloss"]
      #handle the case of a secondary translation
-     try:
-        self.translation2Row = self.categories.index("translation2")
-     except ValueError:
-        pass
+     if 'translation2' in self.categories:
+         self.translation2Row = self.categories.index("translation2")
+     else:
+         self.translation2Row = None
      #handle the case of a second transcription line
-     try:
+     if 'transcription2' in self.categories:
         self.transcription2Row = self.categories.index("transcription2")
-     except ValueError:
-        pass
+     else:
+         self.transcription2Row = None
+##     try:
+##        self.transcription2Row = self.categories.index("transcription2")
+##     except ValueError:
+##        pass
      self.morphemes = self.extractMorphemes()
      self.morphemeGlosses = self.extractMorphemeGlosses()
      self.calculateMorphemeSpacing()
@@ -88,25 +92,29 @@ class IjalLine:
      #pdb.set_trace()
       translation = self.tbl.ix[self.translationRow, "TEXT"]
       translationLine = TranslationLine(translation)
-      #translation = formatting.manageQuotes(translation)
       return(translationLine.getStandardized())
 
    #----------------------------------------------------------------------------------------------------
    def getTranslation2(self):
-      try:
+      if self.translation2Row != None:
          translation2 = self.tbl.ix[self.translation2Row, "TEXT"]
-      except AttributeError:
+         translationLine2 = TranslationLine(translation2)
+         return(translationLine2.getStandardized())
+      else:
          return(None)
-      translation2 = formatting.manageQuotes(translation2)
-      return(translation2)
    #----------------------------------------------------------------------------------------------------
    def getTranscription2(self):
-      try:
+      if self.transcription2Row != None:
          transcription2 = self.tbl.ix[self.transcription2Row, "TEXT"]
-      except AttributeError:
+         return(transcription2)
+      else:
          return(None)
-      #transcription2 = formatting.manageQuotes(transcription2)
-      return(transcription2)
+##      try:
+##         transcription2 = self.tbl.ix[self.transcription2Row, "TEXT"]
+##      except AttributeError:
+##         return(None)
+##      #transcription2 = formatting.manageQuotes(transcription2)
+##      return(transcription2)
    #----------------------------------------------------------------------------------------------------
    def extractMorphemes(self):
 
@@ -152,15 +160,14 @@ class IjalLine:
       try:
          if terms[-1] == '':
             terms = terms[:-1]
-            persons = ['1','2','3','4']
-            terms.extend(persons)
-         return terms
+         newTerms = _makeAbbreviationListLowerCase(terms)
+         return newTerms
       except IndexError:
          return
 
    #----------------------------------------------------------------------------------------------------
    def getMorphemeGlosses (self):
-
+      
       return(self.morphemeGlosses)
 
    #----------------------------------------------------------------------------------------------------
@@ -361,4 +368,25 @@ def replaceHyphensWithNDashes(text):
      ''' 
      text = text.replace('-','–')          
      return(text)
+#---------------------------------------------------------
+def _makeAbbreviationListLowerCase(terms):
+   ''' ensures grammatical terms in user list are lower case '''
+   exceptions  = ["A","S","O","P"]
+   newTerms = []
+   for term in terms:
+      if "<sub>" in term:
+         term = term.replace("<sub>","")
+         term = term.replace("</sub>","")
+      if "<sup>" in term:
+         term = term.replace("<sup>","")
+         term = term.replace("</sup>","")
+      if term in exceptions:
+         newTerms.append(term)
+      elif term.isupper():
+         newTerm = term.lower()
+         newTerms.append(newTerm)
+      else:
+         newTerms.append(term)
+   return(newTerms)
+
 
