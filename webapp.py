@@ -262,6 +262,9 @@ def create_webPageCreationTab():
             'padding': '10px'}
 
    createButton =  html.Button('Create Web Page', id='createWebPageButton', style={"margin": "20px", "margin-top": 0})
+   createAndDisplayButton =  html.Button('Create & Display', id='createAndDisplayWebPageButton',
+                                         style={"margin": "20px", "margin-top": 0})
+
    displayButton =  html.Button('Display Web Page', id='displayIJALTextButton', style={"margin": "20px", "margin-top": 0})
    downloadLinkAndButton = html.A(id="downloadURL",
                                   children=[html.Button('Download newly assembled text',
@@ -284,7 +287,7 @@ def create_webPageCreationTab():
         message='Save HTML, audio and CSS to your local computer?'
     )
 
-   buttonDiv = html.Div(children=[createButton, displayButton, downloadLinkAndButton], #confirmDownLoadObject],
+   buttonDiv = html.Div(children=[createButton, createAndDisplayButton, displayButton, downloadLinkAndButton],
                         style={'display': 'flex', 'justify-content': 'left'})
 
    children = [html.Br(), buttonDiv,
