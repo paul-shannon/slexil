@@ -7,7 +7,7 @@
         <String>POS-cp</String>
         <String>second translation</String>
         <String>English Translation</String>
-        <String>second translation-cp</String>
+        <String>phonetic transcription</String>
     </prefList>
     <pref key="LayoutManager.VisibleMultiTierViewer">
         <String>mpi.eudico.client.annotator.viewer.TimeLineViewer</String>
@@ -25,7 +25,7 @@
         <String>Modification Date</String>
     </prefList>
     <pref key="LayoutManager.SplitPaneDividerLocation">
-        <Int>70</Int>
+        <Int>2</Int>
     </pref>
     <pref key="LayoutManager.SelectedTabIndex">
         <Int>7</Int>
@@ -43,13 +43,13 @@
         <Object class="java.awt.Point">1235,80</Object>
     </pref>
     <pref key="SelectionBeginTime">
-        <Long>2980</Long>
+        <Long>3860</Long>
     </pref>
     <pref key="LayoutManager.CurrentMode">
         <Int>1</Int>
     </pref>
     <pref key="MediaTime">
-        <Long>2980</Long>
+        <Long>3860</Long>
     </pref>
     <pref key="FrameSize">
         <Object class="java.awt.Dimension">1247,897</Object>
@@ -59,18 +59,18 @@
             <String>http://lux17.mpi.nl/aamlr/</String>
         </pref>
         <pref key="source_audio">
-            <String>///Users/David/OpenSource/github/slexil/testData/prayer/SJQ-2009_Cruz.wav</String>
+            <String>///Users/David/Library/Mobile Documents/com~apple~CloudDocs/Current/Cruz/SJQ-2009_06_24-prayer-SZC.wav</String>
         </pref>
     </prefGroup>
     <pref key="MultiTierViewer.ActiveTierName">
         <String>English Translation</String>
     </pref>
     <prefGroup key="CommentViewer.Columns">
-        <pref key="Sender">
-            <Int>0</Int>
-        </pref>
         <pref key="Modification Date">
             <Int>75</Int>
+        </pref>
+        <pref key="Sender">
+            <Int>0</Int>
         </pref>
         <pref key="Tier">
             <Int>75</Int>
@@ -81,20 +81,20 @@
         <pref key="Initials">
             <Int>75</Int>
         </pref>
-        <pref key="Start Time">
+        <pref key="Comment">
             <Int>75</Int>
         </pref>
         <pref key="End Time">
             <Int>75</Int>
         </pref>
-        <pref key="Comment">
-            <Int>75</Int>
-        </pref>
-        <pref key="Thread">
+        <pref key="Start Time">
             <Int>75</Int>
         </pref>
         <pref key="Recipient">
             <Int>0</Int>
+        </pref>
+        <pref key="Thread">
+            <Int>75</Int>
         </pref>
     </prefGroup>
     <pref key="ActiveRecognizerName">
@@ -108,6 +108,6 @@
     </pref>
     <prefList key="MultiTierViewer.HiddenTiers"/>
     <pref key="SelectionEndTime">
-        <Long>2980</Long>
+        <Long>3870</Long>
     </pref>
 </preferences>

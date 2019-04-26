@@ -14,6 +14,7 @@ from flask import Flask
 import flask
 from textwrap import dedent
 from zipfile import *
+from shutil import copy
 #----------------------------------------------------------------------------------------------------
 import sys
 #sys.path.append("../ijal_interlinear")
@@ -914,7 +915,7 @@ def extractPhrases(soundFileFullPath, eafFileFullPath, projectDirectory):
 def createWebPage(eafFileName, projectDirectory, grammaticalTermsFileName, tierGuideFileName):
 
     print("-------- entering createWebPage")
-    audioDirectory = os.path.join(projectDirectory, "audio")
+    #audioDirectory = os.path.join(projectDirectory, "audio")
     audioDirectoryRelativePath = "audio"
     print("eafFileName: %s" % eafFileName)
     print("projectDirectory: %s" % projectDirectory)
@@ -935,14 +936,27 @@ def createZipFile(projectDir):
    currentDirectoryOnEntry = os.getcwd()
    #projectDir = os.path.join(PROJECTS_DIRECTORY, projectName)
    os.chdir(projectDir)
+   print(projectDir)
 
    audioDir = "audio"
    filesToSave = [os.path.join("audio", f) for f in os.listdir(audioDir) if f.endswith('.wav')]
+   #should name .html file according to title of project/text?
+   
    filesToSave.insert(0, "text.html")
-
+   #zipfile should also be named for project
    zipFilename = "webpage.zip"
    zipFilenameFullPath = os.path.join(currentDirectoryOnEntry, projectDir, zipFilename)
    zipHandle = ZipFile(zipFilename, 'w')
+
+   #filesToSave needs to include ijal.css, ijalUtils.js
+   parentDir = os.path.abspath(os.path.join(projectDir, os.pardir))
+   print(parentDir)
+   CSSfile = os.path.join(currentDirectoryOnEntry,"ijal.css")
+   scriptFile = os.path.join(currentDirectoryOnEntry,"ijalUtils.js")
+   copy(CSSfile, os.getcwd())
+   copy(scriptFile, os.getcwd())
+   filesToSave.append("ijal.css")
+   filesToSave.append("ijalUtils.js")
 
    for file in filesToSave:
       zipHandle.write(file)
