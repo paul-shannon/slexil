@@ -25,7 +25,7 @@
         <String>Modification Date</String>
     </prefList>
     <pref key="LayoutManager.SplitPaneDividerLocation">
-        <Int>2</Int>
+        <Int>70</Int>
     </pref>
     <pref key="LayoutManager.SelectedTabIndex">
         <Int>7</Int>
@@ -59,7 +59,7 @@
             <String>http://lux17.mpi.nl/aamlr/</String>
         </pref>
         <pref key="source_audio">
-            <String>///Users/David/Library/Mobile Documents/com~apple~CloudDocs/Current/Cruz/SJQ-2009_06_24-prayer-SZC.wav</String>
+            <String>///Users/David/OpenSource/github/slexil/testData/prayer/SJQ-2009_Cruz.wav</String>
         </pref>
     </prefGroup>
     <pref key="MultiTierViewer.ActiveTierName">
@@ -104,7 +104,7 @@
         <Int>201</Int>
     </pref>
     <pref key="TimeScaleBeginTime">
-        <Long>60</Long>
+        <Long>-40</Long>
     </pref>
     <prefList key="MultiTierViewer.HiddenTiers"/>
     <pref key="SelectionEndTime">
