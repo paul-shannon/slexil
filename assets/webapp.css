@@ -1,0 +1,34 @@
+.header {
+	background-color: red;
+	text-align: center;
+}
+
+.banner {
+	background-image: url('slexilBanner.jpg');
+	text-align: center;
+}
+
+.tiermap {
+  table-layout:fixed;
+  margin: 100;
+  margin-top: 10;
+  margin-bottom: 0;
+  width: 600;
+}
+
+.first {
+  width: 20%;
+  background-color; red;
+}
+
+.second {
+  width: 40%;
+}
+
+.third {
+  width: 40%;
+}
+
+.tierMenuPulldown {
+	background-colour: blue;
+}

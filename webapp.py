@@ -273,19 +273,19 @@ def create_webPageCreationTab():
                                                         style={"width": 300})], # ,disabled="False")],
                                   href='')
 
-   createWebpageStatus = html.Span(id="createWebPageStatus", children="cwpita", style={"margin-left": 10})
+   createWebpageStatus = html.Span(id="createWebPageStatus", children="cwpita", style={'display': 'none'})
 
    webPageIframe = html.Iframe(id="storyIFrame", src="<h3>the story goes here</h3>", width=1200, height=800)
 
-   saveWebpageStatus = html.Span(id="saveWebpageProgressTextArea", children="swppta")
-                                              #placeholder='progress info will appear here',
-                                              #alue="",
-                                              #style={'width': 600, 'height': 30})
+##   saveWebpageStatus = html.Span(id="saveWebpageProgressTextArea", children="Creating webpage display")
+##                                              #placeholder='progress info will appear here',
+##                                              #alue="",
+##                                              #style={'width': 600, 'height': 30})
 
    confirmDownLoadObject = dcc.ConfirmDialogProvider(
         children=html.Button('Save...'),
         id='confirmDownLoadObject',
-        message='Save HTML, audio and CSS to your local computer?'
+        message='Save HTML, audio, JavaSCript, and CSS to your local computer?'
     )
 
    buttonDiv = html.Div(children=[createAndDisplayButton, downloadLinkAndButton],
@@ -293,7 +293,8 @@ def create_webPageCreationTab():
 
    children = [html.Br(), buttonDiv,
                html.Br(), createWebpageStatus,
-               html.Br(), saveWebpageStatus, webPageIframe]
+               html.Br(), webPageIframe]
+               #html.Br(), saveWebpageStatus, webPageIframe]
 
    div = html.Div(children=children, id='createWebPageDiv')
 
@@ -407,7 +408,7 @@ def createPulldownMenu(menuName, tierChoices):
        options.append(newElement)
 
    idName = "tierGuideMenu-%s" % menuName
-   menu = dcc.Dropdown(options=options, clearable=False, id=idName)
+   menu = dcc.Dropdown(options=options, clearable=False, id=idName, className="tierMenuPulldown")
    return(menu)
 
 #----------------------------------------------------------------------------------------------------
@@ -425,13 +426,18 @@ def createTierMappingMenus(eafFilename):
       #tierChoices = ["pending EAF file selection"]
 
       dropDownMenus = html.Table(id='tierMappingMenus', children=[
-         html.Tr([html.Th("Standard interlinear tiers"), html.Th("User tier names (from EAF file)", style={'width': "60%"})]),
-         html.Tr([html.Td("speech"), html.Td(createPulldownMenu("speech", tierChoices))]),
-         html.Tr([html.Td("translation"), html.Td(createPulldownMenu("translation", tierChoices))]),
-         html.Tr([html.Td("morpheme"), html.Td(createPulldownMenu("morpheme", tierChoices))]),
-         html.Tr([html.Td("morphemeGloss"), html.Td(createPulldownMenu("morphemeGloss", tierChoices))]),
-         html.Tr([html.Td("morphemePacking"), html.Td(createPulldownMenu("morphemePacking", ["tabs", "lines"]))])
-         ], style={'margin': 100, 'margin-top': 10, 'margin-bottom': 0, 'width': 600}
+         html.Tr([html.Th("Standard interlinear tiers",className="first"), html.Th("",className="second"), html.Th("User tier names (from EAF file)",className="third")]),
+         html.Tr([html.Td("line"), html.Td("i'ktzó'hli'"), html.Td(createPulldownMenu("speech", tierChoices))]),
+         html.Tr([html.Td("alternate transcription"), html.Td("ḭktsó̰ʔlḭ"), html.Td(createPulldownMenu("transcription2", tierChoices))]),
+         html.Tr([html.Td("morphological analysis"), html.Td("ḭk–tso̰ʔ–lḭ̰"), html.Td(createPulldownMenu("morpheme", tierChoices))]),
+         html.Tr([html.Td("morpheme glosses"), html.Td(children=[
+             html.Div("1sg.sub–",style={'font-variant':'small-caps','display':'inline-block'}),
+             html.Div("write",style={'display':'inline-block'}),
+             html.Div("–pfv",style={'font-variant':'small-caps','display':'inline-block'})]), html.Td(createPulldownMenu("morphemeGloss", tierChoices))]),
+         html.Tr([html.Td("translation"), html.Td("‘I wrote it.’"), html.Td(createPulldownMenu("translation", tierChoices))]),
+         html.Tr([html.Td("second translation"), html.Td("‘Lo escribí.’"), html.Td(createPulldownMenu("translation2", tierChoices))]),
+         html.Tr([html.Td("morphemePacking"), html.Td(""), html.Td(createPulldownMenu("morphemePacking", ["tabs", "lines"]))])
+         ], className="tiermap"
          )
 
    saveTierMappingChoicesButton = html.Button('Save Choices', id='saveTierMappingSelectionsButton',
@@ -482,11 +488,13 @@ app.layout = html.Div(
         html.P(id='audioPhraseDirectory_hiddenStorage',      children="", style={'display': 'none'}),
         html.P(id='grammaticalTerms_filename_hiddenStorage', children="", style={'display': 'none'}),
         html.P(id='tierGuide_filename_hiddenStorage',        children="", style={'display': 'none'}),
-        html.P(id='speechTier_hiddenStorage',        children="", style={'display': 'none'}),
-        html.P(id='translationTier_hiddenStorage',   children="", style={'display': 'none'}),
-        html.P(id='morphemeTier_hiddenStorage',      children="", style={'display': 'none'}),
-        html.P(id='morphemeGlossTier_hiddenStorage', children="", style={'display': 'none'}),
-        html.P(id='morphemePacking_hiddenStorage',   children="", style={'display': 'none'}),
+        html.P(id='speechTier_hiddenStorage',                children="", style={'display': 'none'}),
+        html.P(id='transcription2Tier_hiddenStorage',        children="", style={'display': 'none'}),      
+        html.P(id='morphemeTier_hiddenStorage',              children="", style={'display': 'none'}),
+        html.P(id='morphemeGlossTier_hiddenStorage',         children="", style={'display': 'none'}),       
+        html.P(id='translationTier_hiddenStorage',           children="", style={'display': 'none'}),
+        html.P(id='translation2Tier_hiddenStorage',          children="", style={'display': 'none'}),
+        html.P(id='morphemePacking_hiddenStorage',           children="", style={'display': 'none'}),
         ],
     className="row",
     id='outerDiv',
@@ -829,30 +837,60 @@ def updateMorphemePackingUserChoice(value):
     return value
 
 @app.callback(
+    Output('translation2Tier_hiddenStorage', 'children'),
+    [Input('tierGuideMenu-translation2', 'value')])
+def updateTranslation2Tier(value):
+    print("translation2 tier user name: %s" % value)
+    return value
+
+@app.callback(
+    Output('transcription2Tier_hiddenStorage', 'children'),
+    [Input('tierGuideMenu-transcription2', 'value')])
+def updateTranscription2Tier(value):
+    print("transcription2 tier user name: %s" % value)
+    return value
+
+@app.callback(
     Output('tierMappingChoicesResultDisplay', 'children'),
     [Input('saveTierMappingSelectionsButton', 'n_clicks')],
     [State('speechTier_hiddenStorage',        'children'),
-     State('translationTier_hiddenStorage',   'children'),
+     State('transcription2Tier_hiddenStorage',   'children'),
      State('morphemeTier_hiddenStorage',      'children'),
      State('morphemeGlossTier_hiddenStorage', 'children'),
+     State('translationTier_hiddenStorage',   'children'),
+     State('translation2Tier_hiddenStorage',   'children'),
      State('morphemePacking_hiddenStorage',   'children'),
      State('projectDirectory_hiddenStorage',  'children')])
-def saveTierMappingSelection(n_clicks, speechTier, translationTier, morphemeTier, morphemeGlossTier,
-                             morphemePacking, projectDirectory):
+def saveTierMappingSelection(n_clicks, speechTier, transcription2Tier, morphemeTier, morphemeGlossTier, 
+                             translationTier, translation2Tier, morphemePacking, projectDirectory):
     if n_clicks is None:
         return("")
     print("saveTierMappingSelectionsButton: %d" % n_clicks)
-    if(any([len(x) == 0 for x in [speechTier, translationTier, morphemeTier, morphemeGlossTier, morphemePacking]])):
-       print("not all tiers mapped")
-       return("Some choices not yet made.")
+    if len(speechTier) == 0:
+        print("speechTier not mapped")
+        return("You must specify a tier for the first line.")
+
+    if len(translationTier) == 0:
+        print("translationTier not mapped")
+        return("You must specify a tier for the translation.")
+    
+    if len(morphemePacking) == 0:
+        print("morphemePacking not specified")
+        return("You must specify whether morphemes are delimited with tabs or ELAN tiers.")
+    
+##    if(any([len(x) == 0 for x in [speechTier, transcription2Tier, morphemeTier, morphemeGlossTier, translationTier, translation2Tier, morphemePacking]])):
+##       print("not all tiers mapped")
+##       return("Some choices not yet made.")
 
     print("time to write tierGuide.yaml")
     print("speechTier: %s" % speechTier)
-    print("translationTier: %s" % translationTier)
+    print("transcription2Tier: %s" % transcription2Tier)
     print("morphemeTier: %s" % morphemeTier)
     print("morphemeGlossTier: %s" % morphemeGlossTier)
+    print("translationTier: %s" % translationTier)
+    print("translation2Tier: %s" % translation2Tier)
     print("morphemePacking: %s" % morphemePacking)
-    saveTierGuide(projectDirectory, speechTier, translationTier, morphemeTier, morphemeGlossTier, morphemePacking)
+    saveTierGuide(projectDirectory, speechTier, transcription2Tier, morphemeTier, morphemeGlossTier, translationTier, translation2Tier, morphemePacking)
     return("Saved your selection to 'tierGuide.yaml'")
 
 @app.callback(Output('saveWebpageProgressTextArea', 'children'),
@@ -879,12 +917,14 @@ def updateDownloadTextButtonHref(directory):
 
 
 #----------------------------------------------------------------------------------------------------
-def saveTierGuide(projectDirectory, speechTier, translationTier, morphemeTier, morphemeGlossTier, morphemePacking):
+def saveTierGuide(projectDirectory, speechTier, transcription2Tier, morphemeTier, morphemeGlossTier, translationTier, translation2Tier, morphemePacking):
 
     dict = {"speech": speechTier,
-            "translation": translationTier,
+            "transcription2": transcription2Tier,
             "morpheme": morphemeTier,
             "morphemeGloss": morphemeGlossTier,
+            "translation": translationTier,
+            "translation2": translation2Tier,
             "morphemePacking": morphemePacking}
 
     filename =  os.path.join(projectDirectory, "tierGuide.yaml")

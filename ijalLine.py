@@ -54,10 +54,6 @@ class IjalLine:
         self.transcription2Row = self.categories.index("transcription2")
      else:
          self.transcription2Row = None
-##     try:
-##        self.transcription2Row = self.categories.index("transcription2")
-##     except ValueError:
-##        pass
      self.morphemes = self.extractMorphemes()
      self.morphemeGlosses = self.extractMorphemeGlosses()
      self.calculateMorphemeSpacing()
@@ -102,6 +98,7 @@ class IjalLine:
          return(translationLine2.getStandardized())
       else:
          return(None)
+      
    #----------------------------------------------------------------------------------------------------
    def getTranscription2(self):
       if self.transcription2Row != None:
@@ -109,12 +106,7 @@ class IjalLine:
          return(transcription2)
       else:
          return(None)
-##      try:
-##         transcription2 = self.tbl.ix[self.transcription2Row, "TEXT"]
-##      except AttributeError:
-##         return(None)
-##      #transcription2 = formatting.manageQuotes(transcription2)
-##      return(transcription2)
+      
    #----------------------------------------------------------------------------------------------------
    def extractMorphemes(self):
 
@@ -128,10 +120,9 @@ class IjalLine:
 
      if(self.morphemePacking == "tabs"):
         # pdb.set_trace()
-        rawMorphemeText = self.tbl["TEXT"].iloc[self.morphemeRows].tolist()[0]
+        rawMorphemeText = self.tbl["TEXT"].iloc[self.morphemeRows].tolist()#[0]
         # pdb.set_trace()
-        rawMorphemeText = replaceHyphensWithNDashes(rawMorphemeText)
-        morphemes = rawMorphemeText.split("\t")
+        morphemes = replaceHyphensWithNDashes(rawMorphemeText)
         return(morphemes)
 
    #----------------------------------------------------------------------------------------------------
@@ -144,10 +135,9 @@ class IjalLine:
         return(self.tbl["TEXT"].iloc[self.morphemeGlossRows].tolist())
 
      if(self.morphemePacking == "tabs"):
-        rawMorphemeGlossText = self.tbl["TEXT"].iloc[self.morphemeGlossRows].tolist()[0]
+        rawMorphemeGlossText = self.tbl["TEXT"].iloc[self.morphemeGlossRows].tolist()#[0]
         # pdb.set_trace()
-        rawMorphemeGlossText = replaceHyphensWithNDashes(rawMorphemeGlossText)
-        morphemeGlosses = rawMorphemeGlossText.split("\t")
+        morphemeGlosses = replaceHyphensWithNDashes(rawMorphemeGlossText)
         return(morphemeGlosses)
 
    #----------------------------------------------------------------------------------------------------
@@ -225,6 +215,7 @@ class IjalLine:
                           htmlDoc.asis(self.getTranscription2())                      
 
                     morphemes = self.getMorphemes()
+                    #print(morphemes)
                     if(len(morphemes) > 0):
                        with htmlDoc.tag("div", klass="morpheme-tier", style=styleString):
                           for morpheme in morphemes:
@@ -363,11 +354,14 @@ def standardizeTable(tbl, tierGuide):
    return(tbl_final)
 
 #------------------------------------------------------------------------------------------------------------------------
-def replaceHyphensWithNDashes(text):
+def replaceHyphensWithNDashes(list):
      ''' replace hyphens with n-dashes
      ''' 
-     text = text.replace('-','–')          
-     return(text)
+     newList = []
+     for text in list: 
+        text = text.replace('-','–')
+        newList.append(text)
+     return(newList)
 #---------------------------------------------------------
 def _makeAbbreviationListLowerCase(terms):
    ''' ensures grammatical terms in user list are lower case '''
