@@ -940,9 +940,10 @@ def createZipFile(projectDir):
 
    audioDir = "audio"
    filesToSave = [os.path.join("audio", f) for f in os.listdir(audioDir) if f.endswith('.wav')]
-   #should name .html file according to title of project/text?
    
+   #should name .html file according to title of project/text?   
    filesToSave.insert(0, "text.html")
+   
    #zipfile should also be named for project
    zipFilename = "webpage.zip"
    zipFilenameFullPath = os.path.join(currentDirectoryOnEntry, projectDir, zipFilename)
