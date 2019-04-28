@@ -117,16 +117,16 @@ def create_eafUploader():
 #----------------------------------------------------------------------------------------------------
 def create_setTitleTab():
 
-   style = {'border': '5px solid purple',
-            'border-radius': '5px',
-            'padding': '10px'}
+##   style = {'border': '5px solid purple',
+##            'border-radius': '5px',
+##            'padding': '10px'}
 
    setTitleInput = dcc.Input(id="setTitleTextInput",
                          placeholder='enter convenient, concise text title here, no spaces please!',
                          value="",
                          style={'width': '512px', 'fontSize': 20})
 
-   setTitleButton = html.Button(id='setTitleButton', type='submit', children='Submit')
+   setTitleButton = html.Button(id='setTitleButton', type='submit', children='Submit',className="button")
 
    children = [html.Br(),
                setTitleInput,
@@ -360,27 +360,27 @@ def create_tierMapGui():
 #----------------------------------------------------------------------------------------------------
 def create_allDivs():
 
-   style = {'margin': 2,
-            'border': '1px solid #aaa;',
-            'border-radius': 4,
-            'padding': '.5em .5em 0'}
-
-   style = {'margin': 2, "padding": 0}
+##   style = {'margin': 2,
+##            'border': '1px solid #aaa;',
+##            'border-radius': 4,
+##            'padding': '.5em .5em 0'}
+##
+##   style = {'margin': 2, "padding": 0}
 
    children = [
        html.H4("", className="banner", id='pageTitleH4'),
        html.A(html.Button('Download Demo',
                            className='demoButton'),
                            href='demos/infernoDemo.zip'),
-       html.Details([html.Summary('Set Title'), html.Div(create_setTitleTab())], style=style),
-       html.Details([html.Summary('EAF'), html.Div(create_eafUploaderTab())], style=style),
-       html.Details([html.Summary('Sound'), html.Div(create_soundFileUploaderTab())], style=style),
-       html.Details([html.Summary('Tier Guide'), html.Div(create_tierMapGui())], style=style),
-       html.Details([html.Summary('GrammaticalTerms'), html.Div(create_grammaticalTermsUploaderTab())], style=style),
-       html.Details([html.Summary('EAF+Sound'), html.Div(create_associateEAFandSoundTab())], style=style),
-       html.Details([html.Summary('Create Web Page'), html.Div(create_webPageCreationTab())], style=style)]
+       html.Details([html.Summary('Set Title'), html.Div(create_setTitleTab())], className="allDivs"),
+       html.Details([html.Summary('EAF'), html.Div(create_eafUploaderTab())], className="allDivs"),
+       html.Details([html.Summary('Sound'), html.Div(create_soundFileUploaderTab())], className="allDivs"),
+       html.Details([html.Summary('Tier Guide'), html.Div(create_tierMapGui())], className="allDivs"),
+       html.Details([html.Summary('GrammaticalTerms'), html.Div(create_grammaticalTermsUploaderTab())], className="allDivs"),
+       html.Details([html.Summary('EAF+Sound'), html.Div(create_associateEAFandSoundTab())], className="allDivs"),
+       html.Details([html.Summary('Create Web Page'), html.Div(create_webPageCreationTab())], className="allDivs")]
 
-   div = html.Div(children=children, id='main-div', className="twelve columns") # , style=style)
+   div = html.Div(children=children, id='main-div', className="mainDiv") # , style=style)
 
    return div
 
@@ -480,9 +480,6 @@ def parse_eaf_upload(contents, filename, date):
 #----------------------------------------------------------------------------------------------------
 app.layout = html.Div(
     children=[
-##        html.A(html.Button('Download the 3-line Inferno Demo',
-##                           style={"margin-left": 30, "margin-top": 20, "width": 320, "font-size": 12}),
-##               href='demos/infernoDemo.zip'),
         create_allDivs(),
         html.P(id='projectTitle_hiddenStorage',              children="", style={'display': 'none'}),
         html.P(id='projectDirectory_hiddenStorage',          children="", style={'display': 'none'}),
@@ -500,13 +497,8 @@ app.layout = html.Div(
         html.P(id='morphemePacking_hiddenStorage',           children="", style={'display': 'none'}),
         ],
     className="row",
-    id='outerDiv',
-    style={'margin':  '10px',
-           'padding': '20px',
-           #'border': '1px blue solid',
-           'border-radius': "5px",
-           'height':  '300px',
-        })
+    id='outerDiv'
+    )
 
 #----------------------------------------------------------------------------------------------------
 @app.callback(Output('eafUploadTextArea', 'value'),
