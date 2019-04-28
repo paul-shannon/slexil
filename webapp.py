@@ -368,7 +368,10 @@ def create_allDivs():
    style = {'margin': 2, "padding": 0}
 
    children = [
-       html.H4("IJAL Upload", style={'text-align': 'center'}, id='pageTitleH4'),
+       html.H4("", className="banner", id='pageTitleH4'),
+       html.A(html.Button('Download Demo',
+                           className='demoButton'),
+                           href='demos/infernoDemo.zip'),
        html.Details([html.Summary('Set Title'), html.Div(create_setTitleTab())], style=style),
        html.Details([html.Summary('EAF'), html.Div(create_eafUploaderTab())], style=style),
        html.Details([html.Summary('Sound'), html.Div(create_soundFileUploaderTab())], style=style),
@@ -477,9 +480,9 @@ def parse_eaf_upload(contents, filename, date):
 #----------------------------------------------------------------------------------------------------
 app.layout = html.Div(
     children=[
-        html.A(html.Button('Download the 3-line Inferno Demo',
-                           style={"margin-left": 30, "margin-top": 20, "width": 320, "font-size": 12}),
-               href='demos/infernoDemo.zip'),
+##        html.A(html.Button('Download the 3-line Inferno Demo',
+##                           style={"margin-left": 30, "margin-top": 20, "width": 320, "font-size": 12}),
+##               href='demos/infernoDemo.zip'),
         create_allDivs(),
         html.P(id='projectTitle_hiddenStorage',              children="", style={'display': 'none'}),
         html.P(id='projectDirectory_hiddenStorage',          children="", style={'display': 'none'}),
@@ -707,10 +710,11 @@ def update_output(value):
     [State('sound_filename_hiddenStorage', 'children'),
      State('eaf_filename_hiddenStorage',   'children'),
      State('projectDirectory_hiddenStorage', 'children'),
-     State('grammaticalTerms_filename_hiddenStorage', 'children')])
+     State('grammaticalTerms_filename_hiddenStorage', 'children'),
+     State('projectTitle_hiddenStorage', 'children')])
      #State('tierGuide_filename_hiddenStorage', 'children')])
 def createWebPageCallback(n_clicks, soundFileName, eafFileName, projectDirectory,
-                          grammaticalTermsFile):
+                          grammaticalTermsFile,projectTitle):
     if n_clicks is None:
         return("")
     print("=== create web page callback")
@@ -724,7 +728,8 @@ def createWebPageCallback(n_clicks, soundFileName, eafFileName, projectDirectory
     file = open(absolutePath, "w")
     file.write(html)
     file.close()
-    createZipFile(projectDirectory)
+    #projectTitle="Inferno"
+    createZipFile(projectDirectory,projectTitle)
     #url = 'http://0.0.0.0:8050/%s/text.html' % projectDirectory
     #webbrowser.open(url, new=2)
     return("wrote file")
@@ -769,12 +774,13 @@ def update_output(projectTitle):
     )
 def update_pageTitle(projectDirectory):
     if(len(projectDirectory) == 0):
-        return('IJAL Upload')
+        return('')
     print("=== projectDirectory_hiddenStorage has been set, now change project pageTitle: '%s'" % projectDirectory)
     #pdb.set_trace()
     newProjectTitle = projectDirectory.replace(PROJECTS_DIRECTORY, "")
     newProjectTitle = newProjectTitle.replace("/", "")
-    return("IJAL Upload: %s" % newProjectTitle)
+    print("IJAL Upload: %s" % newProjectTitle)
+    return('')
 
 
 @app.callback(
@@ -910,10 +916,15 @@ def confirmDownload(submit_n_clicks, projectTitle):
 # assembleTextButton
 #----------------------------------------------------------------------------------------------------
 @app.callback(Output('downloadURL', 'href'),
-              [Input('projectDirectory_hiddenStorage', 'children')])
-def updateDownloadTextButtonHref(directory):
+              [Input('projectDirectory_hiddenStorage', 'children')],
+              [State('projectTitle_hiddenStorage', 'children')])
+def updateDownloadTextButtonHref(directory,projectTitle):
    print("============= projectDirectory_hiddenStorage changed, updateDownloadTextButtonHref: %s" % directory)
-   return("%s/webpage.zip" % directory)
+   projectTitle += '.zip'
+   print(projectTitle)
+   pathToZip = os.path.join(directory,projectTitle)
+   return(pathToZip)
+   #return("%s/webpage.zip" % directory)
 
 
 #----------------------------------------------------------------------------------------------------
@@ -971,7 +982,7 @@ def createWebPage(eafFileName, projectDirectory, grammaticalTermsFileName, tierG
     return(text.toHTML())
 
 #----------------------------------------------------------------------------------------------------
-def createZipFile(projectDir):
+def createZipFile(projectDir,projectTitle):
 
    currentDirectoryOnEntry = os.getcwd()
    #projectDir = os.path.join(PROJECTS_DIRECTORY, projectName)
@@ -985,13 +996,13 @@ def createZipFile(projectDir):
    filesToSave.insert(0, "text.html")
    
    #zipfile should also be named for project
-   zipFilename = "webpage.zip"
+   zipFilename = "%s.zip" %projectTitle
    zipFilenameFullPath = os.path.join(currentDirectoryOnEntry, projectDir, zipFilename)
    zipHandle = ZipFile(zipFilename, 'w')
 
    #filesToSave needs to include ijal.css, ijalUtils.js
-   parentDir = os.path.abspath(os.path.join(projectDir, os.pardir))
-   print(parentDir)
+##   parentDir = os.path.abspath(os.path.join(projectDir, os.pardir))
+##   print(parentDir)
    CSSfile = os.path.join(currentDirectoryOnEntry,"ijal.css")
    scriptFile = os.path.join(currentDirectoryOnEntry,"ijalUtils.js")
    copy(CSSfile, os.getcwd())

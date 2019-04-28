@@ -120,9 +120,10 @@ class IjalLine:
 
      if(self.morphemePacking == "tabs"):
         # pdb.set_trace()
-        rawMorphemeText = self.tbl["TEXT"].iloc[self.morphemeRows].tolist()#[0]
+        rawMorphemeText = self.tbl["TEXT"].iloc[self.morphemeRows].tolist()[0]
+        rawMorphemeList = rawMorphemeText.split('\t')
         # pdb.set_trace()
-        morphemes = replaceHyphensWithNDashes(rawMorphemeText)
+        morphemes = replaceHyphensWithNDashes(rawMorphemeList)
         return(morphemes)
 
    #----------------------------------------------------------------------------------------------------
@@ -135,9 +136,10 @@ class IjalLine:
         return(self.tbl["TEXT"].iloc[self.morphemeGlossRows].tolist())
 
      if(self.morphemePacking == "tabs"):
-        rawMorphemeGlossText = self.tbl["TEXT"].iloc[self.morphemeGlossRows].tolist()#[0]
+        rawMorphemeGlossText = self.tbl["TEXT"].iloc[self.morphemeGlossRows].tolist()[0]
+        rawMorphemeGlossList = rawMorphemeGlossText.split('\t')
         # pdb.set_trace()
-        morphemeGlosses = replaceHyphensWithNDashes(rawMorphemeGlossText)
+        morphemeGlosses = replaceHyphensWithNDashes(rawMorphemeGlossList)
         return(morphemeGlosses)
 
    #----------------------------------------------------------------------------------------------------

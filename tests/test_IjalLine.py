@@ -151,7 +151,7 @@ def test_lokono_toHTML(displayPage=False, sampleOfLinesOnly=True):
                   line.toHTML(htmlDoc)
 
     htmlText = htmlDoc.getvalue()
-
+    #displayPage = True
     if(displayPage):
        filename = "tmp.html"
        f = open(filename, "w")
@@ -189,7 +189,10 @@ def test_monkeyAndThunder_line_6():
 
     assert(x6.getSpokenText() == 'Ke jejn makput. Makndüj mbeʹ ii maknhwej maj.')
     assert(x6.getTranslation() == '‘He left. He went looking for someone who could shout louder.’')
-    assert(x6.getMorphemes() == ['que', 'heM', 'mak=put', 'mak=nǝh', 'meʔ', 'ʔiː', 'mak=ŋ•weh', 'mas'])
+    try:
+        assert(x6.getMorphemes() == ['que', 'heM', 'mak=put', 'mak=nǝh', 'meʔ', 'ʔiː', 'mak=ŋ•weh', 'mas'])
+    except AssertionError as e:
+        raise Exception(x6.getMorphemes()) from e
     assert(x6.getMorphemeGlosses() == ['that', 'there', 'CMP=exit', 'CMP=go', 'DIST', 'who', 'CMP=MOUTH•cry', 'more'])
     assert(x6.getMorphemeSpacing() == [5, 6, 9, 8, 5, 4, 14, 5])  # word width + 1
 
