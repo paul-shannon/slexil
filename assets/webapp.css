@@ -39,20 +39,14 @@
 	background-colour: blue;
 }
 
-.demoButton {
-	margin-left: 30;
-	margin-top: 20;
-	margin-bottom; 100;
-	width: 320;
-	font-size: 12;
-	float: right;
-}
-
 .allDivs {
 	margin-left: 30;
 	margin-top: 20;
+	padding: 5px 5px 5px 5px;
 	width: 775px;
 	font-size: 12;
+	border: 1px solid #aaa;
+	border-radius: 5px;
 }
 
 .mainDiv {
@@ -61,7 +55,6 @@
 }
 
 .row {
-	#background-color: red;
 	max-width: 1000px;
 	margin-left: 30;
 	margin-top: 20;
@@ -70,11 +63,30 @@
 }
 
 .button {	
-	#margin-left: 30;
-	#margin-top: 20;
-	#margin-bottom; 100;
-	#padding: 10px;
-	#width: 100px;
-	font-size: 12;
-	#float: right;
+	#width: 140px;
+	#height: 60px;
+	color: gray;
+	fontFamily: HelveticaNeue;
+	margin-right: 10;
+	lineHeight: 60px;
+	borderWidth: 1px;
+	borderStyle: solid;
+	borderRadius: 5px;
+	textAlign: center;
+	text-decoration: none;
+	display: inline-block;
+}
+
+.introduction {
+	font-size: 14pt;
+	width: 100%;
+	display: inline-block;
+}
+
+.buttonCell {
+	vertical-align: top;
+}
+
+.summary {
+	font-size: 14pt;
 }

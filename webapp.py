@@ -108,7 +108,7 @@ disabledButtonStyle["disabled"] = True
 def create_eafUploader():
 
     uploader = dcc.Upload(id='upload-eaf-file',
-                          children=html.Div([html.A('Select File', style=buttonStyle)]),
+                          children=html.Div([html.A('Select File', className='button')]),
                           multiple=False,
                           style={'display': 'inline-block'})
 
@@ -143,9 +143,9 @@ def create_setTitleTab():
 #----------------------------------------------------------------------------------------------------
 def create_eafUploaderTab():
 
-   style = {'border': '5px solid purple',
-            'border-radius': '5px',
-            'padding': '10px'}
+#    style = {'border': '5px solid purple',
+#             'border-radius': '5px',
+#             'padding': '10px'}
 
    textArea = dcc.Textarea(id="eafUploadTextArea",
                            placeholder='xml validation results go here',
@@ -168,7 +168,7 @@ def create_eafUploaderTab():
 def create_soundFileUploader():
 
     uploader = dcc.Upload(id='upload-sound-file',
-                          children=html.Div([html.A('Select File', style=buttonStyle)]),
+                          children=html.Div([html.A('Select File', className='button')]),
                           multiple=False,
                           style={'display': 'inline-block'})
 
@@ -177,9 +177,9 @@ def create_soundFileUploader():
 #----------------------------------------------------------------------------------------------------
 def create_soundFileUploaderTab():
 
-   style = {'border': '5px solid purple',
-            'border-radius': '5px',
-            'padding': '10px'}
+#    style = {'border': '5px solid purple',
+#             'border-radius': '5px',
+#             'padding': '10px'}
 
    textArea = dcc.Textarea(id="soundFileUploadTextArea",
                            placeholder='sound file validation results go here',
@@ -201,9 +201,9 @@ def create_soundFileUploaderTab():
 #----------------------------------------------------------------------------------------------------
 def create_grammaticalTermsUploaderTab():
 
-   style = {'border': '5px solid purple',
-            'border-radius': '5px',
-            'padding': '10px'}
+#    style = {'border': '5px solid purple',
+#             'border-radius': '5px',
+#             'padding': '10px'}
 
    textArea = dcc.Textarea(id="grammaticalTermsUploadTextArea",
                            placeholder='grammatical terms will be displayed here',
@@ -229,7 +229,7 @@ def create_grammaticalTermsUploaderTab():
 def create_grammaticalTermsFileUploader():
 
     uploader = dcc.Upload(id='upload-grammaticalTerms-file',
-                          children=html.Div([html.A('Select File', style=buttonStyle)]),
+                          children=html.Div([html.A('Select File', className='button')]),
                           multiple=False,
                           style={'display': 'inline-block'})
 
@@ -238,9 +238,9 @@ def create_grammaticalTermsFileUploader():
 #----------------------------------------------------------------------------------------------------
 def create_associateEAFandSoundTab():
 
-   style = {'border': '5px solid purple',
-            'border-radius': '5px',
-            'padding': '10px'}
+#    style = {'border': '5px solid purple',
+#             'border-radius': '5px',
+#             'padding': '10px'}
 
    button =  html.Button('Extract Sounds By Phrase', id='extractSoundsByPhraseButton', style={"margin": "20px"})
 
@@ -258,9 +258,9 @@ def create_associateEAFandSoundTab():
 #----------------------------------------------------------------------------------------------------
 def create_webPageCreationTab():
 
-   style = {'border': '5px solid purple',
-            'border-radius': '5px',
-            'padding': '10px'}
+#    style = {'border': '5px solid purple',
+#             'border-radius': '5px',
+#             'padding': '10px'}
 
    #createButton =  html.Button('Create Web Page', id='createWebPageButton', style={"margin": "20px", "margin-top": 0})
    createAndDisplayButton =  html.Button('Create & Display', id='createAndDisplayWebPageButton',
@@ -302,6 +302,7 @@ def create_webPageCreationTab():
 
 #----------------------------------------------------------------------------------------------------
 def create_masterDiv():
+   '''appears not to be in use'''
 
    style = {'border': '1px solid green',
             'border-radius': '5px',
@@ -312,7 +313,7 @@ def create_masterDiv():
    soundStatus = html.Label("Sound: ")
    tierMapStatus = html.Label("Tier map: ")
    grammaticalTermsStatus = html.Label("Grammatical terms: ")
-   run_button = html.Button("Run", style=buttonStyle)
+   run_button = html.Button("Run", className='button')
 
    children = [title, eafStatus, soundStatus, tierMapStatus, grammaticalTermsStatus,
                html.Br(), run_button]
@@ -324,9 +325,9 @@ def create_masterDiv():
 #----------------------------------------------------------------------------------------------------
 def create_tierMapGui():
 
-   style = {'border': '1px solid purple',
-            'border-radius': '5px',
-            'padding': '10px'}
+#    style = {'border': '1px solid purple',
+#             'border-radius': '5px',
+#             'padding': '10px'}
 
    helpText = dcc.Markdown(dedent('''There are four standard interlinear tiers.'''))
 
@@ -341,7 +342,7 @@ def create_tierMapGui():
 
    dropDownMenus = html.Div(id="tierMappingMenus")
 
-   submitInteractiveTierMapButton =  html.Button("Submit", style=buttonStyle, id="submitInteractiveTierMapButton")
+   submitInteractiveTierMapButton =  html.Button("Submit", className='button', id="submitInteractiveTierMapButton")
 
    textArea = dcc.Textarea(id='writeTierGuideFileTextArea',
                            placeholder='tier guide write status goes here',
@@ -360,30 +361,38 @@ def create_tierMapGui():
 #----------------------------------------------------------------------------------------------------
 def create_allDivs():
 
-##   style = {'margin': 2,
-##            'border': '1px solid #aaa;',
-##            'border-radius': 4,
-##            'padding': '.5em .5em 0'}
-##
-##   style = {'margin': 2, "padding": 0}
-
    children = [
        html.H4("", className="banner", id='pageTitleH4'),
-       html.A(html.Button('Download Demo',
-                           className='demoButton'),
-                           href='demos/infernoDemo.zip'),
-       html.Details([html.Summary('Set Title'), html.Div(create_setTitleTab())], className="allDivs"),
-       html.Details([html.Summary('EAF'), html.Div(create_eafUploaderTab())], className="allDivs"),
-       html.Details([html.Summary('Sound'), html.Div(create_soundFileUploaderTab())], className="allDivs"),
-       html.Details([html.Summary('Tier Guide'), html.Div(create_tierMapGui())], className="allDivs"),
-       html.Details([html.Summary('GrammaticalTerms'), html.Div(create_grammaticalTermsUploaderTab())], className="allDivs"),
-       html.Details([html.Summary('EAF+Sound'), html.Div(create_associateEAFandSoundTab())], className="allDivs"),
-       html.Details([html.Summary('Create Web Page'), html.Div(create_webPageCreationTab())], className="allDivs")]
+       html.Div(create_introduction(), className="introduction"),
+       html.Details([html.Summary('Set Title',className="summary"), html.Div(create_setTitleTab())], className="allDivs"),
+       html.Details([html.Summary('EAF',className="summary"), html.Div(create_eafUploaderTab())], className="allDivs"),
+       html.Details([html.Summary('Sound',className="summary"), html.Div(create_soundFileUploaderTab())], className="allDivs"),
+       html.Details([html.Summary('Tier Guide',className="summary"), html.Div(create_tierMapGui())], className="allDivs"),
+       html.Details([html.Summary('GrammaticalTerms',className="summary"), html.Div(create_grammaticalTermsUploaderTab())], className="allDivs"),
+       html.Details([html.Summary('EAF+Sound',className="summary"), html.Div(create_associateEAFandSoundTab())], className="allDivs"),
+       html.Details([html.Summary('Create Web Page',className="summary"), html.Div(create_webPageCreationTab())], className="allDivs")]
 
-   div = html.Div(children=children, id='main-div', className="mainDiv") # , style=style)
+   div = html.Div(children=children, id='main-div', className="mainDiv")
 
    return div
 
+#----------------------------------------------------------------------------------------------------
+def create_introduction():
+
+   text = ("SLEXIL is software for preparing animated HTML files from texts prepared "
+           "in ELAN. Users can use this site to upload the .eaf and .wav portions of "
+           "ELAN projects and download an HTML file and accompanying CSS, JavaScript, "
+           "and parsed audio files that can be embedded on a webpage or viewed in a "
+           "browser on any computer. There is a video tutorial on YouTube and you can "
+           "download a demo by clicking on the button to the right.")
+
+   cell1 = html.Td(text,className='introduction')
+   cell2 = html.Td(html.A(html.Button('Download Demo',className='button'),href='demos/infernoDemo.zip'),className="buttonCell")
+   row = [html.Tr(children=[cell1,cell2])]
+
+   div = html.Table(children=row, id='preamble')
+
+   return div
 #----------------------------------------------------------------------------------------------------
 def create_tierMapDiv():
 
