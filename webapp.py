@@ -124,14 +124,14 @@ def create_setTitleTab():
    setTitleInput = dcc.Input(id="setTitleTextInput",
                          placeholder='enter convenient, concise text title here, no spaces please!',
                          value="",
-                         style={'width': '512px', 'fontSize': 20})
+                         className="titleInput")
 
    setTitleButton = html.Button(id='setTitleButton', type='submit', children='Submit',className="button")
 
    children = [html.Br(),
                setTitleInput,
-               html.Br(),
-               html.Br(),
+               #html.Br(),
+               #html.Br(),
                setTitleButton
                #tierIDsBlankDiv
                ]
@@ -301,26 +301,26 @@ def create_webPageCreationTab():
    return div
 
 #----------------------------------------------------------------------------------------------------
-def create_masterDiv():
-   '''appears not to be in use'''
-
-   style = {'border': '1px solid green',
-            'border-radius': '5px',
-            'padding': '10px'}
-
-   title = html.H4("Status")
-   eafStatus = html.Label("EAF: ", id="eafStatusLabel", style={"font-size": 14})
-   soundStatus = html.Label("Sound: ")
-   tierMapStatus = html.Label("Tier map: ")
-   grammaticalTermsStatus = html.Label("Grammatical terms: ")
-   run_button = html.Button("Run", className='button')
-
-   children = [title, eafStatus, soundStatus, tierMapStatus, grammaticalTermsStatus,
-               html.Br(), run_button]
-
-   div = html.Div(children=children, id='master-div', className="four columns", style=style)
-
-   return div
+# def create_masterDiv():
+#    '''appears not to be in use'''
+# 
+#    style = {'border': '1px solid green',
+#             'border-radius': '5px',
+#             'padding': '10px'}
+# 
+#    title = html.H4("Status")
+#    eafStatus = html.Label("EAF: ", id="eafStatusLabel", style={"font-size": 14})
+#    soundStatus = html.Label("Sound: ")
+#    tierMapStatus = html.Label("Tier map: ")
+#    grammaticalTermsStatus = html.Label("Grammatical terms: ")
+#    run_button = html.Button("Run", className='button')
+# 
+#    children = [title, eafStatus, soundStatus, tierMapStatus, grammaticalTermsStatus,
+#                html.Br(), run_button]
+# 
+#    div = html.Div(children=children, id='master-div', className="four columns", style=style)
+# 
+#    return div
 
 #----------------------------------------------------------------------------------------------------
 def create_tierMapGui():
@@ -354,7 +354,7 @@ def create_tierMapGui():
                             submitInteractiveTierMapButton,
                             html.Br(),
                             textArea],
-                  id='tierMapGui-div', className="twelve columns") #, style=style)
+                  id='tierMapGui-div', className="twelve columns")
 
    return div
 
@@ -364,12 +364,12 @@ def create_allDivs():
    children = [
        html.H4("", className="banner", id='pageTitleH4'),
        html.Div(create_introduction(), className="introduction"),
-       html.Details([html.Summary('Set Title',className="summary"), html.Div(create_setTitleTab())], className="allDivs"),
-       html.Details([html.Summary('EAF',className="summary"), html.Div(create_eafUploaderTab())], className="allDivs"),
-       html.Details([html.Summary('Sound',className="summary"), html.Div(create_soundFileUploaderTab())], className="allDivs"),
-       html.Details([html.Summary('Tier Guide',className="summary"), html.Div(create_tierMapGui())], className="allDivs"),
-       html.Details([html.Summary('GrammaticalTerms',className="summary"), html.Div(create_grammaticalTermsUploaderTab())], className="allDivs"),
+       html.Details([html.Summary('Set title',className="summary"), html.Div(create_setTitleTab())], className="allDivs"),
+       html.Details([html.Summary('Upload .eaf file',className="summary"), html.Div(create_eafUploaderTab())], className="allDivs"),
+       html.Details([html.Summary('Create tier guide',className="summary"), html.Div(create_tierMapGui())], className="allDivs"),
+       html.Details([html.Summary('Upload audio file',className="summary"), html.Div(create_soundFileUploaderTab())], className="allDivs"),
        html.Details([html.Summary('EAF+Sound',className="summary"), html.Div(create_associateEAFandSoundTab())], className="allDivs"),
+       html.Details([html.Summary('Upload abbreviations',className="summary"), html.Div(create_grammaticalTermsUploaderTab())], className="allDivs"),
        html.Details([html.Summary('Create Web Page',className="summary"), html.Div(create_webPageCreationTab())], className="allDivs")]
 
    div = html.Div(children=children, id='main-div', className="mainDiv")
@@ -395,6 +395,7 @@ def create_introduction():
    return div
 #----------------------------------------------------------------------------------------------------
 def create_tierMapDiv():
+   '''appears not to be in use'''
 
    style = {'border': '1px solid purple',
             'border-radius': '5px',
@@ -462,19 +463,20 @@ def createTierMappingMenus(eafFilename):
    return(enclosingDiv)
 
 #----------------------------------------------------------------------------------------------------
-def create_grammaticalTermsDiv():
-
-   style = {'border': '1px solid purple',
-            'border-radius': '5px',
-            'padding': '10px'}
-
-   children = [html.Label('grammaticalTermsDiv'),
-               html.Label('grammaticalTerms upload'),
-               html.Label('grammaticalTerms display')]
-
-   div = html.Div(children=children, id='grammaticalTerms-div', className="three columns", style=style)
-
-   return div
+# def create_grammaticalTermsDiv():
+#	 '''appears not to be in use'''
+# 
+#    style = {'border': '1px solid purple',
+#             'border-radius': '5px',
+#             'padding': '10px'}
+# 
+#    children = [html.Label('grammaticalTermsDiv'),
+#                html.Label('grammaticalTerms upload'),
+#                html.Label('grammaticalTerms display')]
+# 
+#    div = html.Div(children=children, id='grammaticalTerms-div', className="three columns", style=style)
+# 
+#    return div
 
 #----------------------------------------------------------------------------------------------------
 def parse_eaf_upload(contents, filename, date):

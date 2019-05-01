@@ -11,7 +11,11 @@
 	max-width: 975px;
 	min-height: 220px;
 	width: 100%;
-	border: 3px solid red;
+	#border: 3px solid red;
+	border-style: solid;
+	border-width: 1px 6px 15px 1px;
+	border-radius: 5px;
+	border-color: #00BFFF;
 }
 
 .tiermap {
@@ -40,13 +44,17 @@
 }
 
 .allDivs {
-	margin-left: 30;
-	margin-top: 20;
+	#margin-left: 30px;
+	margin-top: 20px;
+	margin-bottom; 20px;
 	padding: 5px 5px 5px 5px;
 	width: 775px;
 	font-size: 12;
-	border: 1px solid #aaa;
+	#border: 1px solid #aaa;
+	border-style: solid;
+	border-width: 1px 6px 15px 1px;
 	border-radius: 5px;
+	border-color: #00BFFF;
 }
 
 .mainDiv {
@@ -87,6 +95,20 @@
 	vertical-align: top;
 }
 
-.summary {
+summary {
 	font-size: 14pt;
+}
+
+summary:focus {
+	outline:none;
+}
+
+.titleInput {
+	display: inline-block;
+	width: 575px;
+	height: 40px;
+	font-size: 14pt;
+	margin-left: 20px;
+	margin-right: 40px;
+	margin-bottom: 30px;
 }
