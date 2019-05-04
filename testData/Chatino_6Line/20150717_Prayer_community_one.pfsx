@@ -3,11 +3,11 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.mpi.nl/tools/elan/Prefs_v1.1.xsd">
     <prefList key="MultiTierViewer.TierOrder">
         <String>SZC-Chatino</String>
-        <String>phonetic transcription</String>
         <String>Tokenization-cp</String>
         <String>POS-cp</String>
-        <String>English Translation</String>
         <String>second translation</String>
+        <String>English Translation</String>
+        <String>phonetic transcription</String>
     </prefList>
     <pref key="LayoutManager.VisibleMultiTierViewer">
         <String>mpi.eudico.client.annotator.viewer.TimeLineViewer</String>
@@ -43,13 +43,13 @@
         <Object class="java.awt.Point">1235,80</Object>
     </pref>
     <pref key="SelectionBeginTime">
-        <Long>2980</Long>
+        <Long>3860</Long>
     </pref>
     <pref key="LayoutManager.CurrentMode">
         <Int>1</Int>
     </pref>
     <pref key="MediaTime">
-        <Long>2980</Long>
+        <Long>3860</Long>
     </pref>
     <pref key="FrameSize">
         <Object class="java.awt.Dimension">1247,897</Object>
@@ -63,7 +63,7 @@
         </pref>
     </prefGroup>
     <pref key="MultiTierViewer.ActiveTierName">
-        <String>English Translation-cp-cp</String>
+        <String>English Translation</String>
     </pref>
     <prefGroup key="CommentViewer.Columns">
         <pref key="Modification Date">
@@ -104,10 +104,10 @@
         <Int>201</Int>
     </pref>
     <pref key="TimeScaleBeginTime">
-        <Long>60</Long>
+        <Long>-40</Long>
     </pref>
     <prefList key="MultiTierViewer.HiddenTiers"/>
     <pref key="SelectionEndTime">
-        <Long>2980</Long>
+        <Long>3870</Long>
     </pref>
 </preferences>

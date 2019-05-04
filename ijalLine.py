@@ -45,15 +45,15 @@ class IjalLine:
      self.morphemeRows = [i for i in range(tierCount) if self.categories[i] == "morpheme"]
      self.morphemeGlossRows = [i for i in range(tierCount) if self.categories[i] == "morphemeGloss"]
      #handle the case of a secondary translation
-     try:
-        self.translation2Row = self.categories.index("translation2")
-     except ValueError:
-        pass
+     if 'translation2' in self.categories:
+         self.translation2Row = self.categories.index("translation2")
+     else:
+         self.translation2Row = None
      #handle the case of a second transcription line
-     try:
+     if 'transcription2' in self.categories:
         self.transcription2Row = self.categories.index("transcription2")
-     except ValueError:
-        pass
+     else:
+         self.transcription2Row = None
      self.morphemes = self.extractMorphemes()
      self.morphemeGlosses = self.extractMorphemeGlosses()
      self.calculateMorphemeSpacing()
@@ -88,25 +88,25 @@ class IjalLine:
      #pdb.set_trace()
       translation = self.tbl.ix[self.translationRow, "TEXT"]
       translationLine = TranslationLine(translation)
-      #translation = formatting.manageQuotes(translation)
       return(translationLine.getStandardized())
 
    #----------------------------------------------------------------------------------------------------
    def getTranslation2(self):
-      try:
+      if self.translation2Row != None:
          translation2 = self.tbl.ix[self.translation2Row, "TEXT"]
-      except AttributeError:
+         translationLine2 = TranslationLine(translation2)
+         return(translationLine2.getStandardized())
+      else:
          return(None)
-      translation2 = formatting.manageQuotes(translation2)
-      return(translation2)
+      
    #----------------------------------------------------------------------------------------------------
    def getTranscription2(self):
-      try:
+      if self.transcription2Row != None:
          transcription2 = self.tbl.ix[self.transcription2Row, "TEXT"]
-      except AttributeError:
+         return(transcription2)
+      else:
          return(None)
-      #transcription2 = formatting.manageQuotes(transcription2)
-      return(transcription2)
+      
    #----------------------------------------------------------------------------------------------------
    def extractMorphemes(self):
 
@@ -121,9 +121,9 @@ class IjalLine:
      if(self.morphemePacking == "tabs"):
         # pdb.set_trace()
         rawMorphemeText = self.tbl["TEXT"].iloc[self.morphemeRows].tolist()[0]
+        rawMorphemeList = rawMorphemeText.split('\t')
         # pdb.set_trace()
-        rawMorphemeText = replaceHyphensWithNDashes(rawMorphemeText)
-        morphemes = rawMorphemeText.split("\t")
+        morphemes = replaceHyphensWithNDashes(rawMorphemeList)
         return(morphemes)
 
    #----------------------------------------------------------------------------------------------------
@@ -137,9 +137,9 @@ class IjalLine:
 
      if(self.morphemePacking == "tabs"):
         rawMorphemeGlossText = self.tbl["TEXT"].iloc[self.morphemeGlossRows].tolist()[0]
+        rawMorphemeGlossList = rawMorphemeGlossText.split('\t')
         # pdb.set_trace()
-        rawMorphemeGlossText = replaceHyphensWithNDashes(rawMorphemeGlossText)
-        morphemeGlosses = rawMorphemeGlossText.split("\t")
+        morphemeGlosses = replaceHyphensWithNDashes(rawMorphemeGlossList)
         return(morphemeGlosses)
 
    #----------------------------------------------------------------------------------------------------
@@ -152,15 +152,14 @@ class IjalLine:
       try:
          if terms[-1] == '':
             terms = terms[:-1]
-            persons = ['1','2','3','4']
-            terms.extend(persons)
-         return terms
+         newTerms = _makeAbbreviationListLowerCase(terms)
+         return newTerms
       except IndexError:
          return
 
    #----------------------------------------------------------------------------------------------------
    def getMorphemeGlosses (self):
-
+      
       return(self.morphemeGlosses)
 
    #----------------------------------------------------------------------------------------------------
@@ -218,6 +217,7 @@ class IjalLine:
                           htmlDoc.asis(self.getTranscription2())                      
 
                     morphemes = self.getMorphemes()
+                    #print(morphemes)
                     if(len(morphemes) > 0):
                        with htmlDoc.tag("div", klass="morpheme-tier", style=styleString):
                           for morpheme in morphemes:
@@ -356,9 +356,33 @@ def standardizeTable(tbl, tierGuide):
    return(tbl_final)
 
 #------------------------------------------------------------------------------------------------------------------------
-def replaceHyphensWithNDashes(text):
+def replaceHyphensWithNDashes(list):
      ''' replace hyphens with n-dashes
      ''' 
-     text = text.replace('-','–')          
-     return(text)
+     newList = []
+     for text in list: 
+        text = text.replace('-','–')
+        newList.append(text)
+     return(newList)
+#---------------------------------------------------------
+def _makeAbbreviationListLowerCase(terms):
+   ''' ensures grammatical terms in user list are lower case '''
+   exceptions  = ["A","S","O","P"]
+   newTerms = []
+   for term in terms:
+      if "<sub>" in term:
+         term = term.replace("<sub>","")
+         term = term.replace("</sub>","")
+      if "<sup>" in term:
+         term = term.replace("<sup>","")
+         term = term.replace("</sup>","")
+      if term in exceptions:
+         newTerms.append(term)
+      elif term.isupper():
+         newTerm = term.lower()
+         newTerms.append(newTerm)
+      else:
+         newTerms.append(term)
+   return(newTerms)
+
 

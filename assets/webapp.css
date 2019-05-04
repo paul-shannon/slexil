@@ -1,0 +1,160 @@
+.header {
+	background-color: red;
+	text-align: center;
+}
+
+.banner {
+	background-image: url('slexilBanner.jpg');
+	background-repeat: no-repeat;
+	background-position: center;
+	text-align: center;
+	max-width: 975px;
+	min-height: 220px;
+	width: 100%;
+	#border: 3px solid red;
+	border-style: solid;
+	border-width: 1px 6px 15px 1px;
+	border-radius: 5px;
+	border-color: #00BFFF;
+}
+
+.tiermap {
+  table-layout:fixed;
+  margin: 100;
+  margin-top: 10;
+  margin-bottom: 0;
+  width: 600;
+}
+
+.tierDiv {
+	margin-left: 10px;
+	margin-bottom: 10px;
+}
+
+.first {
+  width: 30%;
+  background-color; red;
+}
+
+.second {
+  width: 50%;
+}
+
+.third {
+  width: 20%;
+}
+
+.tierMenuPulldown {
+	background-colour: blue;
+}
+
+.allDivs {
+	#margin-left: 30px;
+	margin-top: 20px;
+	margin-bottom; 20px;
+	padding: 5px 5px 5px 5px;
+	width: 775px;
+	font-size: 12;
+	#border: 1px solid #aaa;
+	border-style: solid;
+	border-width: 1px 6px 15px 1px;
+	border-radius: 5px;
+	border-color: #00BFFF;
+}
+
+.mainDiv {
+	max-width: 1050px;
+	margin-left: 25px;
+}
+
+.row {
+	max-width: 1000px;
+	margin-left: 30;
+	margin-top: 20;
+	width: 320;
+	font-size: 12;
+}
+
+.button {	
+	#width: 140px;
+	#height: 60px;
+	color: gray;
+	fontFamily: HelveticaNeue;
+	margin-right: 10;
+	lineHeight: 60px;
+	borderWidth: 1px;
+	borderStyle: solid;
+	borderRadius: 5px;
+	textAlign: center;
+	text-decoration: none;
+	display: inline-block;
+}
+
+.allDivs .button {
+	#background-color: red;
+	grid-column: 1;
+}
+
+.introduction {
+	font-size: 14pt;
+	width: 100%;
+	display: inline-block;
+}
+
+.buttonCell {
+	vertical-align: top;
+}
+
+summary {
+	font-size: 14pt;
+}
+
+summary:focus {
+	outline: none;
+}
+
+.titleInput {
+	display: inline-block;
+	width: 575px;
+	height: 40px;
+	font-size: 14pt;
+	margin-left: 20px;
+	margin-right: 40px;
+	margin-bottom: 30px;
+}
+
+.webpageFrame {
+	width: 725px;
+	height: 800px;
+	margin-left: 20px;
+}
+
+.webFrameButtonBox {
+	margin-left: 20px;
+	margin-top: 20px;
+	display: flex;
+	justify-content: right;
+}
+
+.textarea {
+	width: 575px;
+	height: 40px;
+	margin-left: 20px;
+	margin-right: 40px;
+	margin-bottom: 30px;
+	display: inline-block;
+	grid-column: 2;
+}
+
+.selectionBox {
+	display: grid;
+	grid-template-columns: 140px 500px;
+	align-content: center;
+	margin-top: 20px;
+}
+
+.warningfootnote {
+	color: red;
+	padding-right: 50px;
+	float: right;
+}

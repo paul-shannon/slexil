@@ -13,7 +13,7 @@ def createText():
 
     text = Text("../testData/Chatino_6Line/20150717_Prayer_community_one.eaf",
                 None, #"../testData/Chatino_2Line/audioPhrases",
-                grammaticalTermsFile=None,
+                grammaticalTermsFile="../testData/Chatino_6Line/grammaticalTerms.txt",
                 tierGuideFile="../testData/Chatino_6Line/tierGuide.yaml",
                 quiet=True)
     return(text)

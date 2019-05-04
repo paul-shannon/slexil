@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ANNOTATION_DOCUMENT AUTHOR="" DATE="2019-03-03T10:11:40-07:00" FORMAT="3.0" VERSION="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.mpi.nl/tools/elan/EAFv3.0.xsd">
+<ANNOTATION_DOCUMENT AUTHOR="" DATE="2019-04-17T10:47:31-07:00" FORMAT="3.0" VERSION="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.mpi.nl/tools/elan/EAFv3.0.xsd">
     <HEADER MEDIA_FILE="" TIME_UNITS="milliseconds">
-        <MEDIA_DESCRIPTOR MEDIA_URL="file:///Users/David/OpenSource/github/slexil/testData/prayer/SJQ-2009_Cruz.wav" MIME_TYPE="audio/x-wav" RELATIVE_MEDIA_URL="../prayer/SJQ-2009_Cruz.wav"/>
+        <MEDIA_DESCRIPTOR MEDIA_URL="file:///Users/David/Library/Mobile Documents/com~apple~CloudDocs/Current/Cruz/SJQ-2009_06_24-prayer-SZC.wav" MIME_TYPE="audio/x-wav" RELATIVE_MEDIA_URL="../../../../../Library/Mobile Documents/com~apple~CloudDocs/Current/Cruz/SJQ-2009_06_24-prayer-SZC.wav"/>
         <PROPERTY NAME="URN">urn:nl-mpi-tools-elan-eaf:5684d7ae-5b00-432e-bf8e-0839c9afbcd0</PROPERTY>
         <PROPERTY NAME="lastUsedAnnotationId">498</PROPERTY>
     </HEADER>
@@ -76,30 +76,30 @@ ndiyo14si10
             </ALIGNABLE_ANNOTATION>
         </ANNOTATION>
     </TIER>
-    <TIER ANNOTATOR="Hilaria Cruz" DEFAULT_LOCALE="en" LINGUISTIC_TYPE_REF="pos" PARENT_REF="SZC-Chatino" PARTICIPANT="Simón Zurita Cruz" TIER_ID="phonetic transcription">
+    <TIER ANNOTATOR="Hilaria Cruz" DEFAULT_LOCALE="en" LINGUISTIC_TYPE_REF="pos" PARENT_REF="SZC-Chatino" PARTICIPANT="Simón Zurita Cruz" TIER_ID="second translation">
         <ANNOTATION>
             <REF_ANNOTATION ANNOTATION_ID="a10" ANNOTATION_REF="a1">
-                <ANNOTATION_VALUE>ndiyo14si0 sa3nta24 ay3ma24</ANNOTATION_VALUE>
+                <ANNOTATION_VALUE>‘Dios, santo, alma’</ANNOTATION_VALUE>
             </REF_ANNOTATION>
         </ANNOTATION>
         <ANNOTATION>
             <REF_ANNOTATION ANNOTATION_ID="a11" ANNOTATION_REF="a2">
-                <ANNOTATION_VALUE>qyu1 kla4, qan1 kla4, no4 yqu2,  no4 ylu3, no4 nsuq3, no4 nsen42</ANNOTATION_VALUE>
+                <ANNOTATION_VALUE>a line without quotes</ANNOTATION_VALUE>
             </REF_ANNOTATION>
         </ANNOTATION>
         <ANNOTATION>
             <REF_ANNOTATION ANNOTATION_ID="a12" ANNOTATION_REF="a3">
-                <ANNOTATION_VALUE>no4 ya42 tykwi4, no4 ya42 nyi4, no4 ya42 ykwa4, no4 yan42  lo4 kwan4, yan42 lo4 xa3 yan42 lo4 xa4-liyu32</ANNOTATION_VALUE>
+                <ANNOTATION_VALUE>'another line with straight quotes'</ANNOTATION_VALUE>
             </REF_ANNOTATION>
         </ANNOTATION>
         <ANNOTATION>
             <REF_ANNOTATION ANNOTATION_ID="a13" ANNOTATION_REF="a4">
-                <ANNOTATION_VALUE>sa4-kwa20 nya14 kqu14, sa4-kwa20 nya14, klu14 sa4-kwa20 nya14 ksuq14, sa4-kwa20 nya14 kxin14, tyi20 ton10 tyi20 kqan4</ANNOTATION_VALUE>
+                <ANNOTATION_VALUE>‘a line with only a left quote</ANNOTATION_VALUE>
             </REF_ANNOTATION>
         </ANNOTATION>
         <ANNOTATION>
             <REF_ANNOTATION ANNOTATION_ID="a14" ANNOTATION_REF="a5">
-                <ANNOTATION_VALUE>no4 kwiq2, no4 kneq1, no4 ntsu32, no4 ndla32, nka42 sten4, nka42 yqan20, nka42 sten4, renq4 ndiyo14si0 in20</ANNOTATION_VALUE>
+                <ANNOTATION_VALUE>a line with only a right quote’</ANNOTATION_VALUE>
             </REF_ANNOTATION>
         </ANNOTATION>
         <ANNOTATION>
@@ -123,7 +123,7 @@ ndiyo14si10
             </REF_ANNOTATION>
         </ANNOTATION>
     </TIER>
-    <TIER ANNOTATOR="Hilaria Cruz" DEFAULT_LOCALE="en" LINGUISTIC_TYPE_REF="pos" PARENT_REF="phonetic transcription" PARTICIPANT="Simon Zurita Cruz" TIER_ID="Tokenization-cp">
+    <TIER ANNOTATOR="Hilaria Cruz" DEFAULT_LOCALE="en" LINGUISTIC_TYPE_REF="pos" PARENT_REF="second translation" PARTICIPANT="Simon Zurita Cruz" TIER_ID="Tokenization-cp">
         <ANNOTATION>
             <REF_ANNOTATION ANNOTATION_ID="a250" ANNOTATION_REF="a10">
                 <ANNOTATION_VALUE>ndiyo20si14</ANNOTATION_VALUE>
@@ -1284,50 +1284,50 @@ ndiyo14si10
             </REF_ANNOTATION>
         </ANNOTATION>
     </TIER>
-    <TIER ANNOTATOR="Hilaria Cruz" DEFAULT_LOCALE="en" LINGUISTIC_TYPE_REF="en" PARENT_REF="SZC-Chatino" PARTICIPANT="Simón Zurita Cruz" TIER_ID="second translation">
+    <TIER ANNOTATOR="Hilaria Cruz" DEFAULT_LOCALE="en" LINGUISTIC_TYPE_REF="pos" PARENT_REF="SZC-Chatino" PARTICIPANT="Simón Zurita Cruz" TIER_ID="phonetic transcription">
         <ANNOTATION>
             <REF_ANNOTATION ANNOTATION_ID="a490" ANNOTATION_REF="a1">
-                <ANNOTATION_VALUE>‘God, saint,  soul’.</ANNOTATION_VALUE>
+                <ANNOTATION_VALUE>Ndiyo20si14 Sa3nta24 Ay3ma24</ANNOTATION_VALUE>
             </REF_ANNOTATION>
         </ANNOTATION>
         <ANNOTATION>
             <REF_ANNOTATION ANNOTATION_ID="a491" ANNOTATION_REF="a2">
-                <ANNOTATION_VALUE>‘Forefathers, foremothers, those who survived, those who thrived, those who matured, those who multiplied’. </ANNOTATION_VALUE>
+                <ANNOTATION_VALUE>Qyu1 kla24, qan1 kla24, no4 yqu2, no4 ylu3, no4 nsuq3, no4 nsen42</ANNOTATION_VALUE>
             </REF_ANNOTATION>
         </ANNOTATION>
         <ANNOTATION>
             <REF_ANNOTATION ANNOTATION_ID="a492" ANNOTATION_REF="a3">
-                <ANNOTATION_VALUE>‘Those who lived entirely, those who lived a righteous life, those who lived evenly, they came to the sunlight, they came to the light, they came to the world’.</ANNOTATION_VALUE>
+                <ANNOTATION_VALUE>No4 ya42 tykwi4, no4 ya42 nyi4, no4 ya42 ykwa4, no4 yan42 lo4 kwan4, yan42 lo4 xa3, yan42 lo4 xa1-liyu32</ANNOTATION_VALUE>
             </REF_ANNOTATION>
         </ANNOTATION>
         <ANNOTATION>
             <REF_ANNOTATION ANNOTATION_ID="a493" ANNOTATION_REF="a4">
-                <ANNOTATION_VALUE>‘So too may they survive, so too may they thrive, so too may they mature, so too may they multiply, may stand up (as a force), may sit down (as a force)’.</ANNOTATION_VALUE>
+                <ANNOTATION_VALUE>Sa4-kwa20 nya14 kqu0, sa4-kwa20 nya14 klu0, sa4-kwa20 nya14 ksuq0, sa4-kwa20 nya14 kxin0, tyi20 ton10, tyi20 kqan24</ANNOTATION_VALUE>
             </REF_ANNOTATION>
         </ANNOTATION>
         <ANNOTATION>
             <REF_ANNOTATION ANNOTATION_ID="a494" ANNOTATION_REF="a5">
-                <ANNOTATION_VALUE>‘The ones that are newborn, the ones that are young, the ones that are sprouting, the ones that are being born, you are my father, you are my mother, you are their father, God!’</ANNOTATION_VALUE>
+                <ANNOTATION_VALUE>No4 kwiq2, no4 kneq1, no4 ntsu32, no4 ndla32, nka42 sten4, nka42 yqan20, nka42 sten4 renq4 ndiyo14si0, in20</ANNOTATION_VALUE>
             </REF_ANNOTATION>
         </ANNOTATION>
         <ANNOTATION>
             <REF_ANNOTATION ANNOTATION_ID="a495" ANNOTATION_REF="a6">
-                <ANNOTATION_VALUE>‘Patron Saint John the Baptist’.</ANNOTATION_VALUE>
+                <ANNOTATION_VALUE>Santo patron san juan bautista</ANNOTATION_VALUE>
             </REF_ANNOTATION>
         </ANNOTATION>
         <ANNOTATION>
             <REF_ANNOTATION ANNOTATION_ID="a496" ANNOTATION_REF="a7">
-                <ANNOTATION_VALUE>‘You are the king of the mountains, you are the king of the community’.</ANNOTATION_VALUE>
+                <ANNOTATION_VALUE>nqwen4 nka42 re14 qya2 nqwen4 nka42 re14 kchin4</ANNOTATION_VALUE>
             </REF_ANNOTATION>
         </ANNOTATION>
         <ANNOTATION>
             <REF_ANNOTATION ANNOTATION_ID="a497" ANNOTATION_REF="a8">
-                <ANNOTATION_VALUE>‘You shall stand, you shall exist, give a hand, give an arm, stand before them, stand behind them, take care of them, make them strong, those being sprouting, those being born’.</ANNOTATION_VALUE>
+                <ANNOTATION_VALUE>nqwen4 tyon42, nqwen4 tyqwi42, sqwa20 yaq1, sqwa20 skon1, tyon42 lo4, tyon42  chonq42, qne24 kqu24 qne24 tjoq42 no4 ntsu32 no4 ndla32</ANNOTATION_VALUE>
             </REF_ANNOTATION>
         </ANNOTATION>
         <ANNOTATION>
             <REF_ANNOTATION ANNOTATION_ID="a498" ANNOTATION_REF="a9">
-                <ANNOTATION_VALUE>‘In the whole community you are my father, you are my mother, you are our father, God’.</ANNOTATION_VALUE>
+                <ANNOTATION_VALUE>ntyqan24 qya2 ntyqan24 kchin4 nka42 sten4 nka42 yqan20 nka42 sten4 ndiyo14si0</ANNOTATION_VALUE>
             </REF_ANNOTATION>
         </ANNOTATION>
     </TIER>

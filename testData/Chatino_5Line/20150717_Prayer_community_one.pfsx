@@ -24,7 +24,7 @@
         <String>Modification Date</String>
     </prefList>
     <pref key="LayoutManager.SplitPaneDividerLocation">
-        <Int>70</Int>
+        <Int>2</Int>
     </pref>
     <pref key="LayoutManager.SelectedTabIndex">
         <Int>7</Int>
@@ -42,13 +42,13 @@
         <Object class="java.awt.Point">256,23</Object>
     </pref>
     <pref key="SelectionBeginTime">
-        <Long>2980</Long>
+        <Long>14618</Long>
     </pref>
     <pref key="LayoutManager.CurrentMode">
         <Int>1</Int>
     </pref>
     <pref key="MediaTime">
-        <Long>2980</Long>
+        <Long>14618</Long>
     </pref>
     <pref key="FrameSize">
         <Object class="java.awt.Dimension">1247,897</Object>
@@ -58,7 +58,7 @@
             <String>http://lux17.mpi.nl/aamlr/</String>
         </pref>
         <pref key="source_audio">
-            <String>///Users/David/OpenSource/github/slexil/testData/prayer/SJQ-2009_Cruz.wav</String>
+            <String>///Users/David/Library/Mobile Documents/com~apple~CloudDocs/Current/Cruz/SJQ-2009_06_24-prayer-SZC.wav</String>
         </pref>
     </prefGroup>
     <pref key="MultiTierViewer.ActiveTierName">
@@ -103,9 +103,9 @@
         <Int>201</Int>
     </pref>
     <pref key="TimeScaleBeginTime">
-        <Long>-40</Long>
+        <Long>10330</Long>
     </pref>
     <pref key="SelectionEndTime">
-        <Long>2980</Long>
+        <Long>18548</Long>
     </pref>
 </preferences>
