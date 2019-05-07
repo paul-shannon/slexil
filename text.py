@@ -84,9 +84,12 @@ class Text:
         # but without a handle on the project directory, we cannot easily test this
         # skip it for now
      if(not self.grammaticalTermsFile == None):
-        assert(os.path.isfile(self.grammaticalTermsFile))
-        self.grammaticalTerms = open(self.grammaticalTermsFile).read().split("\n")
-        assert(len(self.grammaticalTerms) > 0)
+          try:
+               assert(os.path.isfile(self.grammaticalTermsFile))
+          except AssertionError as e:
+               raise Exception(self.grammaticalTermsFile) from e
+          self.grammaticalTerms = open(self.grammaticalTermsFile).read().split("\n")
+          assert(len(self.grammaticalTerms) > 0)
      return(True)
 
    def getLineAsTable(self, lineNumber):
