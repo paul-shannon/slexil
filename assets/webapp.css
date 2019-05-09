@@ -45,7 +45,7 @@
 }
 
 .tierMenuPulldown {
-	background-colour: blue;
+	width: 160px;
 }
 
 .allDivs {
@@ -212,3 +212,4 @@ summary:focus {
 	padding-right: 50px;
 	float: right;
 }
+
