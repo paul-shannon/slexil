@@ -448,7 +448,10 @@ def createTierMappingMenus(eafFilename):
          							html.Div("*",style={'display':'inline-block','color':'red'})]), 
          		  html.Td("‘The horizon is growing light.’"), html.Td(createPulldownMenu("translation", tierChoices))]),
          html.Tr([html.Td("second translation"), html.Td("‘Está aclarando donde sale el sol.’"), html.Td(createPulldownMenu("translation2", tierChoices))]),
-         html.Tr([html.Td("word boundaries"), html.Td(""), html.Td(createPulldownMenu("morphemePacking", ["tabs", "lines"]))])
+         html.Tr([html.Td(children=[
+         							html.Div("word boundaries",style={'display':'inline-block'}),
+         							html.Div("*",style={'display':'inline-block','color':'red'})]), 
+         		  html.Td(createPulldownMenu("morphemePacking", ["tabs", "lines"])),html.Td("")])
          ], className="tiermap"
          )
 
@@ -457,7 +460,7 @@ def createTierMappingMenus(eafFilename):
 
    tierMappingChoicesResultDisplay = html.Span(id="tierMappingChoicesResultDisplay", children="",
                                                style={"border": 1, "margin-left": 10})
-   requiredTiersFootnote = html.Span("*Required tier",id='requiredTiersFootnote',className="warningfootnote")
+   requiredTiersFootnote = html.Span("*Required",id='requiredTiersFootnote',className="warningfootnote")
    
    children =[dropDownMenus,
    			  html.Br(), 
