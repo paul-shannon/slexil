@@ -46,10 +46,10 @@ class MorphemeGloss:
 
    def __init__(self, rawText, grammaticalTerms):
      self.rawText = rawText
-     #next step will be removed, ijalLine takes over this function once tests decommisioned
-     self.rawText = _replaceHyphensWithNDashes(self.rawText)
-     #next step will be removed, ijalLine takes over this function once tests decommisioned
-     self.grammaticalTerms = _makeAbbreviationListLowerCase(grammaticalTerms)
+##     #next step will be removed, ijalLine takes over this function once tests decommisioned
+##     self.rawText = _replaceHyphensWithNDashes(self.rawText)
+##     #next step will be removed, ijalLine takes over this function once tests decommisioned
+##     self.grammaticalTerms = _makeAbbreviationListLowerCase(grammaticalTerms)
 
    def show(self):
       pprint(vars(self))
@@ -109,32 +109,33 @@ def _extractParts(delimiters, string):
    parts_noEmptyStrings = [part for part in parts if part != ""]
    return(parts_noEmptyStrings)
 
-def _replaceHyphensWithNDashes(text):
-   ''' replace hyphens with n-dashes
-   '''
-   #will be removed when IjalLine takes over
-   #needed for now because tests don't use ijalLine.py
-   text = text.replace('-','–')          
-   return(text)
-
-def _makeAbbreviationListLowerCase(terms):
-   ''' ensures grammatical terms in user list are lower case '''
-   #can be removed when IjalLine takes over
-   #needed for now because tests don't use ijalLine.py
-   exceptions  = ["A","S","O","P"]
-   newTerms = []
-   for term in terms:
-      if "<sub>" in term:
-         term = term.replace("<sub>","")
-         term = term.replace("</sub>","")
-      if "<sup>" in term:
-         term = term.replace("<sup>","")
-         term = term.replace("</sup>","")
-      if term in exceptions:
-         newTerms.append(term)
-      elif term.isupper():
-         newTerm = term.lower()
-         newTerms.append(newTerm)
-      else:
-         newTerms.append(term)
-   return(newTerms)
+##def _replaceHyphensWithNDashes(text):
+##   ''' replace hyphens with n-dashes
+##   '''
+##   #will be removed when IjalLine takes over
+##   #needed for now because tests don't use ijalLine.py
+##   text = text.replace('-','–')          
+##   return(text)
+##
+##def _makeAbbreviationListLowerCase(terms):
+##   ''' ensures grammatical terms in user list are lower case '''
+##   #can be removed when IjalLine takes over
+##   #needed for now because tests don't use ijalLine.py
+##   exceptions  = ["A","S","O","P"]
+##   newTerms = []
+##   for term in terms:
+##      if "<sub>" in term:
+##         term = term.replace("<sub>","")
+##         term = term.replace("</sub>","")
+##      if "<sup>" in term:
+##         term = term.replace("<sup>","")
+##         term = term.replace("</sup>","")
+##      if term in exceptions:
+##         newTerms.append(term)
+##      elif term.isupper():
+##         newTerm = term.lower()
+##         newTerms.append(newTerm)
+##      else:
+##         newTerms.append(term)
+##   return(newTerms)
+##

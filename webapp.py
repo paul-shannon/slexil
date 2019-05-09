@@ -428,7 +428,7 @@ def createTierMappingMenus(eafFilename):
       #tierChoices = ["pending EAF file selection"]
 
       dropDownMenus = html.Table(id="tierMappingMenus", children=[
-         html.Tr([html.Th("Standard interlinear tiers",className="first"), html.Th("",className="second"), html.Th("User tier names (from EAF file)",className="third")]),
+         html.Tr([html.Th("Standard interlinear tiers",className="first"), html.Th("(e.g., from Totonac)",className="second"), html.Th("Select ELAN tier",className="third")]),
          html.Tr([html.Td(children=[
          		  					html.Div("line",style={'display':'inline-block'}),
          		  					html.Div("*",style={'display':'inline-block','color':'red'})]), 
