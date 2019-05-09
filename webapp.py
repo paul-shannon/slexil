@@ -46,7 +46,7 @@ app.scripts.config.serve_locally = True
 # in this case, infernoDemo.zip, which a new slexil user can run through the webapp to
 # learn the ropes
 # we may want to further qualify the route path to something like '/demos/<filename>'
-# for better separation in the slexil webapp direcotry structure
+# for better separation in the slexil webapp directory structure
 #----------------------------------------------------------------------------------------------------
 @app.server.route('/demos/<filename>')
 def downloadZip(filename):
@@ -451,7 +451,7 @@ def createTierMappingMenus(eafFilename):
          html.Tr([html.Td(children=[
          							html.Div("word boundaries",style={'display':'inline-block'}),
          							html.Div("*",style={'display':'inline-block','color':'red'})]), 
-         		  html.Td(createPulldownMenu("morphemePacking", ["tabs", "lines"])),html.Td("")])
+         		  html.Td(createPulldownMenu("morphemePacking", ["tabs", "tiers"])),html.Td("")])
          ], className="tiermap"
          )
 
@@ -535,6 +535,9 @@ def on_eafUpload(contents, name, date, projectDirectory):
     print("on_eafUpload, name: %s" % name)
     data = contents.encode("utf8").split(b";base64,")[1]
     filename = os.path.join(projectDirectory, name)
+    if not filename[-4:] == '.eaf':
+    	eaf_validationMessage = 'Please select an ELAN project (.eaf) file.'
+    	return eaf_validationMessage, ''
     with open(filename, "wb") as fp:
          fp.write(base64.decodebytes(data))
          fileSize = os.path.getsize(filename)
@@ -564,6 +567,9 @@ def on_soundUpload(contents, name, date, projectDirectory):
     print("=== on_soundUpload")
     data = contents.encode("utf8").split(b";base64,")[1]
     filename = os.path.join(projectDirectory, name)
+    if not filename[-4:] == ".wav":
+    	sound_validationMessage = "Please select a WAVE (.wav) file."
+    	return sound_validationMessage, "", 1
     with open(filename, "wb") as fp:
        fp.write(base64.decodebytes(data))
        fileSize = os.path.getsize(filename)
@@ -618,11 +624,18 @@ def on_grammaticalTermsUpload(contents, name, date, projectDirectory):
 	if name is None:
 		return("",1)
 	print("=== on_grammaticalTermsUpload")
+	filename = os.path.join(projectDirectory, name)
+	if filename[-4:] == '.eaf':
+		return "Please select a text file, not the ELAN project file (.eaf).",1
 	encodedString = contents.encode("utf8").split(b";base64,")[1]
 	decodedString = base64.b64decode(encodedString)
-	s = decodedString.decode('utf-8')
+# 	if not isinstance(decodedString, unicode):
+# 		return "Please select a text (UTF-8) file.",1
+	try:
+		s = decodedString.decode('utf-8')
+	except UnicodeDecodeError:
+		return "Please select a text (UTF-8) file.",1		
 	yaml_list = yaml.load(s)
-	filename = os.path.join(projectDirectory, name)
 	with open(filename, "w") as fp:
 		fp.write(s)
 		fp.close()
@@ -707,8 +720,8 @@ def update_output(value):
     [Input('grammaticalTermsUploadTextArea', 'value')])
 def update_output(value):
     print("=== callback triggered by grammaticalTermsUploadTextArea change: %s" % value)
-    grammaticalTermsPath  = value.split(":")[1]
-    grammaticalTerms = os.path.basename(grammaticalTermsPath)
+    grammaticalTermsPath = value.split(":")[1]
+    grammaticalTermsFile = os.path.basename(grammaticalTermsPath)
     return(grammaticalTermsFile)
 
 #----------------------------------------------------------------------------------------------------
@@ -773,7 +786,9 @@ def createWebPageCallback(n_clicks, soundFileName, eafFileName, projectDirectory
 	)
 def trackUserInputInSetTitle(typing):
 	return(typing)
-
+	
+	
+#----------------------------------------------------------------------------------------------------
 @app.callback(
     [Output('projectTitle_hiddenStorage', 'children'),
      Output('upload-eaf-link','className'),

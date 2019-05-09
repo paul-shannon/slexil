@@ -116,15 +116,17 @@ class IjalLine:
      assert(self.morphemePacking in ["tiers", "tabs"])
 
      if(self.morphemePacking == "tiers"):
-        return(self.tbl["TEXT"].iloc[self.morphemeRows].tolist())
+        rawMorphemeList = self.tbl["TEXT"].iloc[self.morphemeRows].tolist()
+        #return(self.tbl["TEXT"].iloc[self.morphemeRows].tolist())
 
      if(self.morphemePacking == "tabs"):
         # pdb.set_trace()
         rawMorphemeText = self.tbl["TEXT"].iloc[self.morphemeRows].tolist()[0]
         rawMorphemeList = rawMorphemeText.split('\t')
         # pdb.set_trace()
-        morphemes = replaceHyphensWithNDashes(rawMorphemeList)
-        return(morphemes)
+        
+     morphemes = replaceHyphensWithNDashes(rawMorphemeList)
+     return(morphemes)
 
    #----------------------------------------------------------------------------------------------------
    def extractMorphemeGlosses(self):
@@ -133,14 +135,16 @@ class IjalLine:
         return([])
 
      if(self.morphemePacking == "tiers"):
-        return(self.tbl["TEXT"].iloc[self.morphemeGlossRows].tolist())
+        rawMorphemeGlossList = self.tbl["TEXT"].iloc[self.morphemeGlossRows].tolist()
+        #return(self.tbl["TEXT"].iloc[self.morphemeGlossRows].tolist())
 
      if(self.morphemePacking == "tabs"):
         rawMorphemeGlossText = self.tbl["TEXT"].iloc[self.morphemeGlossRows].tolist()[0]
         rawMorphemeGlossList = rawMorphemeGlossText.split('\t')
         # pdb.set_trace()
-        morphemeGlosses = replaceHyphensWithNDashes(rawMorphemeGlossList)
-        return(morphemeGlosses)
+        
+     morphemeGlosses = replaceHyphensWithNDashes(rawMorphemeGlossList)
+     return(morphemeGlosses)
 
    #----------------------------------------------------------------------------------------------------
    def getMorphemes (self):
