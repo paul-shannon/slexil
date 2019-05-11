@@ -447,11 +447,7 @@ def createTierMappingMenus(eafFilename):
          							html.Div("translation",style={'display':'inline-block'}),
          							html.Div("*",style={'display':'inline-block','color':'red'})]), 
          		  html.Td("‘The horizon is growing light.’"), html.Td(createPulldownMenu("translation", tierChoices))]),
-         html.Tr([html.Td("second translation"), html.Td("‘Está aclarando donde sale el sol.’"), html.Td(createPulldownMenu("translation2", tierChoices))]),
-         html.Tr([html.Td(children=[
-         							html.Div("word boundaries",style={'display':'inline-block'}),
-         							html.Div("*",style={'display':'inline-block','color':'red'})]), 
-         		  html.Td(createPulldownMenu("morphemePacking", ["tabs", "tiers"])),html.Td("")])
+         html.Tr([html.Td("second translation"), html.Td("‘Está aclarando donde sale el sol.’"), html.Td(createPulldownMenu("translation2", tierChoices))])
          ], className="tiermap"
          )
 
@@ -515,7 +511,7 @@ app.layout = html.Div(
         html.P(id='morphemeGlossTier_hiddenStorage',         children="", style={'display': 'none'}),       
         html.P(id='translationTier_hiddenStorage',           children="", style={'display': 'none'}),
         html.P(id='translation2Tier_hiddenStorage',          children="", style={'display': 'none'}),
-        html.P(id='morphemePacking_hiddenStorage',           children="", style={'display': 'none'}),
+        #html.P(id='morphemePacking_hiddenStorage',           children="", style={'display': 'none'}),
         html.P(id='temporaryTitle_hiddenStorage',           children="", style={'display': 'none'})
         ],
     className="row",
@@ -629,13 +625,12 @@ def on_grammaticalTermsUpload(contents, name, date, projectDirectory):
 		return "Please select a text file, not the ELAN project file (.eaf).",1
 	encodedString = contents.encode("utf8").split(b";base64,")[1]
 	decodedString = base64.b64decode(encodedString)
-# 	if not isinstance(decodedString, unicode):
-# 		return "Please select a text (UTF-8) file.",1
 	try:
 		s = decodedString.decode('utf-8')
 	except UnicodeDecodeError:
 		return "Please select a text (UTF-8) file.",1		
-	yaml_list = yaml.load(s)
+	s_NoTabs = s.replace("\t","")
+	yaml_list = yaml.load(s_NoTabs)
 	with open(filename, "w") as fp:
 		fp.write(s)
 		fp.close()
@@ -897,12 +892,12 @@ def updateMorphemeGlossTier(value):
     print("morphemeGloss tier user name: %s" % value)
     return value
 
-@app.callback(
-    Output('morphemePacking_hiddenStorage', 'children'),
-    [Input('tierGuideMenu-morphemePacking', 'value')])
-def updateMorphemePackingUserChoice(value):
-    print("morphemePacking: %s" % value)
-    return value
+# @app.callback(
+#     Output('morphemePacking_hiddenStorage', 'children'),
+#     [Input('tierGuideMenu-morphemePacking', 'value')])
+# def updateMorphemePackingUserChoice(value):
+#     print("morphemePacking: %s" % value)
+#     return value
 
 @app.callback(
     Output('translation2Tier_hiddenStorage', 'children'),
@@ -929,10 +924,10 @@ def updateTranscription2Tier(value):
      State('morphemeGlossTier_hiddenStorage', 'children'),
      State('translationTier_hiddenStorage',   'children'),
      State('translation2Tier_hiddenStorage',   'children'),
-     State('morphemePacking_hiddenStorage',   'children'),
+     #State('morphemePacking_hiddenStorage',   'children'),
      State('projectDirectory_hiddenStorage',  'children')])
 def saveTierMappingSelection(n_clicks, speechTier, transcription2Tier, morphemeTier, morphemeGlossTier, 
-                             translationTier, translation2Tier, morphemePacking, projectDirectory):
+                             translationTier, translation2Tier, projectDirectory): #morphemePacking, projectDirectory):
     if n_clicks is None:
         return("","fakebutton",1)
     print("saveTierMappingSelectionsButton: %d" % n_clicks)
@@ -944,9 +939,9 @@ def saveTierMappingSelection(n_clicks, speechTier, transcription2Tier, morphemeT
         print("translationTier not mapped")
         return("You must specify a tier for the translation.","fakebutton",1)
     
-    if len(morphemePacking) == 0:
-        print("morphemePacking not specified")
-        return("You must specify whether words are delimited with tabs or ELAN tiers.","fakebutton",1)
+#     if len(morphemePacking) == 0:
+#         print("morphemePacking not specified")
+#         return("You must specify whether words are delimited with tabs or ELAN tiers.","fakebutton",1)
         
     if len(morphemeTier) != 0 and len(morphemeGlossTier) == 0:
     	print("morpheme tier but no morphemeGlossTier")
@@ -967,8 +962,8 @@ def saveTierMappingSelection(n_clicks, speechTier, transcription2Tier, morphemeT
     print("morphemeGlossTier: %s" % morphemeGlossTier)
     print("translationTier: %s" % translationTier)
     print("translation2Tier: %s" % translation2Tier)
-    print("morphemePacking: %s" % morphemePacking)
-    saveTierGuide(projectDirectory, speechTier, transcription2Tier, morphemeTier, morphemeGlossTier, translationTier, translation2Tier, morphemePacking)
+    #print("morphemePacking: %s" % morphemePacking)
+    saveTierGuide(projectDirectory, speechTier, transcription2Tier, morphemeTier, morphemeGlossTier, translationTier, translation2Tier)#, morphemePacking)
     print("enabling next button in sequence (Upload audio select file)")
     newButtonState = "fakebuttonEnabled"   
     return("Your selections have been saved.",newButtonState,0)
@@ -1002,15 +997,15 @@ def updateDownloadTextButtonHref(directory,projectTitle):
 
 
 #----------------------------------------------------------------------------------------------------
-def saveTierGuide(projectDirectory, speechTier, transcription2Tier, morphemeTier, morphemeGlossTier, translationTier, translation2Tier, morphemePacking):
+def saveTierGuide(projectDirectory, speechTier, transcription2Tier, morphemeTier, morphemeGlossTier, translationTier, translation2Tier)#, morphemePacking):
 
     dict = {"speech": speechTier,
             "transcription2": transcription2Tier,
             "morpheme": morphemeTier,
             "morphemeGloss": morphemeGlossTier,
             "translation": translationTier,
-            "translation2": translation2Tier,
-            "morphemePacking": morphemePacking}
+            "translation2": translation2Tier}#,
+            #"morphemePacking": morphemePacking}
 
     filename =  os.path.join(projectDirectory, "tierGuide.yaml")
 

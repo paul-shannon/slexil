@@ -26,7 +26,9 @@ class IjalLine:
      self.doc = doc
      self.lineNumber = lineNumber
      self.tierGuide = tierGuide
-     self.grammaticalTerms = self.getGrammaticalTerms(grammaticalTerms)
+#      this call to getGrammaticalTerms should happen in text.py
+#      self.grammaticalTerms = self.getGrammaticalTerms(grammaticalTerms)
+     self.grammaticalTerms = grammaticalTerms
      self.rootElement = self.doc.findall("TIER/ANNOTATION/ALIGNABLE_ANNOTATION")[lineNumber]
      self.allElements = findChildren(self.doc, self.rootElement)
      self.tblRaw = buildTable(doc, self.allElements)
@@ -36,7 +38,7 @@ class IjalLine:
      assert(self.tierCount >= 2)
      self.tbl = standardizeTable(self.tblRaw, self.tierGuide)
      self.tbl.index = range(len(self.tbl.index))
-     self.morphemePacking = self.tierGuide["morphemePacking"]
+     #self.morphemePacking = self.tierGuide["morphemePacking"]
      self.categories = categories = self.tbl["category"].tolist()
      self.speechRow = self.categories.index("speech")
      self.translationRow = self.categories.index("translation")
@@ -113,17 +115,27 @@ class IjalLine:
      if(self.morphemeRows == []):
         return([])
 
-     assert(self.morphemePacking in ["tiers", "tabs"])
+#      try:
+#      	assert(self.morphemePacking in ["tiers", "tabs", "No",False])
+#      except AssertionError as e:
+#      	raise Exception(self.morphemePacking) from e
 
-     if(self.morphemePacking == "tiers"):
-        rawMorphemeList = self.tbl["TEXT"].iloc[self.morphemeRows].tolist()
-        #return(self.tbl["TEXT"].iloc[self.morphemeRows].tolist())
-
-     if(self.morphemePacking == "tabs"):
-        # pdb.set_trace()
-        rawMorphemeText = self.tbl["TEXT"].iloc[self.morphemeRows].tolist()[0]
-        rawMorphemeList = rawMorphemeText.split('\t')
-        # pdb.set_trace()
+#      if(self.morphemePacking == "No") or not(self.morphemePacking):
+     rawMorphemeList = self.tbl["TEXT"].iloc[self.morphemeRows].tolist()
+     rawMorphemes = ''.join(rawMorphemeList)
+     if "\t" in rawMorphemes:
+          rawMorphemeText = self.tbl["TEXT"].iloc[self.morphemeRows].tolist()[0]
+          rawMorphemeList = rawMorphemeText.split('\t')
+     		
+#      if(self.morphemePacking == "tiers"):
+#         rawMorphemeList = self.tbl["TEXT"].iloc[self.morphemeRows].tolist()
+#         #return(self.tbl["TEXT"].iloc[self.morphemeRows].tolist())
+# 
+#      if(self.morphemePacking == "tabs"):
+#         # pdb.set_trace()
+#         rawMorphemeText = self.tbl["TEXT"].iloc[self.morphemeRows].tolist()[0]
+#         rawMorphemeList = rawMorphemeText.split('\t')
+#         # pdb.set_trace()
         
      morphemes = replaceHyphensWithNDashes(rawMorphemeList)
      return(morphemes)
@@ -134,14 +146,21 @@ class IjalLine:
      if(self.morphemeGlossRows == []):
         return([])
 
-     if(self.morphemePacking == "tiers"):
-        rawMorphemeGlossList = self.tbl["TEXT"].iloc[self.morphemeGlossRows].tolist()
-        #return(self.tbl["TEXT"].iloc[self.morphemeGlossRows].tolist())
-
-     if(self.morphemePacking == "tabs"):
-        rawMorphemeGlossText = self.tbl["TEXT"].iloc[self.morphemeGlossRows].tolist()[0]
-        rawMorphemeGlossList = rawMorphemeGlossText.split('\t')
-        # pdb.set_trace()
+#      if(self.morphemePacking == "No") or not(self.morphemePacking):
+     rawMorphemeGlossList = self.tbl["TEXT"].iloc[self.morphemeGlossRows].tolist()
+     rawMorphemeGlosses = ''.join(rawMorphemeGlossList)
+     if "\t" in rawMorphemeGlosses:
+          rawMorphemeGlossText = self.tbl["TEXT"].iloc[self.morphemeGlossRows].tolist()[0]
+          rawMorphemeGlossList = rawMorphemeGlossText.split('\t')
+	 
+#      if(self.morphemePacking == "tiers"):
+#         rawMorphemeGlossList = self.tbl["TEXT"].iloc[self.morphemeGlossRows].tolist()
+#         #return(self.tbl["TEXT"].iloc[self.morphemeGlossRows].tolist())
+# 
+#      if(self.morphemePacking == "tabs"):
+#         rawMorphemeGlossText = self.tbl["TEXT"].iloc[self.morphemeGlossRows].tolist()[0]
+#         rawMorphemeGlossList = rawMorphemeGlossText.split('\t')
+#         # pdb.set_trace()
         
      morphemeGlosses = replaceHyphensWithNDashes(rawMorphemeGlossList)
      return(morphemeGlosses)
@@ -156,7 +175,7 @@ class IjalLine:
       try:
          if terms[-1] == '':
             terms = terms[:-1]
-         newTerms = _makeAbbreviationListLowerCase(terms)
+         #newTerms = _makeAbbreviationListLowerCase(terms)
          return newTerms
       except IndexError:
          return
@@ -369,24 +388,32 @@ def replaceHyphensWithNDashes(list):
         newList.append(text)
      return(newList)
 #---------------------------------------------------------
-def _makeAbbreviationListLowerCase(terms):
-   ''' ensures grammatical terms in user list are lower case '''
-   exceptions  = ["A","S","O","P"]
-   newTerms = []
-   for term in terms:
-      if "<sub>" in term:
-         term = term.replace("<sub>","")
-         term = term.replace("</sub>","")
-      if "<sup>" in term:
-         term = term.replace("<sup>","")
-         term = term.replace("</sup>","")
-      if term in exceptions:
-         newTerms.append(term)
-      elif term.isupper():
-         newTerm = term.lower()
-         newTerms.append(newTerm)
-      else:
-         newTerms.append(term)
-   return(newTerms)
-
+# def _makeAbbreviationListLowerCase(terms):
+#    ''' ensures grammatical terms in user list are lower case '''
+#    exceptions  = ["A","S","O","P"]
+#    longerList = [] 
+#    newTerms = []
+#    '''first run through needs to deal with super/subscripts'''
+#    for term in terms:
+#       if "<sub>" in term:
+#          term = term.replace("<sub>","$$")
+#          term = term.replace("</sub>","$$")
+#          sublist = term.split("$$")
+#          longerList += sublist
+#       if "<sup>" in term:
+#          term = term.replace("<sup>","")
+#          term = term.replace("</sup>","")
+#       if not term in longerList:
+#       	 longerList.append(term)
+#    for term in longerList:    
+#       if term in exceptions:
+#          newTerms.append(term)
+#       elif term.isupper():
+#          newTerm = term.lower()
+#          newTerms.append(newTerm)
+#       else:
+#          newTerms.append(term)
+#    print(newTerms)
+#    return(newTerms)
+# 
 

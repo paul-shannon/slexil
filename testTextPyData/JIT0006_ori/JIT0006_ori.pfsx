@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<preferences version="1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.mpi.nl/tools/elan/Prefs_v1.1.xsd">
+    <prefList key="MultiTierViewer.TierOrder">
+        <String>ref</String>
+        <String>tx</String>
+        <String>prs-cp</String>
+        <String>intr-cp</String>
+        <String>ft</String>
+    </prefList>
+    <prefGroup key="Text-to-Speech alignment">
+        <pref key="model">
+            <String>English</String>
+        </pref>
+        <pref key="audio">
+            <String>///C:/Users/Beault/Documents/!Books/!ZoqueTextsCollection/!!!SubmittedManuscript/Jitotoltec/JIT0006.wav</String>
+        </pref>
+    </prefGroup>
+    <pref key="LayoutManager.VisibleMultiTierViewer">
+        <String>mpi.eudico.client.annotator.viewer.TimeLineViewer</String>
+    </pref>
+    <pref key="LayoutManager.SplitPaneDividerLocation">
+        <Int>70</Int>
+    </pref>
+    <pref key="TimeLineViewer.ZoomLevel">
+        <Float>38.0</Float>
+    </pref>
+    <pref key="LayoutManager.SelectedTabIndex">
+        <Int>0</Int>
+    </pref>
+    <prefGroup key="TierColors">
+        <pref key="ref">
+            <Object class="java.awt.Color">160,160,90</Object>
+        </pref>
+    </prefGroup>
+    <prefGroup key="TierFonts"/>
+    <prefGroup key="Interlinear.FontSizes">
+        <pref key="ref">
+            <Int>12</Int>
+        </pref>
+        <pref key="tx">
+            <Int>12</Int>
+        </pref>
+        <pref key="nt">
+            <Int>12</Int>
+        </pref>
+        <pref key="prs">
+            <Int>12</Int>
+        </pref>
+        <pref key="ft">
+            <Int>12</Int>
+        </pref>
+        <pref key="intr">
+            <Int>12</Int>
+        </pref>
+    </prefGroup>
+    <pref key="FrameLocation">
+        <Object class="java.awt.Point">0,1</Object>
+    </pref>
+    <pref key="GridViewer.TierName">
+        <String>tx</String>
+    </pref>
+    <pref key="SelectionBeginTime">
+        <Long>265551</Long>
+    </pref>
+    <pref key="Interlinear.SelectTiersMode">
+        <String>Show Tier(s)</String>
+    </pref>
+    <prefList key="Interlinear.TierOrder">
+        <String>ref</String>
+        <String>tx</String>
+        <String>prs-cp</String>
+        <String>intr-cp</String>
+        <String>ft</String>
+    </prefList>
+    <pref key="LayoutManager.CurrentMode">
+        <Int>1</Int>
+    </pref>
+    <pref key="Interlinear.SelectionOnly">
+        <Boolean>false</Boolean>
+    </pref>
+    <pref key="MediaTime">
+        <Long>265550</Long>
+    </pref>
+    <prefGroup key="TierHighlightColors"/>
+    <pref key="SignalViewer.ZoomLevel">
+        <Float>38.0</Float>
+    </pref>
+    <pref key="FrameSize">
+        <Object class="java.awt.Dimension">1920,733</Object>
+    </pref>
+    <pref key="MultiTierViewer.ActiveTierName">
+        <String>ref</String>
+    </pref>
+    <pref key="TimeScaleBeginTime">
+        <Long>237894</Long>
+    </pref>
+    <pref key="ActiveAudioRecognizerName">
+        <String>Text-to-Speech alignment</String>
+    </pref>
+    <pref key="LayoutManager.MediaAreaHeight">
+        <Int>139</Int>
+    </pref>
+    <prefList key="Interlinear.VisibleTiers">
+        <String>ref</String>
+        <String>tx</String>
+        <String>prs-cp</String>
+        <String>intr-cp</String>
+        <String>ft</String>
+    </prefList>
+    <prefList key="MultiTierViewer.HiddenTiers"/>
+    <pref key="SelectionEndTime">
+        <Long>265578</Long>
+    </pref>
+</preferences>
