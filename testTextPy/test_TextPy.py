@@ -6,15 +6,18 @@ import importlib
 import os
 import pdb
 from ijalLine import *
+from errors import *
 #----------------------------------------------------------------------------------------------------
 pd.set_option('display.width', 1000)
 #----------------------------------------------------------------------------------------------------
 def runTests(display=True):
-    test_MonkeyAndThunder(display)
+    #test_MonkeyAndThunder(display)
     #test_MonkeyAndThunderTabbing(display)
-    test_MonkeyAndThunderNoPacking(display)
-    test_Fishwoman(display)
-    test_FishwomanNoPacking(display)
+    #test_MonkeyAndThunderNoPacking(display)
+    #test_Fishwoman(display)
+    #test_FishwomanNoPacking(display)
+    #test_Merchant(display)
+    test_Jaguar(display)
     
 #----------------------------------------------------------------------------------------------------
 def test_MonkeyAndThunder(display):
@@ -122,21 +125,20 @@ def test_FishwomanNoPacking(display):
 
 
 #----------------------------------------------------------------------------------------------------
-def test_prayer(display):
+def test_Merchant(display):
 
-    print("--- test_prayer")
+    print("--- test_Merchant")
 
-    text = Text("../testData/prayer/20150717_Prayer_community_one.eaf",
-                "../testData/prayer/audioPhrases",
-                grammaticalTermsFile=None,
-                quiet=False)
+    text = Text("../testTextPyData/JIT0006_ori/JIT0006_ori.eaf",
+                "../testTextPyData/JIT0006_ori/Audio",
+                "../testTextPyData/JIT0006_ori/abbreviations.txt",
+                "../testTextPyData/JIT0006_ori/tierGuide.yaml")
+     
+    #IjalLine.getTable(1)
 
-    text.getTable(0)
-
-    htmlText = text.toHTML(0)
-
+    htmlText = text.toHTML()
     if(display):
-       filename = "prayer.html"
+       filename = "test_Merchant.html"
        f = open(filename, "w")
        f.write(indent(htmlText))
        f.close()
@@ -144,24 +146,30 @@ def test_prayer(display):
 
 
 #----------------------------------------------------------------------------------------------------
-def test_aktzini(display):
+def test_Jaguar(display):
 
-    print("--- test_aktzini")
+    print("--- test_Jaguar")
 
-    text = Text("../testData/aktzini/18-06-03Aktzini-GA.eaf",
-                "../testData/aktzini/audioPhrases",
-                grammaticalTermsFile=None,
-                quiet=False)
+    text = Text("../testTextPyData/Ocotepec_TheOpposumAndTheJaguar/OCO2_JaguarAndOpossum.eaf",
+                "../testTextPyData/Ocotepec_TheOpposumAndTheJaguar/Audio",
+                "../testTextPyData/Ocotepec_TheOpposumAndTheJaguar/abbreviations.txt",
+                "../testTextPyData/Ocotepec_TheOpposumAndTheJaguar/tierGuide.yaml")
+     
+    #IjalLine.getTable(1)
 
-    text.getTable(1)
+    try:
+        htmlText = text.toHTML()
+        if(display):
+            filename = "test_Jaguar.html"
+            f = open(filename, "w")
+            f.write(indent(htmlText))
+            f.close()
+            os.system("open %s" % filename)
+    except TooManyMorphsError as e:
+        print("There are more morphs than glosses in line %s." %e.lineNumber)
+    except TooManyGlossesError as e:
+        print("There are more glosses than morphs in line %s." %e.lineNumber)
 
-    htmlText = text.toHTML()
-    if(display):
-       filename = "aktzini.html"
-       f = open(filename, "w")
-       f.write(indent(htmlText))
-       f.close()
-       os.system("open %s" % filename)
 
 
 #----------------------------------------------------------------------------------------------------

@@ -109,7 +109,7 @@ class Text:
    def getCSS(self):
       cssFilename = "ijal.css" #os.path.join(os.path.split(os.path.abspath(__file__))[0], "ijal.css")
       assert(os.path.exists(cssFilename))
-      print(cssFilename)
+      #print(cssFilename)
       css = '<link rel = "stylesheet" type = "text/css" href = "%s" />' % cssFilename
 #       css = "<style>\n%s</style>" % open(cssFilename).read()
       return(css)
@@ -157,6 +157,7 @@ def _makeAbbreviationListLowerCase(grammaticalTerms):
    ''' ensures grammatical terms in user list are lower case '''
    exceptions  = ["A","S","O","P"]
    newTerms = []
+   grammaticalTerms = grammaticalTerms.replace(".","\n")
    grammaticalTerms = grammaticalTerms.replace("<sub>","\n")
    grammaticalTerms = grammaticalTerms.replace("</sub>","\n")
    grammaticalTerms = grammaticalTerms.replace("<sup>","\n")
@@ -164,8 +165,10 @@ def _makeAbbreviationListLowerCase(grammaticalTerms):
    grammaticalTerms = grammaticalTerms.replace("<sub>","\n")
    grammaticalTerms = grammaticalTerms.replace("\n\n","\n")
    terms = grammaticalTerms.split("\n")
+   #print()terms
    '''first run through needs to deal with super/subscripts'''
-   for term in terms:    
+   for term in terms:
+      term = term.strip()    
       if term in exceptions:
          newTerms.append(term)
       elif term.isupper():

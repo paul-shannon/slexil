@@ -6,6 +6,7 @@ from yattag import *
 import pdb
 import formatting
 from translationLine import *
+from errors import *
 
 #------------------------------------------------------------------------------------------------------------------------
 # -*- coding: utf-8 -*-
@@ -197,7 +198,13 @@ class IjalLine:
       """
       morphemes = self.getMorphemes()
       glosses = self.getMorphemeGlosses()
-      assert(len(morphemes) == len(glosses))
+      #print(self.lineNumber)
+      #try:
+      if (len(morphemes) > len(glosses)):
+         raise TooManyMorphsError(self.lineNumber)
+      elif (len(morphemes) < len(glosses)):
+         raise TooManyGlossesError(self.lineNumber)
+
       self.morphemeSpacing = []
 
       for i in range(len(morphemes)):
