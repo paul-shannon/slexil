@@ -78,8 +78,14 @@ class Text:
      return(tierIDs)
 
    def validInputs(self):
-     assert(os.path.isfile(self.xmlFilename))
-     assert(os.path.isfile(self.tierGuideFile))
+     try:
+          assert(os.path.isfile(self.xmlFilename))
+     except AssertionError as e:
+          raise Exception(self.xmlFilename) from e
+     try:
+          assert(os.path.isfile(self.tierGuideFile))
+     except AssertionError as e:
+          raise Exception(tierGuideFile)from e
         # the audioPath points to a relative directory "./audio" in which wav files are foudn
         # but without a handle on the project directory, we cannot easily test this
         # skip it for now

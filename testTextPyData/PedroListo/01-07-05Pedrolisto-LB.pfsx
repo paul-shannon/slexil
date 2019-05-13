@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<preferences version="1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.mpi.nl/tools/elan/Prefs_v1.0.xsd">
+    <pref key="SelectionEndTime">
+        <Long>739690</Long>
+    </pref>
+    <pref key="LayoutManager.SplitPaneDividerLocation">
+        <Int>160</Int>
+    </pref>
+    <pref key="GridViewer.TierName">
+        <String>Line</String>
+    </pref>
+    <pref key="MediaTime">
+        <Long>738390</Long>
+    </pref>
+    <pref key="SelectionBeginTime">
+        <Long>738390</Long>
+    </pref>
+    <pref key="MultiTierViewer.ActiveTierName">
+        <String>Ex</String>
+    </pref>
+    <pref key="TimeScaleBeginTime">
+        <Long>0</Long>
+    </pref>
+    <pref key="LayoutManager.VisibleMultiTierViewer">
+        <String>mpi.eudico.client.annotator.viewer.TimeLineViewer</String>
+    </pref>
+    <pref key="LayoutManager.SelectedTabIndex">
+        <Int>0</Int>
+    </pref>
+</preferences>

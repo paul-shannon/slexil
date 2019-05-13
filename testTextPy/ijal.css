@@ -6,9 +6,9 @@
 }
 
 .line-sidebar{
-  //border: 1px solid gray;
+  border: 1px solid gray;
   padding: 10px;
-  padding-top: 0px;
+  padding-top: 4px;
   width: 40px;
   margin-top: 0px;
   margin-right: 10px;
@@ -42,6 +42,7 @@
   padding: 0px;
   font-size: 30px;
   text-align: left;
+  vertical-align: bottom;
   margin-left: 5px;
   word-spacing: 20px;
   }
@@ -108,4 +109,14 @@ button{
 .grammatical-term{
     font-variant: small-caps;
     color: blue;
+}
+
+ 
+sup {
+	vertical-align:text-top; 
+	font-size:75%; 
+}
+sub {
+	vertical-align:text-middle; 
+	font-size:75%; 
 }

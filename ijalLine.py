@@ -36,7 +36,12 @@ class IjalLine:
      self.tierCount = self.tblRaw.shape[0]
 
    def parse(self):
-     assert(self.tierCount >= 2)
+#      try:
+#          assert(self.tierCount >= 2)
+#      except AssertionError:
+#          raise EmptyTiersError(self.lineNumber)
+     if not self.tierCount >=2:
+          raise EmptyTiersError(self.lineNumber)  
      self.tbl = standardizeTable(self.tblRaw, self.tierGuide)
      self.tbl.index = range(len(self.tbl.index))
      #self.morphemePacking = self.tierGuide["morphemePacking"]
@@ -201,15 +206,29 @@ class IjalLine:
       #print(self.lineNumber)
       #try:
       if (len(morphemes) > len(glosses)):
-         raise TooManyMorphsError(self.lineNumber)
+         raise TooManyMorphsError(self.lineNumber,len(morphemes),len(glosses))
       elif (len(morphemes) < len(glosses)):
-         raise TooManyGlossesError(self.lineNumber)
+         raise TooManyGlossesError(self.lineNumber,len(morphemes),len(glosses))
 
       self.morphemeSpacing = []
 
       for i in range(len(morphemes)):
-         morphemeSize = len(morphemes[i])
-         glossSize = len(glosses[i])
+         if "<su" in morphemes[i]:
+         	newmorph = morphemes[i].replace("<sub>","")
+         	newmorph = newmorph.replace("</sub>","")
+         	newmorph = newmorph.replace("<sup>","")
+         	newmorph = newmorph.replace("</sup>","")
+         	morphemeSize = len(newmorph)
+         else:
+         	morphemeSize = len(morphemes[i])
+         if "<su" in glosses[i]:
+         	newGloss = glosses[i].replace("<sub>","")
+         	newGloss = newGloss.replace("</sub>","")
+         	newGloss = newGloss.replace("<sup>","")
+         	newGloss = newGloss.replace("</sup>","")
+         	glossSize = len(newGloss)
+         else:
+            glossSize = len(glosses[i])
          self.morphemeSpacing.append(max(morphemeSize, glossSize) + 1)
 
    #----------------------------------------------------------------------------------------------------
@@ -239,7 +258,7 @@ class IjalLine:
             with htmlDoc.tag("div", klass="line"):
                 styleString = "grid-template-columns: %s;" % ''.join(["%dch " % p for p in self.morphemeSpacing])
                 with htmlDoc.tag("div", klass="speech-tier"):
-                    htmlDoc.text(self.getSpokenText())
+                    htmlDoc.asis(self.getSpokenText())
 
                     transcription2 = self.getTranscription2()
                     if transcription2 != None:
