@@ -78,8 +78,14 @@ class Text:
      return(tierIDs)
 
    def validInputs(self):
-     assert(os.path.isfile(self.xmlFilename))
-     assert(os.path.isfile(self.tierGuideFile))
+     try:
+          assert(os.path.isfile(self.xmlFilename))
+     except AssertionError as e:
+          raise Exception(self.xmlFilename) from e
+     try:
+          assert(os.path.isfile(self.tierGuideFile))
+     except AssertionError as e:
+          raise Exception(tierGuideFile)from e
         # the audioPath points to a relative directory "./audio" in which wav files are foudn
         # but without a handle on the project directory, we cannot easily test this
         # skip it for now
@@ -88,8 +94,9 @@ class Text:
                assert(os.path.isfile(self.grammaticalTermsFile))
           except AssertionError as e:
                raise Exception(self.grammaticalTermsFile) from e
-          self.grammaticalTerms = open(self.grammaticalTermsFile).read().split("\n")
-          assert(len(self.grammaticalTerms) > 0)
+          grammaticalTerms = open(self.grammaticalTermsFile).read()#.split("\n")
+          assert(len(grammaticalTerms) > 0)
+          self.grammaticalTerms = _makeAbbreviationListLowerCase(grammaticalTerms)
      return(True)
 
    def getLineAsTable(self, lineNumber):
@@ -106,9 +113,11 @@ class Text:
          print("%d: %d tiers" % (i, tbl.shape[0]))
 
    def getCSS(self):
-      cssFilename = os.path.join(os.path.split(os.path.abspath(__file__))[0], "ijal.css")
+      cssFilename = "ijal.css" #os.path.join(os.path.split(os.path.abspath(__file__))[0], "ijal.css")
       assert(os.path.exists(cssFilename))
-      css = "<style>\n%s</style>" % open(cssFilename).read()
+      #print(cssFilename)
+      css = '<link rel = "stylesheet" type = "text/css" href = "%s" />' % cssFilename
+#       css = "<style>\n%s</style>" % open(cssFilename).read()
       return(css)
 
    def getJavascript(self):
@@ -148,4 +157,33 @@ class Text:
      self.htmlDoc = htmlDoc
      self.htmlText = htmlDoc.getvalue()
      return(self.htmlText)
+
+#---------------------------------------------------------
+def _makeAbbreviationListLowerCase(grammaticalTerms):
+   ''' ensures grammatical terms in user list are lower case '''
+   exceptions  = ["A","S","O","P"]
+   newTerms = []
+   grammaticalTerms = grammaticalTerms.replace(".","\n")
+   grammaticalTerms = grammaticalTerms.replace("<sub>","\n")
+   grammaticalTerms = grammaticalTerms.replace("</sub>","\n")
+   grammaticalTerms = grammaticalTerms.replace("<sup>","\n")
+   grammaticalTerms = grammaticalTerms.replace("</sup>","\n")
+   grammaticalTerms = grammaticalTerms.replace("<sub>","\n")
+   grammaticalTerms = grammaticalTerms.replace("\n\n","\n")
+   terms = grammaticalTerms.split("\n")
+   #print()terms
+   '''first run through needs to deal with super/subscripts'''
+   for term in terms:
+      term = term.strip()    
+      if term in exceptions:
+         newTerms.append(term)
+      elif term.isupper():
+         newTerm = term.lower()
+         newTerms.append(newTerm)
+      else:
+         newTerms.append(term)
+   #print(newTerms)
+   uniqueTerms = list(set(newTerms))
+   #print(uniqueTerms)
+   return(uniqueTerms)
 

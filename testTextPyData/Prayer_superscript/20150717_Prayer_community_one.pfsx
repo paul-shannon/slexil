@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<preferences version="1.1"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.mpi.nl/tools/elan/Prefs_v1.1.xsd">
+    <prefList key="MultiTierViewer.TierOrder">
+        <String>SZC-Chatino</String>
+        <String>SZC-presandhi</String>
+        <String>Tokenization-cp</String>
+        <String>POS-cp</String>
+        <String>English Translation-cp-cp</String>
+    </prefList>
+    <pref key="LayoutManager.VisibleMultiTierViewer">
+        <String>mpi.eudico.client.annotator.viewer.TimeLineViewer</String>
+    </pref>
+    <pref key="MediaControlVolume">
+        <Float>0.05</Float>
+    </pref>
+    <pref key="SignalViewer.ZoomLevel">
+        <Float>400.0</Float>
+    </pref>
+    <pref key="TimeLineViewer.ZoomLevel">
+        <Float>400.0</Float>
+    </pref>
+    <prefGroup key="TierColors">
+        <pref key="SZC-Chatino">
+            <Object class="java.awt.Color">160,0,160</Object>
+        </pref>
+    </prefGroup>
+    <pref key="MultiTierViewer.ActiveTierName">
+        <String>SZC-Chatino</String>
+    </pref>
+    <pref key="LayoutManager.CurrentMode">
+        <Int>1</Int>
+    </pref>
+</preferences>

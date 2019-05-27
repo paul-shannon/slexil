@@ -45,7 +45,7 @@
 }
 
 .tierMenuPulldown {
-	background-colour: blue;
+	width: 160px;
 }
 
 .allDivs {
@@ -211,4 +211,17 @@ summary:focus {
 	color: red;
 	padding-right: 50px;
 	float: right;
+}
+
+.warningOff {
+	display: none;
+}
+
+.warningOn {
+	display: inline-block;
+	width: 450px;
+	height: 40px;
+	color: red;
+	margin-left: 15px;
+	margin-top: 9px;
 }
