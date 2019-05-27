@@ -140,56 +140,44 @@ function allAudioIds()
 
 } // allAudioIds
 //----------------------------------------------------------------------------------------------------
-async function playX_working(id)
-{
-  return new Promise(function(resolve, reject){
-    var audio = document.getElementById(id)
-    audio.addEventListener('ended', resolve);
-    audio.play();
-    });
-
-}
-//----------------------------------------------------------------------------------------------------
+// when the sound is complete, resolve is called resolve is a function provided by the Promise api,
+// indicating the successful completion of the promised activity await pauses until the Promise resolves
 async function playOne(id)
 {
    promiseContent = function(resolve, reject){
      var audio = document.getElementById(id);
-        // when the sound is complete, resolve is called
-        // resolve is a function provided by the Promise api, indicating
-        // the successful completion of the promised activity
-        // await pauses until the Promise resolves
      audio.addEventListener('ended', resolve);
      audio.play();
      } // promiseContent
 
    return(new Promise(promiseContent));
-   } // playOne
+
+} // playOne
 //----------------------------------------------------------------------------------------------------
+// The await operator pauses for the completion of a Promise. It can only be used inside an async function.
 async function playAll(audioElementIds)
 {
-  var ids = allAudioIds()
-
-  for(i=0; i< ids.length; i++){
-      // The await operator pauses for the completion of a Promise.
-      // It can only be used inside an async function.
-    if(!globalVariable_continuePlaying) break;
-    await playOne(ids[i])
+  for(i=0; i< audioElementIds.length; i++){
+    if(!globalVariable_continuePlaying)
+       break;
+    await playOne(audioElementIds[i])
     } // for i
 
 } // playAll
 //----------------------------------------------------------------------------------------------------
-globalVariable_continuePlaying = false
-
+globalVariable_continuePlaying = false;
+//----------------------------------------------------------------------------------------------------
 function startSequentialPlayback()
 {
   globalVariable_continuePlaying=true;
-  playAll(['a1', 'a2', 'a3', 'a4']);
+  var ids = allAudioIds()
+  playAll(ids)
 
 } // startSequentialPlayback
 //----------------------------------------------------------------------------------------------------
 function stopSequentialPlayback()
 {
-  globalVariable_continuePlaying=false
+  globalVariable_continuePlaying=false;
 
 } // stopSequentialPlayback
 //----------------------------------------------------------------------------------------------------
