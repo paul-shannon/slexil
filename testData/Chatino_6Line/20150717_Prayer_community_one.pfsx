@@ -43,13 +43,13 @@
         <Object class="java.awt.Point">1235,80</Object>
     </pref>
     <pref key="SelectionBeginTime">
-        <Long>3860</Long>
+        <Long>0</Long>
     </pref>
     <pref key="LayoutManager.CurrentMode">
         <Int>1</Int>
     </pref>
     <pref key="MediaTime">
-        <Long>3860</Long>
+        <Long>2640</Long>
     </pref>
     <pref key="FrameSize">
         <Object class="java.awt.Dimension">1247,897</Object>
@@ -104,10 +104,10 @@
         <Int>201</Int>
     </pref>
     <pref key="TimeScaleBeginTime">
-        <Long>-40</Long>
+        <Long>60</Long>
     </pref>
     <prefList key="MultiTierViewer.HiddenTiers"/>
     <pref key="SelectionEndTime">
-        <Long>3870</Long>
+        <Long>1911</Long>
     </pref>
 </preferences>
