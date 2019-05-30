@@ -11,6 +11,7 @@ from ijalLine import *
 import importlib
 pd.set_option('display.width', 1000)
 import pdb
+from decimal import Decimal
 #----------------------------------------------------------------------------------------------------
 # -*- coding: utf-8 -*-
 #------------------------------------------------------------------------------------------------------------------------
@@ -25,11 +26,13 @@ class Text:
    lineCount = 0
    quiet = True
 
-   def __init__(self, xmlFilename, audioPath, grammaticalTermsFile, tierGuideFile, quiet=True):
+   def __init__(self, xmlFilename, soundFileName, grammaticalTermsFile, tierGuideFile, startStopTable, quiet=True):
      self.xmlFilename = xmlFilename
-     self.audioPath = audioPath
+     self.soundFileName = soundFileName
+     self.audioPath = "audio"
      self.grammaticalTermsFile = grammaticalTermsFile
      self.tierGuideFile = tierGuideFile
+     self.startStopTable = self.makeStartStopTable(startStopTable)
      self.validInputs()
      self.quiet = quiet
      self.xmlDoc = etree.parse(self.xmlFilename)
@@ -75,7 +78,25 @@ class Text:
      return(tbl)
 
 
-     return(tierIDs)
+#      return(tierIDs)
+
+   def makeStartStopTable(self, startStopTable):
+     annotations = startStopTable.split('\n')
+     startStopTimes = "window.annotations=["
+     for i,annotation in enumerate(annotations):
+          if i == 0:
+               continue
+          elif len(annotation) == 0:
+               continue
+          values = annotation.split(',')
+          id = values[0]
+          #start = int(values[1])/1000
+          start = values[1]
+          end = values[2]
+          entry = "{ 'id' : '%s', 'start' : '%s', 'end' : '%s'}," %(id,start,end)
+          startStopTimes += entry
+     startStopTimes =startStopTimes[:-1] + "]"
+     return(startStopTimes)
 
    def validInputs(self):
      try:
@@ -121,10 +142,18 @@ class Text:
       return(css)
 
    def getJavascript(self):
-      jsFilename = os.path.join(os.path.split(os.path.abspath(__file__))[0], "ijalUtils.js")
-      assert(os.path.exists(jsFilename))
-      jsSource = "<script>\n%s</script>" % open(jsFilename).read()
+#       jsFilename = os.path.join(os.path.split(os.path.abspath(__file__))[0], "ijalUtils.js")
+#       assert(os.path.exists(jsFilename))
+#       jsSource = "<script>\n%s</script>" % open(jsFilename).read()
+      jsSource = '<script src="ijalUtils.js"></script>\n'
+      jsSource += '<script type="text/javascript">%s</script>\n' %self.startStopTable
+#      jsSource += '<p>Playback time: <span id="demo"></span></p>'
       return(jsSource)
+
+   def getPlayer(self):
+      soundFile = os.path.join(self.audioPath,os.path.basename(self.soundFileName))
+      playerDiv = '<audio class="player" id="audioplayer" src="%s" controls></audio></audio>' %soundFile
+      return playerDiv
 
    def toHTML(self, lineNumber=None):
 
@@ -140,20 +169,20 @@ class Text:
         with htmlDoc.tag('head'):
             htmlDoc.asis('<meta charset="UTF-8">')
             htmlDoc.asis(self.getCSS())
-            htmlDoc.asis(self.getJavascript())
             with htmlDoc.tag('body'):
                 for i in lineNumbers:
                     if(not self.quiet):
                        print("line %d/%d" % (i, self.lineCount))
                     line = IjalLine(self.xmlDoc, i, self.tierGuide, self.grammaticalTerms)
                     line.parse()
-                    with htmlDoc.tag("div",  klass="line-wrapper"):
+                    with htmlDoc.tag("div",  klass="line-wrapper", id=i+1):
                         tbl = line.getTable()
                         lineID = tbl.ix[0]['ANNOTATION_ID']
                         with htmlDoc.tag("div", klass="line-sidebar"):
                             line.htmlLeadIn(htmlDoc, self.audioPath, )
                         line.toHTML(htmlDoc)
-
+                htmlDoc.asis(self.getPlayer())
+                htmlDoc.asis(self.getJavascript())
      self.htmlDoc = htmlDoc
      self.htmlText = htmlDoc.getvalue()
      return(self.htmlText)

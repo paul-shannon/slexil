@@ -1,0 +1,1 @@
+• incorporate jquery into the web app and text.py

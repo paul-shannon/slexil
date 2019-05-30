@@ -23,8 +23,34 @@ def runTests(display=False):
 #     test_Caterpillar(display)
 #     test_Lazy(display)
 #     test_Imp(display)
-    test_Prayer(True)
+#     test_Prayer(True)
+    test_Inferno(True)
     
+#----------------------------------------------------------------------------------------------------
+def test_Inferno(display):
+
+    print("--- test_Inferno")
+
+    with open("../explorations/playAudioInSequence/Inferno/startStopTimes.txt","r") as tf:
+    	times = tf.read()
+    text = Text("../explorations/playAudioInSequence/Inferno/inferno-threeLines.eaf",
+                "../explorations/playAudioInSequence/Inferno/Audio/inferno-threeLines.wav",
+                "../explorations/playAudioInSequence/Inferno/abbreviations.txt",
+                "../explorations/playAudioInSequence/Inferno/tierGuide.yaml",
+                times)
+     
+    #IjalLine.getTable(1)
+
+    htmlText = text.toHTML()
+    if(display):
+       filename = "../explorations/playAudioInSequence/Inferno/inferno-threeLines.html"
+       f = open(filename, "w")
+       f.write(indent(htmlText))
+       f.close()
+       os.system("open %s" % filename)
+
+
+
 #----------------------------------------------------------------------------------------------------
 def test_MonkeyAndThunder(display):
 

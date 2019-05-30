@@ -27,8 +27,6 @@ class IjalLine:
      self.doc = doc
      self.lineNumber = lineNumber
      self.tierGuide = tierGuide
-#      this call to getGrammaticalTerms should happen in text.py
-#      self.grammaticalTerms = self.getGrammaticalTerms(grammaticalTerms)
      self.grammaticalTerms = grammaticalTerms
      self.rootElement = self.doc.findall("TIER/ANNOTATION/ALIGNABLE_ANNOTATION")[lineNumber]
      self.allElements = findChildren(self.doc, self.rootElement)
@@ -36,10 +34,6 @@ class IjalLine:
      self.tierCount = self.tblRaw.shape[0]
 
    def parse(self):
-#      try:
-#          assert(self.tierCount >= 2)
-#      except AssertionError:
-#          raise EmptyTiersError(self.lineNumber)
      if not self.tierCount >=2:
           raise EmptyTiersError(self.lineNumber)  
      self.tbl = standardizeTable(self.tblRaw, self.tierGuide)
@@ -73,8 +67,8 @@ class IjalLine:
    def getTable(self):
      return(self.tbl)
 
-   def getSpeakerImage(self):
-      return("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9gIBBQ7IwhRfZIAAALJSURBVEjH7ZbNaxRBEMV/tbM7ySoaEoUgETQEhXgIKoknL+IlIZAgBi8q5qCgHj0ogiK5KCqCYEQQ9Cx40T/As5Cjgn+CQcQvxIibnZQHX8dmsjNR1iCIDU1/zHS/eq+rqtvcnXaKmVWBzN3dzDrc/ZvmDai4e9ZqXYU2i7s3/af1mUATzS0VrWsb2Mxq9qMk7t7UdCqjCuW0dqUuMMYkfbJmUguoEiSOQA3wtZS66u5LkjaL5E3D/Jo5lwzoiZhXy9j+Sal7gVFgSOCZuzdWBY4srQfnMLM0/haBJGZ22symItZvgLfAGWA62jcpk2pFVeDH45rODOA48A6YEEAvMBX9ex6YabVvXCvyPnJtEtgqJBbdvWFmJ4CHQI/O0AEDBsxs1sxG3P0G0DSzibBnKWMgybHs0KYVjaeBz8pGDTHeAGzS993APaAP2ArcDSq1qtUQd+6e6UwcWA+cFXjDzLYBJyVtUKQBbAEum9mcu98xs6cy8CrwEpgEHhc6ZcQqUdsPvI7kbAIL6n9Sf1xr68AMMKbxLSlxGLhWeMZiGwI9xN6H3DgALAAb1U+19ivwBNiv5PEF2A7MA12F4ZRzgNDvBOIkEEKqLokBsmhtt4wKEfBeF0W9EFh5Nc3Faw34KMDAflGGpdF/qZmNAceAR2bWLb+YBzYDr34rjnXOw8Cg2gPAnO7bcM+OA3uBC8Cg1lwHjsrg+0Bfyf4rkkVdMltufg/wXMwdmAwOKSUuAec0PghcKQun5UyVNyBkLLVVtQPACzE+JMBdwG3glAzeCTwA+ssyF7mNTTWM06gfQm0IeAYc0b+dwDr1R4GbwL7gD6syjphbPpOJSTU6ihFgOPreBVwEZoEdq+XpZeCIbRLJm7QwoCd3cYR/OoGh/BGVVdPiLHqy1Nx9MX4vhbmi91X+YadXSbP0Dl+Lx96vlAp/qfwH/veBvwOfu2maZzzx2gAAAABJRU5ErkJggg==")
+#    def getSpeakerImage(self):
+#       return("speaker.png")
 
    #----------------------------------------------------------------------------------------------------
    def show(self):
@@ -121,27 +115,11 @@ class IjalLine:
      if(self.morphemeRows == []):
         return([])
 
-#      try:
-#      	assert(self.morphemePacking in ["tiers", "tabs", "No",False])
-#      except AssertionError as e:
-#      	raise Exception(self.morphemePacking) from e
-
-#      if(self.morphemePacking == "No") or not(self.morphemePacking):
      rawMorphemeList = self.tbl["TEXT"].iloc[self.morphemeRows].tolist()
      rawMorphemes = ''.join(rawMorphemeList)
      if "\t" in rawMorphemes:
           rawMorphemeText = self.tbl["TEXT"].iloc[self.morphemeRows].tolist()[0]
           rawMorphemeList = rawMorphemeText.split('\t')
-     		
-#      if(self.morphemePacking == "tiers"):
-#         rawMorphemeList = self.tbl["TEXT"].iloc[self.morphemeRows].tolist()
-#         #return(self.tbl["TEXT"].iloc[self.morphemeRows].tolist())
-# 
-#      if(self.morphemePacking == "tabs"):
-#         # pdb.set_trace()
-#         rawMorphemeText = self.tbl["TEXT"].iloc[self.morphemeRows].tolist()[0]
-#         rawMorphemeList = rawMorphemeText.split('\t')
-#         # pdb.set_trace()
         
      morphemes = replaceHyphensWithNDashes(rawMorphemeList)
      return(morphemes)
@@ -152,21 +130,11 @@ class IjalLine:
      if(self.morphemeGlossRows == []):
         return([])
 
-#      if(self.morphemePacking == "No") or not(self.morphemePacking):
      rawMorphemeGlossList = self.tbl["TEXT"].iloc[self.morphemeGlossRows].tolist()
      rawMorphemeGlosses = ''.join(rawMorphemeGlossList)
      if "\t" in rawMorphemeGlosses:
           rawMorphemeGlossText = self.tbl["TEXT"].iloc[self.morphemeGlossRows].tolist()[0]
           rawMorphemeGlossList = rawMorphemeGlossText.split('\t')
-	 
-#      if(self.morphemePacking == "tiers"):
-#         rawMorphemeGlossList = self.tbl["TEXT"].iloc[self.morphemeGlossRows].tolist()
-#         #return(self.tbl["TEXT"].iloc[self.morphemeGlossRows].tolist())
-# 
-#      if(self.morphemePacking == "tabs"):
-#         rawMorphemeGlossText = self.tbl["TEXT"].iloc[self.morphemeGlossRows].tolist()[0]
-#         rawMorphemeGlossList = rawMorphemeGlossText.split('\t')
-#         # pdb.set_trace()
         
      morphemeGlosses = replaceHyphensWithNDashes(rawMorphemeGlossList)
      return(morphemeGlosses)
@@ -181,7 +149,6 @@ class IjalLine:
       try:
          if terms[-1] == '':
             terms = terms[:-1]
-         #newTerms = _makeAbbreviationListLowerCase(terms)
          return newTerms
       except IndexError:
          return
@@ -245,9 +212,10 @@ class IjalLine:
       lineID = self.rootID
       audioTag = '<audio id="%s"><source src="%s/%s.wav"/></audio>' % (lineID, audioDirectory, lineID)
       htmlDoc.asis(audioTag)
-      imageURL = "https://www.americanlinguistics.org/wp-content/uploads/speaker.png"
+#       imageURL = "https://www.americanlinguistics.org/wp-content/uploads/speaker.png"
       onError = "this.style.display=\'none\'"
-      buttonTag = '<button onclick="playSample(\'%s\')"><img src="%s"/></button>' % (lineID, self.getSpeakerImage())
+      buttonTag = '<button onclick="playSample(\'%s\')">🔈</button>' % (lineID)
+      #buttonTag = '<button onclick="playSample(\'%s\')"><img src="%s"/></button>' % (lineID, self.getSpeakerImage())
       htmlDoc.asis(buttonTag)
 
 
@@ -413,33 +381,3 @@ def replaceHyphensWithNDashes(list):
         text = text.replace('-','–')
         newList.append(text)
      return(newList)
-#---------------------------------------------------------
-# def _makeAbbreviationListLowerCase(terms):
-#    ''' ensures grammatical terms in user list are lower case '''
-#    exceptions  = ["A","S","O","P"]
-#    longerList = [] 
-#    newTerms = []
-#    '''first run through needs to deal with super/subscripts'''
-#    for term in terms:
-#       if "<sub>" in term:
-#          term = term.replace("<sub>","$$")
-#          term = term.replace("</sub>","$$")
-#          sublist = term.split("$$")
-#          longerList += sublist
-#       if "<sup>" in term:
-#          term = term.replace("<sup>","")
-#          term = term.replace("</sup>","")
-#       if not term in longerList:
-#       	 longerList.append(term)
-#    for term in longerList:    
-#       if term in exceptions:
-#          newTerms.append(term)
-#       elif term.isupper():
-#          newTerm = term.lower()
-#          newTerms.append(newTerm)
-#       else:
-#          newTerms.append(term)
-#    print(newTerms)
-#    return(newTerms)
-# 
-

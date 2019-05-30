@@ -45,6 +45,8 @@ class AudioExtractor:
 
     def extract(self, quiet=True):
        tbl = self.determineStartAndEndTimes()
+       self.startStopTable = tbl.to_csv(index=False)
+       print(self.startStopTable)
        rate, mtx = read(self.audioFilename)
        mtx.shape
        mtx.shape[0]/rate   # 5812410, 2
