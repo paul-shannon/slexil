@@ -26,7 +26,8 @@ class AudioExtractor:
        audioTiers = xmlDoc.findall("TIER/ANNOTATION/ALIGNABLE_ANNOTATION")
        timeIDs = [x.attrib["TIME_SLOT_ID"] for x in timeSlotElements]
        times = [int(x.attrib["TIME_VALUE"]) for x in timeSlotElements]
-       audioIDs = [x.attrib["ANNOTATION_ID"] for x in audioTiers]
+#        audioIDs = [x.attrib["ANNOTATION_ID"] for x in audioTiers]
+       audioIDs = list(range(1, len(audioTiers)+1))
        tsRef1 = [x.attrib["TIME_SLOT_REF1"] for x in audioTiers]
        tsRef2 = [x.attrib["TIME_SLOT_REF2"] for x in audioTiers]
        d = {"id": audioIDs, "t1": tsRef1, "t2": tsRef2}
@@ -41,6 +42,7 @@ class AudioExtractor:
        tbl.columns = ["lineID", "t1", "start", "t2", "end"]
        list(tbl.columns)
        tbl = tbl[["lineID", "start", "end", "t1", "t2"]]
+#        tbl = tbl.sort('start')
        return(tbl)
 
     def extract(self, quiet=True):
@@ -60,7 +62,7 @@ class AudioExtractor:
            startIndex = int(round(startSeconds * rate))
            endIndex   = int(round(endSeconds * rate))
            phrase = mtx[startIndex:endIndex,]
-           sampleFilename = "%s/%s.wav" % (self.targetDirectory, phraseID)
+           sampleFilename = "%s/a%s.wav" % (self.targetDirectory, phraseID)
            if(not quiet):
               print("--- %d) writing %d samples to %s" % (i, phrase.shape[0], sampleFilename))
            write(sampleFilename, rate, phrase)

@@ -23,10 +23,11 @@ class IjalLine:
    soundFile = None
    grammaticalTerms = None
 
-   def __init__(self, doc, lineNumber, tierGuide, grammaticalTerms=[]):
+   def __init__(self, doc, lineNumber, tierGuide, audioData, grammaticalTerms=[]):
      self.doc = doc
      self.lineNumber = lineNumber
      self.tierGuide = tierGuide
+     self.audioData = audioData
      self.grammaticalTerms = grammaticalTerms
      self.rootElement = self.doc.findall("TIER/ANNOTATION/ALIGNABLE_ANNOTATION")[lineNumber]
      self.allElements = findChildren(self.doc, self.rootElement)
@@ -59,7 +60,7 @@ class IjalLine:
      self.morphemes = self.extractMorphemes()
      self.morphemeGlosses = self.extractMorphemeGlosses()
      self.calculateMorphemeSpacing()
-     self.rootID = self.tbl.ix[self.speechRow, "ANNOTATION_ID"]
+     self.rootID = self.audioData.split(',')[0]#self.tbl.ix[self.speechRow, "ANNOTATION_ID"]
 
    def getTierCount(self):
        return(self.getTable().shape[0])
@@ -210,11 +211,11 @@ class IjalLine:
       text = "%d)" % oneBasedLineNumber
       htmlDoc.text(text)
       lineID = self.rootID
-      audioTag = '<audio id="%s"><source src="%s/%s.wav"/></audio>' % (lineID, audioDirectory, lineID)
+      audioTag = '<audio id="a%s"><source src="%s/a%s.wav"/></audio>' % (lineID, audioDirectory, lineID)
       htmlDoc.asis(audioTag)
 #       imageURL = "https://www.americanlinguistics.org/wp-content/uploads/speaker.png"
       onError = "this.style.display=\'none\'"
-      buttonTag = '<button onclick="playSample(\'%s\')">🔈</button>' % (lineID)
+      buttonTag = '<button onclick="playSample(\'a%s\')">🔈</button>' % (lineID)
       #buttonTag = '<button onclick="playSample(\'%s\')"><img src="%s"/></button>' % (lineID, self.getSpeakerImage())
       htmlDoc.asis(buttonTag)
 

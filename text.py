@@ -82,6 +82,7 @@ class Text:
 
    def makeStartStopTable(self, startStopTable):
      annotations = startStopTable.split('\n')
+     self.audioTable = []
      startStopTimes = "window.annotations=["
      for i,annotation in enumerate(annotations):
           if i == 0:
@@ -95,6 +96,7 @@ class Text:
           end = values[2]
           entry = "{ 'id' : '%s', 'start' : '%s', 'end' : '%s'}," %(id,start,end)
           startStopTimes += entry
+          self.audioTable.append(annotation)
      startStopTimes =startStopTimes[:-1] + "]"
      return(startStopTimes)
 
@@ -121,7 +123,9 @@ class Text:
      return(True)
 
    def getLineAsTable(self, lineNumber):
-     x = IjalLine(self.xmlDoc, lineNumber, self.tierGuide)
+     audioData = self.audioTable.split('\n')[int(lineNumber)]
+     print("audio data: %s" %audioData)
+     x = IjalLine(self.xmlDoc, lineNumber, self.tierGuide, audioData)
      x.parse()
      return(x.getTable())
 
@@ -173,7 +177,7 @@ class Text:
                 for i in lineNumbers:
                     if(not self.quiet):
                        print("line %d/%d" % (i, self.lineCount))
-                    line = IjalLine(self.xmlDoc, i, self.tierGuide, self.grammaticalTerms)
+                    line = IjalLine(self.xmlDoc, i, self.tierGuide,self.audioTable[i], self.grammaticalTerms)
                     line.parse()
                     with htmlDoc.tag("div",  klass="line-wrapper", id=i+1):
                         tbl = line.getTable()

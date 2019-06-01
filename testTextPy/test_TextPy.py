@@ -24,7 +24,8 @@ def runTests(display=False):
 #     test_Lazy(display)
 #     test_Imp(display)
 #     test_Prayer(True)
-    test_Inferno(True)
+#     test_Inferno(True)
+     test_MonkeyAndThunder(True)
     
 #----------------------------------------------------------------------------------------------------
 def test_Inferno(display):
@@ -55,17 +56,19 @@ def test_Inferno(display):
 def test_MonkeyAndThunder(display):
 
     print("--- test_MonkeyAndThunder")
-
-    text = Text("../testTextPyData/AYA1_MonkeyandThunder/AYA1_MonkeyandThunder.eaf",
-                "../testTextPyData/AYA1_MonkeyandThunder/Audio",
-                "../testTextPyData/AYA1_MonkeyandThunder/abbreviations.txt",
-                "../testTextPyData/AYA1_MonkeyandThunder/tierGuide.yaml")
+    with open("../explorations/playAudioInSequence/Monkey/startStopTimes.txt","r") as tf:
+    	times = tf.read()
+    text = Text("../explorations/playAudioInSequence/Monkey/AYA1_MonkeyandThunder.eaf",
+                "../explorations/playAudioInSequence/Monkey/Audio/AYA1_MonkeyandThunder-1.wav",
+                "../explorations/playAudioInSequence/Monkey/abbreviations.txt",
+                "../explorations/playAudioInSequence/Monkey/tierGuide.yaml",
+                times)
      
     #IjalLine.getTable(1)
 
     htmlText = text.toHTML()
     if(display):
-       filename = "monkeyAndThunderTest.html"
+       filename = "../explorations/playAudioInSequence/Monkey/monkeyAndThunderTest.html"
        f = open(filename, "w")
        f.write(indent(htmlText))
        f.close()
