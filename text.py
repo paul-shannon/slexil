@@ -77,9 +77,6 @@ class Text:
      self.tierTable = tbl
      return(tbl)
 
-
-#      return(tierIDs)
-
    def makeStartStopTable(self, startStopTable):
      annotations = startStopTable.split('\n')
      self.audioTable = []
@@ -109,10 +106,12 @@ class Text:
           assert(os.path.isfile(self.tierGuideFile))
      except AssertionError as e:
           raise Exception(tierGuideFile)from e
-        # the audioPath points to a relative directory "./audio" in which wav files are foudn
+        # the audioPath points to a relative directory "./audio" in which wav files are found
         # but without a handle on the project directory, we cannot easily test this
         # skip it for now
      if(not self.grammaticalTermsFile == None):
+          print("The file coming from webapp is: %s" % self.grammaticalTermsFile)
+          #grammaticalTermsFile = os.path.join(self.projectDirectory,grammaticalTermsFile)
           try:
                assert(os.path.isfile(self.grammaticalTermsFile))
           except AssertionError as e:
@@ -138,20 +137,20 @@ class Text:
          print("%d: %d tiers" % (i, tbl.shape[0]))
 
    def getCSS(self):
-      cssFilename = "ijal.css" #os.path.join(os.path.split(os.path.abspath(__file__))[0], "ijal.css")
-      assert(os.path.exists(cssFilename))
+      cssFilename = "ijal.css"
+      #assert(os.path.exists(cssFilename))
       #print(cssFilename)
       css = '<link rel = "stylesheet" type = "text/css" href = "%s" />' % cssFilename
 #       css = "<style>\n%s</style>" % open(cssFilename).read()
       return(css)
 
+   def getJQuery(self):
+      scriptTag = '<script src="jquery-3.3.1.min.js"></script>\n'
+      return(scriptTag)
+
    def getJavascript(self):
-#       jsFilename = os.path.join(os.path.split(os.path.abspath(__file__))[0], "ijalUtils.js")
-#       assert(os.path.exists(jsFilename))
-#       jsSource = "<script>\n%s</script>" % open(jsFilename).read()
       jsSource = '<script src="ijalUtils.js"></script>\n'
       jsSource += '<script type="text/javascript">%s</script>\n' %self.startStopTable
-#      jsSource += '<p>Playback time: <span id="demo"></span></p>'
       return(jsSource)
 
    def getPlayer(self):
@@ -172,6 +171,7 @@ class Text:
      with htmlDoc.tag('html', lang="en"):
         with htmlDoc.tag('head'):
             htmlDoc.asis('<meta charset="UTF-8">')
+            htmlDoc.asis(self.getJQuery())
             htmlDoc.asis(self.getCSS())
             with htmlDoc.tag('body'):
                 for i in lineNumbers:

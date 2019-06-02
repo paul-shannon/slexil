@@ -386,7 +386,7 @@ def on_eafUpload(contents, name, date, projectDirectory):
          print("eaf file size: %d" % fileSize)
          schema = xmlschema.XMLSchema('http://www.mpi.nl/tools/elan/EAFv3.0.xsd')
          validXML = schema.is_valid(filename)
-         eaf_validationMessage = "Uploaded: %s (%d bytes), valid XML" % (filename, fileSize)
+         eaf_validationMessage = "File %s (%d bytes) is valid XML." % (name, fileSize)
          if(not validXML):
             try:
                schema.validate(filename)
@@ -426,11 +426,14 @@ def on_soundUpload(contents, name, date, projectDirectory):
           errorMessage = str(e)
        print("sound file size: %d, rate: %d" % (fileSize, rate))
        if validSound:
-       	  sound_validationMessage = "Uploaded file: %s (%d bytes)" % (filename, fileSize)
+       	  sound_validationMessage = "Sound file: %s (%d bytes)" % (name, fileSize)
        	  newButtonState = 0
        	  return sound_validationMessage, filename, newButtonState
        else:
-       	  sound_validationMessage = "ERROR: %s [File: %s (%d bytes)]" % (errorMessage, filename, fileSize)
+       	  if "Unsupported bit depth: the wav file has 24-bit data" in errorMessage:
+               sound_validationMessage = "File %s (%d byes) has 24-bit data, must be minimum 32-bit."  % (name, fileSize)
+       	  else:
+               sound_validationMessage = "ERROR: %s [File: %s (%d bytes)]" % (errorMessage, name, fileSize)
        	  newButtonState = 1
        	  return sound_validationMessage, filename, newButtonState
 
@@ -479,7 +482,7 @@ def on_grammaticalTermsUpload(contents, name, date, projectDirectory):
 	with open(filename, "w") as fp:
 		fp.write(s)
 		fp.close()
-	return("Uploaded abbreviations file: %s" % (filename))
+	return("Abbreviations file: %s" % (name))
 
 #----------------------------------------------------------------------------------------------------
 @app.callback(
@@ -504,6 +507,7 @@ def on_extractSoundPhrases(n_clicks, soundFileName, eafFileName, projectTitle, p
     if eafFileName is None:
         return("")
     soundFileName = soundFileName
+    soundFile = os.path.basename(soundFileName)
     eafFileName = eafFileName
     eafFileFullPath = eafFileName # os.path.join(UPLOAD_DIRECTORY, eafFileName)
     soundFileFullPath = soundFileName # os.path.join(UPLOAD_DIRECTORY, soundFileName)
@@ -512,7 +516,7 @@ def on_extractSoundPhrases(n_clicks, soundFileName, eafFileName, projectTitle, p
     phraseFileCount,eatable = extractPhrases(soundFileFullPath, eafFileFullPath, projectDirectory)
     print("after extractPhrases, enable next button in sequence (upload abbreviations)")
     newButtonState = 'fakebuttonEnabled'
-    return("%s: %d phrases" % (projectDirectory, phraseFileCount),newButtonState,0,0,eatable)
+    return("File %s parsed into %d phrases in audio directory." % (soundFile, phraseFileCount),newButtonState,0,0,eatable)
 
 #----------------------------------------------------------------------------------------------------
 @app.callback(
@@ -878,7 +882,7 @@ def createWebPage(eafFileName, projectDirectory, grammaticalTermsFileName, tierG
 
     text = Text(eafFileName,
                 soundFileName,
-                grammaticalTermsFileName,
+                os.path.join(projectDirectory,grammaticalTermsFileName),
                 tierGuideFileName,
                 startStopTable)
 
@@ -904,12 +908,15 @@ def createZipFile(projectDir,projectTitle):
    #filesToSave includes ijal.css, ijalUtils.js
    CSSfile = os.path.join(currentDirectoryOnEntry,"ijal.css")
    scriptFile = os.path.join(currentDirectoryOnEntry,"ijalUtils.js")
+   jqueryFile = os.path.join(currentDirectoryOnEntry,"jquery-3.3.1.min.js")
 #    iconFile = os.path.join(currentDirectoryOnEntry,"speaker.png")
    copy(CSSfile, os.getcwd())
    copy(scriptFile, os.getcwd())
+   copy(jqueryFile, os.getcwd())
 #    copy(iconFile, os.getcwd())
    filesToSave.append("ijal.css")
    filesToSave.append("ijalUtils.js")
+   filesToSave.append("jquery-3.3.1.min.js")
 #    filesToSave.append("speaker.png")
 
    for file in filesToSave:

@@ -1,1 +1,1 @@
-• incorporate jquery into the web app and text.py
+• go through validInputs in text.py and create custom errors for missing elements, add jquery to assertions (?? but these would be down to webapp, nothing user can do, system would be failing generally)
