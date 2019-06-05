@@ -1,5 +1,6 @@
 import csv
-from xml.etree.ElementTree import Element, SubElement, Comment, tostring
+from xml.etree.ElementTree import Element, SubElement, Comment, tostring, dump
+from xml.dom import minidom
 import datetime
 import xml.etree as etree
 
@@ -40,7 +41,5 @@ with open('podcasts.csv', 'rt') as f:
                               'htmlUrl':html_url,
                               })
 
-# print(prettify(root))
-# doesn't work
-print(etree.tostring(root, pretty_print=True))
-
+xmlstr = minidom.parseString(etree.ElementTree.tostring(root)).toprettyxml(indent = "   ")
+print (xmlstr)
