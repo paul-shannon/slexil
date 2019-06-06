@@ -7,6 +7,7 @@ import os
 import pdb
 from ijalLine import *
 from errors import *
+import logging
 #----------------------------------------------------------------------------------------------------
 pd.set_option('display.width', 1000)
 #----------------------------------------------------------------------------------------------------
@@ -16,7 +17,7 @@ def runTests(display=False):
 #     test_MonkeyAndThunderNoPacking(display)
 #     test_Fishwoman(display)
 #     test_FishwomanNoPacking(display)
-#     test_Merchant(display)
+    test_Merchant(display)
 #     test_Jaguar(display)
 #     test_Riverwoman(display)
 #     test_SanMiguel(display)
@@ -25,8 +26,31 @@ def runTests(display=False):
 #     test_Imp(display)
 #     test_Prayer(True)
 #     test_Inferno(True)
-     test_MonkeyAndThunder(True)
+#     test_MonkeyAndThunder(True)
+#     test_Aymara(True)
+
     
+#----------------------------------------------------------------------------------------------------
+def test_Aymara(display):
+
+    print("--- test_Aymara")
+    
+#     projectDirectory = "../testTextPyData/Aymara"
+#     logging.basicConfig(filename=os.path.join(projectDirectory,"ERRORS.log"), level = logging.WARNING,format="%(levelname)s %(message)s")
+    with open("../testTextPyData/Aymara/startStopTimes.txt","r") as tf:
+    	times = tf.read()
+    text = Text("../testTextPyData/Aymara/Aymara-final.eaf", "../testTextPyData/Aymara/Audio/Final-Edwin-historia-del-oso_no_anotado__ch1.wav","../testTextPyData/Aymara/List of abbreviations.txt", "../testTextPyData/Aymara/tierGuide.yaml", times, "../testTextPyData/Aymara")
+     
+    #IjalLine.getTable(1)
+
+    htmlText = text.toHTML()
+    if(display):
+       filename = "../testTextPyData/Aymara/Aymara.html"
+       f = open(filename, "w")
+       f.write(indent(htmlText))
+       f.close()
+       os.system("open %s" % filename)
+
 #----------------------------------------------------------------------------------------------------
 def test_Inferno(display):
 
@@ -121,17 +145,20 @@ def test_MonkeyAndThunderNoPacking(display):
 def test_Fishwoman(display):
 
     print("--- test_Fishwoman")
-
+    with open("../testTextPyData/Aymara/startStopTimes.txt","r") as tf:
+    	times = tf.read()
     text = Text("../testTextPyData/2_AYA2_FishWoman/2_AYA2_FishWoman.eaf",
-                "../testTextPyData/2_AYA2_FishWoman/Audio",
+                "../testTextPyData/2_AYA2_FishWoman/2_AYA2_FishWoman",
                 "../testTextPyData/2_AYA2_FishWoman/abbreviations.txt",
-                "../testTextPyData/2_AYA2_FishWoman/tierGuide.yaml")
+                "../testTextPyData/2_AYA2_FishWoman/tierGuide.yaml",
+                times,
+                "../testTextPyData/2_AYA2_FishWoman")
      
     #IjalLine.getTable(1)
 
     htmlText = text.toHTML()
     if(display):
-       filename = "test_Fishwoman.html"
+       filename = "../testTextPyData/2_AYA2_FishWoman/test_Fishwoman.html"
        f = open(filename, "w")
        f.write(indent(htmlText))
        f.close()
@@ -163,11 +190,14 @@ def test_FishwomanNoPacking(display):
 def test_Merchant(display):
 
     print("--- test_Merchant")
-
+    with open("../testTextPyData/JIT0006_ori/startStopTimes.txt","r") as tf:
+    	times = tf.read()
     text = Text("../testTextPyData/JIT0006_ori/JIT0006_ori.eaf",
-                "../testTextPyData/JIT0006_ori/Audio",
+                "../testTextPyData/JIT0006_ori/JIT0006.WAV",
                 "../testTextPyData/JIT0006_ori/abbreviations.txt",
-                "../testTextPyData/JIT0006_ori/tierGuide.yaml")
+                "../testTextPyData/JIT0006_ori/tierGuide.yaml",
+                times,
+                "../testTextPyData/JIT0006_ori")
      
     #IjalLine.getTable(1)
 

@@ -199,7 +199,15 @@ summary:focus {
 	display: inline-block;
 	grid-column: 2;
 }
-
+.uploadtextarea {
+	width: 575px;
+	height: 40px;
+	margin-left: 20px;
+	margin-right: 40px;
+	margin-bottom: 5px;
+	display: inline-block;
+	grid-column: 2;
+}
 .selectionBox {
 	display: grid;
 	grid-template-columns: 140px 500px;
@@ -224,4 +232,10 @@ summary:focus {
 	color: red;
 	margin-left: 15px;
 	margin-top: 9px;
+}
+
+.timewarning {
+	color: red;
+	padding-left: 30px;
+	#float: right;
 }

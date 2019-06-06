@@ -12,6 +12,7 @@ import importlib
 pd.set_option('display.width', 1000)
 import pdb
 from decimal import Decimal
+import logging
 #----------------------------------------------------------------------------------------------------
 # -*- coding: utf-8 -*-
 #------------------------------------------------------------------------------------------------------------------------
@@ -26,7 +27,7 @@ class Text:
    lineCount = 0
    quiet = True
 
-   def __init__(self, xmlFilename, soundFileName, grammaticalTermsFile, tierGuideFile, startStopTable, quiet=True):
+   def __init__(self, xmlFilename, soundFileName, grammaticalTermsFile, tierGuideFile, startStopTable, projectDirectory, quiet=True):
      self.xmlFilename = xmlFilename
      self.soundFileName = soundFileName
      self.audioPath = "audio"
@@ -39,7 +40,12 @@ class Text:
      self.lineCount = len(self.xmlDoc.findall("TIER/ANNOTATION/ALIGNABLE_ANNOTATION"))
      with open(tierGuideFile, 'r') as f:
         self.tierGuide = yaml.load(f)
-     self
+     #self
+     self.projectDirectory = projectDirectory
+     if os.path.isfile(os.path.join(projectDirectory,"ERRORS.log")):
+     	os.remove(os.path.join(projectDirectory,"ERRORS.log"))
+     logging.basicConfig(filename=os.path.join(projectDirectory,"ERRORS.log"),format="%(levelname)s %(message)s")
+     logging.getLogger().setLevel(logging.WARNING)
 
    #def discoverTiers(self):
    #  tmpDoc = etree.parse(self.xmlFilename)
@@ -110,8 +116,6 @@ class Text:
         # but without a handle on the project directory, we cannot easily test this
         # skip it for now
      if(not self.grammaticalTermsFile == None):
-          print("The file coming from webapp is: %s" % self.grammaticalTermsFile)
-          #grammaticalTermsFile = os.path.join(self.projectDirectory,grammaticalTermsFile)
           try:
                assert(os.path.isfile(self.grammaticalTermsFile))
           except AssertionError as e:

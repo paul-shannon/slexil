@@ -27,6 +27,7 @@ PROJECTS_DIRECTORY = "PROJECTS"
 # the webapp requires a PROJECTS_DIRECTORY in the current working directory.  this is
 #
 assert(os.path.exists(PROJECTS_DIRECTORY))
+
 #----------------------------------------------------------------------------------------------------
 from dash.dependencies import Input, Output, State
 import dash_core_components as dcc
@@ -54,8 +55,6 @@ def downloadZip(filename):
     return flask.send_file(path,
                            mimetype='application/zip',
                            as_attachment=True)
-
-
 
 #----------------------------------------------------------------------------------------------------
 # this route handles the download of zipped up assembled slexil projects
@@ -108,10 +107,11 @@ def create_eafUploaderTab():
    textArea = dcc.Textarea(id="eafUploadTextArea",
                            placeholder='xml validation results go here',
                            value="",
-                           className="textarea")
+                           className="uploadtextarea")
 
    children = [html.Div([create_eafUploader()]),
-               textArea
+               textArea,html.Div(""),
+               html.Div("This can take a minute or two for large texts.",className="timewarning")
                ]
 
    div = html.Div(children=children, id='eafUploaderDiv', className="selectionBox")
@@ -514,9 +514,10 @@ def on_extractSoundPhrases(n_clicks, soundFileName, eafFileName, projectTitle, p
     print("soundFileName: %s" % soundFileName)
     print("eafFileName: %s" % eafFileName)
     phraseFileCount,eatable = extractPhrases(soundFileFullPath, eafFileFullPath, projectDirectory)
+    print("start and stop times for extracted audio:\n %s" %eatable)
     print("after extractPhrases, enable next button in sequence (upload abbreviations)")
     newButtonState = 'fakebuttonEnabled'
-    return("File %s parsed into %d phrases in audio directory." % (soundFile, phraseFileCount),newButtonState,0,0,eatable)
+    return("File %s parsed into %d phrases in audio directory." %(soundFile, phraseFileCount),newButtonState,0,0,eatable)
 
 #----------------------------------------------------------------------------------------------------
 @app.callback(
@@ -537,7 +538,7 @@ def createTierMappingMenusCallback(eafFilename,oldchildren):
     Output('audioPhraseDirectory_hiddenStorage', 'children'),
     [Input('associateEAFAndSoundInfoTextArea', 'value')])
 def update_output(value):
-    print("=== callback triggered by assocateEAFAndSoundTextArea change: %s" % value)
+    print("=== callback triggered by associateEAFAndSoundTextArea change: %s" % value)
     phraseDirectory = value.split(":")[0]
     return(phraseDirectory)
 
@@ -549,7 +550,7 @@ def update_output(value):
     print("=== callback triggered by grammaticalTermsUploadTextArea change: %s" % value)
     if value != "":
         grammaticalTermsPath = value.split(":")[1]
-        grammaticalTermsFile = os.path.basename(grammaticalTermsPath)
+        grammaticalTermsFile = os.path.basename(grammaticalTermsPath).strip()
         return(grammaticalTermsFile)
     else:
         return ("")
@@ -603,7 +604,13 @@ def createWebPageCallback(n_clicks, soundFileName, eafFileName, projectDirectory
     file = open(absolutePath, "w")
     file.write(html)
     file.close()
-    #projectTitle="Inferno"
+    errorLog = os.path.abspath(os.path.join(projectDirectory, "ERRORS.log"))
+    if os.path.isfile(errorLog):
+        with open(errorLog) as elog:
+        	logContents = elog.read()
+        	if "WARNING" in logContents:
+        		return("wrote file",0,"Wrote file. Check error log for formatting issues.")
+    		
     createZipFile(projectDirectory,projectTitle)
     newButtonState = 0
     return("wrote file",newButtonState,"")
@@ -666,6 +673,7 @@ def update_output(projectTitle):
     print("   creating projectDirectory if needed: %s" % projectDirectory)
     if(not os.path.exists(projectDirectory)):
         os.mkdir(projectDirectory)
+    print("=== creating logger and setting destination for log file: %s" % projectDirectory)
     return(projectDirectory)
 
 #----------------------------------------------------------------------------------------------------
@@ -842,7 +850,7 @@ def saveTierGuide(projectDirectory, speechTier, transcription2Tier, morphemeTier
             "morphemeGloss": morphemeGlossTier,
             "translation": translationTier,
             "translation2": translation2Tier}
-
+	
     filename =  os.path.join(projectDirectory, "tierGuide.yaml")
 
     with open(filename, 'w') as outfile:
@@ -879,12 +887,15 @@ def createWebPage(eafFileName, projectDirectory, grammaticalTermsFileName, tierG
     print("audioDirectoryRelativePath: %s" % audioDirectoryRelativePath)
     print("grammaticalTermsFile: %s" % grammaticalTermsFileName)
     print("tierGuideFile: %s" % tierGuideFileName)
+    if grammaticalTermsFileName != None:
+    	grammaticalTermsFileName= os.path.join(projectDirectory,grammaticalTermsFileName)
 
     text = Text(eafFileName,
                 soundFileName,
-                os.path.join(projectDirectory,grammaticalTermsFileName),
+                grammaticalTermsFileName,
                 tierGuideFileName,
-                startStopTable)
+                startStopTable,
+                projectDirectory)
 
     return(text.toHTML())
 
@@ -918,6 +929,11 @@ def createZipFile(projectDir,projectTitle):
    filesToSave.append("ijalUtils.js")
    filesToSave.append("jquery-3.3.1.min.js")
 #    filesToSave.append("speaker.png")
+   if os.path.isfile("ERRORS.log"):
+      print("===  adding errors log to .zip file")
+      errorLog = ("ERRORS.log")
+      #copy(errorLog, os.getcwd())
+      filesToSave.append("ERRORS.log")
 
    for file in filesToSave:
       zipHandle.write(file)
@@ -931,4 +947,5 @@ def createZipFile(projectDir,projectTitle):
 server = app.server
 
 if __name__ == "__main__":
-    app.run_server(host='0.0.0.0', port=60041)
+   
+   app.run_server(host='0.0.0.0', port=60041)
