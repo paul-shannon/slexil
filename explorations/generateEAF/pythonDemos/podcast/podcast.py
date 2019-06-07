@@ -4,8 +4,6 @@ from xml.dom import minidom
 import datetime
 import xml.etree as etree
 
-#from ElementTree_pretty import prettify
-
 generated_on = str(datetime.datetime.now())
 
 # Configure one attribute with set()
@@ -42,4 +40,8 @@ with open('podcasts.csv', 'rt') as f:
                               })
 
 xmlstr = minidom.parseString(etree.ElementTree.tostring(root)).toprettyxml(indent = "   ")
-print (xmlstr)
+print(xmlstr)
+
+with open("podcast.xml", "w") as file:
+    file.write(xmlstr)
+
