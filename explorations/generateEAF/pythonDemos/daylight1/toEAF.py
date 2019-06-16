@@ -36,13 +36,16 @@ property.text = '340'
 timeOrder = SubElement(root, "TIME_ORDER")
 
 startTimes = [line["startTime"] for line in x["lines"]]
-for i in range(len(startTimes)):
+endTimes = [line["endTime"] for line in x["lines"]]
+allTimes = sorted(set(startTimes + endTimes))
+
+for i in range(len(allTimes)):
     timeSlot  = SubElement(timeOrder, "TIME_SLOT")
     timeSlot.set("TIME_SLOT_ID", "ts%d" % i)
-    timeSlot.set("TIME_VALUE", "%d" % startTimes[i])
+    timeSlot.set("TIME_VALUE", "%d" % allTimes[i])
 
 lineFieldNames = list(x["lines"][0].keys())
-tierNames = lineFieldNames[1:]
+tierNames = lineFieldNames[2:3]
 for tierName in tierNames:
    tier = SubElement(root, "TIER")
    tier.set("DEFAULT_LOCALE", "tr")   # not sure what "tr" means
@@ -50,7 +53,7 @@ for tierName in tierNames:
        tier.set("LINGUISTIC_TYPE_REF", "speech")
        tier.set("TIER_ID", tierName)
        speechLines = [line[tierName] for line in x["lines"]]
-       lineNumber = 1
+       lineNumber = 0
        for speechLine in speechLines:
            annotation = SubElement(tier, "ANNOTATION")
            alignableAnnotation = SubElement(annotation, "ALIGNABLE_ANNOTATION")
@@ -58,8 +61,13 @@ for tierName in tierNames:
            alignableAnnotation.set("TIME_SLOT_REF1", "ts%d" % lineNumber)
            alignableAnnotation.set("TIME_SLOT_REF2", "ts%d" % (lineNumber+1))
            annotationValue = SubElement(alignableAnnotation, "ANNOTATION_VALUE")
-           annotation.text = speechLine
+           annotationValue.text = speechLine
+           lineNumber += 1
 
+linguisticType = SubElement(root, "LINGUISTIC_TYPE")
+# linguisticType.set("GRAPHIC_REFERENCES", False)
+linguisticType.set("LINGUISTIC_TYPE_ID", "speech")
+linguisticType.set("TIME_ALIGNABLE", "true")
 
 xmlstr = minidom.parseString(etree.ElementTree.tostring(root)).toprettyxml(indent = "   ")
 #print(xmlstr)
@@ -68,7 +76,6 @@ xmlFilename = "interim.xml"
 xmlFile = open(xmlFilename, "w")
 xmlFile.write(xmlstr)
 xmlFile.close()
-validXML = schema.is_valid(xmlFilename)
+schema.is_valid(xmlFilename)
 schema.validate(xmlFilename)
-print("valid against schema? %s" % schema.is_valid(xmlFilename))
 

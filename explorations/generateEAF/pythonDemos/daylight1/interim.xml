@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<ANNOTATION_DOCUMENT AUTHOR="Paul Shannon" DATE="2019-06-16T07:47:46" FORMAT="2.8" VERSION="2.8" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.mpi.nl/tools/elan/EAFv3.0.xsd">
+   <HEADER MEDIA_FILE="" TIME_UNITS="milliseconds">
+      <MEDIA_DESCRIPTOR MEDIA_URL="file:///Users/paul/github/howDaylightWasStolen-harryMoses/peelingOffSomeDaylight/daylight77a.wav" MIME_TYPE="audio/x-wav" RELATIVE_MEDIA_URL="file://./daylight_1_4.wav"/>
+      <PROPERTY NAME="lastUsedAnnotationId">340</PROPERTY>
+   </HEADER>
+   <TIME_ORDER>
+      <TIME_SLOT TIME_SLOT_ID="ts0" TIME_VALUE="0"/>
+      <TIME_SLOT TIME_SLOT_ID="ts1" TIME_VALUE="6600"/>
+      <TIME_SLOT TIME_SLOT_ID="ts2" TIME_VALUE="12700"/>
+   </TIME_ORDER>
+   <TIER DEFAULT_LOCALE="tr" LINGUISTIC_TYPE_REF="speech" TIER_ID="lushootseedSpeech">
+      <ANNOTATION>
+         <ALIGNABLE_ANNOTATION ANNOTATION_ID="a0" TIME_SLOT_REF1="ts0" TIME_SLOT_REF2="ts1">
+            <ANNOTATION_VALUE>ʔal kʷi tu, ʔal kʷi tu-haʔkʷ gʷәl xʷiʔ gʷә-tu-s-lәx̌-il.</ANNOTATION_VALUE>
+         </ALIGNABLE_ANNOTATION>
+      </ANNOTATION>
+      <ANNOTATION>
+         <ALIGNABLE_ANNOTATION ANNOTATION_ID="a1" TIME_SLOT_REF1="ts1" TIME_SLOT_REF2="ts2">
+            <ANNOTATION_VALUE>tiʔəʔ swatixʷtəd gʷəl tasbəsad ʔal kwi tuhaʔkw</ANNOTATION_VALUE>
+         </ALIGNABLE_ANNOTATION>
+      </ANNOTATION>
+   </TIER>
+   <LINGUISTIC_TYPE LINGUISTIC_TYPE_ID="speech" TIME_ALIGNABLE="true"/>
+</ANNOTATION_DOCUMENT>
