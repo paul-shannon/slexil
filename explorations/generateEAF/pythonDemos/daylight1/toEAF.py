@@ -12,6 +12,26 @@ import pdb
 schemaXSD = "http://www.mpi.nl/tools/elan/EAFv3.0.xsd"
 schema = xmlschema.XMLSchema(schemaXSD)
 
+# "elements" are all the nodes in the xml document we create here, for instance speech, phonemes, phonemeGlosses, translation
+# in a classic text, there will be an equal number of each element type: maybe 20 speech elements, 20 phoneme elements (each a
+# set of tab-delemited phonemes), 20 phonemGlosses (also tab-delmited sets), 20 translations.
+# in eaf xml, each kind of element is separated, gathered together in sequence:  there is a tier of speech elements,
+# a tier of tab-delimited phoneme set elements; same for phonemeGlosses and translations.
+# the relationship between, for example, a speech element and its phoneme set is explicit in our yaml schema: they are
+# nested together in a line
+# for eaf xml, however, we must provide explicit links tying related elements together.
+# the eaf mechanism for doing this is
+#   create a unique ANNOTATION_ID for each element, independent of element type.  a0, a1, a2 ... aMax
+#   for each dependent element (everything except for time-aligned speech elements), also specify
+#   an ANNOTATION_REF - which points back to the parent element:
+#        ANNOTATION_ID     ANNOTATION_REF
+#      phoneme set          speech
+#      phonemicGloss set    phonemic set
+#      translation          speech
+# the refMap data structure records these ID/elementType/line relationships as they are dynamically
+# created, so that we can them look up as child elements are subsequently created
+
+referenceMap = {}
 
 x = yaml.load(open("daylight1.yaml"))
 # print(yaml.dump(x))
