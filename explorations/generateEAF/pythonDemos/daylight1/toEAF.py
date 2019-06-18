@@ -24,14 +24,14 @@ schema = xmlschema.XMLSchema(schemaXSD)
 #   create a unique ANNOTATION_ID for each element, independent of element type.  a0, a1, a2 ... aMax
 #   for each dependent element (everything except for time-aligned speech elements), also specify
 #   an ANNOTATION_REF - which points back to the parent element:
-#        ANNOTATION_ID     ANNOTATION_REF
+#      ANNOTATION_ID        ANNOTATION_REF
 #      phoneme set          speech
 #      phonemicGloss set    phonemic set
 #      translation          speech
 # the refMap data structure records these ID/elementType/line relationships as they are dynamically
 # created, so that we can them look up as child elements are subsequently created
 
-referenceMap = {}
+refMap = []
 
 x = yaml.load(open("daylight1.yaml"))
 # print(yaml.dump(x))
@@ -71,6 +71,13 @@ documentElementID = 0   # unique, a0, a1, ... aN
 
 lineFieldNames = list(x["lines"][0].keys())
 tierNames = lineFieldNames[2:4]
+
+for tierName in tierNames:
+    map = {}
+    for lineFieldName in lineFieldNames[2:]:
+       map[lineFieldName] = -1
+    refMap.append(map)
+
 for tierName in tierNames:
    tier = SubElement(root, "TIER")
    tier.set("DEFAULT_LOCALE", "tr")   # not sure what "tr" means
@@ -85,6 +92,7 @@ for tierName in tierNames:
            annotation = SubElement(tier, "ANNOTATION")
            alignableAnnotation = SubElement(annotation, "ALIGNABLE_ANNOTATION")
            alignableAnnotation.set("ANNOTATION_ID", "a%d" % documentElementID)
+           refMap[lineNumber]["lushootseedSpeech"] = documentElementID
            documentElementID += 1
            alignableAnnotation.set("TIME_SLOT_REF1", "ts%d" % lineNumber)
            alignableAnnotation.set("TIME_SLOT_REF2", "ts%d" % (lineNumber+1))
@@ -100,7 +108,8 @@ for tierName in tierNames:
            annotation = SubElement(tier, "ANNOTATION")
            refAnnotation = SubElement(annotation, "REF_ANNOTATION")
            refAnnotation.set("ANNOTATION_ID", "a%d" % documentElementID)
-           refAnnotation.set("ANNOTATION_REF", "a%d" % (documentElementID - len(speechLines)))
+           refMap[lineNumber]["tabDelimitedPhonemes"] = documentElementID
+           refAnnotation.set("ANNOTATION_REF", "a%d" % refMap[lineNumber]["lushootseedSpeech"])
            documentElementID += 1
            annotationValue = SubElement(refAnnotation, "ANNOTATION_VALUE")
            tabDelimitedString = ""
