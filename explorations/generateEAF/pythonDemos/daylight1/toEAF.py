@@ -70,7 +70,7 @@ for i in range(len(allTimes)):
 documentElementID = 0   # unique, a0, a1, ... aN
 
 lineFieldNames = list(x["lines"][0].keys())
-tierNames = lineFieldNames[2:4]
+tierNames = lineFieldNames[2:]
 
 for tierName in tierNames:
     map = {}
@@ -101,6 +101,7 @@ for tierName in tierNames:
            lineNumber += 1
    if(tierName == "tabDelimitedPhonemes"):
        tier.set("LINGUISTIC_TYPE_REF", "phonemes")
+       tier.set("PARENT_REF", "lushootseedSpeech")
        tier.set("TIER_ID", tierName)
        phonemeLines = [line[tierName] for line in x["lines"]]
        lineNumber = 0
@@ -119,6 +120,43 @@ for tierName in tierNames:
            #pdb.set_trace()
            annotationValue.text = tabDelimitedString
            lineNumber += 1
+   if(tierName == "tabDelimitedPhonemeGloss"):
+       tier.set("LINGUISTIC_TYPE_REF", "phonemeGloss")
+       tier.set("PARENT_REF", "phonemes")
+       tier.set("TIER_ID", tierName)
+       phonemeGlossLines = [line[tierName] for line in x["lines"]]
+       lineNumber = 0
+       for phonemeGlossLine in phonemeGlossLines:
+           annotation = SubElement(tier, "ANNOTATION")
+           refAnnotation = SubElement(annotation, "REF_ANNOTATION")
+           refAnnotation.set("ANNOTATION_ID", "a%d" % documentElementID)
+           refMap[lineNumber]["tabDelimitedPhonemeGloss"] = documentElementID
+           refAnnotation.set("ANNOTATION_REF", "a%d" % refMap[lineNumber]["tabDelimitedPhonemes"])
+           documentElementID += 1
+           annotationValue = SubElement(refAnnotation, "ANNOTATION_VALUE")
+           tabDelimitedString = ""
+           for i in range(len(phonemeGlossLine) - 1):
+               tabDelimitedString += "%s\t" % phonemeGlossLine[i]
+           tabDelimitedString += phonemeGlossLine[i]
+           #pdb.set_trace()
+           annotationValue.text = tabDelimitedString
+           lineNumber += 1
+   if(tierName == "englishTranslation"):
+       tier.set("LINGUISTIC_TYPE_REF", "englishTranslation")
+       tier.set("PARENT_REF", "lushootseedSpeech")
+       tier.set("TIER_ID", tierName)
+       englishTranslationLines = [line[tierName] for line in x["lines"]]
+       lineNumber = 0
+       for englishTranslationLine in englishTranslationLines:
+           annotation = SubElement(tier, "ANNOTATION")
+           refAnnotation = SubElement(annotation, "REF_ANNOTATION")
+           refAnnotation.set("ANNOTATION_ID", "a%d" % documentElementID)
+           refMap[lineNumber]["englishTranslation"] = documentElementID
+           refAnnotation.set("ANNOTATION_REF", "a%d" % refMap[lineNumber]["lushootseedSpeech"])
+           documentElementID += 1
+           annotationValue = SubElement(refAnnotation, "ANNOTATION_VALUE")
+           annotationValue.text = englishTranslationLine
+           lineNumber += 1
 
 
 linguisticType = SubElement(root, "LINGUISTIC_TYPE")
@@ -129,6 +167,14 @@ linguisticType = SubElement(root, "LINGUISTIC_TYPE")
 linguisticType.set("LINGUISTIC_TYPE_ID", "phonemes")
 linguisticType.set("TIME_ALIGNABLE", "false")
 
+linguisticType = SubElement(root, "LINGUISTIC_TYPE")
+linguisticType.set("LINGUISTIC_TYPE_ID", "phonemeGloss")
+linguisticType.set("TIME_ALIGNABLE", "false")
+
+linguisticType = SubElement(root, "LINGUISTIC_TYPE")
+linguisticType.set("LINGUISTIC_TYPE_ID", "englishTranslation")
+linguisticType.set("TIME_ALIGNABLE", "false")
+
 xmlstr = minidom.parseString(etree.ElementTree.tostring(root)).toprettyxml(indent = "   ")
 #print(xmlstr)
 
@@ -136,6 +182,6 @@ xmlFilename = "interim.xml"
 xmlFile = open(xmlFilename, "w")
 xmlFile.write(xmlstr)
 xmlFile.close()
-# schema.is_valid(xmlFilename)
+schema.is_valid(xmlFilename)
 # schema.validate(xmlFilename)
 
