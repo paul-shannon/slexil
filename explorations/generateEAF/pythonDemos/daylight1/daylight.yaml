@@ -11,22 +11,29 @@ lines:
     englishTranslation: In the distant past, there was no daylight.
   - lineNumber: 2
     startTime: 6600
-    endTime: 12700
-    lushootseedSpeech: tiʔəʔ swatixʷtəd gʷəl tasbəsad ʔal kwi tuhaʔkw
+    endTime: 12336
+    lushootseedSpeech: tiʔəʔ swatixʷtəd gʷəl tasbəsad ʔal kʷi tuhaʔkʷw
     tabDelimitedPhonemes: [tiʔәʔ,swatixʷtәd,gʷәl,t(u)-as-bәsad,ʔal,kʷi,tu-haʔkʷ]
     tabDelimitedPhonemeGloss: [this,land,and,was-dark,in,remote,long-ago]
     englishTranslation: The land, it was dark in the distant past.
   - lineNumber: 3
-    startTime: 12700
-    endTime: 18000
-    lushootseedSpeech: tudxwadhadəxw tiʔəʔ ʔaciɬtalbixw
-    tabDelimitedPhonemes: [tu=dxw–had–had=əxw, tiʔəʔ, ʔaciɬtalbixw]
+    startTime: 12336
+    endTime: 15281
+    lushootseedSpeech: tudxʷadhadəxʷw tiʔəʔ ʔaciɬtalbixʷ
+    tabDelimitedPhonemes: [tu=dxʷw–had–had=əxʷw, tiʔəʔ, ʔaciɬtalbixʷ]
     tabDelimitedPhonemeGloss: [PAST=CTD–DSTR–discuss=now, PROX, people]
     englishTranslation: The people talked it over.
-#  - lineNumber:
-#    startTime:
-#    endTime:
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
+  - lineNumber: 4
+    startTime: 15281
+    endTime: 17777
+    lushootseedSpeech: ʔəsčaləxʷ kʷi gʷədəxʷkʷədxʷ čəɬ?
+    tabDelimitedPhonemes: [ʔəs–čal=əxʷ,kʷi,gʷə=dəxʷ=kʷəd–dxʷ,čəɬ]
+    tabDelimitedPhonemeGloss: [STAT–how=now,REM,SBJ=ADNM=taken–DC,1PL.PO]
+    englishTranslation: How can we manage to obtain it?
+  - lineNumber: 5
+    startTime: 17777
+    endTime: 23895
+    lushootseedSpeech: ʔaʔ kʷi sləx̌il ʔal kʷi q’xʷul’gʷədxʷ gʷəl ʔəsčal kʷi gʷədəxʷkʷədxʷ čəɬ
+    tabDelimitedPhonemes: [ʔaʔ,kʷi,sləx̌il,ʔal,kʷi,q’xʷ•ul’gʷədxʷ,gʷəl,ʔəs–čal,kʷi,gʷə=dəxʷ=kʷəd–dxʷ,čəɬ]
+    tabDelimitedPhonemeGloss: [be.there,REM,daylight,at,REM,upstream•land,SCONJ,STAT–how,REM,SBJ=ADNM=taken–DC,1PL.PO]
+    englishTranslation: Daylight is up there in the upriver country but how can we manage to get it?
