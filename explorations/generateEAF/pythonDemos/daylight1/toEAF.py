@@ -33,7 +33,7 @@ schema = xmlschema.XMLSchema(schemaXSD)
 
 refMap = []
 
-x = yaml.load(open("daylight1.yaml"))
+x = yaml.load(open("daylight.yaml"))
 # print(yaml.dump(x))
 
 root = Element('ANNOTATION_DOCUMENT')
@@ -70,7 +70,7 @@ for i in range(len(allTimes)):
 documentElementID = 0   # unique, a0, a1, ... aN
 
 lineFieldNames = list(x["lines"][0].keys())
-tierNames = lineFieldNames[2:]
+tierNames = lineFieldNames[3:]
 
 for tierName in tierNames:
     map = {}
@@ -122,7 +122,7 @@ for tierName in tierNames:
            lineNumber += 1
    if(tierName == "tabDelimitedPhonemeGloss"):
        tier.set("LINGUISTIC_TYPE_REF", "phonemeGloss")
-       tier.set("PARENT_REF", "phonemes")
+       tier.set("PARENT_REF", "tabDelimitedPhonemes")
        tier.set("TIER_ID", tierName)
        phonemeGlossLines = [line[tierName] for line in x["lines"]]
        lineNumber = 0
@@ -182,6 +182,6 @@ xmlFilename = "interim.xml"
 xmlFile = open(xmlFilename, "w")
 xmlFile.write(xmlstr)
 xmlFile.close()
-schema.is_valid(xmlFilename)
+print("%s valid xml: %s" % (xmlFilename, schema.is_valid(xmlFilename)))
 # schema.validate(xmlFilename)
 
