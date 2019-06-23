@@ -37,3 +37,24 @@ lines:
     tabDelimitedPhonemes: [ʔaʔ,kʷi,sləx̌il,ʔal,kʷi,q’xʷ•ul’gʷədxʷ,gʷəl,ʔəs–čal,kʷi,gʷə=dəxʷ=kʷəd–dxʷ,čəɬ]
     tabDelimitedPhonemeGloss: [be.there,REM,daylight,at,REM,upstream•land,SCONJ,STAT–how,REM,SBJ=ADNM=taken–DC,1PL.PO]
     englishTranslation: Daylight is up there in the upriver country but how can we manage to get it?
+  - lineNumber: 6
+    startTime: 23895
+    endTime: 27163
+    lushootseedSpeech: tuhuyucutəxʷ tiʔəʔ səsaliʔ ləgʷləgʷəb
+    tabDelimitedPhonemes: [tu=huyu–t–sut=əxʷ,tiʔəʔ,səsaliʔ,ləgʷ–ləgʷəb]
+    tabDelimitedPhonemeGloss: [PAST=made–ICS–REFL=now,PROX,"two:HMN",DSTR–youth]
+    englishTranslation: These two youths prepared themselves.
+  - lineNumber: 7
+    startTime: 27163
+    endTime: 29715
+    lushootseedSpeech: "tuc’agʷacutəxʷ"
+    tabDelimitedPhonemes: ["tu=c’agʷa–t–sut=əxʷ"]
+    tabDelimitedPhonemeGloss: [PAST=washed–ICS–REFL=now]
+    englishTranslation: They bathed.
+#   - lineNumber:
+#     startTime:
+#     endTime:
+#     lushootseedSpeech:
+#     tabDelimitedPhonemes: []
+#     tabDelimitedPhonemeGloss: []
+#     englishTranslation:

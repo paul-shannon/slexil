@@ -58,6 +58,8 @@ property.text = '340'
 
 timeOrder = SubElement(root, "TIME_ORDER")
 
+lineCount = len(x["lines"])
+
 startTimes = [line["startTime"] for line in x["lines"]]
 endTimes = [line["endTime"] for line in x["lines"]]
 allTimes = sorted(set(startTimes + endTimes))
@@ -72,9 +74,9 @@ documentElementID = 0   # unique, a0, a1, ... aN
 lineFieldNames = list(x["lines"][0].keys())
 tierNames = lineFieldNames[3:]
 
-for tierName in tierNames:
+for i in range(lineCount):   # create refMap entry for each line in the text
     map = {}
-    for lineFieldName in lineFieldNames[2:]:
+    for lineFieldName in lineFieldNames[3:]:   # skip lineNumber, startTime, endTime
        map[lineFieldName] = -1
     refMap.append(map)
 
@@ -114,10 +116,13 @@ for tierName in tierNames:
            documentElementID += 1
            annotationValue = SubElement(refAnnotation, "ANNOTATION_VALUE")
            tabDelimitedString = ""
-           for i in range(len(phonemeLine) - 1):
-               tabDelimitedString += "%s\t" % phonemeLine[i]
-           tabDelimitedString += phonemeLine[i]
-           #pdb.set_trace()
+           phonemeCount = len(phonemeLine)
+           if(phonemeCount == 1):
+              tabDelimitedString = phonemeLine[0]
+           else:
+              for i in range(len(phonemeLine) - 1):
+                  tabDelimitedString += "%s\t" % phonemeLine[i]
+              tabDelimitedString += phonemeLine[i+1]
            annotationValue.text = tabDelimitedString
            lineNumber += 1
    if(tierName == "tabDelimitedPhonemeGloss"):
@@ -135,9 +140,13 @@ for tierName in tierNames:
            documentElementID += 1
            annotationValue = SubElement(refAnnotation, "ANNOTATION_VALUE")
            tabDelimitedString = ""
-           for i in range(len(phonemeGlossLine) - 1):
-               tabDelimitedString += "%s\t" % phonemeGlossLine[i]
-           tabDelimitedString += phonemeGlossLine[i]
+           phonemeGlossCount = len(phonemeGlossLine)
+           if(phonemeGlossCount == 1):
+              tabDelimitedString = phonemeGlossLine[0]
+           else:
+              for i in range(len(phonemeGlossLine) - 1):
+                 tabDelimitedString += "%s\t" % phonemeGlossLine[i]
+              tabDelimitedString += phonemeGlossLine[i+1]
            #pdb.set_trace()
            annotationValue.text = tabDelimitedString
            lineNumber += 1
