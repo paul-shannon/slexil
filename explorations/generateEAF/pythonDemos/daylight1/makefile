@@ -1,2 +1,2 @@
 default:
-	~/anaconda/bin/python toEAF.py
+	~/anaconda/bin/python3 toEAF.py

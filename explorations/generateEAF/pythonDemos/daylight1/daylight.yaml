@@ -51,6 +51,13 @@ lines:
     tabDelimitedPhonemes: ["tu=c’agʷa–t–sut=əxʷ"]
     tabDelimitedPhonemeGloss: [PAST=washed–ICS–REFL=now]
     englishTranslation: They bathed.
+  - lineNumber: 8
+    startTime: 29715
+    endTime: 35657
+    lushootseedSpeech: tuhuyucut həlgʷəʔ dxʷʔal sxʷəxʷaʔxʷəʔs gʷəsutəlawils əlgʷəʔ
+    tabDelimitedPhonemes: [tu=huyu–t–sut,həlgʷəʔ,dxʷ–ʔal,s=xʷəxʷaʔxʷəʔ=s,gʷə=s=ʔu–təlawil=s,əlgʷəʔ]
+    tabDelimitedPhonemeGloss: [PAST=made–ICS–REFL,PL,CNTRPT–at,NM=swift=3PO,SBJ=NM=PFV–run=3PO,PL]
+    englishTranslation: They prepared themselves in order to be swift as they run.
 #   - lineNumber:
 #     startTime:
 #     endTime:
