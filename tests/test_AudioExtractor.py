@@ -11,8 +11,10 @@ def runTests():
     test_constructor()
     test_determineStartAndEndTimes()
     test_extract_harryMosesDaylight()
-    #test_extract_monkeyAndThunder()
-    #test_extract_prayer()
+    test_extract_monkeyAndThunder()
+    test_extract_prayer()
+    test_extract_aktzini()
+    test_extract_plumedSerpent()
 
 def test_constructor():
 
@@ -45,7 +47,11 @@ def test_extract_harryMosesDaylight():
                         "../testData/harryMosesDaylight/daylight_1_4.eaf",
                         "../testData/harryMosesDaylight/audioPhrases")
     ea.extract(quiet=True)
-    assert(len(os.listdir("../testData/harryMosesDaylight/audioPhrases")) == 4)
+    fileList = [f for f in os.listdir("../testData/harryMosesDaylight/audioPhrases") if not f.startswith('.')]
+    try:
+    	assert(len(fileList) == 4)
+    except AssertionError as e:
+    	raise Exception(fileList) from e
 
 
 def test_extract_monkeyAndThunder():
@@ -54,7 +60,11 @@ def test_extract_monkeyAndThunder():
                         "../testData/monkeyAndThunder/AYA1_MonkeyandThunder.eaf",
                         "../testData/monkeyAndThunder/audioPhrases")
     ea.extract(quiet=True)
-    assert(len(os.listdir("../testData/monkeyAndThunder/audioPhrases")) == 41)
+    fileList = [f for f in os.listdir("../testData/monkeyAndThunder/audioPhrases") if not f.startswith('.')]
+    try:
+    	assert(len(fileList) == 41)
+    except AssertionError as e:
+    	raise Exception(fileList) from e
 
 
 def test_extract_prayer():
@@ -62,24 +72,27 @@ def test_extract_prayer():
     ea = AudioExtractor("../testData/prayer/SJQ-2009_Cruz.wav",
                         "../testData/prayer/20150717_Prayer_community_one.eaf",
                         "../testData/prayer/audioPhrases")
-    ea.extract(quiet=False)
-    assert(len(os.listdir("../testData/prayer/audioPhrases")) == 9)
+    fileList = [f for f in os.listdir("../testData/prayer/audioPhrases") if not f.startswith('.')]
+    ea.extract(quiet=True)
+    assert(len(fileList) == 9)
 
 def test_extract_aktzini():
     print("--- test_extract_aktzini")
     ea = AudioExtractor("../testData/aktzini/18-06-03Aktzini-GA.wav",
                         "../testData/aktzini/18-06-03Aktzini-GA.eaf",
                         "../testData/aktzini/audioPhrases")
-    ea.extract(quiet=False)
-    assert(len(os.listdir("../testData/aktzini/audioPhrases")) == 16)
+    ea.extract(quiet=True)
+    fileList = [f for f in os.listdir("../testData/aktzini/audioPhrases") if not f.startswith('.')]
+    assert(len(fileList) == 16)
 
 def test_extract_plumedSerpent():
     print("--- test_extract_plumedSerpent")
     ea = AudioExtractor("../testData/plumedSerpent/Chicahuaxtla Triqui - La serpiente emplumada 04-28-2016.wav",
-                        "../testData/plumedSerpent/TRS Plumed Serpent Legend 05-15-2017.eaf",
+                        "../testData/plumedSerpent/TRS_Plumed_Serpent_Legend_05-15-2017.eaf",
                         "../testData/plumedSerpent/audioPhrases")
-    ea.extract(quiet=False)
-    assert(len(os.listdir("../testData/plumedSerpent/audioPhrases")) == 15)
+    ea.extract(quiet=True)
+    fileList = [f for f in os.listdir("../testData/plumedSerpent/audioPhrases") if not f.startswith('.')]
+    assert(len(fileList) == 15)
 
 
 if __name__ == '__main__':
