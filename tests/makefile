@@ -1,4 +1,4 @@
-all: morphemeGloss ijalLine audioExtractor text_daylight text_monkeyAndThunder  text_PlumedSerpent text_prayer test_chatino5 test_chatino6
+all: morphemeGloss ijalLine audioExtractor text_daylight text_monkeyAndThunder  text_PlumedSerpent text_prayer test_chatino5 test_chatino6 test_Text_6_line test_Text test_TranslationLine text_lokono test_TextPy
 
 morphemeGloss:
 	python3 test_MorphemeGloss.py
@@ -8,6 +8,7 @@ ijalLine:
 
 audioExtractor:
 	python3 test_audioExtractor.py
+	python3 test_startStopTable.py
 
 text_monkeyAndThunder:
 	python3 test_text_MonkeyAndThunder.py
@@ -30,3 +31,15 @@ test_chatino5:
 
 test_chatino6:
 	python3 test_text_Chatino_6Line.py
+
+test_Text_6_line:
+	python3 test_Text_6_line.py
+	
+test_Text:
+	python3 test_Text.py
+	
+test_TranslationLine:
+	python3 test_TranslationLine.py
+
+test_TextPy:
+	python3 ../testTextPy/test_TextPy.py

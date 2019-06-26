@@ -5,6 +5,7 @@ from text import *
 import importlib
 import os
 import pdb
+from audioExtractor import AudioExtractor
 #----------------------------------------------------------------------------------------------------
 pd.set_option('display.width', 1000)
 #----------------------------------------------------------------------------------------------------
@@ -15,10 +16,19 @@ def runTests(display=False):
     test_toHTML(display)
 
 def createText():
-    text = Text("../testData/monkeyAndThunder/AYA1_MonkeyandThunder.eaf",
-                None, #"../testData/monkeyAndThunder/audioPhrases",
+    audioFilename = "AYA1_MonkeyandThunder-32bit.wav"
+    elanXmlFilename="../testData/monkeyAndThunder/AYA1_MonkeyandThunder.eaf"
+    targetDirectory = "../testData/monkeyAndThunder/audio"
+    soundFile = os.path.join(targetDirectory,audioFilename)
+    ae = AudioExtractor(audioFilename, elanXmlFilename, targetDirectory)
+    ae.determineStartAndEndTimes()
+    times = ae.startStopTable
+    text = Text(elanXmlFilename,
+                soundFile,
                 grammaticalTermsFile="../testData/monkeyAndThunder/grammaticalTerms.txt",
-                tierGuideFile="../testData/monkeyAndThunder/tierGuide.yaml")
+                tierGuideFile="../testData/monkeyAndThunder/tierGuide.yaml",
+                projectDirectory="../testData/monkeyAndThunder",
+                startStopTable=times)
 
     return(text)
 

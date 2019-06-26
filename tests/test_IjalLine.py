@@ -1,6 +1,7 @@
 import re
 import sys
 sys.path.append("..")
+import audioExtractor
 from ijalLine import *
 import importlib
 import os
@@ -35,7 +36,7 @@ def test_buildTable():
     with open(tierGuideFile, 'r') as f:
        tierGuide = yaml.load(f)
 
-    x3 = IjalLine(doc, 3, tierGuide)
+    x3 = IjalLine(doc, 3, tierGuide,audioData='a,b,c')
     x3.parse()
     tbl = x3.getTable()
     assert(tbl.shape == (10,14))
@@ -73,7 +74,7 @@ def test_lokono_line_3():
        tierGuide = yaml.load(f)
 
     grammaticalTerms = ['fem','poss','indf']
-    x3 = IjalLine(doc, 3, tierGuide,grammaticalTerms)
+    x3 = IjalLine(doc, 3, tierGuide,'a,b,c',grammaticalTerms)
     x3.parse()
 
     assert(x3.speechRow == 0)
@@ -128,7 +129,7 @@ def test_lokono_toHTML(displayPage=False, sampleOfLinesOnly=True):
 
     grammarTerms = ["hab","past"]
     for i in range(maxLines):
-       line = IjalLine(xmlDoc, i, tierGuide, grammarTerms)
+       line = IjalLine(xmlDoc, i, tierGuide, 'a,b,c',grammarTerms)
        if(line.tierCount < 4):
           print("skipping line %d, tierCount %d" %(i, line.tierCount))
        else:
@@ -179,7 +180,7 @@ def test_monkeyAndThunder_line_6():
     grammaticalTerms = open(grammaticalTermsFile).read().split("\n")
     assert("MOUTH" in grammaticalTerms)
     
-    x6 = IjalLine(doc, 6, tierGuide, grammaticalTerms)
+    x6 = IjalLine(doc, 6, tierGuide, 'a,b,c',grammaticalTerms)
     x6.parse()
 
     assert(x6.speechRow == 0)
@@ -323,7 +324,7 @@ def test_plumedSerpent_toHTML(displayPage=False):
     lines = []
     grammaticalTerms = ["hab","past"]
     for i in range(lineCount):
-        line = IjalLine(xmlDoc, i, tierGuide,grammaticalTerms)
+        line = IjalLine(xmlDoc, i, tierGuide,'a,b,c',grammaticalTerms)
         if(line.tierCount < 4):
             print("skipping line %d, tierCount %d" %(i, line.tierCount))
         else:
@@ -378,7 +379,7 @@ def test_prayer_toHTML(displayPage=False):
     lines = []
     grammaticalTerms = ["hab","past"]
     for i in range(lineCount):
-        line = IjalLine(xmlDoc, i, tierGuide,grammaticalTerms)
+        line = IjalLine(xmlDoc, i, tierGuide,'a,b,c',grammaticalTerms)
         if(line.tierCount < 4):
             print("skipping line %d, tierCount %d" %(i, line.tierCount))
         else:

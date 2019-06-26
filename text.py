@@ -126,7 +126,7 @@ class Text:
      return(True)
 
    def getLineAsTable(self, lineNumber):
-     audioData = self.audioTable.split('\n')[int(lineNumber)]
+     audioData = self.audioTable[int(lineNumber)]
      print("audio data: %s" %audioData)
      x = IjalLine(self.xmlDoc, lineNumber, self.tierGuide, audioData)
      x.parse()
