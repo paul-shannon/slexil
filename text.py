@@ -56,6 +56,7 @@ class Text:
      tmpDoc = etree.parse(self.xmlFilename)
      tierIDs = [tier.attrib["TIER_ID"] for tier in tmpDoc.findall("TIER")]
      tiers = tmpDoc.findall("TIER")
+     #pdb.set_trace()
      #print(self.tierGuide)
      itemList = pd.DataFrame(list(self.tierGuide.items()), columns=['key', 'value'])
      tbl = itemList[:-1].copy()
@@ -211,7 +212,7 @@ def _makeAbbreviationListLowerCase(grammaticalTerms):
    #print()terms
    '''first run through needs to deal with super/subscripts'''
    for term in terms:
-      term = term.strip()    
+      term = term.strip()
       if term in exceptions:
          newTerms.append(term)
       elif term.isupper():
