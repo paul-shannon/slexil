@@ -6,12 +6,12 @@ from morphemeGloss import *
 
 
 #------------------------------------------------------------------------------------------------------------------------
-sampleLines = ["HAB=3A=MOUTH•cry",
+sampleLines = ["hab=3A=mouth•cry",
                "1S=walk–INC",
                "HAB=3A=work=IAM",
                "PROG=1A=know–INTR",
                "more",
-               "1PRO",
+               "1pro",
                ]
 
 
@@ -63,9 +63,13 @@ def test_toHTML_sampleLine_0(displayPage=False):
     print("--- test_toHTML_sampleLine_0")
 
     #grammaticalTerms = open(grammaticalTermsFile).read().split("\n")
+    grammaticalTerms = ['3A','hab','mouth']
     mg = MorphemeGloss(sampleLines[0], grammaticalTerms)
     mg.parse()
-    assert(mg.getParts() == ['hab', '=', '3A', '=', 'mouth', '•', 'cry'])
+    try:
+    	assert(mg.getParts() == ['hab', '=', '3A', '=', 'mouth', '•', 'cry'])
+    except AssertionError as e:
+    	raise Exception(mg.getParts()) from e
 
     htmlDoc = Doc()
 
@@ -92,6 +96,7 @@ def test_toHTML_sampleLine_1(displayPage=False):
     print("--- test_toHTML_sampleLine_1")
 
     #grammaticalTerms = open(grammaticalTermsFile).read().split("\n")
+    grammaticalTerms = ['1S','inc']
     mg = MorphemeGloss(sampleLines[1], grammaticalTerms)
     mg.parse()
     assert(mg.getParts() == ['1S', '=', 'walk', '–', 'inc'])
@@ -121,6 +126,7 @@ def test_toHTML_sampleLine_2(displayPage=False):
     print("--- test_toHTML_sampleLine_2")
 
     #grammaticalTerms = open(grammaticalTermsFile).read().split("\n")
+    grammaticalTerms = ['hab','3A','iam']
     mg = MorphemeGloss(sampleLines[2], grammaticalTerms)
     mg.parse()
     mg.getParts()
@@ -151,6 +157,7 @@ def test_toHTML_sampleLine_3(displayPage=False):
     print("--- test_toHTML_sampleLine_3")
 
     #grammaticalTerms = open(grammaticalTermsFile).read().split("\n")
+    grammaticalTerms = ['prog','1A','intr']
     mg = MorphemeGloss(sampleLines[3], grammaticalTerms)
     mg.parse()
     mg.getParts()
@@ -242,29 +249,29 @@ def test_inferno(displayPage=False):
     """
     print("--- test_inferno")
 
-    mg = MorphemeGloss("in=DEF-MASC-SG", grammaticalTerms)
+    mg = MorphemeGloss("in=def–masc–sg", grammaticalTerms)
     mg.parse()
     assert(mg.getParts() == ['in', '=', 'def', '–', 'masc', '–', 'sg'])
 
-    mg = MorphemeGloss("middle-MASC", grammaticalTerms); mg.parse()
+    mg = MorphemeGloss("middle–masc", grammaticalTerms); mg.parse()
     assert(mg.getParts() == ['middle', '–', 'masc'])
 
-    mg = MorphemeGloss("of=DEF-MASC-SG", grammaticalTerms); mg.parse();
+    mg = MorphemeGloss("of=def–masc–sg", grammaticalTerms); mg.parse();
     assert(mg.getParts() == ['of', '=', 'def', '–', 'masc', '–', 'sg'])
 
-    mg = MorphemeGloss("journey-MASC", grammaticalTerms); mg.parse();
+    mg = MorphemeGloss("journey–masc", grammaticalTerms); mg.parse();
     assert(mg.getParts() == ['journey', '–', 'masc'])
 
-    mg = MorphemeGloss("our-FEM-SG", grammaticalTerms); mg.parse();
+    mg = MorphemeGloss("our–fem–sg", grammaticalTerms); mg.parse();
     assert(mg.getParts() == ['our', '–', 'fem', '–', 'sg'])
 
-    mg = MorphemeGloss("life-FEM", grammaticalTerms); mg.parse();
+    mg = MorphemeGloss("life–fem", grammaticalTerms); mg.parse();
     assert(mg.getParts() == ['life', '–', 'fem'])
 
-    mg = MorphemeGloss("be-3SG-IMPF", grammaticalTerms); mg.parse();
+    mg = MorphemeGloss("be–3sg–impf", grammaticalTerms); mg.parse();
     assert(mg.getParts() == ['be', '–', '3sg', '–', 'impf'])
 
-    mg = MorphemeGloss("found–1SG-INDEF-REM-PAST", grammaticalTerms); mg.parse();
+    mg = MorphemeGloss("found–1sg–indef–rem–past", grammaticalTerms); mg.parse();
     assert(mg.getParts() ==  ['found', '–', '1sg', '–', 'indef', '–', 'rem', '–', 'past'])
 
 def test_nDashes(displayPage=False):
@@ -273,7 +280,7 @@ def test_nDashes(displayPage=False):
     """
     print("--- test_nDashes")
 
-    gt = MorphemeGloss("in=DEF-MASC-3SG", grammaticalTerms)
+    gt = MorphemeGloss("in=def–masc–3sg", grammaticalTerms)
     gt.parse()
     assert(gt.getParts() ==  ['in', '=', 'def', '–', 'masc', '–', '3sg'])
 
@@ -283,7 +290,7 @@ def test_Sub_and_Sup(displayPage=False):
     """
     print("--- test_Sub_and_Sup")
 
-    gt = MorphemeGloss("gu<sup>1</sup>hin<sub>MASC</sub>-PL", ["masc","pl"])
+    gt = MorphemeGloss("gu<sup>1</sup>hin<sub>masc</sub>–pl", ["masc","pl"])
     gt.parse()
     assert(gt.getParts() ==  ['gu', '<sup>', '1', '</sup>', 'hin', '<sub>', 'masc', '</sub>', '–', 'pl'])
 

@@ -10,12 +10,15 @@ pd.set_option('display.width', 1000)
 #----------------------------------------------------------------------------------------------------
 
 def createText():
-
-    text = Text("../testData/harryMosesDaylight/daylight_1_4.eaf",
-                "../testData/harryMosesDaylight/audioPhrases",
-                grammaticalTermsFile="../testData/harryMosesDaylight/grammaticalTerms.txt",
-                tierGuideFile="../testData/harryMosesDaylight/tierGuide.yaml")
-    return(text)
+	with open('../testData/harryMosesDaylight/startStopTimes.txt','r') as times:
+		startStopTable = times.read()
+	text = Text("../testData/harryMosesDaylight/daylight_1_4.eaf",
+			"../testData/harryMosesDaylight/audioPhrases",
+				grammaticalTermsFile="../testData/harryMosesDaylight/grammaticalTerms.txt",
+				tierGuideFile="../testData/harryMosesDaylight/tierGuide.yaml",
+				projectDirectory='../testData/harryMosesDaylight',
+				startStopTable=startStopTable)
+	return(text)
     
 
 def runTests(display=False):

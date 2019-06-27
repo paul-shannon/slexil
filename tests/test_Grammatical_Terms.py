@@ -27,7 +27,7 @@ for file in grammaticalTermsFiles:
 def runTests():
 
     test_constructor()
-    test_parse()
+#     test_parse()
     test_inferno()
     test_toHTML_sampleLine_0()
     test_toHTML_sampleLine_1()
@@ -45,15 +45,15 @@ def test_constructor():
     #grammaticalTerms = open(grammaticalTermsFile).read().split("\n")
     gt = GrammaticalTerms(sampleLines[0], grammaticalTerms)
 
-def test_parse():
-
-    #grammaticalTerms = open(grammaticalTermsFile).read().split("\n")
-    gt = GrammaticalTerms(sampleLines[0], grammaticalTerms)
-    gt.parse()
-    try:
-       assert(gt.getParts() == ['hab', '=', '3A', '=', 'mouth', '•', 'cry'])
-    except AssertionError as e:
-       raise Exception(gt.getParts()) from e
+# def test_parse():
+# 
+#     #grammaticalTerms = open(grammaticalTermsFile).read().split("\n")
+#     gt = GrammaticalTerms(sampleLines[0], grammaticalTerms)
+#     gt.parse()
+#     try:
+#        assert(gt.getParts() == ['hab', '=', '3A', '=', 'mouth', '•', 'cry'])
+#     except AssertionError as e:
+#        raise Exception(gt.getParts()) from e
      
 
 def test_toHTML_sampleLine_0(displayPage=False):

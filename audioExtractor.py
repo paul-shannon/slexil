@@ -26,8 +26,7 @@ class AudioExtractor:
        audioTiers = xmlDoc.findall("TIER/ANNOTATION/ALIGNABLE_ANNOTATION")
        timeIDs = [x.attrib["TIME_SLOT_ID"] for x in timeSlotElements]
        times = [int(x.attrib["TIME_VALUE"]) for x in timeSlotElements]
-#        audioIDs = [x.attrib["ANNOTATION_ID"] for x in audioTiers]
-       audioIDs = list(range(1, len(audioTiers)+1))
+       audioIDs = [x.attrib["ANNOTATION_ID"] for x in audioTiers]
        tsRef1 = [x.attrib["TIME_SLOT_REF1"] for x in audioTiers]
        tsRef2 = [x.attrib["TIME_SLOT_REF2"] for x in audioTiers]
        d = {"id": audioIDs, "t1": tsRef1, "t2": tsRef2}
@@ -43,12 +42,11 @@ class AudioExtractor:
        list(tbl.columns)
        tbl = tbl[["lineID", "start", "end", "t1", "t2"]]
 #        tbl = tbl.sort('start')
+       self.startStopTable = self.makeStartStopTable(tbl)
        return(tbl)
 
     def extract(self, quiet=True):
        tbl = self.determineStartAndEndTimes()
-       self.startStopTable = tbl.to_csv(index=False)
-       #print(self.startStopTable)
        rate, mtx = read(self.audioFilename)
        mtx.shape
        mtx.shape[0]/rate   # 5812410, 2
@@ -62,9 +60,22 @@ class AudioExtractor:
            startIndex = int(round(startSeconds * rate))
            endIndex   = int(round(endSeconds * rate))
            phrase = mtx[startIndex:endIndex,]
-           sampleFilename = "%s/a%s.wav" % (self.targetDirectory, phraseID)
+           sampleFilename = "%s/%s.wav" % (self.targetDirectory, phraseID)
            if(not quiet):
               print("--- %d) writing %d samples to %s" % (i, phrase.shape[0], sampleFilename))
            write(sampleFilename, rate, phrase)
       
-               
+    def makeStartStopTable(self,tbl):
+    	CSV = tbl.to_csv(index=False)
+    	phraseList = CSV.split('\n')
+    	if phraseList[-1] == '':
+    		del phraseList[-1]
+    	startStopByLine = []
+    	for i,phrase in enumerate(phraseList):
+    		parts = phrase.split(',')
+    		#print(parts)
+    		newParts = [str(i),parts[1],parts[2]]
+    		line = ",".join(newParts)
+    		startStopByLine.append(line)
+    	startStopTable = '\n'.join(startStopByLine)
+    	return(startStopTable)

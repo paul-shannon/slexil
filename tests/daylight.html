@@ -2,162 +2,45 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <style>
-.line-wrapper{
-  display: grid;
-  grid-template-columns: 1fr 20fr;
-  //border: 1px solid green;
-  margin: 20px;
-}
-
-.line-sidebar{
-  //border: 1px solid gray;
-  padding: 10px;
-  padding-top: 0px;
-  width: 40px;
-  margin-top: 0px;
-  margin-right: 10px;
-  font-size: 24px;
-  }
-
-.line-content{
-  height: 100%;
-  //background-color: lightyellow;
-  //border: 1px solid red;
-  margin: 0px;
-  margin-bottom: 2px;
-  overflow-x: auto;
-  white-space: nowrap;
-  }
-
-
-.line {
-  display: grid;
-  background-color: white;
-  //border: 1px solid gray;
-  padding: 0px;
-  margin-top:  0px;
-  margin-bottom:  10px;
-  }
-
-.speech-tier{
-  background-color: white;
-  grid-template-columns: auto;
-  //border: 1px solid rgba(0, 0, 0, 0.8);
-  padding: 0px;
-  font-size: 30px;
-  text-align: left;
-  margin-left: 5px;
-  word-spacing: 20px;
-  }
-
-.freeTranslation-tier{
-  //background-color: lightyellow;
-  grid-template-columns: auto;
-  //border: 1px solid rgba(0, 0, 0, 0.8);
-  padding: 0px;
-  font-size: 30px;
-  text-align: left;
-  margin-left: 5px;
-  word-spacing: 20px;
-  }
-
-.secondTranscription-tier{
-  //background-color: lightyellow;
-  grid-template-columns: auto;
-  //border: 1px solid rgba(0, 0, 0, 0.8);
-  padding: 0px;
-  font-size: 24px;
-  text-align: left;
-  margin-left: 5px;
-  word-spacing: 20px;
-  }
-
-.gloss-tier{
-  background-color: white;
-  grid-template-columns: auto;
-  //border: 0px solid rgba(0, 0, 0, 0.8);
-  padding: 10px;
-  font-size: 20px;
-  text-align: left;
-  margin-left: 30px;
-  word-spacing: 20px;
-  }
-
-.morpheme-tier {
-  display: grid;
-  background-color: white;
-  border: 0px solid rgba(0, 0, 0, 0.8);
-  grid-template-columns: 4ch 5ch 5ch 4ch 5ch 12ch 7ch 5ch 16ch;
-  grid-column-gap: 2%;
-  font-size: 20px;
-  margin: 5px;
-  width: 95%;
-  justify-content: flex-start;
-  }
-
-.morpheme-cell {
-  background-color: white;
-  //border: 1px solid lightgray;
-  margin-bottom: 2px;
-  padding: 3px;
-  font-size: 20px;
-  text-align: left;
-  }
-
-button{
-    background-color: white;
-    border: 0px;
-}
-
-.grammatical-term{
-    font-variant: small-caps;
-    color: blue;
-}
-</style>
-    <script>
-// ijalUtil.js
-//----------------------------------------------------------------------------------------------------
-function playSample(audioID)
-{
-   console.log(audioID);
-   document.getElementById(audioID).play();
-}
-//----------------------------------------------------------------------------------------------------
-</script>
+    <script src="jquery-3.3.1.min.js"></script>
+    <link rel = "stylesheet" type = "text/css" href = "ijal.css" />
     <body>
-      <div class="line-wrapper">
-        <div class="line-sidebar">1)<audio id="a1"><source src="../testData/harryMosesDaylight/audioPhrases/a1.wav"/></audio><button onclick="playSample('a1')"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9gIBBQ7IwhRfZIAAALJSURBVEjH7ZbNaxRBEMV/tbM7ySoaEoUgETQEhXgIKoknL+IlIZAgBi8q5qCgHj0ogiK5KCqCYEQQ9Cx40T/As5Cjgn+CQcQvxIibnZQHX8dmsjNR1iCIDU1/zHS/eq+rqtvcnXaKmVWBzN3dzDrc/ZvmDai4e9ZqXYU2i7s3/af1mUATzS0VrWsb2Mxq9qMk7t7UdCqjCuW0dqUuMMYkfbJmUguoEiSOQA3wtZS66u5LkjaL5E3D/Jo5lwzoiZhXy9j+Sal7gVFgSOCZuzdWBY4srQfnMLM0/haBJGZ22symItZvgLfAGWA62jcpk2pFVeDH45rODOA48A6YEEAvMBX9ex6YabVvXCvyPnJtEtgqJBbdvWFmJ4CHQI/O0AEDBsxs1sxG3P0G0DSzibBnKWMgybHs0KYVjaeBz8pGDTHeAGzS993APaAP2ArcDSq1qtUQd+6e6UwcWA+cFXjDzLYBJyVtUKQBbAEum9mcu98xs6cy8CrwEpgEHhc6ZcQqUdsPvI7kbAIL6n9Sf1xr68AMMKbxLSlxGLhWeMZiGwI9xN6H3DgALAAb1U+19ivwBNiv5PEF2A7MA12F4ZRzgNDvBOIkEEKqLokBsmhtt4wKEfBeF0W9EFh5Nc3Faw34KMDAflGGpdF/qZmNAceAR2bWLb+YBzYDr34rjnXOw8Cg2gPAnO7bcM+OA3uBC8Cg1lwHjsrg+0Bfyf4rkkVdMltufg/wXMwdmAwOKSUuAec0PghcKQun5UyVNyBkLLVVtQPACzE+JMBdwG3glAzeCTwA+ssyF7mNTTWM06gfQm0IeAYc0b+dwDr1R4GbwL7gD6syjphbPpOJSTU6ihFgOPreBVwEZoEdq+XpZeCIbRLJm7QwoCd3cYR/OoGh/BGVVdPiLHqy1Nx9MX4vhbmi91X+YadXSbP0Dl+Lx96vlAp/qfwH/veBvwOfu2maZzzx2gAAAABJRU5ErkJggg=="/></button></div>
+      <div class="line-wrapper" id="1">
+        <div class="line-sidebar">1)<audio id="a1"><source src="audio/a1.wav"/></audio><button onclick="playSample('a1')">🔈</button></div>
         <div class="line-content">
           <div class="line">
             <div class="speech-tier">ʔal kʷi tu-     ʔal kʷi tu-haʔkʷ gʷәl xʷiʔ gʷә-tu-s-lәx̌-il.<div class="morpheme-tier" style="grid-template-columns: 4ch 7ch 5ch 4ch 7ch 14ch 5ch 5ch 17ch ;"><div class="morpheme-cell">ʔal</div><div class="morpheme-cell">kʷi</div><div class="morpheme-cell">tu–</div><div class="morpheme-cell">ʔal</div><div class="morpheme-cell">kʷi</div><div class="morpheme-cell">tu–haʔkʷ</div><div class="morpheme-cell">gʷәl</div><div class="morpheme-cell">xʷiʔ</div><div class="morpheme-cell">gʷә–tu–s–lәx̌–il</div></div><div class="morpheme-tier" style="grid-template-columns: 4ch 7ch 5ch 4ch 7ch 14ch 5ch 5ch 17ch ;"><div class="morpheme-cell"><div class="morpheme-gloss">in</div></div><div class="morpheme-cell"><div class="morpheme-gloss">remote</div></div><div class="morpheme-cell"><div class="morpheme-gloss"><span class="grammatical-term">past</span></div></div><div class="morpheme-cell"><div class="morpheme-gloss">in</div></div><div class="morpheme-cell"><div class="morpheme-gloss">remote</div></div><div class="morpheme-cell"><div class="morpheme-gloss"><span class="grammatical-term">past</span>–long–ago</div></div><div class="morpheme-cell"><div class="morpheme-gloss"><span class="grammatical-term">and</span></div></div><div class="morpheme-cell"><div class="morpheme-gloss">not</div></div><div class="morpheme-cell"><div class="morpheme-gloss">daylight</div></div></div><div class="freeTranslation-tier">‘In the distant past, there was no daylight.’</div></div>
           </div>
         </div>
       </div>
-      <div class="line-wrapper">
-        <div class="line-sidebar">2)<audio id="a2"><source src="../testData/harryMosesDaylight/audioPhrases/a2.wav"/></audio><button onclick="playSample('a2')"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9gIBBQ7IwhRfZIAAALJSURBVEjH7ZbNaxRBEMV/tbM7ySoaEoUgETQEhXgIKoknL+IlIZAgBi8q5qCgHj0ogiK5KCqCYEQQ9Cx40T/As5Cjgn+CQcQvxIibnZQHX8dmsjNR1iCIDU1/zHS/eq+rqtvcnXaKmVWBzN3dzDrc/ZvmDai4e9ZqXYU2i7s3/af1mUATzS0VrWsb2Mxq9qMk7t7UdCqjCuW0dqUuMMYkfbJmUguoEiSOQA3wtZS66u5LkjaL5E3D/Jo5lwzoiZhXy9j+Sal7gVFgSOCZuzdWBY4srQfnMLM0/haBJGZ22symItZvgLfAGWA62jcpk2pFVeDH45rODOA48A6YEEAvMBX9ex6YabVvXCvyPnJtEtgqJBbdvWFmJ4CHQI/O0AEDBsxs1sxG3P0G0DSzibBnKWMgybHs0KYVjaeBz8pGDTHeAGzS993APaAP2ArcDSq1qtUQd+6e6UwcWA+cFXjDzLYBJyVtUKQBbAEum9mcu98xs6cy8CrwEpgEHhc6ZcQqUdsPvI7kbAIL6n9Sf1xr68AMMKbxLSlxGLhWeMZiGwI9xN6H3DgALAAb1U+19ivwBNiv5PEF2A7MA12F4ZRzgNDvBOIkEEKqLokBsmhtt4wKEfBeF0W9EFh5Nc3Faw34KMDAflGGpdF/qZmNAceAR2bWLb+YBzYDr34rjnXOw8Cg2gPAnO7bcM+OA3uBC8Cg1lwHjsrg+0Bfyf4rkkVdMltufg/wXMwdmAwOKSUuAec0PghcKQun5UyVNyBkLLVVtQPACzE+JMBdwG3glAzeCTwA+ssyF7mNTTWM06gfQm0IeAYc0b+dwDr1R4GbwL7gD6syjphbPpOJSTU6ihFgOPreBVwEZoEdq+XpZeCIbRLJm7QwoCd3cYR/OoGh/BGVVdPiLHqy1Nx9MX4vhbmi91X+YadXSbP0Dl+Lx96vlAp/qfwH/veBvwOfu2maZzzx2gAAAABJRU5ErkJggg=="/></button></div>
+      <div class="line-wrapper" id="2">
+        <div class="line-sidebar">2)<audio id="a2"><source src="audio/a2.wav"/></audio><button onclick="playSample('a2')">🔈</button></div>
         <div class="line-content">
           <div class="line">
             <div class="speech-tier">tiʔəʔ swatixʷtəd gʷəl tasbəsad ʔal kwi tuhaʔkw<div class="morpheme-tier" style="grid-template-columns: 6ch 11ch 5ch 14ch 4ch 7ch 9ch ;"><div class="morpheme-cell">tiʔәʔ</div><div class="morpheme-cell">swatixʷtәd</div><div class="morpheme-cell">gʷәl</div><div class="morpheme-cell">t(u)–as–bәsad</div><div class="morpheme-cell">ʔal</div><div class="morpheme-cell">kʷi</div><div class="morpheme-cell">tu–haʔkʷ</div></div><div class="morpheme-tier" style="grid-template-columns: 6ch 11ch 5ch 14ch 4ch 7ch 9ch ;"><div class="morpheme-cell"><div class="morpheme-gloss">this</div></div><div class="morpheme-cell"><div class="morpheme-gloss">land</div></div><div class="morpheme-cell"><div class="morpheme-gloss"><span class="grammatical-term">and</span></div></div><div class="morpheme-cell"><div class="morpheme-gloss">was–dark</div></div><div class="morpheme-cell"><div class="morpheme-gloss">in</div></div><div class="morpheme-cell"><div class="morpheme-gloss">remote</div></div><div class="morpheme-cell"><div class="morpheme-gloss">long–ago</div></div></div><div class="freeTranslation-tier">‘The land, it was dark in the distant past.’</div></div>
           </div>
         </div>
       </div>
-      <div class="line-wrapper">
-        <div class="line-sidebar">3)<audio id="a3"><source src="../testData/harryMosesDaylight/audioPhrases/a3.wav"/></audio><button onclick="playSample('a3')"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9gIBBQ7IwhRfZIAAALJSURBVEjH7ZbNaxRBEMV/tbM7ySoaEoUgETQEhXgIKoknL+IlIZAgBi8q5qCgHj0ogiK5KCqCYEQQ9Cx40T/As5Cjgn+CQcQvxIibnZQHX8dmsjNR1iCIDU1/zHS/eq+rqtvcnXaKmVWBzN3dzDrc/ZvmDai4e9ZqXYU2i7s3/af1mUATzS0VrWsb2Mxq9qMk7t7UdCqjCuW0dqUuMMYkfbJmUguoEiSOQA3wtZS66u5LkjaL5E3D/Jo5lwzoiZhXy9j+Sal7gVFgSOCZuzdWBY4srQfnMLM0/haBJGZ22symItZvgLfAGWA62jcpk2pFVeDH45rODOA48A6YEEAvMBX9ex6YabVvXCvyPnJtEtgqJBbdvWFmJ4CHQI/O0AEDBsxs1sxG3P0G0DSzibBnKWMgybHs0KYVjaeBz8pGDTHeAGzS993APaAP2ArcDSq1qtUQd+6e6UwcWA+cFXjDzLYBJyVtUKQBbAEum9mcu98xs6cy8CrwEpgEHhc6ZcQqUdsPvI7kbAIL6n9Sf1xr68AMMKbxLSlxGLhWeMZiGwI9xN6H3DgALAAb1U+19ivwBNiv5PEF2A7MA12F4ZRzgNDvBOIkEEKqLokBsmhtt4wKEfBeF0W9EFh5Nc3Faw34KMDAflGGpdF/qZmNAceAR2bWLb+YBzYDr34rjnXOw8Cg2gPAnO7bcM+OA3uBC8Cg1lwHjsrg+0Bfyf4rkkVdMltufg/wXMwdmAwOKSUuAec0PghcKQun5UyVNyBkLLVVtQPACzE+JMBdwG3glAzeCTwA+ssyF7mNTTWM06gfQm0IeAYc0b+dwDr1R4GbwL7gD6syjphbPpOJSTU6ihFgOPreBVwEZoEdq+XpZeCIbRLJm7QwoCd3cYR/OoGh/BGVVdPiLHqy1Nx9MX4vhbmi91X+YadXSbP0Dl+Lx96vlAp/qfwH/veBvwOfu2maZzzx2gAAAABJRU5ErkJggg=="/></button></div>
+      <div class="line-wrapper" id="3">
+        <div class="line-sidebar">3)<audio id="a3"><source src="audio/a3.wav"/></audio><button onclick="playSample('a3')">🔈</button></div>
         <div class="line-content">
           <div class="line">
             <div class="speech-tier">tusʷadhadәxʷ   tʔiəʔ   aciltalbixʷ     gwәsčal   kwi   gwәdәxwkwәdәxʷcәl   kwi   slәx̌il.<div class="morpheme-tier" style="grid-template-columns: 22ch 6ch 14ch 11ch 7ch 25ch 7ch 11ch ;"><div class="morpheme-cell">tu–s–xʷ–(h)ad–had–әxʷ</div><div class="morpheme-cell">tiʔәʔ</div><div class="morpheme-cell">aciłta[l]bixʷ</div><div class="morpheme-cell">gʷә–s–čal</div><div class="morpheme-cell">kʷi</div><div class="morpheme-cell">gʷә–dәxʷ–kʷәd–(d)әxʷ–cәł</div><div class="morpheme-cell">kʷi</div><div class="morpheme-cell">s–lәx̌–il.</div></div><div class="morpheme-tier" style="grid-template-columns: 22ch 6ch 14ch 11ch 7ch 25ch 7ch 11ch ;"><div class="morpheme-cell"><div class="morpheme-gloss">now–there–was–talk</div></div><div class="morpheme-cell"><div class="morpheme-gloss">this</div></div><div class="morpheme-cell"><div class="morpheme-gloss">people</div></div><div class="morpheme-cell"><div class="morpheme-gloss">how–now</div></div><div class="morpheme-cell"><div class="morpheme-gloss">remote</div></div><div class="morpheme-cell"><div class="morpheme-gloss">uncertain–means–get</div></div><div class="morpheme-cell"><div class="morpheme-gloss">remote</div></div><div class="morpheme-cell"><div class="morpheme-gloss">daylight</div></div></div><div class="freeTranslation-tier">‘The people talked it over.  How can we manage to obtain it?’</div></div>
           </div>
         </div>
       </div>
-      <div class="line-wrapper">
-        <div class="line-sidebar">4)<audio id="a4"><source src="../testData/harryMosesDaylight/audioPhrases/a4.wav"/></audio><button onclick="playSample('a4')"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9gIBBQ7IwhRfZIAAALJSURBVEjH7ZbNaxRBEMV/tbM7ySoaEoUgETQEhXgIKoknL+IlIZAgBi8q5qCgHj0ogiK5KCqCYEQQ9Cx40T/As5Cjgn+CQcQvxIibnZQHX8dmsjNR1iCIDU1/zHS/eq+rqtvcnXaKmVWBzN3dzDrc/ZvmDai4e9ZqXYU2i7s3/af1mUATzS0VrWsb2Mxq9qMk7t7UdCqjCuW0dqUuMMYkfbJmUguoEiSOQA3wtZS66u5LkjaL5E3D/Jo5lwzoiZhXy9j+Sal7gVFgSOCZuzdWBY4srQfnMLM0/haBJGZ22symItZvgLfAGWA62jcpk2pFVeDH45rODOA48A6YEEAvMBX9ex6YabVvXCvyPnJtEtgqJBbdvWFmJ4CHQI/O0AEDBsxs1sxG3P0G0DSzibBnKWMgybHs0KYVjaeBz8pGDTHeAGzS993APaAP2ArcDSq1qtUQd+6e6UwcWA+cFXjDzLYBJyVtUKQBbAEum9mcu98xs6cy8CrwEpgEHhc6ZcQqUdsPvI7kbAIL6n9Sf1xr68AMMKbxLSlxGLhWeMZiGwI9xN6H3DgALAAb1U+19ivwBNiv5PEF2A7MA12F4ZRzgNDvBOIkEEKqLokBsmhtt4wKEfBeF0W9EFh5Nc3Faw34KMDAflGGpdF/qZmNAceAR2bWLb+YBzYDr34rjnXOw8Cg2gPAnO7bcM+OA3uBC8Cg1lwHjsrg+0Bfyf4rkkVdMltufg/wXMwdmAwOKSUuAec0PghcKQun5UyVNyBkLLVVtQPACzE+JMBdwG3glAzeCTwA+ssyF7mNTTWM06gfQm0IeAYc0b+dwDr1R4GbwL7gD6syjphbPpOJSTU6ihFgOPreBVwEZoEdq+XpZeCIbRLJm7QwoCd3cYR/OoGh/BGVVdPiLHqy1Nx9MX4vhbmi91X+YadXSbP0Dl+Lx96vlAp/qfwH/veBvwOfu2maZzzx2gAAAABJRU5ErkJggg=="/></button></div>
+      <div class="line-wrapper" id="4">
+        <div class="line-sidebar">4)<audio id="a4"><source src="audio/a4.wav"/></audio><button onclick="playSample('a4')">🔈</button></div>
         <div class="line-content">
           <div class="line">
             <div class="speech-tier">a   kwi   slәx̌il   al   kwʷi   qxwulgwәdxw   gwәl   әsčal   kwi   gwәdәxwkwәdәxʷcәł.<div class="morpheme-tier" style="grid-template-columns: 5ch 7ch 10ch 4ch 7ch 16ch 5ch 9ch 7ch 26ch ;"><div class="morpheme-cell">ʔaʔ</div><div class="morpheme-cell">kʷi</div><div class="morpheme-cell">s–lәx̌–il</div><div class="morpheme-cell">ʔal</div><div class="morpheme-cell">kʷi</div><div class="morpheme-cell">q'xʷ–ulgʷәdxʷ</div><div class="morpheme-cell">gʷәl</div><div class="morpheme-cell">ʔәs–čal</div><div class="morpheme-cell">kʷi</div><div class="morpheme-cell">gʷә–dәxʷ–kʷәd–(d)әxʷ–cәł.</div></div><div class="morpheme-tier" style="grid-template-columns: 5ch 7ch 10ch 4ch 7ch 16ch 5ch 9ch 7ch 26ch ;"><div class="morpheme-cell"><div class="morpheme-gloss">that</div></div><div class="morpheme-cell"><div class="morpheme-gloss">remote</div></div><div class="morpheme-cell"><div class="morpheme-gloss">sunlight</div></div><div class="morpheme-cell"><div class="morpheme-gloss">in</div></div><div class="morpheme-cell"><div class="morpheme-gloss">remote</div></div><div class="morpheme-cell"><div class="morpheme-gloss">upriver–country</div></div><div class="morpheme-cell"><div class="morpheme-gloss"><span class="grammatical-term">and</span></div></div><div class="morpheme-cell"><div class="morpheme-gloss">how</div></div><div class="morpheme-cell"><div class="morpheme-gloss">remote</div></div><div class="morpheme-cell"><div class="morpheme-gloss">we–obtain</div></div></div><div class="freeTranslation-tier">‘Daylight is up there in the upriver country but how can we manage to get it?’</div></div>
           </div>
         </div>
       </div>
+      <audio class="player" id="audioplayer" src="audio/audioPhrases" controls></audio>
+      </audio>
+      <script src="ijalUtils.js"></script>
+      <script type="text/javascript">window.annotations=[{ 'id' : '1', 'start' : '744', 'end' : '2620'},{ 'id' : '2', 'start' : '3393', 'end' : '4600'},{ 'id' : '3', 'start' : '5331', 'end' : '8558'},{ 'id' : '4', 'start' : '9317', 'end' : '13772'}]</script>
     </body>
   </head>
 </html>

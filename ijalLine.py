@@ -71,9 +71,6 @@ class IjalLine:
 	def getTable(self):
 		return(self.tbl)
 
-#	 def getSpeakerImage(self):
-#		 return("speaker.png")
-
 	#----------------------------------------------------------------------------------------------------
 	def show(self):
 
