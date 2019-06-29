@@ -22,7 +22,7 @@ class IjalLine:
 	lineNumber = None
 	soundFile = None
 	grammaticalTerms = None
-	
+
 	def __init__(self, doc, lineNumber, tierGuide, audioData, grammaticalTerms=[]):
 		self.doc = doc
 		self.lineNumber = lineNumber
@@ -36,7 +36,7 @@ class IjalLine:
 
 	def parse(self):
 		if not self.tierCount >=2:
-			 raise EmptyTiersError(self.lineNumber)  
+			 raise EmptyTiersError(self.lineNumber)
 		self.tbl = standardizeTable(self.tblRaw, self.tierGuide)
 		self.tbl.index = range(len(self.tbl.index))
 		self.categories = categories = self.tbl["category"].tolist()
@@ -71,6 +71,12 @@ class IjalLine:
 	def getTable(self):
 		return(self.tbl)
 
+	def getStartTime(self):
+                return(self.tbl.ix[self.speechRow]["START"])
+
+	def getEndTime(self):
+                return(self.tbl.ix[self.speechRow]["END"])
+
 	#----------------------------------------------------------------------------------------------------
 	def show(self):
 
@@ -88,7 +94,7 @@ class IjalLine:
 
 		#categories = self.tbl["category"].tolist()
 		#row = categories.index("translation")
-		#pdb.set_trace()
+		# pdb.set_trace()
 		if self.translationRow == None:
 			logging.warning("missing translation at line %d" %(int(self.lineNumber) + 1))
 			return(None)
@@ -104,7 +110,7 @@ class IjalLine:
 			return(translationLine2.getStandardized())
 		else:
 			return(None)
-		
+
 	#----------------------------------------------------------------------------------------------------
 	def getTranscription2(self):
 		if self.transcription2Row != None:
@@ -112,7 +118,7 @@ class IjalLine:
 			return(transcription2)
 		else:
 			return(None)
-		
+
 	#----------------------------------------------------------------------------------------------------
 	def extractMorphemes(self):
 
@@ -124,7 +130,7 @@ class IjalLine:
 		if "\t" in rawMorphemes:
 			 rawMorphemeText = self.tbl["TEXT"].iloc[self.morphemeRows].tolist()[0]
 			 rawMorphemeList = rawMorphemeText.split('\t')
-			
+
 		morphemes = replaceHyphensWithNDashes(rawMorphemeList)
 		return(morphemes)
 
@@ -139,7 +145,7 @@ class IjalLine:
 		if "\t" in rawMorphemeGlosses:
 			 rawMorphemeGlossText = self.tbl["TEXT"].iloc[self.morphemeGlossRows].tolist()[0]
 			 rawMorphemeGlossList = rawMorphemeGlossText.split('\t')
-			
+
 		morphemeGlosses = replaceHyphensWithNDashes(rawMorphemeGlossList)
 		return(morphemeGlosses)
 
@@ -159,7 +165,7 @@ class IjalLine:
 
 	#----------------------------------------------------------------------------------------------------
 	def getMorphemeGlosses (self):
-		
+
 		return(self.morphemeGlosses)
 
 	#----------------------------------------------------------------------------------------------------
@@ -242,7 +248,7 @@ class IjalLine:
 							transcription2 = self.getTranscription2()
 							if transcription2 != None:
 								with htmlDoc.tag("div", klass="secondTranscription-tier"):
-									htmlDoc.asis(self.getTranscription2())							 
+									htmlDoc.asis(self.getTranscription2())
 
 							morphemes = self.getMorphemes()
 							#print(morphemes)
@@ -268,7 +274,7 @@ class IjalLine:
 									htmlDoc.asis(self.getTranslation())
 
 							translation2 = self.getTranslation2()
-							if translation2 != None:  
+							if translation2 != None:
 								with htmlDoc.tag("div", klass="freeTranslation-tier"):
 									 htmlDoc.text(translation2)
 
@@ -388,9 +394,9 @@ def standardizeTable(tbl, tierGuide):
 #------------------------------------------------------------------------------------------------------------------------
 def replaceHyphensWithNDashes(list):
 		''' replace hyphens with n-dashes
-		''' 
+		'''
 		newList = []
-		for text in list: 
+		for text in list:
 			text = text.replace('-','–')
 			newList.append(text)
 		return(newList)
