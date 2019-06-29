@@ -36,7 +36,7 @@ class Text:
 		self.grammaticalTermsFile = grammaticalTermsFile
 		self.tierGuideFile = tierGuideFile
 		self.projectDirectory = projectDirectory
-		self.startStopTable = self.makeStartStopTable()
+		#self.startStopTable = self.makeStartStopTable()
 		self.validInputs()
 		self.quiet = quiet
 		self.xmlDoc = etree.parse(self.xmlFilename)
@@ -86,27 +86,28 @@ class Text:
 		self.tierTable = tbl
 		return(tbl)
 
-	def makeStartStopTable(self):#, startStopTable):
-		ae = AudioExtractor(self.soundFileName, self.xmlFilename, self.projectDirectory)
-		ae.determineStartAndEndTimes()
-		times = ae.startStopTable	
-		annotations = times.split('\n')
+	def makeStartStopTable(self, annotations):
+# 		ae = AudioExtractor(self.soundFileName, self.xmlFilename, self.projectDirectory)
+# 		ae.determineStartAndEndTimes()
+# 		times = ae.startStopTable	
+# 		annotations = times.split('\n')
 		self.audioTable = []
 		startStopTimes = "window.annotations=["
 		for i,annotation in enumerate(annotations):
-			 if i == 0:
-					continue
-			 elif len(annotation) == 0:
-					continue
-			 values = annotation.split(',')
-			 id = values[0]
+# 			 if i == 0:
+# 					continue
+# 			 elif len(annotation) == 0:
+# 					continue
+# 			 values = annotation.split(',')
+# 			 id = values[0]
 			 #start = int(values[1])/1000
-			 start = values[1]
-			 end = values[2]
-			 entry = "{ 'id' : '%s', 'start' : '%s', 'end' : '%s'}," %(id,start,end)
+			 start = annotation[0]
+			 end = annotation[1]
+			 entry = "{ 'id' : '%s', 'start' : '%s', 'end' : '%s'}," %(str(i+1),start,end)
 			 startStopTimes += entry
 			 self.audioTable.append(annotation)
 		startStopTimes =startStopTimes[:-1] + "]"
+# 		print(startStopTimes)
 		return(startStopTimes)
 
 	def validInputs(self):
@@ -132,7 +133,7 @@ class Text:
 		return(True)
 
 	def getLineAsTable(self, lineNumber):
-		audioData = self.audioTable[int(lineNumber)]
+		audioData = lineNumber+1 #self.audioTable[int(lineNumber)]
 		print("audio data: %s" %audioData)
 		x = IjalLine(self.xmlDoc, lineNumber, self.tierGuide, audioData)
 		x.parse()
@@ -158,9 +159,10 @@ class Text:
 		scriptTag = '<script src="jquery-3.3.1.min.js"></script>\n'
 		return(scriptTag)
 
-	def getJavascript(self):
+	def getJavascript(self,timeCodesForText):
+		startStopTimes = self.makeStartStopTable(timeCodesForText)
 		jsSource = '<script src="ijalUtils.js"></script>\n'
-		jsSource += '<script type="text/javascript">%s</script>\n' %self.startStopTable
+		jsSource += '<script type="text/javascript">%s</script>\n' %startStopTimes
 		return(jsSource)
 
 	def getPlayer(self):
@@ -171,7 +173,7 @@ class Text:
 	def toHTML(self, lineNumber=None):
 
 		htmlDoc = Doc()
-
+		timeCodesForText = []
 		if(lineNumber == None):
 			lineNumbers = range(self.lineCount)
 		else:
@@ -187,8 +189,14 @@ class Text:
 					 for i in lineNumbers:
 							if(not self.quiet):
 								print("line %d/%d" % (i, self.lineCount))
-							line = IjalLine(self.xmlDoc, i, self.tierGuide,self.audioTable[i], self.grammaticalTerms)
+# 							line = IjalLine(self.xmlDoc, i, self.tierGuide,self.audioTable[i], self.grammaticalTerms)
+# 							line = IjalLine(self.xmlDoc, i, self.tierGuide, str(i+1), self.grammaticalTerms)
+							line = IjalLine(self.xmlDoc, i, self.tierGuide, self.grammaticalTerms)
 							line.parse()
+							start = line.getStartTime()
+							end = line.getEndTime()
+							timeCodesForLine = [start,end]
+							timeCodesForText.append(timeCodesForLine)
 							with htmlDoc.tag("div",  klass="line-wrapper", id=i+1):
 								tbl = line.getTable()
 								lineID = tbl.ix[0]['ANNOTATION_ID']
@@ -196,7 +204,7 @@ class Text:
 									 line.htmlLeadIn(htmlDoc, self.audioPath, )
 								line.toHTML(htmlDoc)
 					 htmlDoc.asis(self.getPlayer())
-					 htmlDoc.asis(self.getJavascript())
+					 htmlDoc.asis(self.getJavascript(timeCodesForText))
 		self.htmlDoc = htmlDoc
 		self.htmlText = htmlDoc.getvalue()
 		return(self.htmlText)
