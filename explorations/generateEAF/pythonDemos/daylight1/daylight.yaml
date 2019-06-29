@@ -61,21 +61,35 @@ lines:
   - lineNumber: 9
     startTime: 35657
     endTime: 41459
-    lushootseedSpeech: tiʔəʔ qawq’s ʔi tiʔəʔ bibščəb kwi tuhuyucut
+    lushootseedSpeech: tiʔəʔ qawq’s ʔi tiʔəʔ bibščəb kʷi tuhuyucut
     tabDelimitedPhonemes: [tiʔəʔ,qawq’s,ʔi,tiʔəʔ,bi–bəščəb,kwi,tu=huyu–t–sut]
     tabDelimitedPhonemeGloss: [PROX,raven,CONJ,PROX,ATTN–mink,REM,PAST=made–ICS–REFL]
     englishTranslation: The ones who prepared themselves were Raven and Little Mink.
-#   - lineNumber:
-#     startTime:
-#     endTime:
-#     lushootseedSpeech:
-#     tabDelimitedPhonemes: []
-#     tabDelimitedPhonemeGloss: []
-#     englishTranslation:
-#   - lineNumber:
-#     startTime:
-#     endTime:
-#     lushootseedSpeech:
-#     tabDelimitedPhonemes: []
-#     tabDelimitedPhonemeGloss: []
-#     englishTranslation:
+  - lineNumber: 10
+    startTime: 41459
+    endTime: 44096
+    lushootseedSpeech: tut’ədalgʷiɬ əlgʷəʔ
+    tabDelimitedPhonemes: [tu=t’əd•al•gʷiɬ,əlgʷəʔ]
+    tabDelimitedPhonemeGloss: [PAST=lined.up•CNN•canoe,PL]
+    englishTranslation: They lined up the canoes.
+  - lineNumber: 11
+    startTime: 44096
+    endTime:  50103
+    lushootseedSpeech: tuʔaʔ dzəɬ ti ƛ’əlayʔ gʷəl tux̌ʷ xʷiʔ uʔxʷ gwəsəsaxʷəbabacs ʔal kʷi sxʷəʔaʔxʷəʔils
+    tabDelimitedPhonemes: [tu=ʔaʔ,dzəɬ,ti,ƛ’əlayʔ,gʷəl,tux̌ʷ,xʷiʔ,uʔʷw,"gʷə=s=lə=saxʷəb•abac=s",ʔal,kʷi,s=xʷəʔaʔxʷəʔ–il=s]
+    tabDelimitedPhonemeGloss: [PAST=be.there,PTCL,SPEC,canoe,SCONJ,just,NEG,PTCL,"SBJ=NM=PROG=jump•body=3PO",at,REM,NM=swift–INCH=3PO]
+    englishTranslation: There must have been some shovel-nosed canoes but they could not yet jump over them to become swift.
+##  - lineNumber:
+##     startTime:
+##     endTime:
+##     lushootseedSpeech:
+##     tabDelimitedPhonemes: []
+##     tabDelimitedPhonemeGloss: []
+##     englishTranslation:
+##  - lineNumber:
+##     startTime:
+##     endTime:
+##     lushootseedSpeech:
+##     tabDelimitedPhonemes: []
+##     tabDelimitedPhonemeGloss: []
+##     englishTranslation:

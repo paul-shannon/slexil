@@ -9,24 +9,25 @@ import pdb
 #----------------------------------------------------------------------------------------------------
 pd.set_option('display.width', 1000)
 #----------------------------------------------------------------------------------------------------
-audioFilename = "daylight_1_9.wav"
-elanXmlFilename="interim.xml"
-audioPhrasesTargetDirectory = "audioPhrases"
-soundFile = os.path.join("./", audioFilename)
+#audioFilename = "daylight_1_9.wav"
+audioFilename = "harryMosesHowDaylightWasStolen.wav"
+elanXmlFilename="daylight.eaf"
+audioPhrasesTargetDirectory = "audio"
+soundFile = os.path.join(audioPhrasesTargetDirectory, audioFilename)
 projectDirectory="./"
 tierGuideFile="tierGuide.yaml"
 grammaticalTermsFile="grammaticalTerms.txt"
 
-assert(os.path.isfile(audioFilename))
+#assert(os.path.isfile(audioFilename))
 assert(os.path.isfile(elanXmlFilename))
 assert(os.path.isdir(audioPhrasesTargetDirectory))
-assert(os.path.isfile(audioFilename))
+assert(os.path.isfile(soundFile))
 assert(os.path.isdir(projectDirectory))
 assert(os.path.isfile(tierGuideFile))
 assert(os.path.isfile(grammaticalTermsFile))
 
 
-ae = AudioExtractor(audioFilename, elanXmlFilename, targetDirectory)
+ae = AudioExtractor(audioFilename, elanXmlFilename, audioPhrasesTargetDirectory)
 ae.determineStartAndEndTimes()
 times = ae.startStopTable
 text = Text(elanXmlFilename,
@@ -41,5 +42,6 @@ filename = "daylight.html"
 f = open(filename, "w")
 f.write(indent(htmlText))
 f.close()
+display = True
 if(display):
     os.system("open %s" % filename)

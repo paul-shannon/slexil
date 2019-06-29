@@ -223,8 +223,7 @@ class IjalLine:
 	#----------------------------------------------------------------------------------------------------
 	def htmlLeadIn(self, htmlDoc, audioDirectory):
 
-		oneBasedLineNumber = self.lineNumber + 1
-		text = "%d)" % oneBasedLineNumber
+		text = "%d)" % (self.lineNumber + 1)
 		htmlDoc.text(text)
 		lineID = self.rootID
 		audioTag = '<audio id="a%s"><source src="%s/a%s.wav"/></audio>' % (lineID, audioDirectory, lineID)

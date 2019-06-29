@@ -34,7 +34,7 @@ schema = xmlschema.XMLSchema(schemaXSD)
 refMap = []
 
 x = yaml.load(open("daylight.yaml"))
-# print(yaml.dump(x))
+#x = yaml.load(open("daylight1.yaml"))
 
 root = Element('ANNOTATION_DOCUMENT')
 root.set('VERSION', '2.8')
@@ -93,8 +93,8 @@ for tierName in tierNames:
        for speechLine in speechLines:
            annotation = SubElement(tier, "ANNOTATION")
            alignableAnnotation = SubElement(annotation, "ALIGNABLE_ANNOTATION")
-           alignableAnnotation.set("ANNOTATION_ID", "a%d" % documentElementID)
-           refMap[lineNumber]["lushootseedSpeech"] = documentElementID
+           alignableAnnotation.set("ANNOTATION_ID", "a%d" % (documentElementID + 1))
+           refMap[lineNumber]["lushootseedSpeech"] = documentElementID + 1
            documentElementID += 1
            alignableAnnotation.set("TIME_SLOT_REF1", "ts%d" % lineNumber)
            alignableAnnotation.set("TIME_SLOT_REF2", "ts%d" % (lineNumber+1))
@@ -102,6 +102,7 @@ for tierName in tierNames:
            annotationValue.text = speechLine
            lineNumber += 1
    if(tierName == "tabDelimitedPhonemes"):
+       #pdb.set_trace()
        tier.set("LINGUISTIC_TYPE_REF", "phonemes")
        tier.set("PARENT_REF", "lushootseedSpeech")
        tier.set("TIER_ID", tierName)
@@ -110,8 +111,8 @@ for tierName in tierNames:
        for phonemeLine in phonemeLines:
            annotation = SubElement(tier, "ANNOTATION")
            refAnnotation = SubElement(annotation, "REF_ANNOTATION")
-           refAnnotation.set("ANNOTATION_ID", "a%d" % documentElementID)
-           refMap[lineNumber]["tabDelimitedPhonemes"] = documentElementID
+           refAnnotation.set("ANNOTATION_ID", "a%d" % (documentElementID + 1))
+           refMap[lineNumber]["tabDelimitedPhonemes"] = documentElementID + 1
            refAnnotation.set("ANNOTATION_REF", "a%d" % refMap[lineNumber]["lushootseedSpeech"])
            documentElementID += 1
            annotationValue = SubElement(refAnnotation, "ANNOTATION_VALUE")
@@ -134,8 +135,8 @@ for tierName in tierNames:
        for phonemeGlossLine in phonemeGlossLines:
            annotation = SubElement(tier, "ANNOTATION")
            refAnnotation = SubElement(annotation, "REF_ANNOTATION")
-           refAnnotation.set("ANNOTATION_ID", "a%d" % documentElementID)
-           refMap[lineNumber]["tabDelimitedPhonemeGloss"] = documentElementID
+           refAnnotation.set("ANNOTATION_ID", "a%d" % (documentElementID + 1))
+           refMap[lineNumber]["tabDelimitedPhonemeGloss"] = documentElementID + 1
            refAnnotation.set("ANNOTATION_REF", "a%d" % refMap[lineNumber]["tabDelimitedPhonemes"])
            documentElementID += 1
            annotationValue = SubElement(refAnnotation, "ANNOTATION_VALUE")
@@ -159,8 +160,8 @@ for tierName in tierNames:
        for englishTranslationLine in englishTranslationLines:
            annotation = SubElement(tier, "ANNOTATION")
            refAnnotation = SubElement(annotation, "REF_ANNOTATION")
-           refAnnotation.set("ANNOTATION_ID", "a%d" % documentElementID)
-           refMap[lineNumber]["englishTranslation"] = documentElementID
+           refAnnotation.set("ANNOTATION_ID", "a%d" % (documentElementID + 1))
+           refMap[lineNumber]["englishTranslation"] = documentElementID + 1
            refAnnotation.set("ANNOTATION_REF", "a%d" % refMap[lineNumber]["lushootseedSpeech"])
            documentElementID += 1
            annotationValue = SubElement(refAnnotation, "ANNOTATION_VALUE")
@@ -187,8 +188,9 @@ linguisticType.set("TIME_ALIGNABLE", "false")
 xmlstr = minidom.parseString(etree.ElementTree.tostring(root)).toprettyxml(indent = "   ")
 #print(xmlstr)
 
-xmlFilename = "interim.xml"
+xmlFilename = "daylight.eaf"
 xmlFile = open(xmlFilename, "w")
+print("writing %s" % xmlFilename)
 xmlFile.write(xmlstr)
 xmlFile.close()
 print("%s valid xml: %s" % (xmlFilename, schema.is_valid(xmlFilename)))
