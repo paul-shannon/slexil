@@ -239,36 +239,36 @@ def test_toHTML_sampleLine_5(displayPage=False):
         os.system("open %s" % "morphemeGloss.html")
 
 
-def test_inferno(displayPage=False):
-    """
-      a bunch of new terms came with this text.  test them all out here
-    """
-    print("--- test_inferno")
-
-    gt = GrammaticalTerms("in=DEF-MASC-SG", grammaticalTerms)
-    gt.parse()
-    assert(gt.getParts() == ['in', '=', 'def', '–', 'masc', '–', 'sg'])
-
-    gt = GrammaticalTerms("middle-MASC", grammaticalTerms); gt.parse()
-    assert(gt.getParts() == ['middle', '–', 'masc'])
-
-    gt = GrammaticalTerms("of=DEF-MASC-SG", grammaticalTerms); gt.parse();
-    assert(gt.getParts() == ['of', '=', 'def', '–', 'masc', '–', 'sg'])
-
-    gt = GrammaticalTerms("journey-MASC", grammaticalTerms); gt.parse();
-    assert(gt.getParts() == ['journey', '–', 'masc'])
-
-    gt = GrammaticalTerms("our-FEM-SG", grammaticalTerms); gt.parse();
-    assert(gt.getParts() == ['our', '–', 'fem', '–', 'sg'])
-
-    gt = GrammaticalTerms("life-FEM", grammaticalTerms); gt.parse();
-    assert(gt.getParts() == ['life', '–', 'fem'])
-
-    gt = GrammaticalTerms("be-3SG-IMPF", grammaticalTerms); gt.parse();
-    assert(gt.getParts() == ['be', '–', '3sg', '–', 'impf'])
-
-    gt = GrammaticalTerms("found–1SG-INDEF-REM-PAST", grammaticalTerms); gt.parse();
-    assert(gt.getParts() ==  ['found', '–', '1sg', '–', 'indef', '–', 'rem', '–', 'past'])
+# def test_inferno(displayPage=False):
+#     """
+#       a bunch of new terms came with this text.  test them all out here
+#     """
+#     print("--- test_inferno")
+# 
+#     gt = GrammaticalTerms("in=DEF-MASC-SG", grammaticalTerms)
+#     gt.parse()
+#     assert(gt.getParts() == ['in', '=', 'def', '–', 'masc', '–', 'sg'])
+# 
+#     gt = GrammaticalTerms("middle-MASC", grammaticalTerms); gt.parse()
+#     assert(gt.getParts() == ['middle', '–', 'masc'])
+# 
+#     gt = GrammaticalTerms("of=DEF-MASC-SG", grammaticalTerms); gt.parse();
+#     assert(gt.getParts() == ['of', '=', 'def', '–', 'masc', '–', 'sg'])
+# 
+#     gt = GrammaticalTerms("journey-MASC", grammaticalTerms); gt.parse();
+#     assert(gt.getParts() == ['journey', '–', 'masc'])
+# 
+#     gt = GrammaticalTerms("our-FEM-SG", grammaticalTerms); gt.parse();
+#     assert(gt.getParts() == ['our', '–', 'fem', '–', 'sg'])
+# 
+#     gt = GrammaticalTerms("life-FEM", grammaticalTerms); gt.parse();
+#     assert(gt.getParts() == ['life', '–', 'fem'])
+# 
+#     gt = GrammaticalTerms("be-3SG-IMPF", grammaticalTerms); gt.parse();
+#     assert(gt.getParts() == ['be', '–', '3sg', '–', 'impf'])
+# 
+#     gt = GrammaticalTerms("found–1SG-INDEF-REM-PAST", grammaticalTerms); gt.parse();
+#     assert(gt.getParts() ==  ['found', '–', '1sg', '–', 'indef', '–', 'rem', '–', 'past'])
 
 def test_nDashes(displayPage=False):
     """
