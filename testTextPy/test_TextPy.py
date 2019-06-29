@@ -47,13 +47,13 @@ def test_Aymara(display):
 				soundFile,
 				grammaticalTermsFile=grammaticalTermsFile,
 				tierGuideFile=tierGuideFile,
-				projectDirectory=projectDirectory,
-				startStopTable=times)
+				projectDirectory=projectDirectory)#,
+				#startStopTable=times)
 					 
 	#IjalLine.getTable(1)
 
 	htmlText = text.toHTML()
-	if(display):
+	if (display):
 	   filename = "../testTextPyData/Aymara/Aymara.html"
 	   f = open(filename, "w")
 	   f.write(indent(htmlText))
@@ -79,8 +79,8 @@ def test_Inferno(display):
 				soundFile,
 				grammaticalTermsFile=grammaticalTermsFile,
 				tierGuideFile=tierGuideFile,
-				projectDirectory=projectDirectory,
-				startStopTable=times)
+				projectDirectory=projectDirectory)# ,
+# 				startStopTable=times)
 	 
 	#IjalLine.getTable(1)
 
@@ -112,8 +112,8 @@ def test_MonkeyAndThunder(display):
 				soundFile,
 				grammaticalTermsFile=grammaticalTermsFile,
 				tierGuideFile=tierGuideFile,
-				projectDirectory=projectDirectory,
-				startStopTable=times)
+				projectDirectory=projectDirectory)# ,
+# 				startStopTable=times)
 	 
 	#IjalLine.getTable(1)
 
@@ -143,8 +143,8 @@ def test_Fishwoman(display):
 				soundFile,
 				grammaticalTermsFile=grammaticalTermsFile,
 				tierGuideFile=tierGuideFile,
-				projectDirectory=projectDirectory,
-				startStopTable=times)
+				projectDirectory=projectDirectory)# ,
+# 				startStopTable=times)
 	 
 	#IjalLine.getTable(1)
 
@@ -174,8 +174,8 @@ def test_Merchant(display):
 				soundFile,
 				grammaticalTermsFile=grammaticalTermsFile,
 				tierGuideFile=tierGuideFile,
-				projectDirectory=projectDirectory,
-				startStopTable=times)
+				projectDirectory=projectDirectory)# ,
+# 				startStopTable=times)
 	 
 	#IjalLine.getTable(1)
 
@@ -214,8 +214,7 @@ def test_Jaguar(display):
 				soundFile,
 				grammaticalTermsFile=grammaticalTermsFile,
 				tierGuideFile=tierGuideFile,
-				projectDirectory=projectDirectory,
-				startStopTable=times)
+ 				projectDirectory=projectDirectory)
 	 
 	#IjalLine.getTable(1)
 
@@ -254,8 +253,8 @@ def test_Riverwoman(display):
 				soundFile,
 				grammaticalTermsFile=grammaticalTermsFile,
 				tierGuideFile=tierGuideFile,
-				projectDirectory=projectDirectory,
-				startStopTable=times)
+				projectDirectory=projectDirectory)# ,
+# 				startStopTable=times)
 					 
 	#IjalLine.getTable(1)
 
@@ -293,8 +292,8 @@ def test_SanMiguel(display):
 				soundFile,
 				grammaticalTermsFile=grammaticalTermsFile,
 				tierGuideFile=tierGuideFile,
-				projectDirectory=projectDirectory,
-				startStopTable=times)
+				projectDirectory=projectDirectory)# ,
+# 				startStopTable=times)
 					 	 
 	#IjalLine.getTable(1)
 
@@ -331,8 +330,8 @@ def test_Caterpillar(display):
 				soundFile,
 				grammaticalTermsFile=grammaticalTermsFile,
 				tierGuideFile=tierGuideFile,
-				projectDirectory=projectDirectory,
-				startStopTable=times)
+				projectDirectory=projectDirectory)# ,
+# 				startStopTable=times)
 	 
 	#IjalLine.getTable(1)
 
@@ -370,8 +369,8 @@ def test_Lazy(display):
 				soundFile,
 				grammaticalTermsFile=grammaticalTermsFile,
 				tierGuideFile=tierGuideFile,
-				projectDirectory=projectDirectory,
-				startStopTable=times)
+				projectDirectory=projectDirectory)# ,
+# 				startStopTable=times)
 	 
 	#IjalLine.getTable(1)
 
@@ -408,8 +407,8 @@ def test_Imp(display):
 				soundFile,
 				grammaticalTermsFile=grammaticalTermsFile,
 				tierGuideFile=tierGuideFile,
-				projectDirectory=projectDirectory,
-				startStopTable=times)
+				projectDirectory=projectDirectory)# ,
+# 				startStopTable=times)
 	 
 	#IjalLine.getTable(1)
 
@@ -446,8 +445,8 @@ def test_Prayer(display):
 				soundFile,
 				grammaticalTermsFile=grammaticalTermsFile,
 				tierGuideFile=tierGuideFile,
-				projectDirectory=projectDirectory,
-				startStopTable=times)
+				projectDirectory=projectDirectory)# ,
+# 				startStopTable=times)
 	 
 	#IjalLine.getTable(1)
 

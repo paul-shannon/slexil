@@ -357,8 +357,7 @@ app.layout = html.Div(
         html.P(id='translationTier_hiddenStorage',           children="", style={'display': 'none'}),
         html.P(id='translation2Tier_hiddenStorage',          children="", style={'display': 'none'}),
         html.P(id='temporaryTitle_hiddenStorage',            children="", style={'display': 'none'}),
-        html.P(id='createPageErrorMessages_hiddenStorage',   children="", style={'display': 'none'}),
-        html.P(id='audioStartandStopTimes_hiddenStorage',    children='', style={'display': 'none'})
+        html.P(id='createPageErrorMessages_hiddenStorage',   children="", style={'display': 'none'})
         ],
     className="row",
     id='outerDiv'
@@ -489,8 +488,7 @@ def on_grammaticalTermsUpload(contents, name, date, projectDirectory):
     [Output('associateEAFAndSoundInfoTextArea', 'value'),
      Output('upload-grammaticalTerms-link','className'),
      Output('upload-grammaticalTerms-file','disabled'),
-     Output('createAndDisplayWebPageButton','disabled'),
-     Output('audioStartandStopTimes_hiddenStorage','value')],
+     Output('createAndDisplayWebPageButton','disabled')],
     [Input('extractSoundsByPhraseButton', 'n_clicks')],
     [State('sound_filename_hiddenStorage', 'children'),
      State('eaf_filename_hiddenStorage',   'children'),
@@ -513,11 +511,12 @@ def on_extractSoundPhrases(n_clicks, soundFileName, eafFileName, projectTitle, p
     soundFileFullPath = soundFileName # os.path.join(UPLOAD_DIRECTORY, soundFileName)
     print("soundFileName: %s" % soundFileName)
     print("eafFileName: %s" % eafFileName)
-    phraseFileCount,eatable = extractPhrases(soundFileFullPath, eafFileFullPath, projectDirectory)
-    print("start and stop times for extracted audio:\n %s" %eatable)
+    phraseFileCount = extractPhrases(soundFileFullPath, eafFileFullPath, projectDirectory)
+    #phraseFileCount,eatable = extractPhrases(soundFileFullPath, eafFileFullPath, projectDirectory)
+    #print("start and stop times for extracted audio:\n %s" %eatable)
     print("after extractPhrases, enable next button in sequence (upload abbreviations)")
     newButtonState = 'fakebuttonEnabled'
-    return("File %s parsed into %d phrases in audio directory." %(soundFile, phraseFileCount),newButtonState,0,0,eatable)
+    return("File %s parsed into %d phrases in audio directory." %(soundFile, phraseFileCount),newButtonState,0,0)
 
 #----------------------------------------------------------------------------------------------------
 @app.callback(
@@ -574,10 +573,9 @@ def update_output(value):
      State('eaf_filename_hiddenStorage',   'children'),
      State('projectDirectory_hiddenStorage', 'children'),
      State('grammaticalTerms_filename_hiddenStorage', 'children'),
-     State('projectTitle_hiddenStorage', 'children'),
-     State('audioStartandStopTimes_hiddenStorage','value')])
+     State('projectTitle_hiddenStorage', 'children')])
 def createWebPageCallback(n_clicks, soundFileName, eafFileName, projectDirectory,
-                          grammaticalTermsFile,projectTitle,startStopTable):
+                          grammaticalTermsFile,projectTitle):
     if n_clicks is None:
         return("",1,"")
     print("=== create web page callback")
@@ -587,7 +585,7 @@ def createWebPageCallback(n_clicks, soundFileName, eafFileName, projectDirectory
         grammaticalTermsFile = None
     try:
         html = createWebPage(eafFileName, projectDirectory, grammaticalTermsFile,
-                         os.path.join(projectDirectory, "tierGuide.yaml"),startStopTable,soundFileName)
+                         os.path.join(projectDirectory, "tierGuide.yaml"),soundFileName)
     except TooManyMorphsError as e:
         print("EAF error: There are more morphs (%d) than glosses (%d) in line %s." %(e.morphs,e.glosses,e.lineNumber))
         errorMessage = "EAF error: There are more morphs (%d) than glosses (%d) in line %s." %(e.morphs,e.glosses,e.lineNumber)
@@ -872,12 +870,11 @@ def extractPhrases(soundFileFullPath, eafFileFullPath, projectDirectory):
     ea = AudioExtractor(soundFileFullPath, eafFileFullPath, audioDirectory)
     assert(ea.validInputs)
     ea.extract(quiet=True)
-    eatable = ea.startStopTable
     phraseFileCount = len(os.listdir(audioDirectory))
-    return(phraseFileCount,eatable)
+    return(phraseFileCount)
 
 #----------------------------------------------------------------------------------------------------
-def createWebPage(eafFileName, projectDirectory, grammaticalTermsFileName, tierGuideFileName,startStopTable,soundFileName):
+def createWebPage(eafFileName, projectDirectory, grammaticalTermsFileName, tierGuideFileName,soundFileName):
 
     print("-------- entering createWebPage")
     #audioDirectory = os.path.join(projectDirectory, "audio")
@@ -894,7 +891,7 @@ def createWebPage(eafFileName, projectDirectory, grammaticalTermsFileName, tierG
                 soundFileName,
                 grammaticalTermsFileName,
                 tierGuideFileName,
-                startStopTable,
+                #startStopTable,
                 projectDirectory)
 
     return(text.toHTML())

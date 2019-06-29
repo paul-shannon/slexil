@@ -16,8 +16,8 @@ def createText():
 			"../testData/harryMosesDaylight/audioPhrases",
 				grammaticalTermsFile="../testData/harryMosesDaylight/grammaticalTerms.txt",
 				tierGuideFile="../testData/harryMosesDaylight/tierGuide.yaml",
-				projectDirectory='../testData/harryMosesDaylight',
-				startStopTable=startStopTable)
+				projectDirectory='../testData/harryMosesDaylight')# ,
+# 				startStopTable=startStopTable)
 	return(text)
     
 

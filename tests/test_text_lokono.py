@@ -30,8 +30,8 @@ def createText():
 				soundFile,
 				grammaticalTermsFile=grammaticalTermsFile,
 				tierGuideFile=tierGuideFile,
-				projectDirectory=projectDirectory,
-				startStopTable=times)
+				projectDirectory=projectDirectory)# ,
+# 				startStopTable=times)
 
 	return(text)
 
