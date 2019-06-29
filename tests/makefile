@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 all: morphemeGloss ijalLine audioExtractor text_daylight text_monkeyAndThunder  text_PlumedSerpent text_prayer test_chatino5 test_chatino6 test_Text_6_line test_Text test_TranslationLine text_lokono test_TextPy
+=======
+all: morphemeGloss ijalLine audioExtractor text_daylight text_monkeyAndThunder  text_PlumedSerpent text_prayer test_chatino5 test_chatino6 test_Text_6_line test_Text test_TranslationLine text_lokono test_TextPy text_inferno
+>>>>>>> master
 
 morphemeGloss:
 	python3 test_MorphemeGloss.py
@@ -22,6 +26,9 @@ text_PlumedSerpent:
 text_prayer:
 	python3 test_text_prayer.py
 
+text_inferno:
+	python3 test_text_inferno.py
+
 # takes several minutes to run, but a worthwhile test, now not run out of the "all" target above
 text_lokono:
 	python3 test_text_lokono.py
@@ -34,12 +41,23 @@ test_chatino6:
 
 test_Text_6_line:
 	python3 test_Text_6_line.py
+<<<<<<< HEAD
 	
 test_Text:
 	python3 test_Text.py
 	
+=======
+
+test_Text:
+	python3 test_Text.py
+
+>>>>>>> master
 test_TranslationLine:
 	python3 test_TranslationLine.py
 
 test_TextPy:
+<<<<<<< HEAD
 	python3 ../testTextPy/test_TextPy.py
+=======
+	python3 ../testTextPy/test_TextPy.py
+>>>>>>> master
