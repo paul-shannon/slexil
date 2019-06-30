@@ -627,21 +627,21 @@ def setCreatePageErrorMessages(errorMessage):
 	return(errorMessage,className)
 		
 #----------------------------------------------------------------------------------------------------
-@app.callback(
-	Output('temporaryTitle_hiddenStorage', 'children'),
-	[Input('setTitleTextInput', 'value')]
-	)
-def trackUserInputInSetTitle(typing):
-	return(typing)	
-	
+# @app.callback(
+# 	Output('temporaryTitle_hiddenStorage', 'children'),
+# 	[Input('setTitleTextInput', 'value')]
+# 	)
+# def trackUserInputInSetTitle(typing):
+# 	return(typing)	
+# 	
 #----------------------------------------------------------------------------------------------------
 @app.callback(
     [Output('projectTitle_hiddenStorage', 'children'),
      Output('upload-eaf-link','className'),
      Output('upload-eaf-file','disabled')],
     [Input('setTitleButton', 'n_clicks'),
-     Input('temporaryTitle_hiddenStorage', 'children')]
-     #Input('setTitleTextInput', 'value')]
+     #Input('temporaryTitle_hiddenStorage', 'children')]
+     Input('setTitleTextInput', 'value')]
     )
 def setTitle(n_clicks, newTitle):
 	print("=== title callback")
@@ -692,9 +692,10 @@ def update_pageTitle(projectDirectory):
 #----------------------------------------------------------------------------------------------------
 @app.callback(
     Output('storyIFrame', 'src'),
-    [Input('createWebPageStatus', 'children'),
-     Input('projectDirectory_hiddenStorage', 'children')],
-    [State('projectTitle_hiddenStorage', 'children')])
+    [Input('createWebPageStatus', 'children')],
+     #Input('projectDirectory_hiddenStorage', 'children')],
+    [State('projectDirectory_hiddenStorage', 'children'),
+    State('projectTitle_hiddenStorage', 'children')])
 def displayText(createWebPageStatus, projectDirectory, projectTitle):
    print("=== displayText '%s'" % createWebPageStatus)
    if createWebPageStatus is None:
