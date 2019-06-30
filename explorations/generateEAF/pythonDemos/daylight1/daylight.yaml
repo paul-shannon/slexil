@@ -82,11 +82,53 @@ lines:
   - lineNumber: 12
     startTime: 50085
     endTime: 53124
-    lushootseedSpeech: ləcəbagwiɬil tiʔəʔ ʔəsx̌ək’wtxw əlgwəʔ ƛ’əlayʔ
+    lushootseedSpeech: ləcəbagʷiɬil tiʔəʔ ʔəsx̌ək’ʷtxʷ əlgʷəʔ ƛ’əlayʔ
     # sounds like a reduplicated lə, progressive: lələ=cəb
     tabDelimitedPhonemes: ["lə=cəb•a•gʷiɬ–il",tiʔəʔ,ʔəs–x̌ək’ʷ–txʷ,əlgʷəʔ,ƛ’əlayʔ]
     tabDelimitedPhonemeGloss: ["PROG=two•CNN•canoe–INCH",PROX,STAT–overturned–ECS,PL,canoe]
     englishTranslation: They had two canoes overturned.
+  - lineNumber: 13
+    startTime:  53124
+    endTime: 57303
+    lushootseedSpeech: cəbagʷiɬəxʷ kʷi ƛ’udəxʷsaxʷəbabacəds əlgʷəʔ
+    tabDelimitedPhonemes: ["cəb•a•gʷiɬ=əxʷ",kʷi,"ƛ’u=dəxʷ=saxʷəb•abac–d=s","əlgʷəʔ"]
+    tabDelimitedPhonemeGloss: ["two•CNN•canoe=now",REM,"HAB=ADNM=jump•body–ICS=3PO",PL]
+    englishTranslation: Now what they would jump over were two canoes.
+  - lineNumber: 14
+    startTime: 57303
+    endTime:   63541
+    lushootseedSpeech: tuhaʔkʷ tuhuyucut əlgʷəʔ dxʷʔal kʷi gʷədəxʷxʷəʔaʔxʷəʔils lətəlawil
+    tabDelimitedPhonemes: [tu=haʔkʷ,tu=huyu–t–sut,əlgʷəʔ,dxʷ–ʔal,kʷi,gʷə=dəxʷ=xʷəʔaʔxʷəʔ–il=s,lə=təlawil]
+    tabDelimitedPhonemeGloss: [PAST=long.time,PAST=made–ICS–REFL,PL,CNTRPT–at,REM,SBJ=ADNM=swift–INCH=3PO,PROG=run]
+    englishTranslation: For a long time they trained to become swift as they run.
+  - lineNumber: 15
+    startTime: 63541
+    endTime: 70432
+    lushootseedSpeech: ləɬixʷalgʷiɬil tiʔəʔ tasx̌ək’ʷtxʷ həlgʷəʔ ƛ’əlayʔ dəxʷəsaxʷəbabacs əlgʷəʔ
+    tabDelimitedPhonemes: ["lə=ɬixʷ•al•gʷiɬ–il",tiʔəʔ,tu=ʔas–x̌ək’ʷ–txʷ,həlgʷəʔ,ƛ’əlayʔ,"dəxʷ=lə=saxʷəb•abac=s",əlgʷəʔ]
+    tabDelimitedPhonemeGloss: ["PROG=three•CNN•canoe–INCH",PROX,PAST=STAT–overturned–ECS,PL,canoe,"ADNM=PROG=jump•body=3PO",PL]
+    englishTranslation: It came to where they had three canoes overturned which they were jumping.
+##  - lineNumber:
+##     startTime:
+##     endTime:
+##     lushootseedSpeech:
+##     tabDelimitedPhonemes: []
+##     tabDelimitedPhonemeGloss: []
+##     englishTranslation:
+##  - lineNumber:
+##     startTime:
+##     endTime:
+##     lushootseedSpeech:
+##     tabDelimitedPhonemes: []
+##     tabDelimitedPhonemeGloss: []
+##     englishTranslation:
+##  - lineNumber:
+##     startTime:
+##     endTime:
+##     lushootseedSpeech:
+##     tabDelimitedPhonemes: []
+##     tabDelimitedPhonemeGloss: []
+##     englishTranslation:
 ##  - lineNumber:
 ##     startTime:
 ##     endTime:
