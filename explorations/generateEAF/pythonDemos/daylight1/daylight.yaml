@@ -74,18 +74,19 @@ lines:
     englishTranslation: They lined up the canoes.
   - lineNumber: 11
     startTime: 44096
-    endTime:  50103
+    endTime:  50085
     lushootseedSpeech: tuʔaʔ dzəɬ ti ƛ’əlayʔ gʷəl tux̌ʷ xʷiʔ uʔxʷ gwəsəsaxʷəbabacs ʔal kʷi sxʷəʔaʔxʷəʔils
     tabDelimitedPhonemes: [tu=ʔaʔ,dzəɬ,ti,ƛ’əlayʔ,gʷəl,tux̌ʷ,xʷiʔ,uʔʷw,"gʷə=s=lə=saxʷəb•abac=s",ʔal,kʷi,s=xʷəʔaʔxʷəʔ–il=s]
     tabDelimitedPhonemeGloss: [PAST=be.there,PTCL,SPEC,canoe,SCONJ,just,NEG,PTCL,"SBJ=NM=PROG=jump•body=3PO",at,REM,NM=swift–INCH=3PO]
     englishTranslation: There must have been some shovel-nosed canoes but they could not yet jump over them to become swift.
-##  - lineNumber:
-##     startTime:
-##     endTime:
-##     lushootseedSpeech:
-##     tabDelimitedPhonemes: []
-##     tabDelimitedPhonemeGloss: []
-##     englishTranslation:
+  - lineNumber: 12
+    startTime: 50085
+    endTime: 53124
+    lushootseedSpeech: ləcəbagwiɬil tiʔəʔ ʔəsx̌ək’wtxw əlgwəʔ ƛ’əlayʔ
+    # sounds like a reduplicated lə, progressive: lələ=cəb
+    tabDelimitedPhonemes: ["lə=cəb•a•gʷiɬ–il",tiʔəʔ,ʔəs–x̌ək’ʷ–txʷ,əlgʷəʔ,ƛ’əlayʔ]
+    tabDelimitedPhonemeGloss: ["PROG=two•CNN•canoe–INCH",PROX,STAT–overturned–ECS,PL,canoe]
+    englishTranslation: They had two canoes overturned.
 ##  - lineNumber:
 ##     startTime:
 ##     endTime:
