@@ -129,8 +129,29 @@ lines:
     tabDelimitedPhonemes: [ʔu,xʷiʔ=əxʷ,kʷi,ʔa=əxʷ,gʷə=čal–dxʷ–buɬ]
     tabDelimitedPhonemeGloss: [INTJ,NEG=now,REM,be.there=now,SBJ=chased–DC–1PL.OBJ]
     englishTranslation: Oh, now there is nothing that can catch us.
+  - lineNumber: 19
+    startTime: 87924
+    endTime: 94000
+    lushootseedSpeech: siʔəxʷ čəɬ ƛ’ubəxʷ dxʷʔal kʷi gʷəsuʔux̌ʷc čəɬ kʷi sləx̌il ʔal kʷi dəxʷʔacəc
+    tabDelimitedPhonemes: [siʔ=əxʷ,čəɬ,ƛ’ub=əxʷ,dxʷ–ʔal,kʷi,gʷə=s=ʔu–ʔux̌ʷ–c,čəɬ,kʷi,sləx̌il,ʔal,kʷi,dəxʷ=ʔacəc]
+    tabDelimitedPhonemeGloss: [here=now,1PL.SUB,well=now,CNTRPT–at,REM,SBJ=NM=PFV–go–ALTV,1PL.PO,REM,daylight,at,REM,ADNM=be.in.place]
+    englishTranslation: We are good enough to go after daylight where it is.
+  - lineNumber: 20
+    startTime: 94000
+    endTime: 103860
+    lushootseedSpeech: tuʔuluɬəxʷ tiʔəʔ diʔəʔ bibščəb ʔi tiʔəʔ qaw’qs
+    tabDelimitedPhonemes: [tu=ʔuluɬ=əxʷ,tiʔəʔ,diʔəʔ,bi–bəščəb,ʔi,tiʔəʔ,qaʷ’qs]
+    tabDelimitedPhonemeGloss: [PAST=travel.by.ater=now,PROX,here,ATTN–mink,CONJ,PROX,raven]
+    englishTranslation: Now Little Mink and Raven set out by canoe.
+  - lineNumber: 21
+    startTime: 103860
+    endTime: 110727
+    lushootseedSpeech: tugʷəč’ədaxʷ əlgʷəʔ kʷi sləx̌il dxʷʔal kʷi dxʷq’xʷul’gʷədxʷ
+    tabDelimitedPhonemes: [tu=gʷəč’–d=axʷ,əlgʷəʔ,kʷi,sləx̌il,dxʷ–ʔal,kʷi,"dxʷ–q’xʷ•ul’gʷədxʷ"]
+    tabDelimitedPhonemeGloss: [PAST=search–ICS=now,PL,REM,daylight,CNTRPT–at,REM,"CNTRPT–upstream•land"]
+    englishTranslation: They sought for daylight in the land upstream.
 ##  - lineNumber:
-##    startTime:
+##    startTime: 110727
 ##    endTime:
 ##    lushootseedSpeech:
 ##    tabDelimitedPhonemes: []

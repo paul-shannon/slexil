@@ -1,5 +1,5 @@
 default:
-	@echo targets: extractAudio, eaf, html
+	@echo targets: all [extractAudio, eaf, html], publish
 
 all: eaf extractAudio html
 
