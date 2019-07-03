@@ -150,6 +150,27 @@ lines:
     tabDelimitedPhonemes: [tu=gʷəč’–d=axʷ,əlgʷəʔ,kʷi,sləx̌il,dxʷ–ʔal,kʷi,"dxʷ–q’xʷ•ul’gʷədxʷ"]
     tabDelimitedPhonemeGloss: [PAST=search–ICS=now,PL,REM,daylight,CNTRPT–at,REM,"CNTRPT–upstream•land"]
     englishTranslation: They sought for daylight in the land upstream.
+  - lineNumber: 22
+    startTime: 110727
+    endTime: 119646
+    lushootseedSpeech: x̌ʷul’əxʷ əlgʷəʔ tuləč’itil dxʷʔal tiʔəʔ dəxʷʔa ʔə kʷi sləx̌il ƛ’uləx̌iličəxʷ əlgʷəʔ
+    tabDelimitedPhonemes: [x̌ʷul’=əxʷ,əlgʷəʔ,tu=lə=č’it–il,dxʷ–ʔal,tiʔəʔ,dəxʷ=ʔa,ʔə,kʷi,sləx̌il,ƛ’u=ləx̌–il•ič=əxʷ,əlgʷəʔ]
+    tabDelimitedPhonemeGloss: [only=now,PL,PAST=PROG=near–INCH,CNTRPT–at,PROX,ADNM=be.there,PR,REM,daylight,HAB=light–INCH•covering=now,PL]
+    englishTranslation: As they drew near this place of daylight, light enveloped them.
+  - lineNumber: 23
+    startTime: 119646
+    endTime:   124393
+    lushootseedSpeech: ƛ’uhagəxʷ kʷi ƛ’usləx̌ils gʷəl ƛ’ubələbəsad
+    tabDelimitedPhonemes: [ƛ’u=hagʷ=əxʷ,kʷi,ƛ’u=s=ləx̌–il=s,gʷəl,ƛ’u=bə=lə=bəsad]
+    tabDelimitedPhonemeGloss: [HAB=long.time=now,REM,HAB=NM=light–INCH=3PO,SCONJ,HAB=ADD=PROG=dark]
+    englishTranslation: For a long time it would be day then it would again be dark
+##  - lineNumber:
+##    startTime: 1204393
+##    endTime:
+##    lushootseedSpeech:
+##    tabDelimitedPhonemes: []
+##    tabDelimitedPhonemeGloss: []
+##    englishTranslation:
 ##  - lineNumber:
 ##    startTime: 110727
 ##    endTime:
