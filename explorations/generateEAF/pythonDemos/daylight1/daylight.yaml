@@ -164,17 +164,211 @@ lines:
     tabDelimitedPhonemes: [ƛ’u=hagʷ=əxʷ,kʷi,ƛ’u=s=ləx̌–il=s,gʷəl,ƛ’u=bə=lə=bəsad]
     tabDelimitedPhonemeGloss: [HAB=long.time=now,REM,HAB=NM=light–INCH=3PO,SCONJ,HAB=ADD=PROG=dark]
     englishTranslation: For a long time it would be day then it would again be dark
-##  - lineNumber:
-##    startTime: 1204393
-##    endTime:
-##    lushootseedSpeech:
-##    tabDelimitedPhonemes: []
-##    tabDelimitedPhonemeGloss: []
-##    englishTranslation:
-##  - lineNumber:
-##    startTime: 110727
-##    endTime:
-##    lushootseedSpeech:
-##    tabDelimitedPhonemes: []
-##    tabDelimitedPhonemeGloss: []
-##    englishTranslation:
+  - lineNumber: 24
+    startTime: 124393
+    endTime:   126442
+    lushootseedSpeech: diɬ tudəxʷəshaydxʷsəxʷ əlgʷəʔ
+    tabDelimitedPhonemes: [diɬ,tu=dəxʷ=ʔəs–hay–dxʷ=s=əxʷ,əlgʷəʔ]
+    tabDelimitedPhonemeGloss: [FOC,PAST=ADNM=STAT–known–DC=3PO=now,PL]
+    englishTranslation: That is how they knew.
+  - lineNumber: 25
+    startTime: 126442
+    endTime: 128065
+    lushootseedSpeech: ləč’itiləxʷ čəɬ
+    tabDelimitedPhonemes: [lə=č’it–il=əxʷ,čəɬ]
+    tabDelimitedPhonemeGloss: [PROG=near–INCH=now,1PL.SUB]
+    englishTranslation: We are getting near.
+  - lineNumber: 26
+    startTime: 128065
+    endTime: 132666
+    lushootseedSpeech: gʷəl tuɬəgʷɬ əlgʷəʔ tiʔəʔ q’il’bids gʷəl tugʷax̌ʷ
+    tabDelimitedPhonemes: [gʷəl,tu=ɬəgʷɬ,əlgʷəʔ,tiʔəʔ,q’il’bid–s,gʷəl,tu=gʷax̌ʷ]
+    tabDelimitedPhonemeGloss: [SCONJ,PAST=leave,PL,PROX,canoe–3PO,SCONJ,PAST=walk]
+    englishTranslation: Then they left their canoe and walked.
+  - lineNumber: 27
+    startTime: 132666
+    endTime: 143969
+    lushootseedSpeech: tugax̌ʷəxʷ əlgʷəʔ gʷəl tuɬčil dxʷʔal tiʔəʔ diʔəʔ ʔaciɬtalbixʷ ʔəsɬaɬlil dəxʷʔa ʔə tiʔəʔ sləx̌il
+    tabDelimitedPhonemes: [tu=gʷax̌ʷ=əxʷ,əlgʷəʔ,gʷəl,tu=ɬčil,dxʷ–ʔal,tiʔəʔ,diʔəʔ,ʔaciɬtalbixʷ,ʔəs–ɬaɬlil,dəxʷ=ʔa,ʔə,tiʔəʔ,sləx̌il]
+    tabDelimitedPhonemeGloss: [PAST=walk=now,PL,SCONJ,PAST=arrive,CNTRPT–at,PROX,here,people,STAT–live,ADNM=be.there,PR,PROX,daylight]
+    englishTranslation: They walked now and arrived at these people who dwelled at the place of light.
+  - lineNumber: 28
+    startTime: 143969
+    endTime: 146670
+    lushootseedSpeech: ɬudxʷʔiʷədəxʷ əlgʷəʔ
+    tabDelimitedPhonemes: [ɬu=dxʷ–ʔiʷəd=əxʷ,əlgʷəʔ]
+    tabDelimitedPhonemeGloss: [IRR=CTD–decide=now,PL]
+    englishTranslation: They will decide.
+  - lineNumber: 29
+    startTime: 146670
+    endTime: 149324
+    lushootseedSpeech: (shaw) gʷatəxʷ ʔə dibəɬ kʷi ɬuʔux̌ʷtxʷ kʷi sləx̌il
+    tabDelimitedPhonemes: [unknown,gʷat=əx,ʔə,dibəɬ,kʷi,ɬu=ʔux̌ʷ–txʷ,kʷi,sləx̌il]
+    tabDelimitedPhonemeGloss: [unknown,who=now,PR,we,REM,IRR=go–ECS,REM,daylight]
+    englishTranslation: Which of us will take the light?
+  - lineNumber: 30
+    startTime: 149324
+    endTime: 151362
+    lushootseedSpeech: gʷəsdukʷ gʷəbək’ʷaɬi gʷəʔux̌ʷ
+    tabDelimitedPhonemes: [gʷə=s=dukʷ,gʷə=bək’ʷ=aɬi,gʷə=ʔux̌ʷ]
+    tabDelimitedPhonemeGloss: [SBJ=NM=anormal,SBJ=all=1PL.SBJ,SBJ=go]
+    englishTranslation: It would be bad if we both were to go.
+  - lineNumber: 31
+    startTime: 151362
+    endTime: 154531
+    lushootseedSpeech: yəx̌i čəɬ gʷəhaydub ləʔux̌ʷc čəɬ tiʔəʔ sləx̌il
+    tabDelimitedPhonemes: [yəx̌i,čəɬ,gʷə=hay–dxʷ–b,lə=ʔux̌ʷ–c,čəɬ,tiʔəʔ,sləx̌il]
+    tabDelimitedPhonemeGloss: [because,1PL.SUB,SBJ=known–DC–PASS,PROG=go–ALTV,1PL.SUB,PROX,daylight]
+    englishTranslation: Because we would be known to be going after this light.’
+#  - lineNumber:
+#    startTime:
+#    endTime:
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes:
+#    tabDelimitedPhonemeGloss:
+#    englishTranslation:
+
+
+#  - lineNumber:
+#    startTime:
+#    endTime:
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes:
+#    tabDelimitedPhonemeGloss:
+#    englishTranslation:
+
+
+#  - lineNumber:
+#    startTime:
+#    endTime:
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes:
+#    tabDelimitedPhonemeGloss:
+#    englishTranslation:
+
+
+#  - lineNumber:
+#    startTime:
+#    endTime:
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes:
+#    tabDelimitedPhonemeGloss:
+#    englishTranslation:
+
+
+#  - lineNumber:
+#    startTime:
+#    endTime:
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes:
+#    tabDelimitedPhonemeGloss:
+#    englishTranslation:
+
+
+#  - lineNumber:
+#    startTime:
+#    endTime:
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes:
+#    tabDelimitedPhonemeGloss:
+#    englishTranslation:
+
+
+#  - lineNumber:
+#    startTime:
+#    endTime:
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes:
+#    tabDelimitedPhonemeGloss:
+#    englishTranslation:
+
+
+#  - lineNumber:
+#    startTime:
+#    endTime:
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes:
+#    tabDelimitedPhonemeGloss:
+#    englishTranslation:
+
+
+#  - lineNumber:
+#    startTime:
+#    endTime:
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes:
+#    tabDelimitedPhonemeGloss:
+#    englishTranslation:
+
+
+#  - lineNumber:
+#    startTime:
+#    endTime:
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes:
+#    tabDelimitedPhonemeGloss:
+#    englishTranslation:
+
+
+#  - lineNumber:
+#    startTime:
+#    endTime:
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes:
+#    tabDelimitedPhonemeGloss:
+#    englishTranslation:
+
+
+#  - lineNumber:
+#    startTime:
+#    endTime:
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes:
+#    tabDelimitedPhonemeGloss:
+#    englishTranslation:
+
+
+#  - lineNumber:
+#    startTime:
+#    endTime:
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes:
+#    tabDelimitedPhonemeGloss:
+#    englishTranslation:
+
+
+#  - lineNumber:
+#    startTime:
+#    endTime:
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes:
+#    tabDelimitedPhonemeGloss:
+#    englishTranslation:
+
+
+#  - lineNumber:
+#    startTime:
+#    endTime:
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes:
+#    tabDelimitedPhonemeGloss:
+#    englishTranslation:
+
+
+#  - lineNumber:
+#    startTime:
+#    endTime:
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes:
+#    tabDelimitedPhonemeGloss:
+#    englishTranslation:
+
+
+#  - lineNumber:
+#    startTime:
+#    endTime:
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes:
+#    tabDelimitedPhonemeGloss:
+#    englishTranslation:
+
