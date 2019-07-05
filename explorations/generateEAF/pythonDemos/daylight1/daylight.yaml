@@ -220,42 +220,34 @@ lines:
     tabDelimitedPhonemes: [yəx̌i,čəɬ,gʷə=hay–dxʷ–b,lə=ʔux̌ʷ–c,čəɬ,tiʔəʔ,sləx̌il]
     tabDelimitedPhonemeGloss: [because,1PL.SUB,SBJ=known–DC–PASS,PROG=go–ALTV,1PL.SUB,PROX,daylight]
     englishTranslation: Because we would be known to be going after this light.’
-#  - lineNumber:
-#    startTime:
-#    endTime:
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes:
-#    tabDelimitedPhonemeGloss:
-#    englishTranslation:
-
-
-#  - lineNumber:
-#    startTime:
-#    endTime:
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes:
-#    tabDelimitedPhonemeGloss:
-#    englishTranslation:
-
-
-#  - lineNumber:
-#    startTime:
-#    endTime:
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes:
-#    tabDelimitedPhonemeGloss:
-#    englishTranslation:
-
-
-#  - lineNumber:
-#    startTime:
-#    endTime:
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes:
-#    tabDelimitedPhonemeGloss:
-#    englishTranslation:
-
-
+  - lineNumber: 32
+    startTime: 154531
+    endTime: 157568
+    lushootseedSpeech: ɬuqadabid čəɬ ʔal kʷi ɬudəxʷʔacəc
+    tabDelimitedPhonemes: [ɬu=qada–bi–d,čəɬ,ʔal,kʷi,ɬu=dəxʷ=ʔacəc]
+    tabDelimitedPhonemeGloss: [RR=steal–SS–ICS,1PL.SUB,at,REM,IRR=ADNM=be.in.place]
+    englishTranslation: We will steal it from where it is.
+  - lineNumber: 33
+    startTime: 157568
+    endTime: 163022
+    lushootseedSpeech: tucutəxʷ tiʔəʔ diʔəʔ bibščəb
+    tabDelimitedPhonemes: [tu=cut=əxʷ,tiʔəʔ,diʔəʔ,bi–bəščəb]
+    tabDelimitedPhonemeGloss: [PAST=say=now,PROX,here,ATTN–mink]
+    englishTranslation: Little Mink said,
+  - lineNumber: 34
+    startTime: 163022
+    endTime: 164624
+    lushootseedSpeech: ʔəca kʷi ɬuhədʔiʷ’b
+    tabDelimitedPhonemes: [ʔəca,kʷi,ɬu=hədʔiʷ’–b]
+    tabDelimitedPhonemeGloss: [I,REM,IRR=indoors–PASS]
+    englishTranslation: I am the one who will enter the building.
+  - lineNumber: 35
+    startTime: 164624
+    endTime: 168954
+    lushootseedSpeech: kayiɬ čəd ɬuləluluƛ’ ɬasqəlubus, ɬasx̌ʷal’
+    tabDelimitedPhonemes: [kayiɬ,čəd,ɬu=lə=lu–luƛ’,ɬu=ʔas–qwəlub•us,ɬu=ʔas–x̌ʷal’]
+    tabDelimitedPhonemeGloss: [pretend,1SG.SUB,IRR=PROG=ATTN–old,IRR=STAT–grey.hair•head,IRR=STAT–fail]
+    englishTranslation: I will pretend to be old and grey and feeble.
 #  - lineNumber:
 #    startTime:
 #    endTime:

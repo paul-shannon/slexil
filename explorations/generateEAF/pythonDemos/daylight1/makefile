@@ -1,7 +1,7 @@
 default:
-	@echo targets: all [extractAudio, eaf, html], publish
+	@echo targets: build [extractAudio, eaf, html], publish
 
-all: eaf extractAudio html
+build: eaf extractAudio html
 
 extractAudio:
 	~/anaconda/bin/python3 extractAudioPhrases.py
