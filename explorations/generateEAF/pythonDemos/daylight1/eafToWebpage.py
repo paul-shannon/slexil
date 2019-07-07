@@ -27,15 +27,15 @@ assert(os.path.isfile(tierGuideFile))
 assert(os.path.isfile(grammaticalTermsFile))
 
 
-ae = AudioExtractor(audioFilename, elanXmlFilename, audioPhrasesTargetDirectory)
-ae.determineStartAndEndTimes()
-times = ae.startStopTable
+#ae = AudioExtractor(audioFilename, elanXmlFilename, audioPhrasesTargetDirectory)
+#ae.determineStartAndEndTimes()
+#times = ae.startStopTable
 text = Text(elanXmlFilename,
 	    soundFile,
 	    grammaticalTermsFile=grammaticalTermsFile,
 	    tierGuideFile=tierGuideFile,
-	    projectDirectory=projectDirectory,
-	    startStopTable=times)
+	    projectDirectory=projectDirectory)
+	    #startStopTable=times)
 
 htmlText = text.toHTML()
 filename = "daylight.html"

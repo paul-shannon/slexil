@@ -72,7 +72,7 @@ def test_getStartStopTimes():
     with open(tierGuideFile, 'r') as f:
        tierGuide = yaml.load(f)
 
-    x3 = IjalLine(doc, 3, tierGuide,audioData='a,b,c')
+    x3 = IjalLine(doc, 3, tierGuide) # ,audioData='a,b,c')
     x3.parse()
     tbl = x3.getTable()
     startTime = x3.getStartTime()
@@ -200,7 +200,7 @@ def test_monkeyAndThunder_line_6():
     grammaticalTermsFile = "../testData/monkeyAndThunder/grammaticalTerms.txt"
     grammaticalTerms = open(grammaticalTermsFile).read().split("\n")
     assert("MOUTH" in grammaticalTerms)
-    
+
     x6 = IjalLine(doc, 6, tierGuide, grammaticalTerms)
     x6.parse()
 
