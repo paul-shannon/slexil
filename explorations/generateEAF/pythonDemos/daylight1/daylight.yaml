@@ -5,9 +5,9 @@ lines:
   - lineNumber: 1
     startTime: 0
     endTime: 6600
-    lushootseedSpeech: ʔal kʷi tu, ʔal kʷi tu-haʔkʷ gʷәl xʷiʔ gʷә-tu-s-lәx̌-il.
+    lushootseedSpeech: ʔal kʷi tu, ʔal kʷi tu-haʔkʷ gʷәl xʷiʔ gʷәtuslәx̌il.
     tabDelimitedPhonemes: [ʔal,kʷi,tu-,ʔal,kʷi,tu-haʔkʷ,gʷәl,xʷiʔ,gʷә-tu-s-lәx̌-il]
-    tabDelimitedPhonemeGloss: [at, REM, PAST, at, REM, PAST=long.time, SCONJ, NEG, SBJ=PAST=daylight]
+    tabDelimitedPhonemeGloss: [at,REM,PAST,at,REM,PAST=long.time,SCONJ,NEG,SBJ=PAST=daylight]
     englishTranslation: In the distant past, there was no daylight.
   - lineNumber: 2
     startTime: 6600
@@ -112,8 +112,8 @@ lines:
     startTime: 70432
     endTime: 83776
     lushootseedSpeech: ʔaləxʷ kʷi tubuusalgʷiɬil kʷi tuasx̌ʷk’ʷ ƛ’əlayʔ gʷəl tusaxʷəbabacəd tiʔəʔ buusalgʷiɬ ƛ’əlayʔ gʷəl tuʔahəxʷ
-    tabDelimitedPhonemes: [ʔal=əxʷ,"kʷi tu=buus•al•gʷiɬ–il", kʷi,tu=ʔas–x̌ək’ʷ,ƛ’əlayʔ,gʷəl,tu=saxʷəb•abac–d,tiʔəʔ,buus•al•gʷiɬ,ƛ’əlayʔ,gʷəl,tu=ʔa=əxʷ]
-    tabDelimitedPhonemeGloss: [at=now,REM,"PAST=four•CNN•canoe–INCH,REM,PAST=STAT–overturned",canoe,SCONJ,"PAST=jump•body–ICS,PROX,four•CNN•canoe",canoe,SCONJ,PAST=be.there=now]
+    tabDelimitedPhonemes: [ʔal=əxʷ,kʷi,"tu=buus•al•gʷiɬ–il",kʷi,tu=ʔas–x̌ək’ʷ,ƛ’əlayʔ,gʷəl,"tu=saxʷəb•abac–d",tiʔəʔ,"buus•al•gʷiɬ",ƛ’əlayʔ,gʷəl,tu=ʔa=əxʷ]
+    tabDelimitedPhonemeGloss: [at=now,REM,"PAST=four•CNN•canoe–INCH",REM,PAST=STAT–overturned,canoe,SCONJ,"PAST=jump•body–ICS",PROX,"four•CNN•canoe",canoe,SCONJ,PAST=be.there=now]
     englishTranslation: When it became four canoes and they jumped over these four, then it was there.
   - lineNumber: 17
     startTime: 83776
@@ -225,7 +225,7 @@ lines:
     endTime: 157568
     lushootseedSpeech: ɬuqadabid čəɬ ʔal kʷi ɬudəxʷʔacəc
     tabDelimitedPhonemes: [ɬu=qada–bi–d,čəɬ,ʔal,kʷi,ɬu=dəxʷ=ʔacəc]
-    tabDelimitedPhonemeGloss: [RR=steal–SS–ICS,1PL.SUB,at,REM,IRR=ADNM=be.in.place]
+    tabDelimitedPhonemeGloss: [IRR=steal–SS–ICS,1PL.SUB,at,REM,IRR=ADNM=be.in.place]
     englishTranslation: We will steal it from where it is.
   - lineNumber: 33
     startTime: 157568
@@ -237,8 +237,8 @@ lines:
   - lineNumber: 34
     startTime: 163022
     endTime: 164624
-    lushootseedSpeech: ʔəca kʷi ɬuhədʔiʷ’b
-    tabDelimitedPhonemes: [ʔəca,kʷi,ɬu=hədʔiʷ’–b]
+    lushootseedSpeech: ʔəca kʷi ɬuhədʔiw’b
+    tabDelimitedPhonemes: [ʔəca,kʷi,ɬu=hədʔiw’–b]
     tabDelimitedPhonemeGloss: [I,REM,IRR=indoors–PASS]
     englishTranslation: I am the one who will enter the building.
   - lineNumber: 35
