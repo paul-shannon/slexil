@@ -14,6 +14,8 @@ pd.set_option('display.width', 1000)
 def runTests():
 
     test_buildTable()
+    test_getStartStopTimes()
+
     test_lokono_line_3()    # each morpheme and gloss are separate xml tier elements
     # test_extractAudio()   # only works when LARGE monkeyAndThunder files is present
     test_lokono_toHTML(False, sampleOfLinesOnly=True)
@@ -24,7 +26,7 @@ def runTests():
     test_plumedSerpent_toHTML(False)
        #  test_aktzini_toHTML()
     test_prayer_toHTML(displayPage=False)
-    
+
 #----------------------------------------------------------------------------------------------------
 def test_buildTable():
 
@@ -60,6 +62,25 @@ def test_buildTable():
                                                    'a12136', 'a12137', 'a12137'])
 
 #----------------------------------------------------------------------------------------------------
+def test_getStartStopTimes():
+
+    print("--- test_getStartStopTimes")
+
+    filename = "../testData/lokono/LOKONO_IJAL_2.eaf"
+    doc = etree.parse(filename)
+    tierGuideFile = "../testData/lokono/tierGuide.yaml"
+    with open(tierGuideFile, 'r') as f:
+       tierGuide = yaml.load(f)
+
+    x3 = IjalLine(doc, 3, tierGuide,audioData='a,b,c')
+    x3.parse()
+    tbl = x3.getTable()
+    startTime = x3.getStartTime()
+    endTime = x3.getEndTime()
+    assert(startTime == 8850.0)
+    assert(endTime == 10570.0)
+
+#----------------------------------------------------------------------------------------------------
 def test_lokono_line_3():
 
     """
@@ -83,7 +104,7 @@ def test_lokono_line_3():
     assert(x3.morphemeGlossRows == [3, 5, 7, 9])
 
     assert(x3.getSpokenText() == 'thusa, aba hiyaro kiba.')
-    try: 
+    try:
         assert(x3.getTranslation() == "‘[a] child, a woman as well.’")
     except AssertionError as e:
         raise Exception(x3.getTranslation()) from e
@@ -258,7 +279,7 @@ def test_monkeyAndThunder_toHTML(displayPage=False):
         lines.append(line)
 
     #print("parsed %d/%d complete lines" % (len(lines), lineCount))
-    
+
     htmlDoc = Doc()
 
     htmlDoc.asis('<!DOCTYPE html>')
@@ -332,7 +353,7 @@ def test_plumedSerpent_toHTML(displayPage=False):
            lines.append(line)
 
     # print("parsed %d/%d complete lines" % (len(lines), lineCount))
-    
+
     htmlDoc = Doc()
 
     htmlDoc.asis('<!DOCTYPE html>')
@@ -363,7 +384,7 @@ def test_prayer_toHTML(displayPage=False):
     filename = "../testData/prayer/20150717_Prayer_community_one.eaf"
     xmlDoc = etree.parse(filename)
     lineCount = len(xmlDoc.findall("TIER/ANNOTATION/ALIGNABLE_ANNOTATION"))  # 9
-    # print(lineCount)  
+    # print(lineCount)
 
     for lineNumber in range(lineCount):
        rootElement = xmlDoc.findall("TIER/ANNOTATION/ALIGNABLE_ANNOTATION")[lineNumber]
@@ -387,7 +408,7 @@ def test_prayer_toHTML(displayPage=False):
            lines.append(line)
 
     #print("parsed %d/%d complete lines" % (len(lines), lineCount))
-    
+
     htmlDoc = Doc()
 
     htmlDoc.asis('<!DOCTYPE html>')
