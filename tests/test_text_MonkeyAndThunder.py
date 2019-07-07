@@ -27,8 +27,8 @@ def createText():
                 soundFile,
                 grammaticalTermsFile="../testData/monkeyAndThunder/grammaticalTerms.txt",
                 tierGuideFile="../testData/monkeyAndThunder/tierGuide.yaml",
-                projectDirectory="../testData/monkeyAndThunder",
-                startStopTable=times)
+                projectDirectory="../testData/monkeyAndThunder")# ,
+#                 startStopTable=times)
 
     return(text)
 

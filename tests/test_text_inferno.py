@@ -23,12 +23,21 @@ def createText():
 	times = ae.startStopTable
 
 	text = Text(elanXmlFilename,
+<<<<<<< HEAD
+				soundFile,
+				grammaticalTermsFile=grammaticalTermsFile,
+				tierGuideFile=tierGuideFile,
+				startStopTable=times,
+				projectDirectory=projectDirectory,
+				quiet=True)
+=======
 		    soundFile,
 		    grammaticalTermsFile=grammaticalTermsFile,
 		    tierGuideFile=tierGuideFile,
 		    startStopTable=times,
 		    projectDirectory=projectDirectory,
 		    quiet=True)
+>>>>>>> master
 
 	return(text)
 
@@ -45,9 +54,16 @@ def test_constructor():
 	assert(text.validInputs())
 	tbl = text.getTierSummary()
 	assert(tbl.shape == (4,3))
+<<<<<<< HEAD
+	pdb.set_trace()
+	assert(list(tbl['key']) == ['morpheme', 'morphemeGloss', 'morphemePacking', 'speech'])
+	assert(list(tbl['value']) == ['italianSpeech', 'english', 'morphemes', 'morphemeGloss'])
+	assert(list(tbl['count']) == [4, 4, 4, 4])
+=======
 	assert(tbl['key'].tolist() == ['morpheme', 'morphemeGloss', 'speech', 'translation'])
 	assert(tbl['value'].tolist() == ['morphemes', 'morphemeGloss', 'italianSpeech', 'english'])
 	assert(list(tbl['count']) == [3, 3, 3, 3])
+>>>>>>> master
 
 def test_toHTML(display=False):
 

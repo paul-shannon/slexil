@@ -26,7 +26,7 @@ def createText():
 				soundFile,
 				grammaticalTermsFile=grammaticalTermsFile,
 				tierGuideFile=tierGuideFile,
-				startStopTable=times,
+				#startStopTable=times,
 				projectDirectory=projectDirectory,
 				quiet=True)
 

@@ -28,7 +28,7 @@ def createText():
 				grammaticalTermsFile="../testData/plumedSerpent/grammaticalTerms.txt",
 				tierGuideFile="../testData/plumedSerpent/tierGuide.yaml",
 				projectDirectory="../testData/plumedSerpent",
-				startStopTable=times,
+				#startStopTable=times,
 				quiet=False)
 	return(text)
 

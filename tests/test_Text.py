@@ -32,8 +32,8 @@ def test_HowDaylightWasStolen(display):
 				soundFile,
 				grammaticalTermsFile=grammaticalTermsFile,
 				tierGuideFile=tierGuideFile,
-				projectDirectory=projectDirectory,
-				startStopTable=times)
+				projectDirectory=projectDirectory)#,
+# 				startStopTable=times)
 
 # 	text.getTable(1)
 
@@ -63,8 +63,8 @@ def test_MonkeyAndThunder(display):
 				soundFile,
 				grammaticalTermsFile=grammaticalTermsFile,
 				tierGuideFile=tierGuideFile,
-				projectDirectory=projectDirectory,
-				startStopTable=times)
+				projectDirectory=projectDirectory)# ,
+# 				startStopTable=times)
 	 
 # 	text.getTable(1)
 
@@ -95,8 +95,8 @@ def test_prayer(display):
 				soundFile,
 				grammaticalTermsFile=grammaticalTermsFile,
 				tierGuideFile=tierGuideFile,
-				projectDirectory=projectDirectory,
-				startStopTable=times)
+				projectDirectory=projectDirectory)# ,
+# 				startStopTable=times)
 
 # 	text.getTable(0)
 

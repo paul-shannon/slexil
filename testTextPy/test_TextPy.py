@@ -9,23 +9,26 @@ from ijalLine import *
 from errors import *
 import logging
 from audioExtractor import AudioExtractor
+from bs4 import BeautifulSoup
 #----------------------------------------------------------------------------------------------------
 pd.set_option('display.width', 1000)
 #----------------------------------------------------------------------------------------------------
 def runTests(display=False):
-	test_MonkeyAndThunder(display)
-	test_Fishwoman(display)
-	test_Merchant(display)
-	test_Jaguar(display)
-	test_Riverwoman(display)
-	test_SanMiguel(display)
-	test_Caterpillar(display)
-	test_Lazy(display)
-	test_Imp(display)
-	test_Prayer(display)
-	test_Inferno(display)
-	test_MonkeyAndThunder(display)
-	test_Aymara(display)
+# 	test_MonkeyAndThunder(display)
+# 	test_Fishwoman(display)
+# 	test_Merchant(display)
+# 	test_Jaguar(display)
+# 	test_Riverwoman(display)
+# 	test_SanMiguel(display)
+# 	test_Caterpillar(display)
+# 	test_Lazy(display)
+# 	test_Imp(display)
+# 	test_Prayer(display)
+# 	test_Inferno(display)
+# 	test_MonkeyAndThunder(display)
+# 	test_Aymara(display)
+	test_Inferno_numbering(display)
+	test_Aymara_numbering(display)
 
 	
 #----------------------------------------------------------------------------------------------------
@@ -47,13 +50,91 @@ def test_Aymara(display):
 				soundFile,
 				grammaticalTermsFile=grammaticalTermsFile,
 				tierGuideFile=tierGuideFile,
-				projectDirectory=projectDirectory,
-				startStopTable=times)
+				projectDirectory=projectDirectory)#,
+				#startStopTable=times)
 					 
 	#IjalLine.getTable(1)
 
 	htmlText = text.toHTML()
-	if(display):
+	if (display):
+	   filename = "../testTextPyData/Aymara/Aymara.html"
+	   f = open(filename, "w")
+	   f.write(indent(htmlText))
+	   f.close()
+	   os.system("open %s" % filename)
+	   
+#----------------------------------------------------------------------------------------------------
+def test_Inferno_numbering(display):
+
+	print("--- test_Inferno_numbering")
+	
+	audioFilename = "inferno-threeLines.wav"
+	elanXmlFilename="../explorations/playAudioInSequence/Inferno/inferno-threeLines.eaf"
+	targetDirectory = "../explorations/playAudioInSequence/Inferno/Audio"
+	soundFile = os.path.join(targetDirectory,audioFilename)
+	projectDirectory="../explorations/playAudioInSequence/Inferno"
+	tierGuideFile="../explorations/playAudioInSequence/Inferno/tierGuide.yaml"
+	grammaticalTermsFile="../explorations/playAudioInSequence/Inferno/abbreviations.txt"
+	text = Text(elanXmlFilename,
+				soundFile,
+				grammaticalTermsFile=grammaticalTermsFile,
+				tierGuideFile=tierGuideFile,
+				projectDirectory=projectDirectory)
+					 
+	#IjalLine.getTable(1)
+
+	htmlText = text.toHTML()
+	
+	soup = BeautifulSoup(htmlText,'html.parser')
+	lines = soup.find_all("div",{"class" : "line-wrapper"})
+	for line in lines:
+		id = line.get('id')
+		textLineNumber = line.find("div",{"class" : "line-sidebar"}).text[:-2]
+		audioTag = line.find("source")
+		audioFile = audioTag.get('src')
+		fileID = audioFile[7:-4]
+		assert(id == textLineNumber == fileID)
+	
+	if (display):
+	   filename = "../explorations/playAudioInSequence/Inferno/inferno-threeLines.html"
+	   f = open(filename, "w")
+	   f.write(indent(htmlText))
+	   f.close()
+	   os.system("open %s" % filename)
+	   
+#----------------------------------------------------------------------------------------------------
+def test_Aymara_numbering(display):
+
+	print("--- test_Aymara_numbering")
+	
+	audioFilename = "Final-Edwin-historia-del-oso_no_anotado__ch1.wav"
+	elanXmlFilename="../testTextPyData/Aymara/Aymara-final.eaf"
+	targetDirectory = "../testTextPyData/Aymara/Audio"
+	soundFile = os.path.join(targetDirectory,audioFilename)
+	projectDirectory="../testTextPyData/Aymara"
+	tierGuideFile="../testTextPyData/Aymara/tierGuide.yaml"
+	grammaticalTermsFile="../testTextPyData/Aymara/List of abbreviations.txt"
+	text = Text(elanXmlFilename,
+				soundFile,
+				grammaticalTermsFile=grammaticalTermsFile,
+				tierGuideFile=tierGuideFile,
+				projectDirectory=projectDirectory)
+					 
+	#IjalLine.getTable(1)
+
+	htmlText = text.toHTML()
+	
+	soup = BeautifulSoup(htmlText,'html.parser')
+	lines = soup.find_all("div",{"class" : "line-wrapper"})
+	for line in lines:
+		id = line.get('id')
+		textLineNumber = line.find("div",{"class" : "line-sidebar"}).text[:-2]
+		audioTag = line.find("source")
+		audioFile = audioTag.get('src')
+		fileID = audioFile[7:-4]
+		assert(id == textLineNumber == fileID)
+	
+	if (display):
 	   filename = "../testTextPyData/Aymara/Aymara.html"
 	   f = open(filename, "w")
 	   f.write(indent(htmlText))
@@ -79,8 +160,8 @@ def test_Inferno(display):
 				soundFile,
 				grammaticalTermsFile=grammaticalTermsFile,
 				tierGuideFile=tierGuideFile,
-				projectDirectory=projectDirectory,
-				startStopTable=times)
+				projectDirectory=projectDirectory)# ,
+# 				startStopTable=times)
 	 
 	#IjalLine.getTable(1)
 
@@ -112,8 +193,8 @@ def test_MonkeyAndThunder(display):
 				soundFile,
 				grammaticalTermsFile=grammaticalTermsFile,
 				tierGuideFile=tierGuideFile,
-				projectDirectory=projectDirectory,
-				startStopTable=times)
+				projectDirectory=projectDirectory)# ,
+# 				startStopTable=times)
 	 
 	#IjalLine.getTable(1)
 
@@ -143,8 +224,8 @@ def test_Fishwoman(display):
 				soundFile,
 				grammaticalTermsFile=grammaticalTermsFile,
 				tierGuideFile=tierGuideFile,
-				projectDirectory=projectDirectory,
-				startStopTable=times)
+				projectDirectory=projectDirectory)# ,
+# 				startStopTable=times)
 	 
 	#IjalLine.getTable(1)
 
@@ -174,8 +255,8 @@ def test_Merchant(display):
 				soundFile,
 				grammaticalTermsFile=grammaticalTermsFile,
 				tierGuideFile=tierGuideFile,
-				projectDirectory=projectDirectory,
-				startStopTable=times)
+				projectDirectory=projectDirectory)# ,
+# 				startStopTable=times)
 	 
 	#IjalLine.getTable(1)
 
@@ -214,8 +295,7 @@ def test_Jaguar(display):
 				soundFile,
 				grammaticalTermsFile=grammaticalTermsFile,
 				tierGuideFile=tierGuideFile,
-				projectDirectory=projectDirectory,
-				startStopTable=times)
+ 				projectDirectory=projectDirectory)
 	 
 	#IjalLine.getTable(1)
 
@@ -254,8 +334,8 @@ def test_Riverwoman(display):
 				soundFile,
 				grammaticalTermsFile=grammaticalTermsFile,
 				tierGuideFile=tierGuideFile,
-				projectDirectory=projectDirectory,
-				startStopTable=times)
+				projectDirectory=projectDirectory)# ,
+# 				startStopTable=times)
 					 
 	#IjalLine.getTable(1)
 
@@ -293,8 +373,8 @@ def test_SanMiguel(display):
 				soundFile,
 				grammaticalTermsFile=grammaticalTermsFile,
 				tierGuideFile=tierGuideFile,
-				projectDirectory=projectDirectory,
-				startStopTable=times)
+				projectDirectory=projectDirectory)# ,
+# 				startStopTable=times)
 					 	 
 	#IjalLine.getTable(1)
 
@@ -331,8 +411,8 @@ def test_Caterpillar(display):
 				soundFile,
 				grammaticalTermsFile=grammaticalTermsFile,
 				tierGuideFile=tierGuideFile,
-				projectDirectory=projectDirectory,
-				startStopTable=times)
+				projectDirectory=projectDirectory)# ,
+# 				startStopTable=times)
 	 
 	#IjalLine.getTable(1)
 
@@ -370,8 +450,8 @@ def test_Lazy(display):
 				soundFile,
 				grammaticalTermsFile=grammaticalTermsFile,
 				tierGuideFile=tierGuideFile,
-				projectDirectory=projectDirectory,
-				startStopTable=times)
+				projectDirectory=projectDirectory)# ,
+# 				startStopTable=times)
 	 
 	#IjalLine.getTable(1)
 
@@ -408,8 +488,8 @@ def test_Imp(display):
 				soundFile,
 				grammaticalTermsFile=grammaticalTermsFile,
 				tierGuideFile=tierGuideFile,
-				projectDirectory=projectDirectory,
-				startStopTable=times)
+				projectDirectory=projectDirectory)# ,
+# 				startStopTable=times)
 	 
 	#IjalLine.getTable(1)
 
@@ -446,8 +526,8 @@ def test_Prayer(display):
 				soundFile,
 				grammaticalTermsFile=grammaticalTermsFile,
 				tierGuideFile=tierGuideFile,
-				projectDirectory=projectDirectory,
-				startStopTable=times)
+				projectDirectory=projectDirectory)# ,
+# 				startStopTable=times)
 	 
 	#IjalLine.getTable(1)
 

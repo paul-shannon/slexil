@@ -32,8 +32,8 @@ def test_Chatino_6_Line_from_webapp(display):
 				soundFile,
 				grammaticalTermsFile=grammaticalTermsFile,
 				tierGuideFile=tierGuideFile,
-				projectDirectory=projectDirectory,
-				startStopTable=times)
+				projectDirectory=projectDirectory)# ,
+# 				startStopTable=times)
 
 	#text.getTable(1)
 	display=False

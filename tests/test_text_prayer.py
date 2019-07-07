@@ -24,7 +24,7 @@ def createText():
 				soundFile,
 				grammaticalTermsFile="../testData/prayer/grammaticalTerms.txt",
 				tierGuideFile="../testData/prayer/tierGuide.yaml",
-				startStopTable=times,
+				#startStopTable=times,
 				projectDirectory=projectDirectory,
 				quiet=True)
 	return(text)
