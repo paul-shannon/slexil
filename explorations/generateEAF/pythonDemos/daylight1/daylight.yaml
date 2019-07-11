@@ -244,64 +244,52 @@ lines:
   - lineNumber: 35
     startTime: 164624
     endTime: 168954
-    lushootseedSpeech: kayiɬ čəd ɬuləluluƛ’ ɬasqəlubus, ɬasx̌ʷal’
-    tabDelimitedPhonemes: [kayiɬ,čəd,ɬu=lə=lu–luƛ’,ɬu=ʔas–qwəlub•us,ɬu=ʔas–x̌ʷal’]
+    lushootseedSpeech: kayiɬ čəd ɬuləluluƛ’ ɬasqʷəlubus, ɬasx̌ʷal’
+    tabDelimitedPhonemes: [kayiɬ,čəd,ɬu=lə=lu–luƛ’,ɬu=ʔas–qʷəlub•us,ɬu=ʔas–x̌ʷal’]
     tabDelimitedPhonemeGloss: [pretend,1SG.SUB,IRR=PROG=ATTN–old,IRR=STAT–grey.hair•head,IRR=STAT–fail]
     englishTranslation: I will pretend to be old and grey and feeble.
-#  - lineNumber:
-#    startTime:
-#    endTime:
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes:
-#    tabDelimitedPhonemeGloss:
-#    englishTranslation:
-
-
-#  - lineNumber:
-#    startTime:
-#    endTime:
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes:
-#    tabDelimitedPhonemeGloss:
-#    englishTranslation:
-
-
-#  - lineNumber:
-#    startTime:
-#    endTime:
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes:
-#    tabDelimitedPhonemeGloss:
-#    englishTranslation:
-
-
-#  - lineNumber:
-#    startTime:
-#    endTime:
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes:
-#    tabDelimitedPhonemeGloss:
-#    englishTranslation:
-
-
-#  - lineNumber:
-#    startTime:
-#    endTime:
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes:
-#    tabDelimitedPhonemeGloss:
-#    englishTranslation:
-
-
-#  - lineNumber:
-#    startTime:
-#    endTime:
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes:
-#    tabDelimitedPhonemeGloss:
-#    englishTranslation:
-
-
+  - lineNumber: 36
+    startTime: 168954
+    endTime:  172968
+    lushootseedSpeech: ɬasck’usəd ɬuhədʔiw’bəd
+    tabDelimitedPhonemes: [ɬu=ʔas–ck’usəd,ɬu=hədʔiw’–b=əd]
+    tabDelimitedPhonemeGloss: [IRR=STAT–walking.stick,IRR=indoors–MD=1SG.SBJ]
+    englishTranslation: Using a cane I will go in.
+  - lineNumber: 37
+    startTime: 172968
+    endTime: 177566
+    lushootseedSpeech: ɬuləʔux̌ʷ čəd dxʷʔal kʷi siʔab ʔabsləx̌il
+    tabDelimitedPhonemes: [ɬu=lə=ʔux̌ʷ,čəd,dxʷ–ʔal,kʷi,siʔab,ʔas–bəs–sləx̌il]
+    tabDelimitedPhonemeGloss: [IRR=PROG=go,1SG.SUB,CNTRPT–at,REM,noble,STAT–PROP–daylight]
+    englishTranslation: I will go to the nobleman who has the daylight.
+  - lineNumber: 38
+    startTime: 177566
+    endTime: 179856
+    lushootseedSpeech: dəxʷʔaʔ kʷi ɬudsʔaʔ
+    tabDelimitedPhonemes: [dəxʷ=ʔaʔ,kʷi,ɬu=d=s=ʔaʔ]
+    tabDelimitedPhonemeGloss: [ADNM=be.there,REM,IRR=1SG.PO=NM=be.there]
+    englishTranslation: There is where I will be.
+  - lineNumber: 39
+    startTime: 179856
+    endTime: 182121
+    lushootseedSpeech: cuuc tiʔəʔ qaw’qs
+    tabDelimitedPhonemes: [cut–c,tiʔəʔ,qaw’qs]
+    tabDelimitedPhonemeGloss: [say–ALTV,PROX,raven]
+    englishTranslation: Raven said to him,
+  - lineNumber: 40
+    startTime: 182121
+    endTime: 184319
+    lushootseedSpeech: ɬuʔal tiʔəʔ diʔəʔ kʷi ɬudsʔacəc
+    tabDelimitedPhonemes: [ɬu=ʔal,tiʔəʔ,diʔəʔ,kʷi,ɬu=d=s=ʔacəc]
+    tabDelimitedPhonemeGloss: [IRR=at,PROX,here,REM,IRR=1SG.PO=NM=be.in.place]
+    englishTranslation: I will be at this place here.
+  - lineNumber: 41
+    startTime: 184319
+    endTime: 187777
+    lushootseedSpeech: ɬasʔaciɬ čəd dxʷʔal kʷi ɬadsʔəƛ’txʷ
+    tabDelimitedPhonemes:  [ɬu=ʔas–ʔaciɬ,čəd,dxʷ–ʔal,kʷi,ɬu=ad=s=ʔəƛ’–txʷ]
+    tabDelimitedPhonemeGloss:  [IRR=STAT–pause,1SG.SUB,CNTRPT–at,REM,IRR=2SG.PO=NM=come–ECS]
+    englishTranslation: I will wait for you to bring it.
 #  - lineNumber:
 #    startTime:
 #    endTime:
