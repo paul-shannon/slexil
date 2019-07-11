@@ -9,7 +9,6 @@ import pdb
 #----------------------------------------------------------------------------------------------------
 pd.set_option('display.width', 1000)
 #----------------------------------------------------------------------------------------------------
-#audioFilename = "daylight_1_9.wav"
 audioFilename = "harryMosesHowDaylightWasStolen.wav"
 elanXmlFilename="daylight.eaf"
 audioPhrasesTargetDirectory = "audio"
@@ -26,10 +25,6 @@ assert(os.path.isdir(projectDirectory))
 assert(os.path.isfile(tierGuideFile))
 assert(os.path.isfile(grammaticalTermsFile))
 
-
-# ae = AudioExtractor(audioFilename, elanXmlFilename, audioPhrasesTargetDirectory)
-#ae.determineStartAndEndTimes()
-#times = ae.startStopTable
 text = Text(elanXmlFilename,
 	    soundFile,
 	    grammaticalTermsFile=grammaticalTermsFile,
