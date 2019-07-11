@@ -18,7 +18,7 @@ projectDirectory="./"
 tierGuideFile="tierGuide.yaml"
 grammaticalTermsFile="grammaticalTerms.txt"
 
-#assert(os.path.isfile(audioFilename))
+assert(os.path.isfile(soundFile))
 assert(os.path.isfile(elanXmlFilename))
 assert(os.path.isdir(audioPhrasesTargetDirectory))
 assert(os.path.isfile(soundFile))
@@ -27,7 +27,7 @@ assert(os.path.isfile(tierGuideFile))
 assert(os.path.isfile(grammaticalTermsFile))
 
 
-#ae = AudioExtractor(audioFilename, elanXmlFilename, audioPhrasesTargetDirectory)
+# ae = AudioExtractor(audioFilename, elanXmlFilename, audioPhrasesTargetDirectory)
 #ae.determineStartAndEndTimes()
 #times = ae.startStopTable
 text = Text(elanXmlFilename,
