@@ -14,7 +14,7 @@ lines:
     endTime: 12336
     lushootseedSpeech: tiʔəʔ swatixʷtəd gʷəl tasbəsad ʔal kʷi tuhaʔkʷw
     tabDelimitedPhonemes: [tiʔәʔ,swatixʷtәd,gʷәl,t(u)-as-bәsad,ʔal,kʷi,tu-haʔkʷ]
-    tabDelimitedPhonemeGloss: [this,land,and,was-dark,in,remote,long-ago]
+    tabDelimitedPhonemeGloss: [PROX,land,SCONJ,PAST=STAT–dark,at,REM,PAST=long.time]
     englishTranslation: The land, it was dark in the distant past.
   - lineNumber: 3
     startTime: 12336
@@ -299,12 +299,77 @@ lines:
     englishTranslation: Just so will you be clutching it and you will arrive here, and I am the one who will take it anew.
 
 
+  - lineNumber: 43
+    startTime: 197391
+    endTime: 199954
+    lushootseedSpeech: tutəlawiləxʷ
+    tabDelimitedPhonemes: [tu=təlail=əxʷ]
+    tabDelimitedPhonemeGloss: [PAST=run=now]
+    englishTranslation: ‘(Little Mink) ran.’
+
+  - lineNumber: 44
+    startTime: 199954
+    endTime: 205137
+    lushootseedSpeech: tuʔux̌ʷəxʷ tiʔəʔ bibščəb gʷəl tuɬčil dxʷʔal tiʔəʔ diʔəʔ siʔab ʔabsləx̌il
+    tabDelimitedPhonemes: [tu=ʔux̌ʷ=əxʷ,tiʔəʔ,bi–bəščəb,gʷəl,tu=ɬčil,dxʷ–ʔal,tiʔəʔ,diʔəʔ,siʔab,ʔas–bəs–sləx̌il]
+    tabDelimitedPhonemeGloss: [PAST=go=now,PROX,ATTN–mink,SCONJ,PAST=arrive,CNTRPT–at,PROX,here,noble,STAT–PROP–daylight]
+    englishTranslation: Little Mink went and he came to the nobleman who had daylight.
+
+  - lineNumber: 45
+    startTime: 205137
+    endTime: 211065
+    lushootseedSpeech: əluƛ’ ʔəsqʷəlubus ləsck’usəd
+    tabDelimitedPhonemes: [lə=luƛ’,ʔəs–qʷəlub•us,ləs–ck’usəd]
+    tabDelimitedPhonemeGloss: [PROG=old,"STAT–grey.hair•head",PROG.STAT–use.walking.stick]
+    englishTranslation: He was old with grey hair and used a cane.
+
+  - lineNumber: 46
+    startTime: 211065
+    endTime: 213101
+    lushootseedSpeech: šudub ʔə tiʔəʔ ʔaciɬtabixʷ
+    tabDelimitedPhonemes: [šuɬ–dxʷ–b,ʔə,tiʔəʔ,ʔaciɬtabixʷ]
+    tabDelimitedPhonemeGloss: [see–DC–PASS,PR,PROX,people]
+    englishTranslation: He was seen by these people.
+
+  - lineNumber: 47
+    startTime: 213101
+    endTime: 216718
+    lushootseedSpeech: ʔuˑ dč’aʔkʷbixʷ ʔaciɬtalbixʷ tiʔəʔ ʔuɬčil
+    tabDelimitedPhonemes: [ʔu,dč’aʔkʷbixʷ,ʔaciɬtalbixʷ,tiʔəʔ,ʔu–ɬčil]
+    tabDelimitedPhonemeGloss: [INTJ,different.tribe,people,PROX,PFV–arrive]
+    englishTranslation: Oh, a person of a different tribe has arrived.
+
+  - lineNumber: 48
+    startTime: 216718
+    endTime: 218321
+    lushootseedSpeech: cutəxʷ bibščəb
+    tabDelimitedPhonemes: [cut=əxʷ,bi–bəščəb]
+    tabDelimitedPhonemeGloss: [say=now,ATTN–mink]
+    englishTranslation: Little Mink said.
+
+  - lineNumber: 49
+    startTime: 218321
+    endTime: 220260
+    lushootseedSpeech: ʔuˑ sʔušəbabdxʷ čəd
+    tabDelimitedPhonemes: [ʔu,sʔušəbabdxʷ,čəd]
+    tabDelimitedPhonemeGloss: [INTJ,poor.guy,1SG.SUB]
+    englishTranslation: Oh, I am poor.
+
+  - lineNumber: 50
+    startTime: 220260
+    endTime: 225764
+    lushootseedSpeech: xʷiʔ kʷi stab gʷubəq’əd čəd gʷəʔəɬəd
+    tabDelimitedPhonemes: [xʷiʔ kʷi stab gʷə=ʔu–bəq’–d čəd gʷə=ʔəɬəd]
+    tabDelimitedPhonemeGloss: [NEG,REM,what,SBJ=PFV–have.in.mouth–ICS,1SG.SUB,SBJ=feed.on]
+    englishTranslation: I have nothing to put in my mouth to eat.
+
+
 #  - lineNumber:
 #    startTime:
 #    endTime:
 #    lushootseedSpeech:
-#    tabDelimitedPhonemes:
-#    tabDelimitedPhonemeGloss:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
 #    englishTranslation:
 
 
@@ -312,8 +377,8 @@ lines:
 #    startTime:
 #    endTime:
 #    lushootseedSpeech:
-#    tabDelimitedPhonemes:
-#    tabDelimitedPhonemeGloss:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
 #    englishTranslation:
 
 
@@ -321,8 +386,8 @@ lines:
 #    startTime:
 #    endTime:
 #    lushootseedSpeech:
-#    tabDelimitedPhonemes:
-#    tabDelimitedPhonemeGloss:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
 #    englishTranslation:
 
 
@@ -330,8 +395,8 @@ lines:
 #    startTime:
 #    endTime:
 #    lushootseedSpeech:
-#    tabDelimitedPhonemes:
-#    tabDelimitedPhonemeGloss:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
 #    englishTranslation:
 
 
@@ -339,8 +404,8 @@ lines:
 #    startTime:
 #    endTime:
 #    lushootseedSpeech:
-#    tabDelimitedPhonemes:
-#    tabDelimitedPhonemeGloss:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
 #    englishTranslation:
 
 
@@ -348,7 +413,16 @@ lines:
 #    startTime:
 #    endTime:
 #    lushootseedSpeech:
-#    tabDelimitedPhonemes:
-#    tabDelimitedPhonemeGloss:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
+#  - lineNumber:
+#    startTime:
+#    endTime:
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
 #    englishTranslation:
 
