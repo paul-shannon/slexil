@@ -1,5 +1,5 @@
 default:
-	@echo targets: build [extractAudio, eaf, html], publish
+	@echo targets: build [eaf, extractAudio, html], publish
 
 build: eaf extractAudio html
 

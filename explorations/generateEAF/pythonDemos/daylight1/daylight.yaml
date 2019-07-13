@@ -290,13 +290,13 @@ lines:
     tabDelimitedPhonemes:  [ɬu=ʔas–ʔaciɬ,čəd,dxʷ–ʔal,kʷi,ɬu=ad=s=ʔəƛ’–txʷ]
     tabDelimitedPhonemeGloss:  [IRR=STAT–pause,1SG.SUB,CNTRPT–at,REM,IRR=2SG.PO=NM=come–ECS]
     englishTranslation: I will wait for you to bring it.
-#  - lineNumber:
-#    startTime:
-#    endTime:
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes:
-#    tabDelimitedPhonemeGloss:
-#    englishTranslation:
+  - lineNumber: 42
+    startTime: 187777
+    endTime:   197391
+    lushootseedSpeech: siʔ ƛ’ub ɬadsəsƛ’ip’aɬəd čəxʷa ɬuɬčil dxʷdiʔaʔ gʷəl ʔəcahəxʷ kʷi ɬubəkʷədad, ɬukʷədadxʷaxʷ
+    tabDelimitedPhonemes: [siʔ,ƛ’ub,ɬu=ad=s=ʔəs–ƛ’ip’–aɬ–d,čəxʷa,ɬu=ɬčil,dxʷ–diʔaʔ,gʷəl,ʔəca=əxʷ,kʷi,ɬu=bə=kʷəda–d,ɬu=kʷəda–dxʷ=axʷ]
+    tabDelimitedPhonemeGloss: [right.there,well,IRR=2SG.PO=NM=STAT–squeeze–INCRP–ICS,2SG.COORD,IRR=arrive,CNTRPT–PROX.DMA,SCONJ,I=now,REM,IRR=ADD=taken–ICS,IRR=taken–DC=now]
+    englishTranslation: Just so will you be clutching it and you will arrive here, and I am the one who will take it anew.
 
 
 #  - lineNumber:
