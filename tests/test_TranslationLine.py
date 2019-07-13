@@ -109,7 +109,7 @@ def test_lokono_line_3():
 	doc = etree.parse(filename)
 	tierGuideFile = "../testData/lokono/tierGuide.yaml"
 	with open(tierGuideFile, 'r') as f:
-	   tierGuide = yaml.load(f)
+	   tierGuide = yaml.safe_load(f)
 
 	x3 = IjalLine(doc, 3, tierGuide,'a,b,c')
 	x3.parse()

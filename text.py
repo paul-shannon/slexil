@@ -42,7 +42,7 @@ class Text:
 		self.xmlDoc = etree.parse(self.xmlFilename)
 		self.lineCount = len(self.xmlDoc.findall("TIER/ANNOTATION/ALIGNABLE_ANNOTATION"))
 		with open(tierGuideFile, 'r') as f:
-			self.tierGuide = yaml.load(f)
+			self.tierGuide = yaml.safe_load(f)
 		#self
 		if os.path.isfile(os.path.join(projectDirectory,"ERRORS.log")):
 			os.remove(os.path.join(projectDirectory,"ERRORS.log"))
