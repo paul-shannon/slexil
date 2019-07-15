@@ -154,3 +154,7 @@ sub {
 	top:4px;
 	left:0px;
 }
+
+.spacer {
+    height: 32px;
+}

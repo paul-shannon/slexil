@@ -27,10 +27,42 @@ def runTests(display=False):
 # 	test_Inferno(display)
 # 	test_MonkeyAndThunder(display)
 # 	test_Aymara(display)
-	test_Inferno_numbering(display)
-	test_Aymara_numbering(display)
+# 	test_Inferno_numbering(display)
+# 	test_Aymara_numbering(display)
+	test_Aymara_final(True)
 
+#----------------------------------------------------------------------------------------------------
+def test_Aymara_final(display):
+
+	print("--- test_Aymara_final")
 	
+	audioFilename = "Final-Edwin-historia-del-oso_no_anotado__ch1.wav"
+	elanXmlFilename="../testTextPyData/Aymara_final/Aymara-final.eaf"
+	targetDirectory = "../testTextPyData/Aymara_final/Audio"
+	soundFile = os.path.join(targetDirectory,audioFilename)
+	projectDirectory="../testTextPyData/Aymara_final"
+	tierGuideFile="../testTextPyData/Aymara_final/tierGuide.yaml"
+	grammaticalTermsFile="../testTextPyData/Aymara_final/List of abbreviations.txt"
+	ae = AudioExtractor(audioFilename, elanXmlFilename, targetDirectory)
+	ae.determineStartAndEndTimes()
+	times = ae.startStopTable	
+	text = Text(elanXmlFilename,
+				soundFile,
+				grammaticalTermsFile=grammaticalTermsFile,
+				tierGuideFile=tierGuideFile,
+				projectDirectory=projectDirectory)#,
+				#startStopTable=times)
+					 
+	#IjalLine.getTable(1)
+
+	htmlText = text.toHTML()
+	if (display):
+	   filename = "../testTextPyData/Aymara_final/Aymara_final.html"
+	   f = open(filename, "w")
+	   f.write(indent(htmlText))
+	   f.close()
+	   os.system("open %s" % filename)
+	   	
 #----------------------------------------------------------------------------------------------------
 def test_Aymara(display):
 

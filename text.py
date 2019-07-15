@@ -203,6 +203,8 @@ class Text:
 								with htmlDoc.tag("div", klass="line-sidebar"):
 									 line.htmlLeadIn(htmlDoc, self.audioPath, )
 								line.toHTML(htmlDoc)
+					 with htmlDoc.tag("div", klass="spacer"):
+							htmlDoc.asis('')
 					 htmlDoc.asis(self.getPlayer())
 					 htmlDoc.asis(self.getJavascript(timeCodesForText))
 		self.htmlDoc = htmlDoc
