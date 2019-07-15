@@ -233,7 +233,7 @@ lines:
     lushootseedSpeech: tucutəxʷ tiʔəʔ diʔəʔ bibščəb
     tabDelimitedPhonemes: [tu=cut=əxʷ,tiʔəʔ,diʔəʔ,bi–bəščəb]
     tabDelimitedPhonemeGloss: [PAST=say=now,PROX,here,ATTN–mink]
-    englishTranslation: Little Mink said,
+    englishTranslation: Little Mink said
   - lineNumber: 34
     startTime: 163022
     endTime: 164624
@@ -297,8 +297,6 @@ lines:
     tabDelimitedPhonemes: [siʔ,ƛ’ub,ɬu=ad=s=ʔəs–ƛ’ip’–aɬ–d,čəxʷa,ɬu=ɬčil,dxʷ–diʔaʔ,gʷəl,ʔəca=əxʷ,kʷi,ɬu=bə=kʷəda–d,ɬu=kʷəda–dxʷ=axʷ]
     tabDelimitedPhonemeGloss: [right.there,well,IRR=2SG.PO=NM=STAT–squeeze–INCRP–ICS,2SG.COORD,IRR=arrive,CNTRPT–PROX.DMA,SCONJ,I=now,REM,IRR=ADD=taken–ICS,IRR=taken–DC=now]
     englishTranslation: Just so will you be clutching it and you will arrive here, and I am the one who will take it anew.
-
-
   - lineNumber: 43
     startTime: 197391
     endTime: 199954
@@ -306,7 +304,6 @@ lines:
     tabDelimitedPhonemes: [tu=təlail=əxʷ]
     tabDelimitedPhonemeGloss: [PAST=run=now]
     englishTranslation: ‘(Little Mink) ran.’
-
   - lineNumber: 44
     startTime: 199954
     endTime: 205137
@@ -314,7 +311,6 @@ lines:
     tabDelimitedPhonemes: [tu=ʔux̌ʷ=əxʷ,tiʔəʔ,bi–bəščəb,gʷəl,tu=ɬčil,dxʷ–ʔal,tiʔəʔ,diʔəʔ,siʔab,ʔas–bəs–sləx̌il]
     tabDelimitedPhonemeGloss: [PAST=go=now,PROX,ATTN–mink,SCONJ,PAST=arrive,CNTRPT–at,PROX,here,noble,STAT–PROP–daylight]
     englishTranslation: Little Mink went and he came to the nobleman who had daylight.
-
   - lineNumber: 45
     startTime: 205137
     endTime: 211065
@@ -330,7 +326,6 @@ lines:
     tabDelimitedPhonemes: [šuɬ–dxʷ–b,ʔə,tiʔəʔ,ʔaciɬtabixʷ]
     tabDelimitedPhonemeGloss: [see–DC–PASS,PR,PROX,people]
     englishTranslation: He was seen by these people.
-
   - lineNumber: 47
     startTime: 213101
     endTime: 216718
@@ -338,7 +333,6 @@ lines:
     tabDelimitedPhonemes: [ʔu,dč’aʔkʷbixʷ,ʔaciɬtalbixʷ,tiʔəʔ,ʔu–ɬčil]
     tabDelimitedPhonemeGloss: [INTJ,different.tribe,people,PROX,PFV–arrive]
     englishTranslation: Oh, a person of a different tribe has arrived.
-
   - lineNumber: 48
     startTime: 216718
     endTime: 218321
@@ -346,7 +340,6 @@ lines:
     tabDelimitedPhonemes: [cut=əxʷ,bi–bəščəb]
     tabDelimitedPhonemeGloss: [say=now,ATTN–mink]
     englishTranslation: Little Mink said.
-
   - lineNumber: 49
     startTime: 218321
     endTime: 220260
@@ -354,61 +347,48 @@ lines:
     tabDelimitedPhonemes: [ʔu,sʔušəbabdxʷ,čəd]
     tabDelimitedPhonemeGloss: [INTJ,poor.guy,1SG.SUB]
     englishTranslation: Oh, I am poor.
-
   - lineNumber: 50
     startTime: 220260
-    endTime: 225764
+    endTime:   225764
     lushootseedSpeech: xʷiʔ kʷi stab gʷubəq’əd čəd gʷəʔəɬəd
-    tabDelimitedPhonemes: [xʷiʔ kʷi stab gʷə=ʔu–bəq’–d čəd gʷə=ʔəɬəd]
+    tabDelimitedPhonemes: [xʷiʔ,kʷi,stab,gʷə=ʔu–bəq’–d,čəd,gʷə=ʔəɬəd]
     tabDelimitedPhonemeGloss: [NEG,REM,what,SBJ=PFV–have.in.mouth–ICS,1SG.SUB,SBJ=feed.on]
     englishTranslation: I have nothing to put in my mouth to eat.
-
-
-#  - lineNumber:
-#    startTime:
-#    endTime:
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
-
-
-#  - lineNumber:
-#    startTime:
-#    endTime:
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
-
-
-#  - lineNumber:
-#    startTime:
-#    endTime:
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
-
-
-#  - lineNumber:
-#    startTime:
-#    endTime:
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
-
-
-#  - lineNumber:
-#    startTime:
-#    endTime:
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
-
-
+  - lineNumber: 51
+    startTime: 225764
+    endTime:   233971
+    lushootseedSpeech: xʷiʔəxʷ kʷi gʷatəxʷ ʔal cəxʷʔaʔ gʷəƛ’ashuyuc haʔɬ, čəda ləʔəƛ’ ləgʷəč’alikʷ dxʷʔal kʷi siʔab ʔabsləx̌il
+    tabDelimitedPhonemes: [xʷiʔ=əxʷ,kʷi,gʷat=əxʷ,ʔal,d=dəxʷ=ʔaʔ,gʷə=ƛ’u=ʔas–huyu–t–s,haʔɬ,čəda,lə=ʔəƛ’,lə=gʷəč’–alikʷ,dxʷ–ʔal,kʷi,siʔab,ʔas–bəs–sləx̌il]
+    tabDelimitedPhonemeGloss: [NEG=no,REM,who=now,at,1SG.PO=ADNM=be.there,SBJ=HAB=STAT–made–ICS–1SG.OBJ,good,1SG.COORD,PROG=come,PROG=search–ACT,CNTRPT–at,REM,noble,STAT–PROP–daylight]
+    englishTranslation: There is no one where I am who treats me well, so I am coming, looking for the nobleman who possesses daylight.
+  - lineNumber: 52
+    startTime: 233971
+    endTime: 241118
+    lushootseedSpeech: ʔaʔ kʷi ɬudsəsɬaq’ gʷəl ɬuhaʔɬ kʷi gʷədsəshuy
+    tabDelimitedPhonemes: [ʔaʔ,kʷi,ɬu=d=s=ʔəs–ɬaq’,gʷəl,ɬu=haʔɬ,kʷi,gʷə=d=s=ʔəs–huy]
+    tabDelimitedPhonemeGloss: [be.there,REM,IRR=1SG.PO=NM=STAT–fallen,SCONJ,IRR=good,REM,SBJ=1SG.PO=NM=STAT–made]
+    englishTranslation: There I will lie down and I will be treated well.
+  - lineNumber: 53
+    startTime: 241118
+    endTime:   245138
+    lushootseedSpeech: tukʷədatəbəxʷ ʔə tiʔəʔ siʔab tiʔəʔ diʔəʔ luƛ’ gʷəl tucutəb
+    tabDelimitedPhonemes: [tu=kʷəda–t–b=əxʷ,ʔə,tiʔəʔ,siʔab,tiʔəʔ,diʔəʔ,luƛ’,gʷəl,tu=cut–t–b]
+    tabDelimitedPhonemeGloss: [PAST=taken–ICS–PASS=now,PR,PROX,noble,PROX,here,old,SCONJ,PAST=say–ICS–PASS]
+    englishTranslation: The old man was taken by the nobleman and spoken to
+  - lineNumber: 54
+    startTime: 245138
+    endTime:   248567
+    lushootseedSpeech: ɬuʔal tudiʔ ʔalq’ʷ kʷi ɬadsəstədzil ɬadsɬagʷid
+    tabDelimitedPhonemes: [ɬu=ʔal,tudiʔ,ʔalq’ʷ,kʷi,ɬu=ad=s=ʔəs–tədzil,ɬu=ad–sɬagʷid]
+    tabDelimitedPhonemeGloss: [IRR=at,DIST.DMA,away.from.fire,REM,IRR=2SG.PO=NM=STAT–lie.in.bed,IRR=2SG.PO–sleeping.mat]
+    englishTranslation: There at the back you will lie down, you will have your mat.
+  - lineNumber: 55
+    startTime: 248567
+    endTime:   249602
+    lushootseedSpeech: tucutəxʷ
+    tabDelimitedPhonemes: [tu=cut=əxʷ]
+    tabDelimitedPhonemeGloss: [PAST=say=now]
+    englishTranslation: (Little Mink) spoke
 #  - lineNumber:
 #    startTime:
 #    endTime:

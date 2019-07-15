@@ -11,7 +11,7 @@ app = dash.Dash(__name__,server=server)
 app.layout = html.Div(children=[
     html.H1(children='Test cases',className="banner"),
     html.Iframe(id="storyIFrame",
-                src='Story',
+                src='static/Inferno.html',
                 className="webpageFrame"),
     html.Button("press here",id="button")
     ])
@@ -28,6 +28,7 @@ def on_Button_Click(n_clicks):
 
 @server.route('/static/<path:path>')
 def serve_static(path):
+    print("serve startic, path: %s" % path)
     root_dir = os.getcwd()
     return flask.send_from_directory(os.path.join(root_dir, 'static'), path)
 
