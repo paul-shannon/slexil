@@ -4,6 +4,7 @@ import os
 from dash.dependencies import Input, Output, State
 import dash_core_components as dcc
 import dash_html_components as html
+import pdb
 
 #app = dash.Dash()
 server = flask.Flask(__name__)
@@ -24,13 +25,14 @@ def on_Button_Click(n_clicks):
     if n_clicks is None:
         return('')
     print('=== button clicked')
-    return('Inferno.html')
+    return('static/Inferno.html')
 
-@server.route('/static/<path:path>')
-def serve_static(path):
-    print("serve startic, path: %s" % path)
+@app.server.route('/static/<path:urlpath>')
+def serve_static(urlpath):
+    print("serve startic, path: %s" % urlpath)
     root_dir = os.getcwd()
-    return flask.send_from_directory(os.path.join(root_dir, 'static'), path)
+    return flask.send_file("static/Inferno.html")
+    #return flask.send_from_directory(os.path.join(root_dir, 'static'), path)
 
 if __name__ == '__main__':
     app.run_server(debug=True)
