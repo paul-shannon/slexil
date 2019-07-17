@@ -36,7 +36,7 @@ def test_buildTable():
     doc = etree.parse(filename)
     tierGuideFile = "../testData/lokono/tierGuide.yaml"
     with open(tierGuideFile, 'r') as f:
-       tierGuide = yaml.load(f)
+       tierGuide = yaml.safe_load(f)
 
     x3 = IjalLine(doc, 3, tierGuide,'1')
     x3.parse()
@@ -70,7 +70,7 @@ def test_getStartStopTimes():
     doc = etree.parse(filename)
     tierGuideFile = "../testData/lokono/tierGuide.yaml"
     with open(tierGuideFile, 'r') as f:
-       tierGuide = yaml.load(f)
+       tierGuide = yaml.safe_load(f)
 
     x3 = IjalLine(doc, 3, tierGuide) # ,audioData='a,b,c')
     x3.parse()
@@ -92,7 +92,7 @@ def test_lokono_line_3():
     doc = etree.parse(filename)
     tierGuideFile = "../testData/lokono/tierGuide.yaml"
     with open(tierGuideFile, 'r') as f:
-       tierGuide = yaml.load(f)
+       tierGuide = yaml.safe_load(f)
 
     grammaticalTerms = ['fem','poss','indf']
     x3 = IjalLine(doc, 3, tierGuide, grammaticalTerms)
@@ -139,7 +139,7 @@ def test_lokono_toHTML(displayPage=False, sampleOfLinesOnly=True):
 
     tierGuideFile = "../testData/lokono/tierGuide.yaml"
     with open(tierGuideFile, 'r') as f:
-       tierGuide = yaml.load(f)
+       tierGuide = yaml.safe_load(f)
 
     lines = []
 
@@ -195,7 +195,7 @@ def test_monkeyAndThunder_line_6():
 
     tierGuideFile = "../testData/monkeyAndThunder/tierGuide.yaml"
     with open(tierGuideFile, 'r') as f:
-       tierGuide = yaml.load(f)
+       tierGuide = yaml.safe_load(f)
 
     grammaticalTermsFile = "../testData/monkeyAndThunder/grammaticalTerms.txt"
     grammaticalTerms = open(grammaticalTermsFile).read().split("\n")
@@ -237,7 +237,7 @@ def test_monkeyAndThunder_line_0():
 
     tierGuideFile = "../testData/monkeyAndThunder/tierGuide.yaml"
     with open(tierGuideFile, 'r') as f:
-       tierGuide = yaml.load(f)
+       tierGuide = yaml.safe_load(f)
 
     x0 = IjalLine(doc, 0, tierGuide)
     x0.parse()
@@ -267,7 +267,7 @@ def test_monkeyAndThunder_toHTML(displayPage=False):
 
     tierGuideFile = "../testData/monkeyAndThunder/tierGuide.yaml"
     with open(tierGuideFile, 'r') as f:
-       tierGuide = yaml.load(f)
+       tierGuide = yaml.safe_load(f)
 
     lines = []
     for i in range(lineCount):
@@ -340,7 +340,7 @@ def test_plumedSerpent_toHTML(displayPage=False):
 
     tierGuideFile = "../testData/plumedSerpent/tierGuide.yaml"
     with open(tierGuideFile, 'r') as f:
-       tierGuide = yaml.load(f)
+       tierGuide = yaml.safe_load(f)
 
     lines = []
     grammaticalTerms = ["hab","past"]
@@ -395,7 +395,7 @@ def test_prayer_toHTML(displayPage=False):
 
     tierGuideFile = "../testData/prayer/tierGuide.yaml"
     with open(tierGuideFile, 'r') as f:
-       tierGuide = yaml.load(f)
+       tierGuide = yaml.safe_load(f)
 
     lines = []
     grammaticalTerms = ["hab","past"]

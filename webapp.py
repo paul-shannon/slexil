@@ -36,9 +36,9 @@ import dash_html_components as html
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets, static_folder='PROJECTS')
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)#, static_folder='PROJECTS')
 app.config['suppress_callback_exceptions'] = True
-app.title = "IJAL Text Upload"
+app.title = "SLEXIL"
 
 app.scripts.config.serve_locally = True
 
@@ -66,6 +66,9 @@ def downloadZip(filename):
 #----------------------------------------------------------------------------------------------------
 @app.server.route('/PROJECTS/<path:urlpath>')
 def downloadProjectZipFile(urlpath):
+#    if urlpath[-1] != 'p':
+#       return()
+#    if urlpath[-1] == 'p':
    print("--- serve_static_file")
    print("urlpath:  %s" % urlpath)
    fullPath = os.path.join("PROJECTS", urlpath)
@@ -73,8 +76,8 @@ def downloadProjectZipFile(urlpath):
    filename = os.path.basename(fullPath)
    print("about to send %s, %s" % (dirname, filename))
    return flask.send_file(fullPath,
-                          mimetype='application/zip',
-                          as_attachment=True)
+						  mimetype='application/zip',
+						  as_attachment=True)
 
 #----------------------------------------------------------------------------------------------------
 def create_eafUploader():
@@ -192,7 +195,7 @@ def create_webPageCreationTab():
 
    createWebpageStatus = html.Span(id="createWebPageStatus", children="cwpita", style={'display': 'none'})
 
-   webPageIframe = html.Iframe(id="storyIFrame", src="<h3>the story goes here</h3>", className="webpageFrame")
+   webPageIframe = html.Iframe(id="storyIFrame", src="Story goes here.", className="webpageFrame")
    
    errorMessages = html.Span(id="createPageErrorMessages", children="", className="warningOff")
 
@@ -357,7 +360,8 @@ app.layout = html.Div(
         html.P(id='translationTier_hiddenStorage',           children="", style={'display': 'none'}),
         html.P(id='translation2Tier_hiddenStorage',          children="", style={'display': 'none'}),
         html.P(id='temporaryTitle_hiddenStorage',            children="", style={'display': 'none'}),
-        html.P(id='createPageErrorMessages_hiddenStorage',   children="", style={'display': 'none'})
+        html.P(id='createPageErrorMessages_hiddenStorage',   children="", style={'display': 'none'}),
+        html.P(id='audioStartandStopTimes_hiddenStorage',    children='', style={'display': 'none'})
         ],
     className="row",
     id='outerDiv'
@@ -493,7 +497,7 @@ def on_grammaticalTermsUpload(contents, name, date, projectDirectory):
     [State('sound_filename_hiddenStorage', 'children'),
      State('eaf_filename_hiddenStorage',   'children'),
      State('projectTitle_hiddenStorage',   'children'),
-     State('projectDirectory_hiddenStorage',   'children'),
+     State('projectDirectory_hiddenStorage', 'children')
     ])
 def on_extractSoundPhrases(n_clicks, soundFileName, eafFileName, projectTitle, projectDirectory):
     if n_clicks is None:
@@ -512,8 +516,6 @@ def on_extractSoundPhrases(n_clicks, soundFileName, eafFileName, projectTitle, p
     print("soundFileName: %s" % soundFileName)
     print("eafFileName: %s" % eafFileName)
     phraseFileCount = extractPhrases(soundFileFullPath, eafFileFullPath, projectDirectory)
-    #phraseFileCount,eatable = extractPhrases(soundFileFullPath, eafFileFullPath, projectDirectory)
-    #print("start and stop times for extracted audio:\n %s" %eatable)
     print("after extractPhrases, enable next button in sequence (upload abbreviations)")
     newButtonState = 'fakebuttonEnabled'
     return("File %s parsed into %d phrases in audio directory." %(soundFile, phraseFileCount),newButtonState,0,0)
@@ -568,6 +570,7 @@ def update_output(value):
     [Output('createWebPageStatus', 'children'),
      Output('downloadAssembledTextButton','disabled'),
      Output('createPageErrorMessages_hiddenStorage','children')],
+     #Output('storyIFrame','src')],
     [Input('createAndDisplayWebPageButton', 'n_clicks')],
     [State('sound_filename_hiddenStorage', 'children'),
      State('eaf_filename_hiddenStorage',   'children'),
@@ -577,10 +580,10 @@ def update_output(value):
 def createWebPageCallback(n_clicks, soundFileName, eafFileName, projectDirectory,
                           grammaticalTermsFile,projectTitle):
     if n_clicks is None:
-        return("",1,"")
+        return("",1,"","")
     print("=== create web page callback")
     print("        eaf: %s" % eafFileName)
-    print(" phrases in: %s" % projectDirectory)
+    print(" audio phrases in: %s/audio" % projectDirectory)
     if(grammaticalTermsFile == ""):
         grammaticalTermsFile = None
     try:
@@ -598,7 +601,9 @@ def createWebPageCallback(n_clicks, soundFileName, eafFileName, projectDirectory
         print("There are empty tiers or incomplete glosses after line %s" %e.lineNumber)
         errorMessage = "EAF error: There are empty tiers or incomplete glosses after line %s." %e.lineNumber
         return("",1,errorMessage)
-    absolutePath = os.path.abspath(os.path.join(projectDirectory, "%s.html" %projectTitle))
+    webpageAt = os.path.join(projectDirectory, "%s.html" %projectTitle)
+    absolutePath = os.path.abspath(webpageAt)
+    print(" webpage: %s" %webpageAt)
     file = open(absolutePath, "w")
     file.write(html)
     file.close()
@@ -611,7 +616,24 @@ def createWebPageCallback(n_clicks, soundFileName, eafFileName, projectDirectory
     		
     createZipFile(projectDirectory,projectTitle)
     newButtonState = 0
-    return("wrote file",newButtonState,"")
+    print("=== leaving web page callback")
+    return("wrote file",newButtonState,"")#,webpageAt)
+
+#----------------------------------------------------------------------------------------------------
+@app.callback(
+    Output('storyIFrame', 'src'),
+    [Input('createWebPageStatus', 'children')],
+    [State('projectDirectory_hiddenStorage', 'children'),
+     State('projectTitle_hiddenStorage', 'children')])
+def displayText(createWebPageStatus, projectDirectory, projectTitle):
+   print("=== displayText '%s'" % createWebPageStatus)
+   if createWebPageStatus is None:
+      return("")
+   if(len(createWebPageStatus) == 0):
+      return("")
+   pathToHTML = os.path.join(projectDirectory, "%s.html" %projectTitle)
+   print("=== storyIFrame display %s" %pathToHTML)
+   return(pathToHTML)
 
 #----------------------------------------------------------------------------------------------------
 @app.callback(
@@ -627,21 +649,21 @@ def setCreatePageErrorMessages(errorMessage):
 	return(errorMessage,className)
 		
 #----------------------------------------------------------------------------------------------------
-# @app.callback(
-# 	Output('temporaryTitle_hiddenStorage', 'children'),
-# 	[Input('setTitleTextInput', 'value')]
-# 	)
-# def trackUserInputInSetTitle(typing):
-# 	return(typing)	
-# 	
+@app.callback(
+	Output('temporaryTitle_hiddenStorage', 'children'),
+	[Input('setTitleTextInput', 'value')]
+	)
+def trackUserInputInSetTitle(typing):
+	return(typing)	
+	
 #----------------------------------------------------------------------------------------------------
 @app.callback(
     [Output('projectTitle_hiddenStorage', 'children'),
      Output('upload-eaf-link','className'),
      Output('upload-eaf-file','disabled')],
     [Input('setTitleButton', 'n_clicks'),
-     #Input('temporaryTitle_hiddenStorage', 'children')]
-     Input('setTitleTextInput', 'value')]
+     Input('temporaryTitle_hiddenStorage', 'children')]
+     #Input('setTitleTextInput', 'value')]
     )
 def setTitle(n_clicks, newTitle):
 	print("=== title callback")
@@ -688,22 +710,6 @@ def update_pageTitle(projectDirectory):
     newProjectTitle = newProjectTitle.replace("/", "")
     print("IJAL Upload: %s" % newProjectTitle)
     return('')
-
-#----------------------------------------------------------------------------------------------------
-@app.callback(
-    Output('storyIFrame', 'src'),
-    [Input('createWebPageStatus', 'children')],
-     #Input('projectDirectory_hiddenStorage', 'children')],
-    [State('projectDirectory_hiddenStorage', 'children'),
-    State('projectTitle_hiddenStorage', 'children')])
-def displayText(createWebPageStatus, projectDirectory, projectTitle):
-   print("=== displayText '%s'" % createWebPageStatus)
-   if createWebPageStatus is None:
-      return("")
-   if(len(createWebPageStatus) == 0):
-      return("")
-   pathToHTML = os.path.join(projectDirectory, "%s.html" %projectTitle)
-   return(pathToHTML)
 
 #----------------------------------------------------------------------------------------------------
 @app.callback(
@@ -778,8 +784,7 @@ def updateTranscription2Tier(value):
      State('translationTier_hiddenStorage',   'children'),
      State('translation2Tier_hiddenStorage',   'children'),
      State('projectDirectory_hiddenStorage',  'children')])
-def saveTierMappingSelection(n_clicks, speechTier, transcription2Tier, morphemeTier, morphemeGlossTier, 
-                             translationTier, translation2Tier, projectDirectory):
+def saveTierMappingSelection(n_clicks, speechTier, transcription2Tier, morphemeTier, morphemeGlossTier, translationTier, translation2Tier, projectDirectory):
     if n_clicks is None:
         return("","fakebutton",1)
     print("saveTierMappingSelectionsButton: %d" % n_clicks)
@@ -875,10 +880,9 @@ def extractPhrases(soundFileFullPath, eafFileFullPath, projectDirectory):
     return(phraseFileCount)
 
 #----------------------------------------------------------------------------------------------------
-def createWebPage(eafFileName, projectDirectory, grammaticalTermsFileName, tierGuideFileName,soundFileName):
+def createWebPage(eafFileName, projectDirectory, grammaticalTermsFileName, tierGuideFileName, soundFileName):
 
     print("-------- entering createWebPage")
-    #audioDirectory = os.path.join(projectDirectory, "audio")
     audioDirectoryRelativePath = "audio"
     print("eafFileName: %s" % eafFileName)
     print("projectDirectory: %s" % projectDirectory)
@@ -892,9 +896,8 @@ def createWebPage(eafFileName, projectDirectory, grammaticalTermsFileName, tierG
                 soundFileName,
                 grammaticalTermsFileName,
                 tierGuideFileName,
-                #startStopTable,
                 projectDirectory)
-
+    print("-------- leaving createWebPage")
     return(text.toHTML())
 
 #----------------------------------------------------------------------------------------------------
