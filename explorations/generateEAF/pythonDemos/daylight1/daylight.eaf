@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<ANNOTATION_DOCUMENT AUTHOR="Paul Shannon" DATE="2019-07-11T13:06:49" FORMAT="2.8" VERSION="2.8" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.mpi.nl/tools/elan/EAFv3.0.xsd">
+<ANNOTATION_DOCUMENT AUTHOR="Paul Shannon" DATE="2019-07-15T18:09:02" FORMAT="2.8" VERSION="2.8" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.mpi.nl/tools/elan/EAFv3.0.xsd">
    <HEADER MEDIA_FILE="" TIME_UNITS="milliseconds">
       <MEDIA_DESCRIPTOR MEDIA_URL="file:///Users/paul/github/slexil/explorations/generateEAF/pythonDemos/daylight1/daylight_1_9.wav" MIME_TYPE="audio/x-wav" RELATIVE_MEDIA_URL="file://./daylight_1_9.wav"/>
       <PROPERTY NAME="lastUsedAnnotationId">340</PROPERTY>
