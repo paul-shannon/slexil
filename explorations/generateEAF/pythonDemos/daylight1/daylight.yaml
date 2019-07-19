@@ -389,14 +389,13 @@ lines:
     tabDelimitedPhonemes: [tu=cut=əxʷ]
     tabDelimitedPhonemeGloss: [PAST=say=now]
     englishTranslation: (Little Mink) spoke
-#  - lineNumber:
-#    startTime:
-#    endTime:
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
-
+  - lineNumber: 56
+    startTime: 249602
+    endTime:   252006
+    lushootseedSpeech: xʷiʔ, ƛ’ušišədzal čəd ʔal ti ɬax̌
+    tabDelimitedPhonemes: [xʷiʔ,ƛ’u=ši–šədzal,čəd,ʔal,ti,ɬax̌]
+    tabDelimitedPhonemeGloss: [neg,hab=attn–go.outdoors,1sg.sub,at,spec,dark]
+    englishTranslation: No, I need to go outside a bit during the night.
 
 #  - lineNumber:
 #    startTime:
