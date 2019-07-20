@@ -397,6 +397,107 @@ lines:
     tabDelimitedPhonemeGloss: [neg,hab=attn–go.outdoors,1sg.sub,at,spec,dark]
     englishTranslation: No, I need to go outside a bit during the night.
 
+  - lineNumber: 57
+    startTime: 252006
+    endTime:   254724
+    lushootseedSpeech: ƛ’ub ləq’aɬucid kʷi ɬudsʔaʔ
+    tabDelimitedPhonemes: [ƛ’ub,ləq’aɬ•ucid,kʷi,ɬu=d=s=ʔaʔ]
+    tabDelimitedPhonemeGloss: [well,"be.in.right.place•mouth",rem,irr=1sg.po=nm=be.there]
+    englishTranslation: It is better that I be by the door.
+
+  - lineNumber: 58
+    startTime: 254724
+    endTime:   259304
+    lushootseedSpeech: tuhuyutəbəxʷ ʔə tiʔəʔ dəxʷəsɬaq’s ləq’aɬucid
+    tabDelimitedPhonemes: [tu=huyu–t–b=əxʷ,ʔə,tiʔəʔ,dəxʷ=ʔəs–ɬaq’=s,ləq’aɬ•ucid]
+    tabDelimitedPhonemeGloss: [past=made–ics–pass=now,pr,prox,adnm=stat–fallen=3po,"be.in.right.place•mouth"]
+    englishTranslation: His place was made by the door.
+
+  - lineNumber: 59
+    startTime: 259304
+    endTime:   265250
+    lushootseedSpeech: ƛ’uʔaʔ x̌ʷul’ ƛ’aswačbid tiʔiɬ ƛ’ashuyutid (tiʔəʔ slәx̌il)
+    tabDelimitedPhonemes: [ƛ’u=ʔaʔ,x̌ʷul’,ƛ’u=ʔas–wač–bi–d,tiʔiɬ,ƛ’u=ʔas–huyu–t–id,(tiʔəʔ,s-lәx̌-il)]
+    tabDelimitedPhonemeGloss: [hab=be.there,only,hab=stat–watch–map–ics,dist,hab=stat–made–ics–pass.sbrd,(PROX,daylight)]
+    englishTranslation: He would be there just watching what was done with it (this daylight).
+
+  - lineNumber: 60
+    startTime: 265250
+    endTime:   267205
+    lushootseedSpeech: x̌ʷul’ ʔəswačbid
+    tabDelimitedPhonemes: [x̌ʷul’,ʔəs–wač–bi–d]
+    tabDelimitedPhonemeGloss: [only,stat–watch–map–ics]
+    englishTranslation: He just watched it.
+
+  - lineNumber: 61
+    startTime: 267205
+    endTime:   272398
+    lushootseedSpeech: x̌ʷul’ ƛ’ulədiʔiʔil tiʔiɬ ɬukʷaɬ gʷəl ƛ’uləƛ’ip’usitəb tiʔəʔ sləx̌il
+    tabDelimitedPhonemes: [x̌ʷul’,ƛ’u=lə=diʔ–iʔ–il,tiʔiɬ,ɬukʷaɬ,gʷəl,ƛ’u=lə=ƛ’ip’•us–i–t–b,tiʔəʔ,sləx̌il]
+    tabDelimitedPhonemeGloss: [only,hab=prog=exc–other.side–inch,dist,sun,SCONJ,hab=prog=squeeze•face–ss–ics–pass,prox,daylight]
+    englishTranslation: As the sun would move to the other side, then the daylight would gradually get its face squeezed shut.’
+
+  - lineNumber: 62
+    startTime: 272398
+    endTime:   274975
+    lushootseedSpeech: diɬ səɬaˑx̌il
+    tabDelimitedPhonemes: [diɬ,s=lə=ɬax̌–il]
+    tabDelimitedPhonemeGloss: [foc,nm=prog=dark–inch]
+    englishTranslation: It gradually became night.
+
+  - lineNumber: 63
+    startTime:  274975
+    endTime:    276477
+    lushootseedSpeech: ƛ’uləƛ’uc’usitəb
+    tabDelimitedPhonemes: [ƛ’u=lə=ƛ’uc’•us–i–t–b]
+    tabDelimitedPhonemeGloss: ["hab=prog=tied.in.bunch•face–ss–ics–pass"]
+    englishTranslation: It would gradually get its face tied shut.
+
+  - lineNumber: 64 
+    startTime: 276477
+    endTime:   277704
+    lushootseedSpeech: diɬ sbəsads
+    tabDelimitedPhonemes: [diɬ,s=bəsad=s]
+    tabDelimitedPhonemeGloss: [foc,nm=dark=3po]
+    englishTranslation: It was then that it was dark.
+
+
+  - lineNumber: 65
+    startTime: 277704
+    endTime:   281013
+    lushootseedSpeech: ʔəswačbitəb ʔə bibščəb
+    tabDelimitedPhonemes: [ʔəs–wač–bi–t–b,ʔə,bi–bəščəb]
+    tabDelimitedPhonemeGloss: [stat–watch–map–ics–pass,pr,attn–mink]
+    englishTranslation: It was watched by Little Mink
+
+
+#  - lineNumber:
+#    startTime:
+#    endTime:
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
+#  - lineNumber:
+#    startTime:
+#    endTime:
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
+#  - lineNumber:
+#    startTime:
+#    endTime:
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
 #  - lineNumber:
 #    startTime:
 #    endTime:
