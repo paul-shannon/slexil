@@ -464,43 +464,507 @@ lines:
 
   - lineNumber: 65
     startTime: 277704
-    endTime:   281013
+    endTime:   282064
     lushootseedSpeech: ʔəswačbitəb ʔə bibščəb
     tabDelimitedPhonemes: [ʔəs–wač–bi–t–b,ʔə,bi–bəščəb]
     tabDelimitedPhonemeGloss: [stat–watch–map–ics–pass,pr,attn–mink]
     englishTranslation: It was watched by Little Mink
 
+  - lineNumber: 66
+    startTime: 282064
+    endTime:   290138
+    lushootseedSpeech: ʔaləxʷ sɬixʷəɬdacuts kʷi sʔaʔs bibščəb gʷəl ʔux̌ʷc tiʔəʔ sləx̌il
+    tabDelimitedPhonemes: [ʔal=əxʷ,"s=ɬixʷ•əɬ•dat–t–sut=s",kʷi,s=ʔaʔ=s,bi–bəščəb,gʷəl,ʔux̌ʷ–c,tiʔəʔ,sləx̌il]
+    tabDelimitedPhonemeGloss: [at=now,nm="three•cls•day"–ics–refl=3po,rem,nm=be.there=3po,attn–mink,sconj,go–altv,prox,daylight]
+    englishTranslation: When it was three days that Little Mink was there, then he went after the daylight.
 
-#  - lineNumber:
-#    startTime:
-#    endTime:
+  - lineNumber: 67
+    startTime: 290138
+    endTime:   292442
+    lushootseedSpeech: xʷiʔ uʔxʷ gʷəsɬaʔ ʔə tiʔəʔ čaləs
+    tabDelimitedPhonemes: [xʷiʔ,uʔxʷ,gʷə=s=ɬaʔ,ʔə,tiʔəʔ,čaləs–s]
+    tabDelimitedPhonemeGloss: [neg,ptcl,sbj=nm=arrive,pr,prox,hand–3po]
+    englishTranslation: He can not reach it with his hand.
+
+
+  - lineNumber: 68
+    startTime: 292442
+    endTime:   294377
+    lushootseedSpeech: ƛ’al’ lil gʷəl ləx̌
+    tabDelimitedPhonemes: [ƛ’al’,lil,gʷəl,ləx̌]
+    tabDelimitedPhonemeGloss: [also,far,sconj,light]
+    englishTranslation: It was still far away when it lit up.
+
+  - lineNumber: 69
+    startTime: 294377
+    endTime:   298604
+    lushootseedSpeech: tiləb ʔusaxʷəb bibščəb gʷəl tədzil ʔal tiʔiɬ dəxʷəstədzils
+    tabDelimitedPhonemes: [tiləb,ʔu–saxʷəb,bi–bəščəb,gʷəl,tədzil,ʔal,tiʔiɬ,dəxʷ=ʔəs–tədzil=s]
+    tabDelimitedPhonemeGloss: [immediately,pfv–jump,attn–mink,sconj,lie.in.bed,at,dist,adnm=stat–lie.in.bed=3po]
+    englishTranslation: Quickly Little Mink jumped back and lay where he lay down.
+
+  - lineNumber: 70
+    startTime: 298604
+    endTime:   301129
+    lushootseedSpeech: ʔəstədzilič ʔə diʔ q’ʷaɬčup
+    tabDelimitedPhonemes: [ʔəs–tədzil•ič,ʔə,diʔ,q’ʷaɬ•čup]
+    tabDelimitedPhonemeGloss: [stat–lie.in.bed•covering,pr,other.side,ash•fire]
+    englishTranslation: He went to bed covered by fine ash powder.
+
+
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
 #    lushootseedSpeech:
 #    tabDelimitedPhonemes: []
 #    tabDelimitedPhonemeGloss: []
 #    englishTranslation:
 
 
-#  - lineNumber:
-#    startTime:
-#    endTime:
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
 #    lushootseedSpeech:
 #    tabDelimitedPhonemes: []
 #    tabDelimitedPhonemeGloss: []
 #    englishTranslation:
 
 
-#  - lineNumber:
-#    startTime:
-#    endTime:
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
 #    lushootseedSpeech:
 #    tabDelimitedPhonemes: []
 #    tabDelimitedPhonemeGloss: []
 #    englishTranslation:
 
 
-#  - lineNumber:
-#    startTime:
-#    endTime:
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
+#    lushootseedSpeech:
+#    tabDelimitedPhonemes: []
+#    tabDelimitedPhonemeGloss: []
+#    englishTranslation:
+
+
+#  - lineNumber: 
+#    startTime: 
+#    endTime:   
 #    lushootseedSpeech:
 #    tabDelimitedPhonemes: []
 #    tabDelimitedPhonemeGloss: []
