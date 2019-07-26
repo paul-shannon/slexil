@@ -7,6 +7,15 @@
         <String>GL</String>
         <String>ENG</String>
     </prefList>
+    <prefList key="ExportTradTranscript.selectedTiers">
+        <String>AYA</String>
+        <String>AYA2</String>
+        <String>GL</String>
+        <String>ENG</String>
+    </prefList>
+    <pref key="LayoutManager.VisibleMultiTierViewer">
+        <String>mpi.eudico.client.annotator.viewer.TimeLineViewer</String>
+    </pref>
     <prefGroup key="Text-to-Speech alignment">
         <pref key="model">
             <String>English</String>
@@ -15,15 +24,6 @@
             <String>///C:/Users/Daniel Suslak/Desktop/AYA 2015/070702-el mono y el rayo.wav</String>
         </pref>
     </prefGroup>
-    <pref key="LayoutManager.VisibleMultiTierViewer">
-        <String>mpi.eudico.client.annotator.viewer.TimeLineViewer</String>
-    </pref>
-    <prefList key="ExportTradTranscript.selectedTiers">
-        <String>AYA</String>
-        <String>AYA2</String>
-        <String>GL</String>
-        <String>ENG</String>
-    </prefList>
     <prefList key="CommentViewer.Columns.Order">
         <String>Start Time</String>
         <String>End Time</String>
@@ -39,14 +39,14 @@
     <pref key="LayoutManager.SplitPaneDividerLocation">
         <Int>195</Int>
     </pref>
-    <pref key="TimeLineViewer.ZoomLevel">
-        <Float>170.0</Float>
+    <pref key="ExportTradTranscript.SelectTiersMode">
+        <String>Tier</String>
     </pref>
     <pref key="LayoutManager.SelectedTabIndex">
         <Int>0</Int>
     </pref>
-    <pref key="ExportTradTranscript.SelectTiersMode">
-        <String>Tier</String>
+    <pref key="TimeLineViewer.ZoomLevel">
+        <Float>170.0</Float>
     </pref>
     <prefGroup key="TierColors">
         <pref key="AYA">
@@ -66,35 +66,35 @@
     <pref key="SelectionBeginTime">
         <Long>14668</Long>
     </pref>
-    <pref key="LayoutManager.CurrentMode">
-        <Int>1</Int>
-    </pref>
     <prefList key="Interlinear.TierOrder">
         <String>AYA</String>
         <String>AYA2</String>
         <String>ESP</String>
     </prefList>
+    <pref key="LayoutManager.CurrentMode">
+        <Int>1</Int>
+    </pref>
     <pref key="Interlinear.SelectionOnly">
         <Boolean>false</Boolean>
     </pref>
     <pref key="MediaTime">
-        <Long>14666</Long>
+        <Long>14665</Long>
     </pref>
     <prefList key="ExportTradTranscript.HiddenTiers"/>
-    <pref key="SubTitleViewer.TierName-2">
-        <String>ENG</String>
+    <pref key="FrameSize">
+        <Object class="java.awt.Dimension">1006,1020</Object>
     </pref>
     <pref key="SignalViewer.ZoomLevel">
         <Float>170.0</Float>
     </pref>
-    <pref key="FrameSize">
-        <Object class="java.awt.Dimension">1006,1020</Object>
-    </pref>
-    <pref key="TimeLineViewer.FontSize">
-        <Int>16</Int>
+    <pref key="SubTitleViewer.TierName-2">
+        <String>ENG</String>
     </pref>
     <pref key="SubTitleViewer.TierName-1">
         <String>AYA</String>
+    </pref>
+    <pref key="TimeLineViewer.FontSize">
+        <Int>16</Int>
     </pref>
     <prefGroup key="AAM-LR Phone level audio segmentation">
         <pref key="base_url">
@@ -104,12 +104,6 @@
             <String>///Users/David/OpenSource/github/slexil/testTextPyData/2_AYA2_FishWoman/2_AYA2_FishWoman.wav</String>
         </pref>
     </prefGroup>
-    <pref key="ActiveRecognizerName">
-        <String>AAM-LR Phone level audio segmentation</String>
-    </pref>
-    <pref key="MultiTierViewer.ActiveTierName">
-        <String>AYA</String>
-    </pref>
     <prefGroup key="CommentViewer.Columns">
         <pref key="Modification Date">
             <Int>75</Int>
@@ -142,21 +136,17 @@
             <Int>75</Int>
         </pref>
     </prefGroup>
+    <pref key="MultiTierViewer.ActiveTierName">
+        <String>AYA</String>
+    </pref>
+    <pref key="ActiveRecognizerName">
+        <String>AAM-LR Phone level audio segmentation</String>
+    </pref>
     <pref key="TextViewer.TierName">
         <String>AYA</String>
     </pref>
     <pref key="TimeScaleBeginTime">
-        <Long>14572</Long>
-    </pref>
-    <prefList key="MultiTierViewer.HiddenTiers"/>
-    <pref key="ActiveAudioRecognizerName">
-        <String>Text-to-Speech alignment</String>
-    </pref>
-    <prefList key="Interlinear.VisibleTiers">
-        <String>AYA</String>
-    </prefList>
-    <pref key="LayoutManager.MediaAreaHeight">
-        <Int>140</Int>
+        <Long>7981</Long>
     </pref>
     <prefList key="ExportTradTranscript.TierOrder">
         <String>AYA</String>
@@ -164,6 +154,16 @@
         <String>GL</String>
         <String>ENG</String>
     </prefList>
+    <pref key="LayoutManager.MediaAreaHeight">
+        <Int>140</Int>
+    </pref>
+    <prefList key="Interlinear.VisibleTiers">
+        <String>AYA</String>
+    </prefList>
+    <pref key="ActiveAudioRecognizerName">
+        <String>Text-to-Speech alignment</String>
+    </pref>
+    <prefList key="MultiTierViewer.HiddenTiers"/>
     <pref key="SelectionEndTime">
         <Long>17671</Long>
     </pref>
