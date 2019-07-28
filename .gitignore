@@ -5,6 +5,7 @@ __pycache__/
 *$py.class
 
 testTextPyData/Ocotepec_Riverwoman/
+explorations/generateEAF/pythonDemos/daylight1/audio/a*.wav
 
 # C extensions
 *.so

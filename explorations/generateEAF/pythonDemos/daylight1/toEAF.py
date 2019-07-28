@@ -34,7 +34,6 @@ schema = xmlschema.XMLSchema(schemaXSD)
 refMap = []
 
 x = yaml.load(open("daylight.yaml"))
-#x = yaml.load(open("daylight1.yaml"))
 
 root = Element('ANNOTATION_DOCUMENT')
 root.set('VERSION', '2.8')
@@ -96,8 +95,15 @@ for tierName in tierNames:
            alignableAnnotation.set("ANNOTATION_ID", "a%d" % (documentElementID + 1))
            refMap[lineNumber]["lushootseedSpeech"] = documentElementID + 1
            documentElementID += 1
-           alignableAnnotation.set("TIME_SLOT_REF1", "ts%d" % lineNumber)
-           alignableAnnotation.set("TIME_SLOT_REF2", "ts%d" % (lineNumber+1))
+           #pdb.set_trace()
+           startTime = x["lines"][lineNumber]["startTime"]
+           endTime   = x["lines"][lineNumber]["endTime"]
+           startTimeIndex = allTimes.index(startTime)
+           endTimeIndex = allTimes.index(endTime)
+           alignableAnnotation.set("TIME_SLOT_REF1", "ts%d" % startTimeIndex)
+           alignableAnnotation.set("TIME_SLOT_REF2", "ts%d" % endTimeIndex)
+           # alignableAnnotation.set("TIME_SLOT_REF1", "ts%d" % lineNumber)
+           # alignableAnnotation.set("TIME_SLOT_REF2", "ts%d" % (lineNumber+1))
            annotationValue = SubElement(alignableAnnotation, "ANNOTATION_VALUE")
            annotationValue.text = speechLine
            lineNumber += 1

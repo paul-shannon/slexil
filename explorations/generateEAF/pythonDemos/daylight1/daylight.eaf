@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<ANNOTATION_DOCUMENT AUTHOR="Paul Shannon" DATE="2019-07-28T15:31:22" FORMAT="2.8" VERSION="2.8" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.mpi.nl/tools/elan/EAFv3.0.xsd">
+<ANNOTATION_DOCUMENT AUTHOR="Paul Shannon" DATE="2019-07-28T16:35:36" FORMAT="2.8" VERSION="2.8" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.mpi.nl/tools/elan/EAFv3.0.xsd">
    <HEADER MEDIA_FILE="" TIME_UNITS="milliseconds">
       <MEDIA_DESCRIPTOR MEDIA_URL="file:///Users/paul/github/slexil/explorations/generateEAF/pythonDemos/daylight1/daylight_1_9.wav" MIME_TYPE="audio/x-wav" RELATIVE_MEDIA_URL="file://./daylight_1_9.wav"/>
       <PROPERTY NAME="lastUsedAnnotationId">340</PROPERTY>
@@ -79,8 +79,10 @@
       <TIME_SLOT TIME_SLOT_ID="ts71" TIME_VALUE="303566"/>
       <TIME_SLOT TIME_SLOT_ID="ts72" TIME_VALUE="307149"/>
       <TIME_SLOT TIME_SLOT_ID="ts73" TIME_VALUE="309842"/>
-      <TIME_SLOT TIME_SLOT_ID="ts74" TIME_VALUE="317871"/>
-      <TIME_SLOT TIME_SLOT_ID="ts75" TIME_VALUE="323889"/>
+      <TIME_SLOT TIME_SLOT_ID="ts74" TIME_VALUE="312480"/>
+      <TIME_SLOT TIME_SLOT_ID="ts75" TIME_VALUE="317871"/>
+      <TIME_SLOT TIME_SLOT_ID="ts76" TIME_VALUE="319163"/>
+      <TIME_SLOT TIME_SLOT_ID="ts77" TIME_VALUE="323889"/>
    </TIME_ORDER>
    <TIER DEFAULT_LOCALE="tr" LINGUISTIC_TYPE_REF="speech" TIER_ID="lushootseedSpeech">
       <ANNOTATION>
@@ -449,12 +451,12 @@
          </ALIGNABLE_ANNOTATION>
       </ANNOTATION>
       <ANNOTATION>
-         <ALIGNABLE_ANNOTATION ANNOTATION_ID="a74" TIME_SLOT_REF1="ts73" TIME_SLOT_REF2="ts74">
+         <ALIGNABLE_ANNOTATION ANNOTATION_ID="a74" TIME_SLOT_REF1="ts74" TIME_SLOT_REF2="ts75">
             <ANNOTATION_VALUE>ʔəšuucəb ʔə ti luƛ’ ʔəsbəč ləq’aɬucid ʔəspədpədič ʔə ti q’ʷaɬčup</ANNOTATION_VALUE>
          </ALIGNABLE_ANNOTATION>
       </ANNOTATION>
       <ANNOTATION>
-         <ALIGNABLE_ANNOTATION ANNOTATION_ID="a75" TIME_SLOT_REF1="ts74" TIME_SLOT_REF2="ts75">
+         <ALIGNABLE_ANNOTATION ANNOTATION_ID="a75" TIME_SLOT_REF1="ts76" TIME_SLOT_REF2="ts77">
             <ANNOTATION_VALUE>ʔal bəƛ’uɬax̌ gʷəl bəʔux̌ʷcəb ʔə bibščəb</ANNOTATION_VALUE>
          </ALIGNABLE_ANNOTATION>
       </ANNOTATION>

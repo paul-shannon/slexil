@@ -536,7 +536,7 @@ lines:
     englishTranslation: Why is the daylight blinking?
 
   - lineNumber:  74
-    startTime:  309842
+    startTime:  312480
     endTime:    317871
     lushootseedSpeech: ʔəšuucəb ʔə ti luƛ’ ʔəsbəč ləq’aɬucid ʔəspədpədič ʔə ti q’ʷaɬčup
     tabDelimitedPhonemes: [ʔəs–šuɬ–c–b,ʔə,ti,luƛ’,ʔəs–bəč,ləq’aɬ•ucid,ʔəs–pəd–pəd•ič,ʔə,ti,q’waɬ•čup]
@@ -545,7 +545,7 @@ lines:
 
 
   - lineNumber: 75
-    startTime:  317871
+    startTime:  319163
     endTime:    323889
     lushootseedSpeech:   ʔal bəƛ’uɬax̌ gʷəl bəʔux̌ʷcəb ʔə bibščəb
     tabDelimitedPhonemes: [ʔal,bə=ƛ’u=ɬax̌,gʷəl,bə=ʔux̌ʷ–c–b,ʔə,bi–bəščəb]
