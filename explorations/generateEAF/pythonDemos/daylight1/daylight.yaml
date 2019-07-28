@@ -507,54 +507,50 @@ lines:
     startTime: 298604
     endTime:   301129
     lushootseedSpeech: ʔəstədzilič ʔə diʔ q’ʷaɬčup
-    tabDelimitedPhonemes: [ʔəs–tədzil•ič,ʔə,diʔ,q’ʷaɬ•čup]
-    tabDelimitedPhonemeGloss: [stat–lie.in.bed•covering,pr,other.side,ash•fire]
+    tabDelimitedPhonemes: ["ʔəs–tədzil•ič",ʔə,diʔ,"q’ʷaɬ•čup"]
+    tabDelimitedPhonemeGloss: ["stat–lie.in.bed•covering",pr,other.side,"ash•fire"]
     englishTranslation: He went to bed covered by fine ash powder.
 
+  - lineNumber: 71 
+    startTime: 301129
+    endTime:   303566
+    lushootseedSpeech: puʔud tiʔəʔ q’ʷaɬčup gʷəl pədič
+    tabDelimitedPhonemes: [puʔu–d,tiʔəʔ,"q’ʷaɬ•čup",gʷəl,"pəd•ič"]
+    tabDelimitedPhonemeGloss: [blow–ics,prox,"ash•fire",sconj,"buried•covering"]
+    englishTranslation: He blew on this fine ash powder and is buried.
 
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
+  - lineNumber: 72
+    startTime: 303566
+    endTime:   307149
+    lushootseedSpeech: dəb kʷədiʔ ʔiɬlilalʔtxʷ kʷi ʔuƛ’aʔad
+    tabDelimitedPhonemes: [dəb,kʷədiʔ,"ʔiɬ–lil•alʔtʷw",kʷi,ʔu–ƛ’aʔa–d]
+    tabDelimitedPhonemeGloss: [instead,rem.dma,"prtv–far•room",rem,pfv–notice–ics]
+    englishTranslation: The others at the far part of the house noticed it
 
+  - lineNumber: 73
+    startTime:  307149
+    endTime:    309842
+    lushootseedSpeech: buʔəx̌idəxʷ kʷi [s]ləx̌il kʷi dəxʷwəq’wəq’s
+    tabDelimitedPhonemes: [bə=ʔu–ʔəx̌id=əxʷ,kʷi,sləx̌il,kʷi,dəxʷ=wəq’–wəq’=s]
+    tabDelimitedPhonemeGloss: [addf=pfv–what.happen=now,rem,daylight,rem,adnm=dstr–blink=3po]
+    englishTranslation: Why is the daylight blinking?
 
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
-
-
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
-
-
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
+  - lineNumber:  74
+    startTime:  309842
+    endTime:    317871
+    lushootseedSpeech: ʔəšuucəb ʔə ti luƛ’ ʔəsbəč ləq’aɬucid ʔəspədpədič ʔə ti q’ʷaɬčup
+    tabDelimitedPhonemes: [ʔəs–šuɬ–c–b,ʔə,ti,luƛ’,ʔəs–bəč,ləq’aɬ•ucid,ʔəs–pəd–pəd•ič,ʔə,ti,q’waɬ•čup]
+    tabDelimitedPhonemeGloss: [stat–see–altv–pass,pr,spec,old,stat–fall,in.place•mouth,stat–dstr–buried•covering,pr,spec,ash•fire]
+    englishTranslation: The old fellow lying by the door covered in fine ash watched it.
 
 
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
+  - lineNumber: 75
+    startTime:  317871
+    endTime:    323889
+    lushootseedSpeech:   ʔal bəƛ’uɬax̌ gʷəl bəʔux̌ʷcəb ʔə bibščəb
+    tabDelimitedPhonemes: [ʔal,bə=ƛ’u=ɬax̌,gʷəl,bə=ʔux̌ʷ–c–b,ʔə,bi–bəščəb]
+    tabDelimitedPhonemeGloss: [at,add=hab=dark,sconj,add=go–altv–pass,pr,attn–mink]
+    englishTranslation: When it would again be night, Little Mink went after it again.
 
 
 #  - lineNumber: 
