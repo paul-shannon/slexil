@@ -102,8 +102,6 @@ for tierName in tierNames:
            endTimeIndex = allTimes.index(endTime)
            alignableAnnotation.set("TIME_SLOT_REF1", "ts%d" % startTimeIndex)
            alignableAnnotation.set("TIME_SLOT_REF2", "ts%d" % endTimeIndex)
-           # alignableAnnotation.set("TIME_SLOT_REF1", "ts%d" % lineNumber)
-           # alignableAnnotation.set("TIME_SLOT_REF2", "ts%d" % (lineNumber+1))
            annotationValue = SubElement(alignableAnnotation, "ANNOTATION_VALUE")
            annotationValue.text = speechLine
            lineNumber += 1

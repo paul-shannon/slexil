@@ -543,7 +543,6 @@ lines:
     tabDelimitedPhonemeGloss: [stat–see–altv–pass,pr,spec,old,stat–fall,in.place•mouth,stat–dstr–buried•covering,pr,spec,ash•fire]
     englishTranslation: The old fellow lying by the door covered in fine ash watched it.
 
-
   - lineNumber: 75
     startTime:  319163
     endTime:    323889
@@ -552,140 +551,134 @@ lines:
     tabDelimitedPhonemeGloss: [at,add=hab=dark,sconj,add=go–altv–pass,pr,attn–mink]
     englishTranslation: When it would again be night, Little Mink went after it again.
 
+  - lineNumber: 76
+    startTime: 324673 
+    endTime:   332219
+    lushootseedSpeech: buusəɬdat kʷi suʔux̌wʷs tiʔəʔ sləx̌il gʷəl tuɬaʔačiʔbid
+    tabDelimitedPhonemes: [buus•əɬ•dat,kʷi,s=ʔu–ʔux̌ʷ–c=s,tiʔəʔ,sləx̌il,gʷəl,tu=ɬaʔ•ačiʔ–bi–d]
+    tabDelimitedPhonemeGloss: [four•cls•day,rem,nm=pfv–go–altv=3po,prox,daylight,sconj,past=arrive•hand–map–ics]
+    englishTranslation: For four days he went after the daylight, then his hand reached it.’
 
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
+  - lineNumber: 77
+    startTime: 332288
+    endTime:   336290
+    lushootseedSpeech: diɬ tuspəkʷibids tiʔəʔ sləx̌il gʷəl tusaxʷəbtxʷ
+    tabDelimitedPhonemes: [diɬ,tu=s=pəkʷib–bi–d=s,tiʔəʔ,sləx̌il,gʷəl,tu=saxʷəb–txʷ]
+    tabDelimitedPhonemeGloss: [foc,past=nm=snatch–map–ics=3po,prox,daylight,sconj,past=jump–ecs]
+    englishTranslation: He snatched the daylight and ran off with it.
 
+  - lineNumber: 78
+    startTime: 337345
+    endTime:   339955
+    lushootseedSpeech: tučalatəb bibščəb
+    tabDelimitedPhonemes: [tu=čala–t–b,bi–bəščəb]
+    tabDelimitedPhonemeGloss: [past=chased–ics–pass,attn–mink]
+    englishTranslation: Little Mink was chased
 
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
-
-
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
-
-
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
+  - lineNumber:  79
+    startTime:  340496
+    endTime:    345101
+    lushootseedSpeech: tudiʔ ƛ’uləgʷədabac ʔə ti qʷəɬqʷɬayʔ tiʔiɬ səšulagʷils
+    tabDelimitedPhonemes: [tudiʔ,ƛ’u=lə=gʷəd•abac,ʔə,ti,qʷəɬ–qʷɬayʔ,tiʔiɬ,s=lə=šul–agʷil=s]
+    tabDelimitedPhonemeGloss: [dist.dma,hab=prog=down•body,pr,spec,dstr–log,dist,nm=prog=go.under–auto=3po]
+    englishTranslation: He kept below the logs he was going beneath over there.
 
 
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
+  - lineNumber: 80
+    startTime: 345891
+    endTime:   348966
+    lushootseedSpeech: xʷiʔ gʷəsučals yəx̌i huy xʷəxʷaʔxʷəʔ
+    tabDelimitedPhonemes: [xiʔ,gʷə=s=ʔu–čal=s,yəx̌i,huy,xʷəxʷaʔxʷəʔ]
+    tabDelimitedPhonemeGloss: [neg,sbj=nm=pfv–chased=3po,because,sconj,swift]
+    englishTranslation: He was not overtaken because he is swift.
+
+  - lineNumber: 81
+    startTime: 349052
+    endTime:   356264
+    lushootseedSpeech: ləsaxʷəbabac ʔə tiʔəʔ qʷɬaʔy dxʷʔal tiʔiɬ sɬčis tiʔəʔ ʔaʔyəds qaw’qs
+    tabDelimitedPhonemes: [lə=saxʷəb•abac,ʔə,tiʔəʔ,qʷɬaʔy,dxʷ–ʔal,tiʔiɬ,s=ɬčil–s=s,tiʔəʔ,ʔaʔyəd–s,qaw’qs]
+    tabDelimitedPhonemeGloss: [prog=jump•body,pr,prox,log,cntrpt–at,dist,nm=arrive–altv=3po,prox,companion–3po,raven]
+    englishTranslation: He jumped over the logs until he arrived at his friend, Raven.
 
 
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
+  - lineNumber: 82
+    startTime: 356431
+    endTime:   358746
+    lushootseedSpeech: gwʷl tuʔix̌ʷyid ʔə tiʔəʔ sləx̌il
+    tabDelimitedPhonemes: [gʷəl,tu=ʔix̌ʷ–yi–d,ʔə,tiʔəʔ,sləx̌il]
+    tabDelimitedPhonemeGloss: [sconj,past=thrown.at–dat–ics,pr,prox,daylight]
+    englishTranslation: And he threw him the daylight.
 
 
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
+  - lineNumber: 83
+    startTime:  358793
+    endTime:    360184 
+    lushootseedSpeech: kʷədatəb ʔə qaw’qs
+    tabDelimitedPhonemes: [kʷəda–t–b,ʔə,qaw’qs]
+    tabDelimitedPhonemeGloss: [taken–ics–pass,pr,raven]
+    englishTranslation: It was taken by Raven.
 
 
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
+  - lineNumber: 84
+    startTime:  360189
+    endTime:    363069
+    lushootseedSpeech: tudiʔ liɬšəq tiʔiɬ ləč’əlč’əlp ʔə qaw’qs
+    tabDelimitedPhonemes: [tudiʔ,liɬ–šəq,tiʔiɬ,lə=č’əl–č’əlp,ʔə,qaw’qs]
+    tabDelimitedPhonemeGloss: [dist.dma,prlv–high,dist,prog=dstr–turned,pr,raven]
+    englishTranslation:  Way up high Raven was twisting and turning.
 
 
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
+  - lineNumber: 85
+    startTime:  363595
+    endTime:    365636
+    lushootseedSpeech: qʷaʔ! qʷaʔ!
+    tabDelimitedPhonemes: [qʷaʔ!,qʷaʔ!]
+    tabDelimitedPhonemeGloss: [qʷaʔ!,qʷaʔ!]
+    englishTranslation: Caw! Caw!
 
 
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
+  - lineNumber: 86
+    startTime: 365675
+    endTime:   368221
+    lushootseedSpeech: xʷiʔ kʷi gʷat gʷukʷədxʷ yəx̌i huy xʷəxwʷʔxʷəʔ
+    tabDelimitedPhonemes: [xʷiʔ,kʷi,gʷat,gʷə=ʔu–kʷəd–dxʷ,yəx̌i,huy,xʷəxʷaʔxʷəʔ]
+    tabDelimitedPhonemeGloss: [neg,rem,who,sbj=pfv–taken–dc,because,sconj,swift]
+    englishTranslation: There was no one who could catch him because he is swift.
+
+  - lineNumber: 87
+    startTime: 368765
+    endTime:   369494
+    lushootseedSpeech: qʷiq’ʷ
+    tabDelimitedPhonemes: [qʷiq’ʷ]
+    tabDelimitedPhonemeGloss: [strong]
+    englishTranslation: He is strong.
 
 
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
+  - lineNumber: 88
+    startTime: 369739
+    endTime:   372379
+    lushootseedSpeech: tiʔəʔ liɬʔal tiʔəʔ swatixʷtəd ƛ’udəxʷusaxʷəbs
+    tabDelimitedPhonemes: [tiʔəʔ,liɬ–ʔal,tiʔəʔ,swatixʷtəd,ƛ’u=dəxʷ=ʔu–saxʷəb=s]
+    tabDelimitedPhonemeGloss: [prox,prlv–at,prox,land,hab=nm=pfv–jump=3po]
+    englishTranslation: Here on the ground was where (Little Mink) ran.
 
 
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
+  - lineNumber: 89
+    startTime: 372535
+    endTime:   374865
+    lushootseedSpeech: tudiʔ liɬšəq dəxʷusaq’ʷs
+    tabDelimitedPhonemes: [tudiʔ,liɬ–šəq,dəxʷ=ʔu–saq’ʷ=s]
+    tabDelimitedPhonemeGloss: [dist.dma,prlv–high,nm=pfv–fly=3po]
+    englishTranslation: Way up high was where (Raven) flew.
 
 
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
-
-
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
-
-
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
+  - lineNumber: 90
+    startTime: 375320
+    endTime:   377457
+    lushootseedSpeech:  xʷiʔ kʷi gʷat gʷələkʷədxʷ tiʔəʔ qaw’qs
+    tabDelimitedPhonemes: [xʷiʔ,kʷi,gwʷt,gʷə=lə=kʷəd–dxʷ,tiʔəʔ,qaw’qs]
+    tabDelimitedPhonemeGloss: [neg,rem,who,sbj=prog=taken–dc,prox,raven]
+    englishTranslation: There was no one who could manage to catch Raven.
 
 
 #  - lineNumber: 
