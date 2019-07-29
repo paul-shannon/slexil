@@ -681,94 +681,94 @@ lines:
     englishTranslation: There was no one who could manage to catch Raven.
 
 
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
+  - lineNumber: 91
+    startTime: 378455
+    endTime:   381976
+    lushootseedSpeech: x̌ʷul’ ƛ’uləq’ʷəɬəb gʷəl ləʔix̌ʷyid tiʔəʔ ʔayʔəds
+    tabDelimitedPhonemes: [x̌ʷul’,ƛ’u=lə=q’ʷəɬəb,gʷəl,lə=ʔix̌ʷ–yi–d,tiʔəʔ,ʔayʔəds–s]
+    tabDelimitedPhonemeGloss: [only,hab=prog=tired,sconj,prog=thrown.at–dat–ics,prox,companion–3po]
+    englishTranslation: When he would tire, he would throw it to his friend
 
 
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
+  - lineNumber: 92
+    startTime: 382209
+    endTime:   383989
+    lushootseedSpeech: čalatəb bibščəb
+    tabDelimitedPhonemes: [čala–t–b,bi–bəščəb]
+    tabDelimitedPhonemeGloss: [chased–ics–pass,attn–mink]
+    englishTranslation: Little Mink was chased.
 
 
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
+  - lineNumber: 93
+    startTime: 383990
+    endTime:   386738
+    lushootseedSpeech: tudiʔ lil gʷədabac ʔə ti qʷəɬqʷɬayʔ
+    tabDelimitedPhonemes: [tudiʔ,lil,gʷəd•abac,ʔə,ti,qʷəɬ–qʷɬayʔ]
+    tabDelimitedPhonemeGloss: [dist.dma,far,down•body,pr,spec,dstr–log]
+    englishTranslation: He was way over there beneath the logs.
 
 
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
+  - lineNumber: 94
+    startTime: 386878
+    endTime:   393161
+    lushootseedSpeech: tudiʔ ləsaxʷəbabac ʔə ti šqabac tiʔiɬ sətəlawil ʔə bibščəb
+    tabDelimitedPhonemes: [tudiʔ,lə=saxʷəb•abac,ʔə,ti,šq•abac,tiʔiɬ,s=lə=təlawil,ʔə,bi–bəščəb]
+    tabDelimitedPhonemeGloss: [dist.dma,prog=jump•body,pr,spec,high•body,dist,nm=prog=run,pr,attn–mink]
+    englishTranslation: Little Mink was way over there jumping over the high mass where he was running
 
 
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
+  - lineNumber: 95
+    startTime: 393161
+    endTime:   397013
+    lushootseedSpeech: xʷiʔ kʷi stab gʷələčaldxʷ tiʔəʔ xʷəxʷaʔxʷəʔ titčul’bixʷ
+    tabDelimitedPhonemes: [xʷiʔ,kʷi,stab,gʷə=lə=čal–dxʷ,tiʔəʔ,xʷəxʷaʔxʷəʔ,titčul’bixʷ]
+    tabDelimitedPhonemeGloss: [neg,rem,what,sbj=prog=chased–dc,prox,swift,small.animal]
+    englishTranslation: There was nothing able to overtake this swift little animal.
 
 
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
+  - lineNumber: 96
+    startTime: 397013
+    endTime:   399453
+    lushootseedSpeech: stiqayuʔ, swəwaʔ tučalad
+    tabDelimitedPhonemes: [stiqayuʔ,swəwaʔ,tu=čala–d]
+    tabDelimitedPhonemeGloss: [wolf,cougar,past=chased–ics]
+    englishTranslation: It was Wolf and Cougar who chased him.
 
 
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
+  - lineNumber: 97
+    startTime:  399605
+    endTime:    402761
+    lushootseedSpeech: xʷiʔ kʷi gʷat gʷučaladxʷ ti bibščəb yəx̌i huy xʷəxʷaʔxʷəʔ
+    tabDelimitedPhonemes: [xʷiʔ,kʷi,gʷat,gʷə=ʔu–čala–dxʷ,ti,bi–bəščəb,yəx̌i,huy,xʷəxʷaʔxʷəʔ]
+    tabDelimitedPhonemeGloss: [neg,rem,who,sbj=pfv–chased–dc,spec,attn–mink,because,sconj,swift]
+    englishTranslation: No one could overtake Little Mink because he is swift.
 
 
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
+  - lineNumber: 98
+    startTime:  403087
+    endTime:    409371
+    lushootseedSpeech: dxʷʔal tusɬčils əlgʷəʔ dxʷʔal tiʔəʔ q’il’bids əlgʷəʔ gʷəl tuq’ilagʷil gʷəl tuʔuluɬ
+    tabDelimitedPhonemes: [dxʷ–ʔal,tu=s=ɬčil=s,əlgʷəʔ,dxʷ–ʔal,tiʔəʔ,q’il’bid–s,əlgʷəʔ,gʷəl,tu=q’il–agʷil,gʷəl,tu=ʔuluɬ]
+    tabDelimitedPhonemeGloss: [cntrpt–at,past=nm=arrive=3po,pl,cntrpt–at,prox,canoe–3po,pl,sconj,past=aboard–auto,sconj,past=travel.by.water]
+    englishTranslation: When they got to their canoe, they got in and set off.
 
 
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
+  - lineNumber: 99
+    startTime:  409663
+    endTime:    413090
+    lushootseedSpeech: x̌ʷul’əxʷ tuʔuluɬ əlgʷəʔ gəl tuqʷšabəxʷ
+    tabDelimitedPhonemes: [x̌ʷul’=əxʷ,tu=ʔuluɬ,əlgʷəʔ,gʷəl,tu=qʷšab=əxʷ]
+    tabDelimitedPhonemeGloss: [only=now,past=travel.by.water,pl,sconj,past=foggy=now]
+    englishTranslation: Just as they set out it became foggy.
 
 
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
+  - lineNumber: 100
+    startTime:  413396
+    endTime:    414868
+    lushootseedSpeech: cutəxʷ ʔə tiʔəʔ bibščəb
+    tabDelimitedPhonemes: [cut=əxʷ,ʔə,tiʔəʔ,bi-bščəb]
+    tabDelimitedPhonemeGloss: [say=now,pr,prox,attn–mink]
+    englishTranslation: Litle Mink said,
 
 
 #  - lineNumber: 
