@@ -1,2 +1,3 @@
-• go through validInputs in text.py and create custom errors for missing elements, add jquery to assertions (?? but these would be down to webapp, nothing user can do, system would be failing generally)
+• deactivate Submit button if the project title area is empty
+• terminal output indicates a lot of activity when project title textarea is changed(?), make sure that this is okay (or at least inconsequential)
 • progress bar or something for Upload .eaf
