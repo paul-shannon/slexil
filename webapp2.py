@@ -363,7 +363,7 @@ app.layout = html.Div(
         html.P(id='morphemeGlossTier_hiddenStorage',         children="", style={'display': 'none'}),       
         html.P(id='translationTier_hiddenStorage',           children="", style={'display': 'none'}),
         html.P(id='translation2Tier_hiddenStorage',          children="", style={'display': 'none'}),
-        html.P(id='temporaryTitle_hiddenStorage',            children="", style={'display': 'none'}),
+#         html.P(id='temporaryTitle_hiddenStorage',            children="", style={'display': 'none'}),
         html.P(id='createPageErrorMessages_hiddenStorage',   children="", style={'display': 'none'}),
         html.P(id='audioStartandStopTimes_hiddenStorage',    children='', style={'display': 'none'})
         ],
@@ -584,7 +584,7 @@ def update_output(value):
 def createWebPageCallback(n_clicks, soundFileName, eafFileName, projectDirectory,
                           grammaticalTermsFile,projectTitle):
     if n_clicks is None:
-        return("",1,"","")
+        return("",1,"")
     print("=== create web page callback")
     print("        eaf: %s" % eafFileName)
     print(" audio phrases in: %s/audio" % projectDirectory)
@@ -632,7 +632,7 @@ def createWebPageCallback(n_clicks, soundFileName, eafFileName, projectDirectory
      State('projectTitle_hiddenStorage', 'children')])
 def displayText(createWebPageStatus, projectDirectory, projectTitle):
    print("=== displayText '%s'" % createWebPageStatus)
-   if createWebPageStatus is None:
+   if createWebPageStatus == 'cwpita':
       return("")
    if(len(createWebPageStatus) == 0):
       return("")
@@ -654,20 +654,21 @@ def setCreatePageErrorMessages(errorMessage):
 	return(errorMessage,className)
 		
 #----------------------------------------------------------------------------------------------------
-@app.callback(
-	Output('temporaryTitle_hiddenStorage', 'children'),
-	[Input('setTitleTextInput', 'value')]
-	)
-def trackUserInputInSetTitle(typing):
-	return(typing)	
-	
+# @app.callback(
+# 	Output('temporaryTitle_hiddenStorage', 'children'),
+# 	[Input('setTitleTextInput', 'value')]
+# 	)
+# def trackUserInputInSetTitle(typing):
+# 	return(typing)	
+# 	
 #----------------------------------------------------------------------------------------------------
 @app.callback(
     [Output('projectTitle_hiddenStorage', 'children'),
      Output('upload-eaf-link','className'),
      Output('upload-eaf-file','disabled')],
-    [Input('setTitleButton', 'n_clicks'),
-     Input('temporaryTitle_hiddenStorage', 'children')]
+    [Input('setTitleButton', 'n_clicks')],
+    [State('setTitleTextInput', 'value')]
+     #Input('temporaryTitle_hiddenStorage', 'children')]
      #Input('setTitleTextInput', 'value')]
     )
 def setTitle(n_clicks, newTitle):
