@@ -55,7 +55,7 @@ class AudioExtractor:
        duration = mtx.shape[0] / rate
        phraseCount = tbl.shape[0]
        for i in range(phraseCount):
-           phraseID, start, end = tbl.ix[i].tolist()[0:3]
+           phraseID, start, end = tbl.iloc[i].tolist()[0:3]
            startSeconds = start/1000
            endSeconds = end/1000
            startIndex = int(round(startSeconds * rate))

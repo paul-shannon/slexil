@@ -75,8 +75,8 @@ lines:
   - lineNumber: 11
     startTime: 44096
     endTime:  50085
-    lushootseedSpeech: tuʔaʔ dzəɬ ti ƛ’əlayʔ gʷəl tux̌ʷ xʷiʔ uʔxʷ gwəsəsaxʷəbabacs ʔal kʷi sxʷəʔaʔxʷəʔils
-    tabDelimitedPhonemes: [tu=ʔaʔ,dzəɬ,ti,ƛ’əlayʔ,gʷəl,tux̌ʷ,xʷiʔ,uʔʷw,"gʷə=s=lə=saxʷəb•abac=s",ʔal,kʷi,s=xʷəʔaʔxʷəʔ–il=s]
+    lushootseedSpeech: tuʔaʔ dᶻəɬ ti ƛ’əlayʔ gʷəl tux̌ʷ xʷiʔ uʔxʷ gwəsəsaxʷəbabacs ʔal kʷi sxʷəʔaʔxʷəʔils
+    tabDelimitedPhonemes: [tu=ʔaʔ,dᶻəɬ,ti,ƛ’əlayʔ,gʷəl,tux̌ʷ,xʷiʔ,uʔʷw,"gʷə=s=lə=saxʷəb•abac=s",ʔal,kʷi,s=xʷəʔaʔxʷəʔ–il=s]
     tabDelimitedPhonemeGloss: [PAST=be.there,PTCL,SPEC,canoe,SCONJ,just,NEG,PTCL,"SBJ=NM=PROG=jump•body=3PO",at,REM,NM=swift–INCH=3PO]
     englishTranslation: There must have been some shovel-nosed canoes but they could not yet jump over them to become swift.
   - lineNumber: 12
@@ -378,8 +378,8 @@ lines:
   - lineNumber: 54
     startTime: 245138
     endTime:   248567
-    lushootseedSpeech: ɬuʔal tudiʔ ʔalq’ʷ kʷi ɬadsəstədzil ɬadsɬagʷid
-    tabDelimitedPhonemes: [ɬu=ʔal,tudiʔ,ʔalq’ʷ,kʷi,ɬu=ad=s=ʔəs–tədzil,ɬu=ad–sɬagʷid]
+    lushootseedSpeech: ɬuʔal tudiʔ ʔalq’ʷ kʷi ɬadsəstədᶻil ɬadsɬagʷid
+    tabDelimitedPhonemes: [ɬu=ʔal,tudiʔ,ʔalq’ʷ,kʷi,ɬu=ad=s=ʔəs–tədᶻil,ɬu=ad–sɬagʷid]
     tabDelimitedPhonemeGloss: [IRR=at,DIST.DMA,away.from.fire,REM,IRR=2SG.PO=NM=STAT–lie.in.bed,IRR=2SG.PO–sleeping.mat]
     englishTranslation: There at the back you will lie down, you will have your mat.
   - lineNumber: 55
@@ -392,8 +392,8 @@ lines:
   - lineNumber: 56
     startTime: 249602
     endTime:   252006
-    lushootseedSpeech: xʷiʔ, ƛ’ušišədzal čəd ʔal ti ɬax̌
-    tabDelimitedPhonemes: [xʷiʔ,ƛ’u=ši–šədzal,čəd,ʔal,ti,ɬax̌]
+    lushootseedSpeech: xʷiʔ, ƛ’ušišədᶻal čəd ʔal ti ɬax̌
+    tabDelimitedPhonemes: [xʷiʔ,ƛ’u=ši–šədᶻal,čəd,ʔal,ti,ɬax̌]
     tabDelimitedPhonemeGloss: [neg,hab=attn–go.outdoors,1sg.sub,at,spec,dark]
     englishTranslation: No, I need to go outside a bit during the night.
 
@@ -498,16 +498,16 @@ lines:
   - lineNumber: 69
     startTime: 294377
     endTime:   298604
-    lushootseedSpeech: tiləb ʔusaxʷəb bibščəb gʷəl tədzil ʔal tiʔiɬ dəxʷəstədzils
-    tabDelimitedPhonemes: [tiləb,ʔu–saxʷəb,bi–bəščəb,gʷəl,tədzil,ʔal,tiʔiɬ,dəxʷ=ʔəs–tədzil=s]
+    lushootseedSpeech: tiləb ʔusaxʷəb bibščəb gʷəl tədᶻil ʔal tiʔiɬ dəxʷəstədᶻils
+    tabDelimitedPhonemes: [tiləb,ʔu–saxʷəb,bi–bəščəb,gʷəl,tədᶻil,ʔal,tiʔiɬ,dəxʷ=ʔəs–tədᶻil=s]
     tabDelimitedPhonemeGloss: [immediately,pfv–jump,attn–mink,sconj,lie.in.bed,at,dist,adnm=stat–lie.in.bed=3po]
     englishTranslation: Quickly Little Mink jumped back and lay where he lay down.
 
   - lineNumber: 70
     startTime: 298604
     endTime:   301129
-    lushootseedSpeech: ʔəstədzilič ʔə diʔ q’ʷaɬčup
-    tabDelimitedPhonemes: ["ʔəs–tədzil•ič",ʔə,diʔ,"q’ʷaɬ•čup"]
+    lushootseedSpeech: ʔəstədᶻilič ʔə diʔ q’ʷaɬčup
+    tabDelimitedPhonemes: ["ʔəs–tədᶻil•ič",ʔə,diʔ,"q’ʷaɬ•čup"]
     tabDelimitedPhonemeGloss: ["stat–lie.in.bed•covering",pr,other.side,"ash•fire"]
     englishTranslation: He went to bed covered by fine ash powder.
 
@@ -771,191 +771,222 @@ lines:
     englishTranslation: Litle Mink said,
 
 
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
+  - lineNumber: 101
+    startTime:  414895
+    endTime:    420241
+    lushootseedSpeech: ʔaʔ tiʔiɬ dsqəlalitut ɬulaʔ čəd gʷəl ɬuqʷšab tiʔəʔ swatixʷtəd
+    tabDelimitedPhonemes: [aʔ,tiʔiɬ,d–sqəlalitut,ɬu=laʔ,čəd,gʷəl,ɬu=qʷšab,tiʔəʔ,swatixʷtəd]
+    tabDelimitedPhonemeGloss: [be.there,dist,1sg.po–spirit.power,irr=localize,1sg.sub,sconj,irr=foggy,prox,land]
+    englishTranslation: I have a spirit power that I’ll locate and the land will be foggy.
 
 
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
+  - lineNumber: 102
+    startTime:  420472
+    endTime:    425254
+    lushootseedSpeech: tuqʷšabičəxʷ əlgʷəʔ gʷəl tux̌ʷilx̌ʷiləxʷ tiʔəʔ ʔaciɬtalbixʷ tuləčalad həlgʷəʔ
+    tabDelimitedPhonemes: [tu=qʷšab•ič=əxʷ,əlgʷəʔ,gʷəl,tu=x̌ʷil–x̌ʷil=əxʷ,tiʔəʔ,ʔaciɬtalbixʷ,tu=lə=čala–d,həlgʷəʔ]
+    tabDelimitedPhonemeGloss: [past=foggy•covering=now,pl,sconj,past=dstr–lost=now,prox,people,past=prog=chased–ics,pl]
+    englishTranslation: The fog covered them and the people who chased them got lost.
 
 
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
+  - lineNumber: 103
+    startTime:   425675
+    endTime:     426554
+    lushootseedSpeech: gʷəl tuʔux̌ʷəxʷ
+    tabDelimitedPhonemes: [gʷəl,tu=ʔux̌ʷ=əxʷ]
+    tabDelimitedPhonemeGloss: [sconj, past=go=now]
+    englishTranslation: And they went.
 
 
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
+  - lineNumber: 104
+    startTime:  426340
+    endTime:    430351
+    lushootseedSpeech: tut’uk’ʷtxʷəxʷ tiʔəʔ sləx̌il
+    tabDelimitedPhonemes: [tu=t’uk’ʷ–txʷ=əxʷ,tiʔəʔ,sləx̌il]
+    tabDelimitedPhonemeGloss: [past=go.home–ecs=now,PROX,daylight]
+    englishTranslation: They took this daylight home.
 
 
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
+  - lineNumber: 105
+    startTime:  430742
+    endTime:    433201
+    lushootseedSpeech:  x̌ʷul’əxʷ əlgʷəʔ tuləɬčildxʷ tiʔəʔ
+    tabDelimitedPhonemes: [x̌ʷul’=əxʷ,əlgʷəʔ,tu=lə=ɬčil–dxʷ,tiʔəʔ]
+    tabDelimitedPhonemeGloss: [only=now,pl,past=prog=arrive–dc,prox]
+    englishTranslation: They were just managing to arrive with it.
 
 
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
+  - lineNumber: 106
+    startTime:  433211
+    endTime:    436488
+    lushootseedSpeech: tuləč’itil dxʷʔal tiʔəʔ swatixʷtəd dəxʷtul’ʔaʔs əlgʷəʔ
+    tabDelimitedPhonemes: [tu=lə=ɬčil–dxʷ,tiʔəʔ,tu=lə=č’it–il,dxʷ–ʔal,tiʔəʔ,swatixʷtəd,dəxʷ=tul’–ʔaʔ=s,əlgʷəʔ]
+    tabDelimitedPhonemeGloss: [past=prog=arrive–dc,prox,past=prog=near–inch,cntrpt–at,prox,land,adnm=cntrfg–be.there=3po,pl]
+    englishTranslation: They were drawing near to this land where they were from.
 
 
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
+  - lineNumber: 107
+    startTime: 436545
+    endTime:   439950
+    lushootseedSpeech: gʷəl diɬəxʷ kʷi ƛ’ugʷəqilič ʔə tiʔəʔ ʔaciɬtalbixʷ
+    tabDelimitedPhonemes: [gʷəl,diɬ=əxʷ,kʷi,ƛ’u=gʷəq–il•ič,ʔə,tiʔəʔ,ʔaciɬtalbixʷ]
+    tabDelimitedPhonemeGloss: [sconj,foc=now,rem,hab=bright–inch•covering,pr,prox,people]
+    englishTranslation: And sunshine would envelope the people.
 
 
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
+  - lineNumber: 108
+    startTime: 440532
+    endTime:   440969
+    lushootseedSpeech: tucut
+    tabDelimitedPhonemes: [tu=cut]
+    tabDelimitedPhonemeGloss: [PAST=say]
+    englishTranslation: They said,
 
 
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
+  - lineNumber: 109
+    startTime: 440970
+    endTime:   443758
+    lushootseedSpeech: ʔuˑ, ʔuʔəƛ’axʷ ti stububš tugʷəč’əd tiʔiɬ sləx̌il
+    tabDelimitedPhonemes: [ʔu,ʔu–ʔəƛ’=axʷ,ti,stub–ubš,tu=gʷəč’–d,tiʔiɬ,sləx̌il]
+    tabDelimitedPhonemeGloss: [intj,pfv–come=now,spec,pl–man,past=search–ics,dist,daylight]
+    englishTranslation: Oh, the men who sought the daylight have come.
 
 
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
+  - lineNumber: 110
+    startTime:  443836
+    endTime:    444773
+    lushootseedSpeech: ʔiɬč’itəxʷ
+    tabDelimitedPhonemes: [ʔiɬ–č’it=əxʷ]
+    tabDelimitedPhonemeGloss: [prtv–near=now]
+    englishTranslation: They are coming nearer.
 
 
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
+  - lineNumber: 111
+    startTime:  444774
+    endTime:    446281
+    lushootseedSpeech: ləx̌iličəxʷ čəɬ
+    tabDelimitedPhonemes: [ləx̌–il•ič=əxʷ,čəɬ]
+    tabDelimitedPhonemeGloss: [light–inch•covering=now,1pl.sub]
+    englishTranslation: Light is covering us.
 
 
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
+  - lineNumber: 112
+    startTime:  448126
+    endTime:    453703
+    lushootseedSpeech: tuʔəƛ’txʷ əlgʷəʔ tiʔəʔ sləx̌il gʷəl tuɬčil dxʷʔal tiʔəʔ swatixʷtəd dəxʷtul’ʔaʔs əlgʷəʔ
+    tabDelimitedPhonemes: [tu=ʔəƛ’–txʷ,əlgʷəʔ,tiʔəʔ,sləx̌il,gʷəl,tu=ɬčil,dxʷ–ʔal,tiʔəʔ,swatixʷtəd,dəxʷ=tul’–ʔaʔ=s,əlgʷəʔ]
+    tabDelimitedPhonemeGloss: [past=come–ecs,pl,prox,daylight,sconj,past=arrive,cntrpt–at,prox,land,adnm=cntrfg–be.there=3po,PL]
+    englishTranslation: They brought the daylight and came to the land they were from.
 
 
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
+  - lineNumber: 113
+    startTime:  455131
+    endTime:    459052
+    lushootseedSpeech: gʷəl qaw’qs kwi dᶻixw tukʷədad tiʔəʔ sləx̌il
+    tabDelimitedPhonemes: [gwəl,qaw’qs,kwi,dᶻixw,tu=kwəda–d,tiʔəʔ,sləx̌il]
+    tabDelimitedPhonemeGloss: [conj,raven,rem,first,past=taken–ics,prox,daylight]
+    englishTranslation: And Raven took the daylight first.
 
 
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
+  - lineNumber: 114
+    startTime: 459052
+    endTime:   461054
+    lushootseedSpeech: cədiɬ kʷi tuwačbid
+    tabDelimitedPhonemes: [cədiɬ,kʷi,tu=wač–bi–d]
+    tabDelimitedPhonemeGloss: [s/he,rem,past=watch–map–ics]
+    englishTranslation: The one who watched it was he.
 
 
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
+  - lineNumber:  115
+    startTime:   461466
+    endTime:     464108
+    lushootseedSpeech: daʔxʷ ƛ’uləɬax̌il gʷəl bələx̌il
+    tabDelimitedPhonemes: [daʔxʷ,ƛ’u=lə=ɬax̌–il,gʷəl,bə=ləx̌–il]
+    tabDelimitedPhonemeGloss: [just.now,hab=prog=dark–inch,sconj,add=light–inch]
+    englishTranslation: No sooner it would become night than it became light again.
 
 
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
+  - lineNumber: 116
+    startTime:  464345
+    endTime:    466884
+    lushootseedSpeech: ʔəsʔəx̌idəxʷ kʷi ʔaciɬtalbixʷ gʷasʔitutəs
+    tabDelimitedPhonemes: [ʔəs–ʔəx̌id=əxʷ,kʷi,ʔaciɬtalbixʷ,gwʷ=ʔas–ʔitut=əs]
+    tabDelimitedPhonemeGloss: [stat–what.happen=now,rem,people,sbj=stat–sleep=3sbj]
+    englishTranslation: Why were the people asleep?
 
 
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
+  - lineNumber: 117
+    startTime:  466881
+    endTime:    468517
+    lushootseedSpeech: ƛ’al’ uʔxʷ bələx̌il
+    tabDelimitedPhonemes: [ƛ’al’,uʔxʷ,bə=ləx̌–il]
+    tabDelimitedPhonemeGloss: [also,ptcl,add=light–inch]
+    englishTranslation: It had also become light again.
+
+  - lineNumber: 118 
+    startTime:  468462
+    endTime:    469422
+    lushootseedSpeech: x̌ʷul’ ʔaɬ
+    tabDelimitedPhonemes: [x̌ʷul’,ʔaɬ]
+    tabDelimitedPhonemeGloss: [only,fast]
+    englishTranslation: It was too fast.
 
 
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
+  - lineNumber: 119
+    startTime: 474648
+    endTime:   481193
+    lushootseedSpeech: ʔabyitəb bibščəb gʷəl haʔkʷ tiʔiɬ ƛ’uləɬax̌ils gʷəl ƛ’usləx̌iˑl ʔə kʷi taʔtəbac
+    tabDelimitedPhonemes: [ʔab–yi–t–b,bi–bəščəb,gʷəl,haʔkʷ,tiʔiɬ,ƛ’u=lə=ɬax̌–il–s,gʷəl,ƛ’u=s=ləx̌–il,ʔə,kʷi,taʔtəbac]
+    tabDelimitedPhonemeGloss: [extend–dat–ics–pass,attn–mink,sconj,long.time,dist,hab=prog=dark–inch–3po,sconj,hab=nm=light–inch,pr,rem,slow]
+    englishTranslation: It was given to Little Mink and for a long time it would be night and grow light slowly.
 
 
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
+  - lineNumber: 120 
+    startTime:  481240
+    endTime:    483850
+    lushootseedSpeech: huy ʔəsaydxʷ tašəɬyačiʔbid tiʔiɬ suhuyuds
+    tabDelimitedPhonemes: [huy,ʔəs–hay–dxʷ,tu=ʔas–šəɬ•y•ačiʔ–bi–d,tiʔiɬ,s=ʔu–huyu–d=s]
+    tabDelimitedPhonemeGloss: [sconj,stat–known–dc,past=stat–make•cnn•hand–map–ics,dist,nm=pfv–made–ics=3po]
+    englishTranslation: Because he knew how it is done with the hands.
 
 
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
+  - lineNumber: 121
+    startTime:  484002
+    endTime:    486013
+    lushootseedSpeech: gʷəl qaw’qs gʷəl x̌ʷul’ ʔaɬ
+    tabDelimitedPhonemes: [gʷəl,qaw’qs,gʷəl,x̌ʷul’,ʔaɬ]
+    tabDelimitedPhonemeGloss: [sconj,raven,sconj,only,fast]
+    englishTranslation: But Raven, he was too fast.
 
+  - lineNumber: 122
+    startTime:  486577
+    endTime:    488834
+    lushootseedSpeech: x̌ʷul’ ʔaʔ tiʔiɬ sɬax̌ils gʷəl bələx̌il
+    tabDelimitedPhonemes: [x̌ʷul’,ʔaʔ,tiʔiɬ,s=ɬax̌–il=s,gʷəl,bə=ləx̌–il]
+    tabDelimitedPhonemeGloss: [only,be.there,dist,nm=dark–inch=3po,sconj,add=light–inch]
+    englishTranslation: Just when it became night then it became day again.
 
-#  - lineNumber: 
-#    startTime: 
-#    endTime:   
-#    lushootseedSpeech:
-#    tabDelimitedPhonemes: []
-#    tabDelimitedPhonemeGloss: []
-#    englishTranslation:
+  - lineNumber: 123
+    startTime:  488946
+    endTime:    493114
+    lushootseedSpeech: ʔəsʔəx̌idəxʷ kʷi ʔaciɬtalbixʷ gʷastədᶻiləs gʷəl ƛ’al’ uʔxʷ basləx̌il
+    tabDelimitedPhonemes: [ʔəs–ʔəx̌id=əxʷ,kʷi,ʔaciɬtalbix,gʷə=ʔas–tədᶻil=əs,gʷəl,ƛ’al’,uʔxʷ,bə=ʔas–ləx̌–il]
+    tabDelimitedPhonemeGloss: [stat–what.happen=now,rem,people,sbj=stat–lie.in.bed=3sbj,sconj,also,ptcl,add=stat–light–inch]
+    englishTranslation: Why were the people in bed when it had become light again?
+
+  - lineNumber: 124
+    startTime:  494414
+    endTime:    496026
+    lushootseedSpeech:  šac’əxʷ tiʔiɬ dsgʷəgʷadgʷəd
+    tabDelimitedPhonemes: [šac’=əxʷ,tiʔiɬ,d=s=gʷəgʷadgʷəd]
+    tabDelimitedPhonemeGloss: [finished=now,dist,1sg.po=nm=converse]
+    englishTranslation: My talking is finished now.
+
+  - lineNumber: 125
+    startTime:  496044
+    endTime:    497188
+    lushootseedSpeech:  dəč’uʔ haʔɬ syəyəhub
+    tabDelimitedPhonemes: [dəč’uʔ,haʔɬ,syəyəhub]
+    tabDelimitedPhonemeGloss: [one,good,legend]
+    englishTranslation: It is a good story.
 

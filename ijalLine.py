@@ -127,10 +127,10 @@ class IjalLine:
 		if(self.morphemeRows == []):
 			return([])
 
-		rawMorphemeList = self.tbl["TEXT"].iloc[self.morphemeRows].tolist()
+		rawMorphemeList = self.tbl["TEXT"].ix[self.morphemeRows].tolist()
 		rawMorphemes = ''.join(rawMorphemeList)
 		if "\t" in rawMorphemes:
-			 rawMorphemeText = self.tbl["TEXT"].iloc[self.morphemeRows].tolist()[0]
+			 rawMorphemeText = self.tbl["TEXT"].ix[self.morphemeRows].tolist()[0]
 			 rawMorphemeList = rawMorphemeText.split('\t')
 
 		morphemes = replaceHyphensWithNDashes(rawMorphemeList)
@@ -142,10 +142,10 @@ class IjalLine:
 		if(self.morphemeGlossRows == []):
 			return([])
 
-		rawMorphemeGlossList = self.tbl["TEXT"].iloc[self.morphemeGlossRows].tolist()
+		rawMorphemeGlossList = self.tbl["TEXT"].ix[self.morphemeGlossRows].tolist()
 		rawMorphemeGlosses = ''.join(rawMorphemeGlossList)
 		if "\t" in rawMorphemeGlosses:
-			 rawMorphemeGlossText = self.tbl["TEXT"].iloc[self.morphemeGlossRows].tolist()[0]
+			 rawMorphemeGlossText = self.tbl["TEXT"].ix[self.morphemeGlossRows].tolist()[0]
 			 rawMorphemeGlossList = rawMorphemeGlossText.split('\t')
 
 		morphemeGlosses = replaceHyphensWithNDashes(rawMorphemeGlossList)
