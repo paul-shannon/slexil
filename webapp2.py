@@ -199,8 +199,8 @@ def create_webPageCreationTab():
 
    createWebpageStatus = html.Span(id="createWebPageStatus", children="cwpita", style={'display': 'none'})
 
-   webPageIframe = html.Iframe(id="storyIFrame", src="assets/slexilBanner.jpg", className="webpageFrame")
-   
+#    webPageIframe = html.Iframe(id="storyIFrame", src="assets/slexilBanner.jpg", className="webpageFrame")
+   webPageIframe = html.Iframe(id="storyIFrame", className="webpageFrame")
    errorMessages = html.Span(id="createPageErrorMessages", children="", className="warningOff")
 
    buttonDiv = html.Div(children=[createAndDisplayButton, downloadLinkAndButton,errorMessages],
