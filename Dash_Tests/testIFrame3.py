@@ -12,7 +12,7 @@ app = dash.Dash(__name__,server=server)
 app.layout = html.Div(children=[
     html.H1(children='Test cases',className="banner"),
     html.Iframe(id="storyIFrame",
-                src='static/Inferno.html',
+                #src='static/Inferno.html',
                 className="webpageFrame"),
     html.Button("press here",id="button")
     ])
