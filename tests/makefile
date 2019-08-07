@@ -8,7 +8,7 @@ ijalLine:
 	python3 test_IjalLine.py
 
 audioExtractor:
-	python3 test_audioExtractor.py
+	python3 test_AudioExtractor.py
 	python3 test_startStopTable.py
 
 text_monkeyAndThunder:
@@ -38,7 +38,7 @@ test_chatino6:
 
 test_Text_6_line:
 	python3 test_Text_6_line.py
-	
+
 test_Text:
 	python3 test_Text.py
 
