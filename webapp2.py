@@ -42,7 +42,7 @@ app.config['suppress_callback_exceptions'] = True
 app.title = "SLEXIL"
 
 app.scripts.config.serve_locally = True
-
+server = app.server
 #------------------------------------------------------------------------------------------------------------------------
 # this route handles the download of zipped up "demo input" zip file,
 # in this case, infernoDemo.zip, which a new slexil user can run through the webapp to
@@ -951,8 +951,11 @@ def createZipFile(projectDir,projectTitle):
    return(zipFilenameFullPath)
 
 #----------------------------------------------------------------------------------------------------
-server = app.server
+# enable these lines for running from bash and python
+#if __name__ == "__main__":
+ #  app.run_server(host='0.0.0.0', port=60041)
 
+# enable these lines if running with gunicorn
 if __name__ == "__main__":
-   
-   app.run_server(host='0.0.0.0', port=60041)
+   server = app.server
+   app.run()
