@@ -9,7 +9,7 @@ from ijalLine import *
 from errors import *
 import logging
 from audioExtractor import AudioExtractor
-from bs4 import BeautifulSoup
+#from bs4 import BeautifulSoup
 #----------------------------------------------------------------------------------------------------
 pd.set_option('display.width', 1000)
 #----------------------------------------------------------------------------------------------------
@@ -29,8 +29,43 @@ def runTests(display=False):
 # 	test_Aymara(display)
 # 	test_Inferno_numbering(display)
 # 	test_Aymara_numbering(display)
-	test_Aymara_final(True)
+# 	test_Aymara_final(True)
+	test_Raven(True)
 
+
+
+#----------------------------------------------------------------------------------------------------
+def test_Raven(display):
+
+	print("--- test_Raven")
+	
+	audioFilename = "AM_RavenCopiesSiblingsNRAudition-wav.wav"
+	elanXmlFilename="../testTextPyData/Raven/newraven.eaf"
+	targetDirectory = "../testTextPyData/Raven/audio"
+	soundFile = os.path.join(targetDirectory,audioFilename)
+	projectDirectory="../testTextPyData/Raven"
+	tierGuideFile="../testTextPyData/Raven/tierGuide.yaml"
+	grammaticalTermsFile="../testTextPyData/Raven/grammaticalTerms.txt"
+	ae = AudioExtractor(audioFilename, elanXmlFilename, targetDirectory)
+	ae.determineStartAndEndTimes()
+	times = ae.startStopTable	
+	text = Text(elanXmlFilename,
+				soundFile,
+				grammaticalTermsFile=grammaticalTermsFile,
+				tierGuideFile=tierGuideFile,
+				projectDirectory=projectDirectory)#,
+				#startStopTable=times)
+					 
+	#IjalLine.getTable(1)
+
+	htmlText = text.toHTML()
+	if (display):
+	   filename = "../testTextPyData/Raven/newraven.html"
+	   f = open(filename, "w")
+	   f.write(indent(htmlText))
+	   f.close()
+	   os.system("open %s" % filename)
+	   	
 #----------------------------------------------------------------------------------------------------
 def test_Aymara_final(display):
 

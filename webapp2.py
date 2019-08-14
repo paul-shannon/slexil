@@ -904,6 +904,7 @@ def createWebPage(eafFileName, projectDirectory, grammaticalTermsFileName, tierG
                 tierGuideFileName,
                 projectDirectory)
     print("-------- leaving createWebPage")
+    print("okay",text.toHTML())
     return(text.toHTML())
 
 #----------------------------------------------------------------------------------------------------
