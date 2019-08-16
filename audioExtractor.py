@@ -67,16 +67,16 @@ class AudioExtractor:
            write(sampleFilename, rate, phrase)
 
     def makeStartStopTable(self,tbl):
-    	CSV = tbl.to_csv(index=False)
-    	phraseList = CSV.split('\n')
-    	if phraseList[-1] == '':
-    		del phraseList[-1]
-    	startStopByLine = []
-    	for i,phrase in enumerate(phraseList):
-    		parts = phrase.split(',')
-    		#print(parts)
-    		newParts = [str(i),parts[1],parts[2]]
-    		line = ",".join(newParts)
-    		startStopByLine.append(line)
-    	startStopTable = '\n'.join(startStopByLine)
-    	return(startStopTable)
+        CSV = tbl.to_csv(index=False)
+        phraseList = CSV.split('\n')
+        if phraseList[-1] == '':
+            del phraseList[-1]
+        startStopByLine = []
+        for i,phrase in enumerate(phraseList):
+            parts = phrase.split(',')
+            #print(parts)
+            newParts = [str(i),parts[1],parts[2],parts[0]]
+            line = ",".join(newParts)
+            startStopByLine.append(line)
+        startStopTable = '\n'.join(startStopByLine)
+        return(startStopTable)

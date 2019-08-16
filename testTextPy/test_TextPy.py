@@ -9,27 +9,27 @@ from ijalLine import *
 from errors import *
 import logging
 from audioExtractor import AudioExtractor
-#from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup
 #----------------------------------------------------------------------------------------------------
 pd.set_option('display.width', 1000)
 #----------------------------------------------------------------------------------------------------
 def runTests(display=False):
-# 	test_MonkeyAndThunder(display)
-# 	test_Fishwoman(display)
-# 	test_Merchant(display)
-# 	test_Jaguar(display)
-# 	test_Riverwoman(display)
-# 	test_SanMiguel(display)
-# 	test_Caterpillar(display)
-# 	test_Lazy(display)
-# 	test_Imp(display)
-# 	test_Prayer(display)
-# 	test_Inferno(display)
-# 	test_MonkeyAndThunder(display)
-# 	test_Aymara(display)
-# 	test_Inferno_numbering(display)
-# 	test_Aymara_numbering(display)
-# 	test_Aymara_final(True)
+	test_MonkeyAndThunder(display)
+	test_Fishwoman(display)
+	test_Merchant(display)
+	test_Jaguar(display)
+	#test_Riverwoman(display) --.eaf file for this one has gone missing
+	test_SanMiguel(display)
+	test_Caterpillar(display)
+	test_Lazy(display)
+	test_Imp(display)
+	test_Prayer(display)
+	test_Inferno(display)
+	test_MonkeyAndThunder(display)
+	test_Aymara(display)
+	# test_Inferno_numbering(display)--these two tests are no longer relevant as annotations are not numbered
+	# test_Aymara_numbering(display) --sequentially in the .eaf file anyway, so line ≠ annotation always
+	test_Aymara_final(True)
 	test_Raven(True)
 
 
@@ -38,7 +38,7 @@ def runTests(display=False):
 def test_Raven(display):
 
 	print("--- test_Raven")
-	
+
 	audioFilename = "AM_RavenCopiesSiblingsNRAudition-wav.wav"
 	elanXmlFilename="../testTextPyData/Raven/newraven.eaf"
 	targetDirectory = "../testTextPyData/Raven/audio"
@@ -48,29 +48,29 @@ def test_Raven(display):
 	grammaticalTermsFile="../testTextPyData/Raven/grammaticalTerms.txt"
 	ae = AudioExtractor(audioFilename, elanXmlFilename, targetDirectory)
 	ae.determineStartAndEndTimes()
-	times = ae.startStopTable	
+	times = ae.startStopTable
 	text = Text(elanXmlFilename,
 				soundFile,
 				grammaticalTermsFile=grammaticalTermsFile,
 				tierGuideFile=tierGuideFile,
 				projectDirectory=projectDirectory)#,
-				#startStopTable=times)
-					 
+	#startStopTable=times)
+
 	#IjalLine.getTable(1)
 
 	htmlText = text.toHTML()
 	if (display):
-	   filename = "../testTextPyData/Raven/newraven.html"
-	   f = open(filename, "w")
-	   f.write(indent(htmlText))
-	   f.close()
-	   os.system("open %s" % filename)
-	   	
+		filename = "../testTextPyData/Raven/newraven.html"
+		f = open(filename, "w")
+		f.write(indent(htmlText))
+		f.close()
+		os.system("open %s" % filename)
+
 #----------------------------------------------------------------------------------------------------
 def test_Aymara_final(display):
 
 	print("--- test_Aymara_final")
-	
+
 	audioFilename = "Final-Edwin-historia-del-oso_no_anotado__ch1.wav"
 	elanXmlFilename="../testTextPyData/Aymara_final/Aymara-final.eaf"
 	targetDirectory = "../testTextPyData/Aymara_final/Audio"
@@ -80,29 +80,29 @@ def test_Aymara_final(display):
 	grammaticalTermsFile="../testTextPyData/Aymara_final/List of abbreviations.txt"
 	ae = AudioExtractor(audioFilename, elanXmlFilename, targetDirectory)
 	ae.determineStartAndEndTimes()
-	times = ae.startStopTable	
+	times = ae.startStopTable
 	text = Text(elanXmlFilename,
 				soundFile,
 				grammaticalTermsFile=grammaticalTermsFile,
 				tierGuideFile=tierGuideFile,
 				projectDirectory=projectDirectory)#,
-				#startStopTable=times)
-					 
+	#startStopTable=times)
+
 	#IjalLine.getTable(1)
 
 	htmlText = text.toHTML()
 	if (display):
-	   filename = "../testTextPyData/Aymara_final/Aymara_final.html"
-	   f = open(filename, "w")
-	   f.write(indent(htmlText))
-	   f.close()
-	   os.system("open %s" % filename)
-	   	
+		filename = "../testTextPyData/Aymara_final/Aymara_final.html"
+		f = open(filename, "w")
+		f.write(indent(htmlText))
+		f.close()
+		os.system("open %s" % filename)
+
 #----------------------------------------------------------------------------------------------------
 def test_Aymara(display):
 
 	print("--- test_Aymara")
-	
+
 	audioFilename = "Final-Edwin-historia-del-oso_no_anotado__ch1.wav"
 	elanXmlFilename="../testTextPyData/Aymara/Aymara-final.eaf"
 	targetDirectory = "../testTextPyData/Aymara/Audio"
@@ -112,29 +112,29 @@ def test_Aymara(display):
 	grammaticalTermsFile="../testTextPyData/Aymara/List of abbreviations.txt"
 	ae = AudioExtractor(audioFilename, elanXmlFilename, targetDirectory)
 	ae.determineStartAndEndTimes()
-	times = ae.startStopTable	
+	times = ae.startStopTable
 	text = Text(elanXmlFilename,
 				soundFile,
 				grammaticalTermsFile=grammaticalTermsFile,
 				tierGuideFile=tierGuideFile,
 				projectDirectory=projectDirectory)#,
-				#startStopTable=times)
-					 
+	#startStopTable=times)
+
 	#IjalLine.getTable(1)
 
 	htmlText = text.toHTML()
 	if (display):
-	   filename = "../testTextPyData/Aymara/Aymara.html"
-	   f = open(filename, "w")
-	   f.write(indent(htmlText))
-	   f.close()
-	   os.system("open %s" % filename)
-	   
+		filename = "../testTextPyData/Aymara/Aymara.html"
+		f = open(filename, "w")
+		f.write(indent(htmlText))
+		f.close()
+		os.system("open %s" % filename)
+
 #----------------------------------------------------------------------------------------------------
 def test_Inferno_numbering(display):
 
 	print("--- test_Inferno_numbering")
-	
+
 	audioFilename = "inferno-threeLines.wav"
 	elanXmlFilename="../explorations/playAudioInSequence/Inferno/inferno-threeLines.eaf"
 	targetDirectory = "../explorations/playAudioInSequence/Inferno/Audio"
@@ -147,11 +147,11 @@ def test_Inferno_numbering(display):
 				grammaticalTermsFile=grammaticalTermsFile,
 				tierGuideFile=tierGuideFile,
 				projectDirectory=projectDirectory)
-					 
+
 	#IjalLine.getTable(1)
 
 	htmlText = text.toHTML()
-	
+
 	soup = BeautifulSoup(htmlText,'html.parser')
 	lines = soup.find_all("div",{"class" : "line-wrapper"})
 	for line in lines:
@@ -159,21 +159,22 @@ def test_Inferno_numbering(display):
 		textLineNumber = line.find("div",{"class" : "line-sidebar"}).text[:-2]
 		audioTag = line.find("source")
 		audioFile = audioTag.get('src')
-		fileID = audioFile[7:-4]
+		fileID = audioFile[7:-5]
+		print(id, textLineNumber, fileID)
 		assert(id == textLineNumber == fileID)
-	
+
 	if (display):
-	   filename = "../explorations/playAudioInSequence/Inferno/inferno-threeLines.html"
-	   f = open(filename, "w")
-	   f.write(indent(htmlText))
-	   f.close()
-	   os.system("open %s" % filename)
-	   
+		filename = "../explorations/playAudioInSequence/Inferno/inferno-threeLines.html"
+		f = open(filename, "w")
+		f.write(indent(htmlText))
+		f.close()
+		os.system("open %s" % filename)
+
 #----------------------------------------------------------------------------------------------------
 def test_Aymara_numbering(display):
 
 	print("--- test_Aymara_numbering")
-	
+
 	audioFilename = "Final-Edwin-historia-del-oso_no_anotado__ch1.wav"
 	elanXmlFilename="../testTextPyData/Aymara/Aymara-final.eaf"
 	targetDirectory = "../testTextPyData/Aymara/Audio"
@@ -186,11 +187,11 @@ def test_Aymara_numbering(display):
 				grammaticalTermsFile=grammaticalTermsFile,
 				tierGuideFile=tierGuideFile,
 				projectDirectory=projectDirectory)
-					 
+
 	#IjalLine.getTable(1)
 
 	htmlText = text.toHTML()
-	
+
 	soup = BeautifulSoup(htmlText,'html.parser')
 	lines = soup.find_all("div",{"class" : "line-wrapper"})
 	for line in lines:
@@ -200,13 +201,13 @@ def test_Aymara_numbering(display):
 		audioFile = audioTag.get('src')
 		fileID = audioFile[7:-4]
 		assert(id == textLineNumber == fileID)
-	
+
 	if (display):
-	   filename = "../testTextPyData/Aymara/Aymara.html"
-	   f = open(filename, "w")
-	   f.write(indent(htmlText))
-	   f.close()
-	   os.system("open %s" % filename)
+		filename = "../testTextPyData/Aymara/Aymara.html"
+		f = open(filename, "w")
+		f.write(indent(htmlText))
+		f.close()
+		os.system("open %s" % filename)
 
 #----------------------------------------------------------------------------------------------------
 def test_Inferno(display):
@@ -222,23 +223,23 @@ def test_Inferno(display):
 	grammaticalTermsFile="../explorations/playAudioInSequence/Inferno/abbreviations.txt"
 	ae = AudioExtractor(audioFilename, elanXmlFilename, targetDirectory)
 	ae.determineStartAndEndTimes()
-	times = ae.startStopTable	
+	times = ae.startStopTable
 	text = Text(elanXmlFilename,
 				soundFile,
 				grammaticalTermsFile=grammaticalTermsFile,
 				tierGuideFile=tierGuideFile,
 				projectDirectory=projectDirectory)# ,
-# 				startStopTable=times)
-	 
+	# 				startStopTable=times)
+
 	#IjalLine.getTable(1)
 
 	htmlText = text.toHTML()
 	if(display):
-	   filename = "../explorations/playAudioInSequence/Inferno/inferno-threeLines.html"
-	   f = open(filename, "w")
-	   f.write(indent(htmlText))
-	   f.close()
-	   os.system("open %s" % filename)
+		filename = "../explorations/playAudioInSequence/Inferno/inferno-threeLines.html"
+		f = open(filename, "w")
+		f.write(indent(htmlText))
+		f.close()
+		os.system("open %s" % filename)
 
 
 
@@ -255,23 +256,23 @@ def test_MonkeyAndThunder(display):
 	grammaticalTermsFile="../explorations/playAudioInSequence/Monkey/abbreviations.txt"
 	ae = AudioExtractor(audioFilename, elanXmlFilename, targetDirectory)
 	ae.determineStartAndEndTimes()
-	times = ae.startStopTable	
+	times = ae.startStopTable
 	text = Text(elanXmlFilename,
 				soundFile,
 				grammaticalTermsFile=grammaticalTermsFile,
 				tierGuideFile=tierGuideFile,
 				projectDirectory=projectDirectory)# ,
-# 				startStopTable=times)
-	 
+	# 				startStopTable=times)
+
 	#IjalLine.getTable(1)
 
 	htmlText = text.toHTML()
 	if(display):
-	   filename = "../explorations/playAudioInSequence/Monkey/monkeyAndThunderTest.html"
-	   f = open(filename, "w")
-	   f.write(indent(htmlText))
-	   f.close()
-	   os.system("open %s" % filename)
+		filename = "../explorations/playAudioInSequence/Monkey/monkeyAndThunderTest.html"
+		f = open(filename, "w")
+		f.write(indent(htmlText))
+		f.close()
+		os.system("open %s" % filename)
 
 #----------------------------------------------------------------------------------------------------
 def test_Fishwoman(display):
@@ -286,23 +287,23 @@ def test_Fishwoman(display):
 	grammaticalTermsFile="../testTextPyData/2_AYA2_FishWoman/abbreviations.txt"
 	ae = AudioExtractor(audioFilename, elanXmlFilename, targetDirectory)
 	ae.determineStartAndEndTimes()
-	times = ae.startStopTable	
+	times = ae.startStopTable
 	text = Text(elanXmlFilename,
 				soundFile,
 				grammaticalTermsFile=grammaticalTermsFile,
 				tierGuideFile=tierGuideFile,
 				projectDirectory=projectDirectory)# ,
-# 				startStopTable=times)
-	 
+	# 				startStopTable=times)
+
 	#IjalLine.getTable(1)
 
 	htmlText = text.toHTML()
 	if(display):
-	   filename = "../testTextPyData/2_AYA2_FishWoman/test_Fishwoman.html"
-	   f = open(filename, "w")
-	   f.write(indent(htmlText))
-	   f.close()
-	   os.system("open %s" % filename)
+		filename = "../testTextPyData/2_AYA2_FishWoman/test_Fishwoman.html"
+		f = open(filename, "w")
+		f.write(indent(htmlText))
+		f.close()
+		os.system("open %s" % filename)
 
 #----------------------------------------------------------------------------------------------------
 def test_Merchant(display):
@@ -317,14 +318,14 @@ def test_Merchant(display):
 	grammaticalTermsFile="../testTextPyData/JIT0006_ori/grammaticalTerms.txt"
 	ae = AudioExtractor(audioFilename, elanXmlFilename, targetDirectory)
 	ae.determineStartAndEndTimes()
-	times = ae.startStopTable	
+	times = ae.startStopTable
 	text = Text(elanXmlFilename,
 				soundFile,
 				grammaticalTermsFile=grammaticalTermsFile,
 				tierGuideFile=tierGuideFile,
 				projectDirectory=projectDirectory)# ,
-# 				startStopTable=times)
-	 
+	# 				startStopTable=times)
+
 	#IjalLine.getTable(1)
 
 	try:
@@ -357,13 +358,13 @@ def test_Jaguar(display):
 	grammaticalTermsFile="../testTextPyData/Ocotepec_TheOpposumAndTheJaguar/abbreviations.txt"
 	ae = AudioExtractor(audioFilename, elanXmlFilename, targetDirectory)
 	ae.determineStartAndEndTimes()
-	times = ae.startStopTable	
+	times = ae.startStopTable
 	text = Text(elanXmlFilename,
 				soundFile,
 				grammaticalTermsFile=grammaticalTermsFile,
 				tierGuideFile=tierGuideFile,
- 				projectDirectory=projectDirectory)
-	 
+				projectDirectory=projectDirectory)
+
 	#IjalLine.getTable(1)
 
 	try:
@@ -396,14 +397,14 @@ def test_Riverwoman(display):
 	grammaticalTermsFile="../testTextPyData/Ocotepec_Riverwoman/abbreviations.txt"
 	ae = AudioExtractor(audioFilename, elanXmlFilename, targetDirectory)
 	ae.determineStartAndEndTimes()
-	times = ae.startStopTable	
+	times = ae.startStopTable
 	text = Text(elanXmlFilename,
 				soundFile,
 				grammaticalTermsFile=grammaticalTermsFile,
 				tierGuideFile=tierGuideFile,
 				projectDirectory=projectDirectory)# ,
-# 				startStopTable=times)
-					 
+	# 				startStopTable=times)
+
 	#IjalLine.getTable(1)
 
 	try:
@@ -435,14 +436,14 @@ def test_SanMiguel(display):
 	grammaticalTermsFile="../testTextPyData/SanMiguelChimalapaZoque/abbreviations.txt"
 	ae = AudioExtractor(audioFilename, elanXmlFilename, targetDirectory)
 	ae.determineStartAndEndTimes()
-	times = ae.startStopTable	
+	times = ae.startStopTable
 	text = Text(elanXmlFilename,
 				soundFile,
 				grammaticalTermsFile=grammaticalTermsFile,
 				tierGuideFile=tierGuideFile,
 				projectDirectory=projectDirectory)# ,
-# 				startStopTable=times)
-					 	 
+	# 				startStopTable=times)
+
 	#IjalLine.getTable(1)
 
 	try:
@@ -473,14 +474,14 @@ def test_Caterpillar(display):
 	grammaticalTermsFile="../testTextPyData/SOT_Caterpillar/abbreviations.txt"
 	ae = AudioExtractor(audioFilename, elanXmlFilename, targetDirectory)
 	ae.determineStartAndEndTimes()
-	times = ae.startStopTable	
+	times = ae.startStopTable
 	text = Text(elanXmlFilename,
 				soundFile,
 				grammaticalTermsFile=grammaticalTermsFile,
 				tierGuideFile=tierGuideFile,
 				projectDirectory=projectDirectory)# ,
-# 				startStopTable=times)
-	 
+	# 				startStopTable=times)
+
 	#IjalLine.getTable(1)
 
 	try:
@@ -512,14 +513,14 @@ def test_Lazy(display):
 	grammaticalTermsFile="../testTextPyData/TEX_Lazy/abbreviations.txt"
 	ae = AudioExtractor(audioFilename, elanXmlFilename, targetDirectory)
 	ae.determineStartAndEndTimes()
-	times = ae.startStopTable	
+	times = ae.startStopTable
 	text = Text(elanXmlFilename,
 				soundFile,
 				grammaticalTermsFile=grammaticalTermsFile,
 				tierGuideFile=tierGuideFile,
 				projectDirectory=projectDirectory)# ,
-# 				startStopTable=times)
-	 
+	# 				startStopTable=times)
+
 	#IjalLine.getTable(1)
 
 	try:
@@ -550,14 +551,14 @@ def test_Imp(display):
 	grammaticalTermsFile="../testTextPyData/ZMarRevised/abbreviations.txt"
 	ae = AudioExtractor(audioFilename, elanXmlFilename, targetDirectory)
 	ae.determineStartAndEndTimes()
-	times = ae.startStopTable	
+	times = ae.startStopTable
 	text = Text(elanXmlFilename,
 				soundFile,
 				grammaticalTermsFile=grammaticalTermsFile,
 				tierGuideFile=tierGuideFile,
 				projectDirectory=projectDirectory)# ,
-# 				startStopTable=times)
-	 
+	# 				startStopTable=times)
+
 	#IjalLine.getTable(1)
 
 	try:
@@ -588,14 +589,14 @@ def test_Prayer(display):
 	grammaticalTermsFile="../testTextPyData/Prayer_superscript/grammaticalTerms.txt"
 	ae = AudioExtractor(audioFilename, elanXmlFilename, targetDirectory)
 	ae.determineStartAndEndTimes()
-	times = ae.startStopTable	
+	times = ae.startStopTable
 	text = Text(elanXmlFilename,
 				soundFile,
 				grammaticalTermsFile=grammaticalTermsFile,
 				tierGuideFile=tierGuideFile,
 				projectDirectory=projectDirectory)# ,
-# 				startStopTable=times)
-	 
+	# 				startStopTable=times)
+
 	#IjalLine.getTable(1)
 
 	try:

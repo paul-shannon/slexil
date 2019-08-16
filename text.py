@@ -13,7 +13,7 @@ pd.set_option('display.width', 1000)
 import pdb
 from decimal import Decimal
 import logging
-from audioExtractor import AudioExtractor
+#from audioExtractor import AudioExtractor
 
 #----------------------------------------------------------------------------------------------------
 # -*- coding: utf-8 -*-
@@ -80,56 +80,56 @@ class Text:
 				count = len(tier.findall("ANNOTATION"))
 				rowNumber = tbl[tbl['value']==tierValue].index.item()
 				tbl.ix[rowNumber, 'count'] = count
-				#print(" %30s: %4d" % (tierID, count))
+			#print(" %30s: %4d" % (tierID, count))
 			except IndexError:
 				break
 		self.tierTable = tbl
 		return(tbl)
 
 	def makeStartStopTable(self, annotations):
-# 		ae = AudioExtractor(self.soundFileName, self.xmlFilename, self.projectDirectory)
-# 		ae.determineStartAndEndTimes()
-# 		times = ae.startStopTable	
-# 		annotations = times.split('\n')
+		# 		ae = AudioExtractor(self.soundFileName, self.xmlFilename, self.projectDirectory)
+		# 		ae.determineStartAndEndTimes()
+		# 		times = ae.startStopTable
+		# 		annotations = times.split('\n')
 		self.audioTable = []
 		startStopTimes = "window.annotations=["
 		for i,annotation in enumerate(annotations):
-# 			 if i == 0:
-# 					continue
-# 			 elif len(annotation) == 0:
-# 					continue
-# 			 values = annotation.split(',')
-# 			 id = values[0]
-			 #start = int(values[1])/1000
-			 start = annotation[0]
-			 end = annotation[1]
-			 entry = "{ 'id' : '%s', 'start' : '%s', 'end' : '%s'}," %(str(i+1),start,end)
-			 startStopTimes += entry
-			 self.audioTable.append(annotation)
+			# 			 if i == 0:
+			# 					continue
+			# 			 elif len(annotation) == 0:
+			# 					continue
+			# 			 values = annotation.split(',')
+			# 			 id = values[0]
+			#start = int(values[1])/1000
+			start = annotation[0]
+			end = annotation[1]
+			entry = "{ 'id' : '%s', 'start' : '%s', 'end' : '%s'}," %(str(i+1),start,end)
+			startStopTimes += entry
+			self.audioTable.append(annotation)
 		startStopTimes =startStopTimes[:-1] + "]"
-# 		print(startStopTimes)
+		# 		print(startStopTimes)
 		return(startStopTimes)
 
 	def validInputs(self):
 		try:
-			 assert(os.path.isfile(self.xmlFilename))
+			assert(os.path.isfile(self.xmlFilename))
 		except AssertionError as e:
-			 raise Exception(self.xmlFilename) from e
+			raise Exception(self.xmlFilename) from e
 		try:
-			 assert(os.path.isfile(self.tierGuideFile))
+			assert(os.path.isfile(self.tierGuideFile))
 		except AssertionError as e:
-			 raise Exception(tierGuideFile)from e
-			# the audioPath points to a relative directory "./audio" in which wav files are found
-			# but without a handle on the project directory, we cannot easily test this
-			# skip it for now
+			raise Exception(tierGuideFile)from e
+		# the audioPath points to a relative directory "./audio" in which wav files are found
+		# but without a handle on the project directory, we cannot easily test this
+		# skip it for now
 		if(not self.grammaticalTermsFile == None):
-			 try:
-					assert(os.path.isfile(self.grammaticalTermsFile))
-			 except AssertionError as e:
-					raise Exception(self.grammaticalTermsFile) from e
-			 grammaticalTerms = open(self.grammaticalTermsFile).read()#.split("\n")
-			 assert(len(grammaticalTerms) > 0)
-			 self.grammaticalTerms = _makeAbbreviationListLowerCase(grammaticalTerms)
+			try:
+				assert(os.path.isfile(self.grammaticalTermsFile))
+			except AssertionError as e:
+				raise Exception(self.grammaticalTermsFile) from e
+			grammaticalTerms = open(self.grammaticalTermsFile).read()#.split("\n")
+			assert(len(grammaticalTerms) > 0)
+			self.grammaticalTerms = _makeAbbreviationListLowerCase(grammaticalTerms)
 		return(True)
 
 	def getLineAsTable(self, lineNumber):
@@ -150,9 +150,7 @@ class Text:
 	def getCSS(self):
 		cssFilename = "ijal.css"
 		#assert(os.path.exists(cssFilename))
-		#print(cssFilename)
 		css = '<link rel = "stylesheet" type = "text/css" href = "%s" />' % cssFilename
-#		 css = "<style>\n%s</style>" % open(cssFilename).read()
 		return(css)
 
 	def getJQuery(self):
@@ -186,27 +184,27 @@ class Text:
 				htmlDoc.asis(self.getJQuery())
 				htmlDoc.asis(self.getCSS())
 				with htmlDoc.tag('body'):
-					 for i in lineNumbers:
-							if(not self.quiet):
-								print("line %d/%d" % (i, self.lineCount))
-# 							line = IjalLine(self.xmlDoc, i, self.tierGuide,self.audioTable[i], self.grammaticalTerms)
-# 							line = IjalLine(self.xmlDoc, i, self.tierGuide, str(i+1), self.grammaticalTerms)
-							line = IjalLine(self.xmlDoc, i, self.tierGuide, self.grammaticalTerms)
-							line.parse()
-							start = line.getStartTime()
-							end = line.getEndTime()
-							timeCodesForLine = [start,end]
-							timeCodesForText.append(timeCodesForLine)
-							with htmlDoc.tag("div",  klass="line-wrapper", id=i+1):
-								tbl = line.getTable()
-								lineID = tbl.ix[0]['ANNOTATION_ID']
-								with htmlDoc.tag("div", klass="line-sidebar"):
-									 line.htmlLeadIn(htmlDoc, self.audioPath, )
-								line.toHTML(htmlDoc)
-					 with htmlDoc.tag("div", klass="spacer"):
-							htmlDoc.asis('')
-					 htmlDoc.asis(self.getPlayer())
-					 htmlDoc.asis(self.getJavascript(timeCodesForText))
+					for i in lineNumbers:
+						if(not self.quiet):
+							print("line %d/%d" % (i, self.lineCount))
+						#line = IjalLine(self.xmlDoc, i, self.tierGuide,self.audioTable[i], self.grammaticalTerms)
+						#line = IjalLine(self.xmlDoc, i, self.tierGuide, str(i+1), self.grammaticalTerms)
+						line = IjalLine(self.xmlDoc, i, self.tierGuide, self.grammaticalTerms)
+						line.parse()
+						start = line.getStartTime()
+						end = line.getEndTime()
+						timeCodesForLine = [start,end]
+						timeCodesForText.append(timeCodesForLine)
+						with htmlDoc.tag("div",  klass="line-wrapper", id=i+1):
+							tbl = line.getTable()
+							lineID = tbl.ix[0]['ANNOTATION_ID']
+							with htmlDoc.tag("div", klass="line-sidebar"):
+								line.htmlLeadIn(htmlDoc, self.audioPath, )
+							line.toHTML(htmlDoc)
+				with htmlDoc.tag("div", klass="spacer"):
+					htmlDoc.asis('')
+				htmlDoc.asis(self.getPlayer())
+				htmlDoc.asis(self.getJavascript(timeCodesForText))
 		self.htmlDoc = htmlDoc
 		self.htmlText = htmlDoc.getvalue()
 		return(self.htmlText)

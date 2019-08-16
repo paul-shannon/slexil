@@ -15,6 +15,20 @@ def runTests():
     test_extract_prayer()
     test_extract_aktzini()
     test_extract_plumedSerpent()
+    test_GoldenEagle4()
+    test_extract_Aymara_final()
+
+
+def test_GoldenEagle4():
+
+    print("--- test_GoldenEagle4")
+
+    ea = AudioExtractor("../testData/GoldenEagle/daylight_1_4.wav",
+                        "../testData/GoldenEagle/HHgoldenEagle4.eaf",
+                        "../testData/GoldenEagle/audioPhrases")
+    assert(ea.validInputs)
+    print(ea.determineStartAndEndTimes())
+    print(ea.startStopTable)
 
 def test_constructor():
 
@@ -49,10 +63,23 @@ def test_extract_harryMosesDaylight():
     ea.extract(quiet=True)
     fileList = [f for f in os.listdir("../testData/harryMosesDaylight/audioPhrases") if not f.startswith('.')]
     try:
-    	assert(len(fileList) == 4)
+        assert(len(fileList) == 4)
     except AssertionError as e:
-    	raise Exception(fileList) from e
+        raise Exception(fileList) from e
 
+def test_extract_Aymara_final():
+
+    print("--- test_extract_Aymara_final")
+
+    ea = AudioExtractor("../testTextPyData/Aymara_final/Final-Edwin-historia-del-oso_no_anotado__ch1.wav",
+                        "../testTextPyData/Aymara_final/Aymara-final.eaf",
+                        "../testTextPyData/Aymara_final/audio")
+    ea.extract(quiet=True)
+    fileList = [f for f in os.listdir("../testTextPyData/Aymara_final/audio") if not f.startswith('.')]
+    try:
+        assert(len(fileList) == 146)
+    except AssertionError as e:
+        raise Exception(len(fileList)) from e
 
 def test_extract_monkeyAndThunder():
     print("--- test_extract_monkeyAndThunder")
@@ -62,9 +89,9 @@ def test_extract_monkeyAndThunder():
     ea.extract(quiet=True)
     fileList = [f for f in os.listdir("../testData/monkeyAndThunder/audioPhrases") if not f.startswith('.')]
     try:
-    	assert(len(fileList) == 41)
+        assert(len(fileList) == 41)
     except AssertionError as e:
-    	raise Exception(fileList) from e
+        raise Exception(fileList) from e
 
 
 def test_extract_prayer():
@@ -97,4 +124,3 @@ def test_extract_plumedSerpent():
 
 if __name__ == '__main__':
     runTests()
-

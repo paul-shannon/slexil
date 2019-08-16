@@ -14,18 +14,18 @@ pd.set_option('display.width', 1000)
 def runTests():
 
     test_buildTable()
-    test_getStartStopTimes()
-
-    test_lokono_line_3()    # each morpheme and gloss are separate xml tier elements
-    # test_extractAudio()   # only works when LARGE monkeyAndThunder files is present
-    test_lokono_toHTML(False, sampleOfLinesOnly=True)
-
-    test_monkeyAndThunder_line_6() # morphemes and glosses are each packed into in
-                                   # a single tab-delimited tier element
-    test_monkeyAndThunder_toHTML(False)
-    test_plumedSerpent_toHTML(False)
-       #  test_aktzini_toHTML()
-    test_prayer_toHTML(displayPage=False)
+    # test_getStartStopTimes()
+    #
+    # test_lokono_line_3()    # each morpheme and gloss are separate xml tier elements
+    # # test_extractAudio()   # only works when LARGE monkeyAndThunder files is present
+    # test_lokono_toHTML(False, sampleOfLinesOnly=True)
+    #
+    # test_monkeyAndThunder_line_6() # morphemes and glosses are each packed into in
+    #                                # a single tab-delimited tier element
+    # test_monkeyAndThunder_toHTML(False)
+    # test_plumedSerpent_toHTML(False)
+    #    #  test_aktzini_toHTML()
+    # test_prayer_toHTML(displayPage=False)
 
 #----------------------------------------------------------------------------------------------------
 def test_buildTable():
