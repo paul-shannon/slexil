@@ -18,11 +18,10 @@ def runTests(display=False):
 def test_GoldenEagle(display):
 	audioFilename = "WS_GoldenEagle4.wav"
 	elanXmlFilename="HHgoldenEagle4.eaf"
-	targetDirectory = "../testData/GoldenEagle/audio"
+	targetDirectory = "../testTextPyData/GoldenEagle/audio"
 	soundFile = os.path.join(targetDirectory,audioFilename)
-	projectDirectory="../testData/GoldenEagle"
-	tierGuideFile="../testData/GoldenEagle/tierGuide.yaml"
-	#grammaticalTermsFile="../testData/lokono/grammaticalTerms.txt"
+	projectDirectory="../testTextPyData/GoldenEagle"
+	tierGuideFile="../testTextPyData/GoldenEagle/tierGuide.yaml"
 	elanFile = os.path.join(projectDirectory,elanXmlFilename)
 	ae = AudioExtractor(soundFile, elanFile, targetDirectory)
 	ae.determineStartAndEndTimes()
@@ -39,7 +38,7 @@ def test_GoldenEagle(display):
 	text.getLineAsTable(0)
 
 	htmlText = text.toHTML()
-	filename = "../testData/GoldenEagle/GoldenEagle.html"
+	filename = "../testTextPyData/GoldenEagle/GoldenEagle.html"
 	f = open(filename, "w")
 	f.write(indent(htmlText))
 	f.close()
@@ -50,11 +49,10 @@ def test_GoldenEagle(display):
 def test_AMRaven(display):
 	audioFilename = "AM_RavenCopiesSiblingsNRAudition-wav.wav"
 	elanXmlFilename="newraven.eaf"
-	targetDirectory = "../testData/Raven/audio"
+	targetDirectory = "../testTextPyData/Raven/audio"
 	soundFile = os.path.join(targetDirectory,audioFilename)
-	projectDirectory="../testData/Raven"
-	tierGuideFile="../testData/Raven/tierGuide.yaml"
-	#grammaticalTermsFile="../testData/lokono/grammaticalTerms.txt"
+	projectDirectory="../testTextPyData/Raven"
+	tierGuideFile="../testTextPyData/Raven/tierGuide.yaml"
 	elanFile = os.path.join(projectDirectory,elanXmlFilename)
 	ae = AudioExtractor(soundFile, elanFile, targetDirectory)
 	ae.determineStartAndEndTimes()
@@ -71,7 +69,7 @@ def test_AMRaven(display):
 	text.getLineAsTable(0)
 
 	htmlText = text.toHTML()
-	filename = "../testData/Raven/RavenNew.html"
+	filename = "../testTextPyData/Raven/RavenNew.html"
 	f = open(filename, "w")
 	f.write(indent(htmlText))
 	f.close()

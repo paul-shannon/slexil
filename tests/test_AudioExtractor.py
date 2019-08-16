@@ -23,9 +23,9 @@ def test_GoldenEagle4():
 
     print("--- test_GoldenEagle4")
 
-    ea = AudioExtractor("../testData/GoldenEagle/daylight_1_4.wav",
-                        "../testData/GoldenEagle/HHgoldenEagle4.eaf",
-                        "../testData/GoldenEagle/audioPhrases")
+    ea = AudioExtractor("../testTextPyData/GoldenEagle/daylight_1_4.wav",
+                        "../testTextPyData/GoldenEagle/HHgoldenEagle4.eaf",
+                        "../testTextPyData/GoldenEagle/audioPhrases")
     assert(ea.validInputs)
     print(ea.determineStartAndEndTimes())
     print(ea.startStopTable)
