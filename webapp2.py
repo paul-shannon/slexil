@@ -605,6 +605,10 @@ def createWebPageCallback(n_clicks, soundFileName, eafFileName, projectDirectory
         print("There are empty tiers or incomplete glosses after line %s" %e.lineNumber)
         errorMessage = "EAF error: There are empty tiers or incomplete glosses after line %s." %e.lineNumber
         return("",1,errorMessage)
+    except MissingSpeechTiersError as e:
+        print("Line %s has nothing in the transcription line" % e.lineNumber)
+        errorMessage = "EAF error: Line %s has nothing in the transcription line." % e.lineNumber
+        return ("", 1, errorMessage)
     webpageAt = os.path.join(projectDirectory, "%s.html" %projectTitle)
     HTMLFILE = webpageAt
     absolutePath = os.path.abspath(webpageAt)

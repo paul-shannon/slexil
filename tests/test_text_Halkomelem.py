@@ -12,8 +12,8 @@ pd.set_option('display.width', 1000)
 
 def runTests(display=False):
 
-	test_GoldenEagle(True)
-	test_AMRaven(True)
+	test_GoldenEagle(display)
+	test_AMRaven(display)
 
 def test_GoldenEagle(display):
 	audioFilename = "WS_GoldenEagle4.wav"
