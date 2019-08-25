@@ -78,8 +78,10 @@ class Text:
 				tierValue = tierValues[i]
 				tierID = tier.attrib["TIER_ID"]
 				count = len(tier.findall("ANNOTATION"))
-				rowNumber = tbl[tbl['value']==tierValue].index.item()
-				tbl.ix[rowNumber, 'count'] = count
+				#pdb.set_trace()
+				rowNumber = tbl[tbl['value']==tierValue].index
+				#tbl.ix[rowNumber, 'count'] = count
+				tbl.iloc[rowNumber, tbl.columns.values.tolist().index('count')] = count
 			#print(" %30s: %4d" % (tierID, count))
 			except IndexError:
 				break
@@ -197,7 +199,8 @@ class Text:
 						timeCodesForText.append(timeCodesForLine)
 						with htmlDoc.tag("div",  klass="line-wrapper", id=i+1):
 							tbl = line.getTable()
-							lineID = tbl.ix[0]['ANNOTATION_ID']
+							#lineID = tbl.ix[0]['ANNOTATION_ID']
+							lineID = tbl.iloc[0][tbl.columns.values.tolist().index('ANNOTATION_ID')]
 							with htmlDoc.tag("div", klass="line-sidebar"):
 								line.htmlLeadIn(htmlDoc, self.audioPath, )
 							line.toHTML(htmlDoc)

@@ -72,8 +72,6 @@ class IjalLine:
         self.morphemeGlosses = self.extractMorphemeGlosses()
         self.calculateMorphemeSpacing()
 
-    # self.audioData.split(',')[0]#self.tbl.ix[self.speechRow, "ANNOTATION_ID"]
-
     def getTierCount(self):
         return (self.getTable().shape[0])
 
@@ -81,13 +79,14 @@ class IjalLine:
         return (self.tbl)
 
     def getStartTime(self):
-        return (self.tbl.ix[self.speechRow]["START"])
+        col = self.tbl.columns.values.tolist().index("START")
+        return (self.tbl.iloc[self.speechRow][self.tbl.columns.values.tolist().index("START")])
 
     def getEndTime(self):
-        return (self.tbl.ix[self.speechRow]["END"])
+        return (self.tbl.iloc[self.speechRow][self.tbl.columns.values.tolist().index("END")])
 
     def getAnnotationID(self):
-        return (self.tbl.ix[self.speechRow]["ANNOTATION_ID"])
+        return (self.tbl.iloc[self.speechRow][self.tbl.columns.values.tolist().index("ANNOTATION_ID")])
 
     # ----------------------------------------------------------------------------------------------------
     def show(self):
@@ -99,7 +98,7 @@ class IjalLine:
 
         # categories = self.tbl["category"].tolist()
         # row = categories.index("speech")
-        return (self.tbl.ix[self.speechRow, "TEXT"])
+        return (self.tbl.iloc[self.speechRow, self.tbl.columns.values.tolist().index("TEXT")])
 
     # ----------------------------------------------------------------------------------------------------
     def getTranslation(self):
@@ -110,14 +109,14 @@ class IjalLine:
         if self.translationRow == None:
             logging.warning("missing translation at line %d" % (int(self.lineNumber) + 1))
             return (None)
-        translation = self.tbl.ix[self.translationRow, "TEXT"]
+        translation = self.tbl.iloc[self.translationRow, self.tbl.columns.values.tolist().index("TEXT")]
         translationLine = TranslationLine(translation)
         return (translationLine.getStandardized())
 
     # ----------------------------------------------------------------------------------------------------
     def getTranslation2(self):
         if self.translation2Row != None:
-            translation2 = self.tbl.ix[self.translation2Row, "TEXT"]
+            translation2 = self.tbl.iloc[self.translation2Row, self.tbl.columns.values.tolist().index("TEXT")]
             translationLine2 = TranslationLine(translation2)
             return (translationLine2.getStandardized())
         else:
@@ -126,7 +125,7 @@ class IjalLine:
     # ----------------------------------------------------------------------------------------------------
     def getTranscription2(self):
         if self.transcription2Row != None:
-            transcription2 = self.tbl.ix[self.transcription2Row, "TEXT"]
+            transcription2 = self.tbl.iloc[self.transcription2Row, self.tbl.columns.values.tolist().index("TEXT")]
             return (transcription2)
         else:
             return (None)
@@ -137,10 +136,10 @@ class IjalLine:
         if (self.morphemeRows == []):
             return ([])
 
-        rawMorphemeList = self.tbl["TEXT"].ix[self.morphemeRows].tolist()
+        rawMorphemeList = self.tbl["TEXT"].iloc[self.morphemeRows].tolist()
         rawMorphemes = ''.join(rawMorphemeList)
         if "\t" in rawMorphemes:
-            rawMorphemeText = self.tbl["TEXT"].ix[self.morphemeRows].tolist()[0]
+            rawMorphemeText = self.tbl["TEXT"].iloc[self.morphemeRows].tolist()[0]
             rawMorphemeList = rawMorphemeText.split('\t')
 
         morphemes = replaceHyphensWithNDashes(rawMorphemeList)
@@ -152,10 +151,10 @@ class IjalLine:
         if (self.morphemeGlossRows == []):
             return ([])
 
-        rawMorphemeGlossList = self.tbl["TEXT"].ix[self.morphemeGlossRows].tolist()
+        rawMorphemeGlossList = self.tbl["TEXT"].iloc[self.morphemeGlossRows].tolist()
         rawMorphemeGlosses = ''.join(rawMorphemeGlossList)
         if "\t" in rawMorphemeGlosses:
-            rawMorphemeGlossText = self.tbl["TEXT"].ix[self.morphemeGlossRows].tolist()[0]
+            rawMorphemeGlossText = self.tbl["TEXT"].iloc[self.morphemeGlossRows].tolist()[0]
             rawMorphemeGlossList = rawMorphemeGlossText.split('\t')
 
         morphemeGlosses = replaceHyphensWithNDashes(rawMorphemeGlossList)
@@ -315,8 +314,7 @@ def buildTable(doc, lineElements):
     tbl_elements = pd.DataFrame(e.attrib for e in lineElements)
     # print(tbl_elements)
 
-    # pdb.set_trace()
-    startTimeSlotID = tbl_elements.ix[0, 'TIME_SLOT_REF1']
+    startTimeSlotID = tbl_elements.iloc[0, tbl_elements.columns.values.tolist().index('TIME_SLOT_REF1')]
     pattern = "TIME_ORDER/TIME_SLOT[@TIME_SLOT_ID='%s']" % startTimeSlotID
     startTime = int(doc.find(pattern).attrib["TIME_VALUE"])
     startTimes = [startTime]
@@ -324,7 +322,7 @@ def buildTable(doc, lineElements):
     for i in range(1, rowCount):
         startTimes.append(float('NaN'))
 
-    endTimeSlotID = tbl_elements.ix[0, 'TIME_SLOT_REF2']
+    endTimeSlotID = tbl_elements.iloc[0, tbl_elements.columns.values.tolist().index('TIME_SLOT_REF2')]
     pattern = "TIME_ORDER/TIME_SLOT[@TIME_SLOT_ID='%s']" % endTimeSlotID
     endTime = int(doc.find(pattern).attrib["TIME_VALUE"])
     endTimes = [endTime]
