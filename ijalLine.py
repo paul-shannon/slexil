@@ -49,7 +49,7 @@ class IjalLine:
             self.speechRow = self.categories.index("speech")
         else:
             logging.warning("EAF error: Line %s has nothing in the transcription line." % (int(self.lineNumber) + 1))
-            self.speechRow = self.categories.index("translation")
+            self.speechRow = None #self.categories.index("translation")
         if 'translation' in self.categories:
             self.translationRow = self.categories.index("translation")
         else:
@@ -78,8 +78,31 @@ class IjalLine:
     def getTable(self):
         return (self.tbl)
 
+    '''the next three methods handle a use case where there is a missing or 
+    empty transcription (line) tier but assume that there is a valid time-
+    aligned translation tier (not sure we can save a file that has neither)'''
+
     def getStartTime(self):
         col = self.tbl.columns.values.tolist().index("START")
+<<<<<<< HEAD
+        if self.speechRow != None:
+            return (self.tbl.iloc[self.speechRow][self.tbl.columns.values.tolist().index("START")])
+        else:
+            return (self.tbl.iloc[self.translationRow][self.tbl.columns.values.tolist().index("START")])
+
+
+    def getEndTime(self):
+        if self.speechRow != None:
+            return (self.tbl.iloc[self.speechRow][self.tbl.columns.values.tolist().index("END")])
+        else:
+            return (self.tbl.iloc[self.translationRow][self.tbl.columns.values.tolist().index("END")])
+
+    def getAnnotationID(self):
+        if self.speechRow != None:
+            return (self.tbl.iloc[self.speechRow][self.tbl.columns.values.tolist().index("ANNOTATION_ID")])
+        else:
+            return (self.tbl.iloc[self.translationRow][self.tbl.columns.values.tolist().index("ANNOTATION_ID")])
+=======
         return (self.tbl.iloc[self.speechRow][self.tbl.columns.values.tolist().index("START")])
 
     def getEndTime(self):
@@ -87,6 +110,7 @@ class IjalLine:
 
     def getAnnotationID(self):
         return (self.tbl.iloc[self.speechRow][self.tbl.columns.values.tolist().index("ANNOTATION_ID")])
+>>>>>>> 12723483d2fbecee6a05f6c600b84d23f30a8dee
 
     # ----------------------------------------------------------------------------------------------------
     def show(self):
@@ -98,7 +122,14 @@ class IjalLine:
 
         # categories = self.tbl["category"].tolist()
         # row = categories.index("speech")
+<<<<<<< HEAD
+        if self.speechRow == None:
+            return '<div class="missing_annotation">⚠️ Missing transcription line ⚠️</div>'
+        else:
+            return (self.tbl.iloc[self.speechRow, self.tbl.columns.values.tolist().index("TEXT")])
+=======
         return (self.tbl.iloc[self.speechRow, self.tbl.columns.values.tolist().index("TEXT")])
+>>>>>>> 12723483d2fbecee6a05f6c600b84d23f30a8dee
 
     # ----------------------------------------------------------------------------------------------------
     def getTranslation(self):

@@ -12,7 +12,7 @@ pd.set_option('display.width', 1000)
 
 def runTests(display=False):
 
-	test_GoldenEagle(display)
+	#test_GoldenEagle(display)
 	test_AMRaven(display)
 
 def test_GoldenEagle(display):

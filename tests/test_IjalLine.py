@@ -15,7 +15,7 @@ pd.set_option('display.width', 1000)
 def runTests():
 
     test_buildTable()
-    # test_getStartStopTimes()
+    test_getStartStopTimes()
     #
     # test_lokono_line_3()    # each morpheme and gloss are separate xml tier elements
     # # test_extractAudio()   # only works when LARGE monkeyAndThunder files is present

@@ -15,7 +15,7 @@ def runTests():
     test_extract_prayer()
     test_extract_aktzini()
     test_extract_plumedSerpent()
-    test_GoldenEagle4()
+    #test_GoldenEagle4()
     test_extract_Aymara_final()
 
 
