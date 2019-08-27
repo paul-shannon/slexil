@@ -49,7 +49,7 @@
 }
 
 .allDivs {
-	#margin-left: 30px;
+	margin-left: 30px;
 	margin-top: 20px;
 	margin-bottom; 20px;
 	padding: 5px 5px 5px 5px;
@@ -75,74 +75,29 @@
 	font-size: 12;
 }
 
-.button {	
-	#width: 140px;
-	#height: 60px;
+.button, .fakebutton {
+	width: 99px;
+	height: 33px;
 	color: black;
 	font-family: Helvetica Neue;
-	margin-right: 10;
+	font-variant: small-caps;
+	font-weight: bold;
+	margin-left: 25px;
+	margin-right: 0px;
 	line-height: 30px;
 	border-width: 1px;
 	border-style: solid;
-	border-radius: 8px;
+	border-radius: 12px;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
+	padding: 0px 6px;
 }
 
-.button:disabled {
+.button:disabled, .fakebutton:disabled {
 	border: 1px solid #EBE6E5;
-  	background-color: #EBE6E5;
-  	color: white;
-}
-
-.fakebutton, .fakebutton:hover {
-	width: 140px;
-	height: 40px;
-	border: 1px solid #EBE6E5;
-	border-radius: 8px;
-  	background-color: #EBE6E5;
-  	color: white;
-	font-family: Helvetica Neue;
-	margin-right: 20px;
-	line-height: 40px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	margin-left: 0px;
-	grid-column: 1;
-	font-variant: small-caps;
-	font-weight: bold;
-	font-size: 13pt;
-}
-.fakebuttonEnabled, .fakebuttonEnabled:hover {
-	width: 140px;
-	height: 40px;
-	color: black;
-	font-family: Helvetica Neue;
-	margin-right: 10;
-	line-height: 38px;
-	border-width: 1px;
-	border-style: solid;
-	border-radius: 8px;
-	border-color: #aaa;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	font-variant: small-caps;
-	font-weight: bold;
-	font-size: 13pt;
-}
-
-.fakeLinkOff {
-	font-family: Helvetica Neue;
-	text-align: center;
-	text-decoration: none;
-	color: white;
-}
-
-.fakeLinkOn {
-	color: black;
+  background-color: #EBE6E5;
+  color: white;
 }
 
 .allDivs .button {
@@ -156,9 +111,57 @@
 }
 
 .buttonCell {
-	vertical-align: top;
+	float: right;
+	display: inline;
 }
 
+.demoButton {
+	-moz-box-shadow: 3px 4px 0px 0px #899599;
+	-webkit-box-shadow: 3px 4px 0px 0px #899599;
+	box-shadow: 3px 4px 0px 0px #899599;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #bab1ba));
+	background:-moz-linear-gradient(top, #ededed 5%, #bab1ba 100%);
+	background:-webkit-linear-gradient(top, #ededed 5%, #bab1ba 100%);
+	background:-o-linear-gradient(top, #ededed 5%, #bab1ba 100%);
+	background:-ms-linear-gradient(top, #ededed 5%, #bab1ba 100%);
+	background:linear-gradient(to bottom, #ededed 5%, #bab1ba 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#bab1ba',GradientType=0);
+	background-color:#ededed;
+	-moz-border-radius:15px;
+	-webkit-border-radius:15px;
+	border-radius:15px;
+	border:1px solid #d6bcd6;
+	display:inline-block;
+	cursor:pointer;
+	color:#31B404;
+	font-family:Arial;
+	font-size:small;
+	padding-right: 12px;
+	padding-left: 12px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #e1e2ed;
+}
+.demoButton:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #bab1ba), color-stop(1, #ededed));
+	background:-moz-linear-gradient(top, #bab1ba 5%, #ededed 100%);
+	background:-webkit-linear-gradient(top, #bab1ba 5%, #ededed 100%);
+	background:-o-linear-gradient(top, #bab1ba 5%, #ededed 100%);
+	background:-ms-linear-gradient(top, #bab1ba 5%, #ededed 100%);
+	background:linear-gradient(to bottom, #bab1ba 5%, #ededed 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#bab1ba', endColorstr='#ededed',GradientType=0);
+	background-color:#bab1ba;
+}
+
+.demoButton:active {
+	position:relative;
+	top:1px;
+}
+
+.introduction {
+	border-style: none none ridge none;
+	border-width: 2px;
+	border-color: #00BFFF;
+}
 summary {
 	font-size: 14pt;
 }
