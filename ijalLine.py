@@ -84,7 +84,6 @@ class IjalLine:
 
     def getStartTime(self):
         col = self.tbl.columns.values.tolist().index("START")
-<<<<<<< HEAD
         if self.speechRow != None:
             return (self.tbl.iloc[self.speechRow][self.tbl.columns.values.tolist().index("START")])
         else:
@@ -102,15 +101,6 @@ class IjalLine:
             return (self.tbl.iloc[self.speechRow][self.tbl.columns.values.tolist().index("ANNOTATION_ID")])
         else:
             return (self.tbl.iloc[self.translationRow][self.tbl.columns.values.tolist().index("ANNOTATION_ID")])
-=======
-        return (self.tbl.iloc[self.speechRow][self.tbl.columns.values.tolist().index("START")])
-
-    def getEndTime(self):
-        return (self.tbl.iloc[self.speechRow][self.tbl.columns.values.tolist().index("END")])
-
-    def getAnnotationID(self):
-        return (self.tbl.iloc[self.speechRow][self.tbl.columns.values.tolist().index("ANNOTATION_ID")])
->>>>>>> 12723483d2fbecee6a05f6c600b84d23f30a8dee
 
     # ----------------------------------------------------------------------------------------------------
     def show(self):
@@ -122,14 +112,10 @@ class IjalLine:
 
         # categories = self.tbl["category"].tolist()
         # row = categories.index("speech")
-<<<<<<< HEAD
         if self.speechRow == None:
             return '<div class="missing_annotation">⚠️ Missing transcription line ⚠️</div>'
         else:
             return (self.tbl.iloc[self.speechRow, self.tbl.columns.values.tolist().index("TEXT")])
-=======
-        return (self.tbl.iloc[self.speechRow, self.tbl.columns.values.tolist().index("TEXT")])
->>>>>>> 12723483d2fbecee6a05f6c600b84d23f30a8dee
 
     # ----------------------------------------------------------------------------------------------------
     def getTranslation(self):
