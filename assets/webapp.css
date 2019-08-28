@@ -75,7 +75,27 @@
 	font-size: 12;
 }
 
-.button, .fakebutton {
+.button {
+	width: 99px;
+	height: 33px;
+	color: black;
+	font-family: Helvetica Neue;
+	font-variant: small-caps;
+	font-weight: bold;
+	margin-left: 25px;
+	margin-right: 0px;
+	line-height: 30px;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 12px;
+	border-color: black;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	padding: 0px 6px;
+}
+
+.fakebuttonOn {
 	width: 99px;
 	height: 33px;
 	color: black;
@@ -91,16 +111,38 @@
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
-	padding: 0px 6px;
 }
 
-.button:disabled, .fakebutton:disabled {
+.fakebuttonOff {
+	width: 99px;
+	height: 33px;
+	color: white;
+	font-family: Helvetica Neue;
+	font-variant: small-caps;
+	font-weight: bold;
+	margin-left: 25px;
+	margin-right: 0px;
+	line-height: 30px;
 	border: 1px solid #EBE6E5;
-  background-color: #EBE6E5;
-  color: white;
+	border-radius: 12px;
+	background-color: #EBE6E5;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	pointer-events: none;
+}
+
+.button:disabled {
+	border: 1px solid #EBE6E5;
+	background-color: #EBE6E5;
+	color: white;
 }
 
 .allDivs .button {
+	grid-column: 1;
+}
+
+.allDivs .fakebutton {
 	grid-column: 1;
 }
 
@@ -201,7 +243,9 @@ summary:focus {
 	margin-bottom: 30px;
 	display: inline-block;
 	grid-column: 2;
+	resize: none;
 }
+
 .uploadtextarea {
 	width: 575px;
 	height: 40px;
@@ -210,10 +254,13 @@ summary:focus {
 	margin-bottom: 5px;
 	display: inline-block;
 	grid-column: 2;
+	resize: none;
 }
+
 .selectionBox {
-	display: grid;
+	display: inline-grid;
 	grid-template-columns: 140px 500px;
+	grid-template-rows: auto auto;
 	align-content: center;
 	margin-top: 20px;
 }

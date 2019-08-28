@@ -1,21 +1,14 @@
 import base64
-import pdb
-import xmlschema
-import os
-import scipy.io.wavfile as wavfile
+from zipfile import ZipFile
+
+import soundfile as soundfile
 import dash
-import pandas as pd
-import dash_table
-import yaml
-import io
-import webbrowser
-from flask import Flask
+import dash_core_components as dcc
+import dash_html_components as html
 import flask
 import xmlschema
 from dash.dependencies import Input, Output, State
-import dash_core_components as dcc
-import dash_html_components as html
-
+from shutil import copy
 from audioExtractor import *
 from text import *
 
@@ -83,9 +76,8 @@ def downloadProjectZipFile(urlpath):
 
 # ----------------------------------------------------------------------------------------------------
 def create_eafUploader():
-    uploader = dcc.Upload(id='upload-eaf-file',
-                          children=html.Div(html.A(id='upload-eaf-link', children='select file', className='button')),
-                          multiple=False, disabled=1)
+    hyperLink = html.A(id='upload-eaf-link', children='select file', className='fakebuttonOff')
+    uploader = dcc.Upload(id='upload-eaf-file', children=[hyperLink], multiple=False, disabled=1)
 
     return uploader
 
@@ -96,8 +88,7 @@ def create_setTitleTab():
                               placeholder='enter convenient, concise text title here, no spaces please!',
                               value="",
                               className="titleInput")
-
-    setTitleButton = html.Button(id='setTitleButton', type='submit', children='submit', className="button")
+    setTitleButton = html.Button(type="submit",id='setTitleButton', children="submit", className="button")
 
     children = [setTitleButton, setTitleInput]
 
@@ -125,9 +116,8 @@ def create_eafUploaderTab():
 
 # ----------------------------------------------------------------------------------------------------
 def create_soundFileUploader():
-    uploader = dcc.Upload(id='upload-sound-file',
-                          children=html.Div(html.A(id='upload-sound-link', children='select file', className='button')),
-                          multiple=False, disabled=1)
+    hyperLink = html.A(id='upload-sound-link', children='select file', className='fakebuttonOff')
+    uploader = dcc.Upload(id='upload-sound-file', children=hyperLink, multiple=False, disabled=1)
 
     return uploader
 
@@ -176,10 +166,8 @@ def create_grammaticalTermsUploaderTab():
 
 # ----------------------------------------------------------------------------------------------------
 def create_grammaticalTermsFileUploader():
-    uploader = dcc.Upload(id='upload-grammaticalTerms-file',
-                          children=html.Div(
-                              html.A(id='upload-grammaticalTerms-link', children='select file', className='button')),
-                          multiple=False, disabled=1)
+    hyperLink=html.A(id='upload-grammaticalTerms-link', children='select file', className='fakebuttonOff')
+    uploader = dcc.Upload(id='upload-grammaticalTerms-file', children=hyperLink, multiple=False, disabled=1)
 
     return uploader
 
@@ -217,7 +205,7 @@ def create_webPageCreationTab():
 def create_tierMapGui():
     dropDownMenus = html.Div("table will go here", id="tierMappingMenus")
 
-    saveTierMappingChoicesButton = html.Button('Save Choices', id='saveTierMappingSelectionsButton',
+    saveTierMappingChoicesButton = html.Button('save', id='saveTierMappingSelectionsButton',
                                                className="button")
 
     tierMappingChoicesResultDisplay = html.Span(id="tierMappingChoicesResultDisplay", children="",
@@ -331,7 +319,7 @@ def createTierMappingMenus(eafFilename):
         ], className="tiermap"
                                    )
 
-    saveTierMappingChoicesButton = html.Button('Save Choices', id='saveTierMappingSelectionsButton',
+    saveTierMappingChoicesButton = html.Button('save', id='saveTierMappingSelectionsButton',
                                                className="button")
 
     tierMappingChoicesResultDisplay = html.Span(id="tierMappingChoicesResultDisplay", children="",
@@ -350,13 +338,13 @@ def createTierMappingMenus(eafFilename):
 
 
 # ----------------------------------------------------------------------------------------------------
-def parse_eaf_upload(contents, filename, date):
-    print("filename selected: %s" % filename)
-    # pdb.set_trace()
-    content_type, content_string = contents.split(',')
-    nchar = len(content_string)
-    print("%s (%s): %d characters" % (filename, content_type, nchar))
-    return (nchar)
+# def parse_eaf_upload(contents, filename):
+#     print("filename selected: %s" % filename)
+#     # pdb.set_trace()
+#     content_type, content_string = contents.split(',')
+#     nchar = len(content_string)
+#     print("%s (%s): %d characters" % (filename, content_type, nchar))
+#     return (nchar)
 
 
 # ----------------------------------------------------------------------------------------------------
@@ -388,9 +376,9 @@ app.layout = html.Div(
                Output('eaf_filename_hiddenStorage', 'children')],
               [Input('upload-eaf-file', 'contents')],
               [State('upload-eaf-file', 'filename'),
-               State('upload-eaf-file', 'last_modified'),
+               #State('upload-eaf-file', 'last_modified'),
                State('projectDirectory_hiddenStorage', 'children')])
-def on_eafUpload(contents, name, date, projectDirectory):
+def on_eafUpload(contents, name, projectDirectory):
     if name is None:
         return ("", "")
     print("on_eafUpload, name: %s" % name)
@@ -421,9 +409,9 @@ def on_eafUpload(contents, name, date, projectDirectory):
                Output('extractSoundsByPhraseButton', 'disabled')],
               [Input('upload-sound-file', 'contents')],
               [State('upload-sound-file', 'filename'),
-               State('upload-sound-file', 'last_modified'),
+               #State('upload-sound-file', 'last_modified'),
                State('projectDirectory_hiddenStorage', 'children')])
-def on_soundUpload(contents, name, date, projectDirectory):
+def on_soundUpload(contents, name, projectDirectory):
     if name is None:
         return ("", "", 1)
     print("=== on_soundUpload")
@@ -452,7 +440,7 @@ def on_soundUpload(contents, name, date, projectDirectory):
         else:
             if "Unsupported bit depth: the wav file has 24-bit data" in errorMessage:
                 sound_validationMessage = "File %s (%d byes) has 24-bit data, must be minimum 32-bit." % (
-                name, fileSize)
+                    name, fileSize)
             else:
                 sound_validationMessage = "Bad sound file: %s [File: %s (%d bytes)]" % (errorMessage, name, fileSize)
             newButtonState = 1
@@ -463,16 +451,16 @@ def on_soundUpload(contents, name, date, projectDirectory):
 @app.callback(Output('tierMapUploadTextArea', 'value'),
               [Input('upload-tierMap-file', 'contents')],
               [State('upload-tierMap-file', 'filename'),
-               State('upload-tierMap-file', 'last_modified'),
+               #State('upload-tierMap-file', 'last_modified'),
                State('projectDirectory_hiddenStorage', 'children')])
-def on_tierMapUpload(contents, name, date, projectDirectory):
+def on_tierMapUpload(contents, name, projectDirectory):
     if name is None:
         return ("")
     print("=== on_tierMapUpload")
     encodedString = contents.encode("utf8").split(b";base64,")[1]
     decodedString = base64.b64decode(encodedString)
     s = decodedString.decode('utf-8')
-    yaml_list = yaml.load(s)
+    # yaml_list = yaml.load(s)
     filename = os.path.join(projectDirectory, name)
     with open(filename, "w") as fp:
         fp.write(s)
@@ -485,9 +473,9 @@ def on_tierMapUpload(contents, name, date, projectDirectory):
 @app.callback(Output('grammaticalTermsUploadTextArea', 'value'),
               [Input('upload-grammaticalTerms-file', 'contents')],
               [State('upload-grammaticalTerms-file', 'filename'),
-               State('upload-grammaticalTerms-file', 'last_modified'),
+               # State('upload-grammaticalTerms-file', 'last_modified'),
                State('projectDirectory_hiddenStorage', 'children')])
-def on_grammaticalTermsUpload(contents, name, date, projectDirectory):
+def on_grammaticalTermsUpload(contents, name, projectDirectory):
     if name is None:
         return ("")
     print("=== on_grammaticalTermsUpload")
@@ -501,7 +489,7 @@ def on_grammaticalTermsUpload(contents, name, date, projectDirectory):
     except UnicodeDecodeError:
         return "Please select a text (UTF-8) file.", 1
     s_NoTabs = s.replace("\t", "")
-    yaml_list = yaml.load(s_NoTabs)
+    # yaml_list = yaml.load(s_NoTabs)
     with open(filename, "w") as fp:
         fp.write(s)
         fp.close()
@@ -517,18 +505,18 @@ def on_grammaticalTermsUpload(contents, name, date, projectDirectory):
     [Input('extractSoundsByPhraseButton', 'n_clicks')],
     [State('sound_filename_hiddenStorage', 'children'),
      State('eaf_filename_hiddenStorage', 'children'),
-     State('projectTitle_hiddenStorage', 'children'),
+     # State('projectTitle_hiddenStorage', 'children'),
      State('projectDirectory_hiddenStorage', 'children')
      ])
-def on_extractSoundPhrases(n_clicks, soundFileName, eafFileName, projectTitle, projectDirectory):
+def on_extractSoundPhrases(n_clicks, soundFileName, eafFileName, projectDirectory):
     if n_clicks is None:
-        return ("", "fakebutton", 1, 1)
+        return ("", "fakebuttonOff", 1, 1)
     print("=== on_extractSoundPhrases")
     print("n_clicks: %d" % n_clicks)
     if soundFileName is None:
-        return ("")
+        return ("", "fakebuttonOff", 1, 1)
     if eafFileName is None:
-        return ("")
+        return ("", "fakebuttonOff", 1, 1)
     soundFileName = soundFileName
     soundFile = os.path.basename(soundFileName)
     eafFileName = eafFileName
@@ -538,7 +526,7 @@ def on_extractSoundPhrases(n_clicks, soundFileName, eafFileName, projectTitle, p
     print("eafFileName: %s" % eafFileName)
     phraseFileCount = extractPhrases(soundFileFullPath, eafFileFullPath, projectDirectory)
     print("after extractPhrases, enable next button in sequence (upload abbreviations)")
-    newButtonState = 'fakebuttonEnabled'
+    newButtonState = 'fakebuttonOn'
     return ("File %s parsed into %d phrases in audio directory." % (soundFile, phraseFileCount), newButtonState, 0, 0)
 
 
@@ -615,7 +603,7 @@ def createWebPageCallback(n_clicks, soundFileName, eafFileName, projectDirectory
                             os.path.join(projectDirectory, "tierGuide.yaml"), soundFileName)
 
     webpageAt = os.path.join(projectDirectory, "%s.html" % projectTitle)
-    HTMLFILE = webpageAt
+    # HTMLFILE = webpageAt
     absolutePath = os.path.abspath(webpageAt)
     print(" webpage: %s" % webpageAt)
     file = open(absolutePath, "w")
@@ -677,14 +665,14 @@ def setTitle(n_clicks, newTitle):
     print("=== title callback")
     if n_clicks is None:
         print("n_clicks is None")
-        return ("", "fakebutton", 1)
+        return ("", "fakebuttonOff", 1)
     if len(newTitle) == 0:
         print("no title provided")
-        return ("", "fakebutton", 1)
+        return ("", "fakebuttonOff", 1)
     print("nClicks: %d, currentTitle: %s" % (n_clicks, newTitle))
     print("--- set project title")
     print("enable next button in sequence (upload .eaf file)")
-    newButtonState = "fakebuttonEnabled"
+    newButtonState = "fakebuttonOn"
     newTitle = newTitle.strip()
     return (newTitle, newButtonState, 0)
 
@@ -804,23 +792,23 @@ def updateTranscription2Tier(value):
 def saveTierMappingSelection(n_clicks, speechTier, transcription2Tier, morphemeTier, morphemeGlossTier, translationTier,
                              translation2Tier, projectDirectory):
     if n_clicks is None:
-        return ("", "fakebutton", 1)
+        return ("", "fakebuttonOff", 1)
     print("saveTierMappingSelectionsButton: %d" % n_clicks)
     if len(speechTier) == 0:
         print("speechTier not mapped")
-        return ("You must specify a tier for the first line.", "fakebutton", 1)
+        return ("You must specify a tier for the first line.", "fakebuttonOff", 1)
 
     if len(translationTier) == 0:
         print("translationTier not mapped")
-        return ("You must specify a tier for the translation.", "fakebutton", 1)
+        return ("You must specify a tier for the translation.", "fakebuttonOff", 1)
 
     if len(morphemeTier) != 0 and len(morphemeGlossTier) == 0:
         print("morpheme tier but no morphemeGlossTier")
-        return ("You must specify the tier for the morpheme glosses.", "fakebutton", 1)
+        return ("You must specify the tier for the morpheme glosses.", "fakebuttonOff", 1)
 
     if len(morphemeTier) == 0 and len(morphemeGlossTier) != 0:
         print("morpheme tier but no morphemeGlossTier")
-        return ("You must specify the tier where the line is parsed.", "fakebutton", 1)
+        return ("You must specify the tier where the line is parsed.", "fakebuttonOff", 1)
 
     print("time to write tierGuide.yaml")
     print("speechTier: %s" % speechTier)
@@ -832,7 +820,7 @@ def saveTierMappingSelection(n_clicks, speechTier, transcription2Tier, morphemeT
     saveTierGuide(projectDirectory, speechTier, transcription2Tier, morphemeTier, morphemeGlossTier, translationTier,
                   translation2Tier)
     print("enabling next button in sequence (Upload audio select file)")
-    newButtonState = "fakebuttonEnabled"
+    newButtonState = "fakebuttonOn"
     return ("Your selections have been saved.", newButtonState, 0)
 
 
@@ -909,7 +897,7 @@ def createWebPage(eafFileName, projectDirectory, grammaticalTermsFileName, tierG
     print("audioDirectoryRelativePath: %s" % audioDirectoryRelativePath)
     print("grammaticalTermsFile: %s" % grammaticalTermsFileName)
     print("tierGuideFile: %s" % tierGuideFileName)
-    if grammaticalTermsFileName != None:
+    if grammaticalTermsFileName is not None:
         grammaticalTermsFileName = os.path.join(projectDirectory, grammaticalTermsFileName)
 
     text = Text(eafFileName,
@@ -918,7 +906,6 @@ def createWebPage(eafFileName, projectDirectory, grammaticalTermsFileName, tierG
                 tierGuideFileName,
                 projectDirectory)
     print("-------- leaving createWebPage")
-    print("okay", text.toHTML())
     return (text.toHTML())
 
 
@@ -960,15 +947,16 @@ def createZipFile(projectDir, projectTitle):
     zipHandle.close()
 
     os.chdir(currentDirectoryOnEntry)
+    print(zipFilenameFullPath)
     return (zipFilenameFullPath)
 
 
 # ----------------------------------------------------------------------------------------------------
 # enable these lines for running from bash and python
-# if __name__ == "__main__":
-#   app.run_server(host='0.0.0.0', port=60041)
+if __name__ == "__main__":
+  app.run_server(host='0.0.0.0', port=60041)
 
 # enable these lines if running with gunicorn
-if __name__ == "__main__":
-    server = app.server
-    app.run()
+# if __name__ == "__main__":
+#     server = app.server
+#     app.run()
