@@ -40,12 +40,19 @@ server = app.server
 # we may want to further qualify the route path to something like '/demos/<filename>'
 # for better separation in the slexil webapp directory structure
 # ----------------------------------------------------------------------------------------------------
-@app.server.route('/demos/<filename>')
-def downloadZip(filename):
-    path = os.path.join("demos", filename)
-    return flask.send_file(path,
-                           mimetype='application/zip',
-                           as_attachment=True)
+# @app.server.route('/<path:urlpath>')
+# def serve_static(urlpath):
+#     print("serve static, path: %s" % urlpath)
+#     return flask.send_file("about.html")
+
+# ----------------------------------------------------------------------------------------------------
+# @app.server.route('/<filename>')
+# def loadAboutPage(filename):
+#     path = filename
+#     print("okay")
+#     # return flask.send_file(path,
+#     #                        mimetype='application/zip',
+#     #                        as_attachment=True)
 
 
 # ----------------------------------------------------------------------------------------------------
@@ -220,28 +227,68 @@ def create_tierMapGui():
 
 
 # ----------------------------------------------------------------------------------------------------
+def createAppTab():
+    intro = create_introduction()
+    children = [intro,
+                html.Details([html.Summary('Set title', className="summary"), html.Div(create_setTitleTab())],
+                             className="allDivs", open="1"),
+                html.Details([html.Summary('Upload .eaf file', className="summary"), html.Div(create_eafUploaderTab())],
+                             className="allDivs"),
+                html.Details([html.Summary('Create tier guide', className="summary"), html.Div(create_tierMapGui())],
+                             className="allDivs"),
+                html.Details(
+                    [html.Summary('Upload audio file', className="summary"), html.Div(create_soundFileUploaderTab())],
+                    className="allDivs"),
+                html.Details(
+                    [html.Summary('Upload abbreviations', className="summary"),
+                     html.Div(create_grammaticalTermsUploaderTab())],
+                    className="allDivs"),
+                html.Details(
+                    [html.Summary('Create web page', className="summary"), html.Div(create_webPageCreationTab())],
+                    className="allDivs")
+                ]
+    div = html.Div(id="webapp", className="null", children=children)
+    return div
+
+
+# ----------------------------------------------------------------------------------------------------
+def createAboutTab():
+    innerdiv = html.Iframe(id="frame", className="aboutFrame")
+    div = html.Div(id="about", className="aboutcontent", children=innerdiv)
+    return innerdiv
+
+
+# ----------------------------------------------------------------------------------------------------
 def create_allDivs():
+
     children = [
         html.H4("", className="banner", id='pageTitleH4'),
-        html.Div(create_introduction(), className="introduction"),
-        html.Details([html.Summary('Set title', className="summary"), html.Div(create_setTitleTab())],
-                     className="allDivs", open="1"),
-        html.Details([html.Summary('Upload .eaf file', className="summary"), html.Div(create_eafUploaderTab())],
-                     className="allDivs"),
-        html.Details([html.Summary('Create tier guide', className="summary"), html.Div(create_tierMapGui())],
-                     className="allDivs"),
-        html.Details([html.Summary('Upload audio file', className="summary"), html.Div(create_soundFileUploaderTab())],
-                     className="allDivs"),
-        html.Details(
-            [html.Summary('Upload abbreviations', className="summary"), html.Div(create_grammaticalTermsUploaderTab())],
-            className="allDivs"),
-        html.Details([html.Summary('Create Web Page', className="summary"), html.Div(create_webPageCreationTab())],
-                     className="allDivs")]
+        dcc.Tabs(
+            id="tabs",
+            value='appTab',
+            # parent_className='tabbutton',
+            className='tabbar',
+            children=[
+                dcc.Tab(
+                    label='SLEXIL', #.html.Div('SLEXIL',className="tabbutton", id="webappbutton"),
+                    # children=[appTab],
+                    value='appTab',
+                    className="tabbutton",
+                    selected_className="tabselected"),
+                dcc.Tab(
+                    label='About SLEXIL', #html.Button('About SLEXIL', className ="tabbbuton", id="aboutbutton"),
+                    # children=[aboutTab],
+                    value='aboutTab',
+                    className = "tabbutton",
+                    selected_className = "tabbutton",
+                    id="aboutTab")
+            ]),
+        html.Div(id='tab_contents')
+        ]
 
     div = html.Div(children=children, id='main-div', className="mainDiv")
 
     return div
-
 
 # ----------------------------------------------------------------------------------------------------
 def create_introduction():
@@ -252,14 +299,9 @@ def create_introduction():
                         "browser on any computer. There is a video tutorial on YouTube and you can "
                         "download a demo by clicking on the button to the right.")
 
-    button = html.Button('Download Demo', className='demoButton')
+    button = html.Button('download demo', className='demoButton')
     contents = [html.A(button, href='demos/infernoDemo.zip', className="buttonCell"), text]
-    div = html.Div(contents, className='introduction', id='preamble')
-    # cell1 = html.Td(text,className='introduction')
-    # cell2 = html.Td(html.A(html.Button('Download Demo',className='button'),href='demos/infernoDemo.zip'),className="buttonCell")
-    # row = [html.Tr(children=[cell1,cell2])]
-    #
-    # div = html.Table(children=row, id='preamble')
+    div = html.Div(children=contents, className='introduction', id='preamble')
 
     return div
 
@@ -338,16 +380,6 @@ def createTierMappingMenus(eafFilename):
 
 
 # ----------------------------------------------------------------------------------------------------
-# def parse_eaf_upload(contents, filename):
-#     print("filename selected: %s" % filename)
-#     # pdb.set_trace()
-#     content_type, content_string = contents.split(',')
-#     nchar = len(content_string)
-#     print("%s (%s): %d characters" % (filename, content_type, nchar))
-#     return (nchar)
-
-
-# ----------------------------------------------------------------------------------------------------
 app.layout = html.Div(
     children=[
         create_allDivs(),
@@ -369,6 +401,29 @@ app.layout = html.Div(
     className="row",
     id='outerDiv'
 )
+# ----------------------------------------------------------------------------------------------------
+@app.server.route('/about.html')
+def serve_static():
+    print("serve static")
+    return flask.send_file("about.html")
+
+# ----------------------------------------------------------------------------------------------------
+@app.callback(Output('frame', 'src'),
+            [Input('frame', 'children')])
+def setSourceForAboutIframe(children):
+    print('====== setting source for about iFrame')
+    return('about.html')
+
+# ----------------------------------------------------------------------------------------------------
+@app.callback(Output('tab_contents', 'children'),
+            [Input('tabs', 'value')])
+def fillTab(tab):
+    print("======= filling in tab")
+    if tab == 'appTab':
+        child = createAppTab()
+    elif tab == 'aboutTab':
+        child = createAboutTab()
+    return child
 
 
 # ----------------------------------------------------------------------------------------------------
