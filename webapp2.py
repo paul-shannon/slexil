@@ -296,11 +296,11 @@ def create_introduction():
                         "in [ELAN](https://tla.mpi.nl/tools/tla-tools/elan/). Users can access this site to upload the "
                         ".eaf and .wav portions of ELAN projects and download an HTML file and accompanying CSS, JavaScript, "
                         "and parsed audio files that can be embedded on a webpage or viewed in a "
-                        "browser on any computer. There is a video tutorial on YouTube and you can "
+                        "browser on any computer. There is a [video tutorial] (https://TBA.youtube.com) on YouTube and you can "
                         "download a demo by clicking on the button to the right.")
 
     button = html.Button('download demo', className='demoButton')
-    contents = [html.A(button, href='demos/infernoDemo.zip', className="buttonCell"), text]
+    contents = [html.A(button, href='demos/infernoDemo.zip', className="buttonCell"), html.Div(id="intro", children=[text],className="introText")]
     div = html.Div(children=contents, className='introduction', id='preamble')
 
     return div
