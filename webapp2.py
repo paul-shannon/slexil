@@ -296,7 +296,7 @@ def create_introduction():
                         "in [ELAN](https://tla.mpi.nl/tools/tla-tools/elan/). Users can access this site to upload the "
                         ".eaf and .wav portions of ELAN projects and download an HTML file and accompanying CSS, JavaScript, "
                         "and parsed audio files that can be embedded on a webpage or viewed in a "
-                        "browser on any computer. There is a [video tutorial] (https://TBA.youtube.com) on YouTube and you can "
+                        "browser on any computer. There is a [video tutorial] (https://youtu.be/ijqnk57J9G8) on YouTube and you can "
                         "download a demo by clicking on the button to the right.")
 
     button = html.Button('download demo', className='demoButton')
@@ -939,7 +939,7 @@ def extractPhrases(soundFileFullPath, eafFileFullPath, projectDirectory):
     ea = AudioExtractor(soundFileFullPath, eafFileFullPath, audioDirectory)
     assert (ea.validInputs)
     ea.extract(quiet=True)
-    phraseFileCount = len(os.listdir(audioDirectory))
+    phraseFileCount = len(os.listdir(audioDirectory))-1
     return (phraseFileCount)
 
 
