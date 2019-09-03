@@ -1,5 +1,4 @@
 .header {
-	#background-color: red;
 	text-align: center;
 }
 
@@ -62,9 +61,8 @@
 	margin-top: 20px;
 	margin-bottom; 20px;
 	padding: 5px 5px 5px 5px;
-	width: 775px;
+	width: 915px;
 	font-size: 12;
-	#border: 1px solid #aaa;
 	border-style: solid;
 	border-width: 1px 6px 15px 1px;
 	border-radius: 5px;
@@ -109,13 +107,13 @@
 	padding-right: 20px;
 }
 .aboutMain ol > li {
-  list-style: none;
+ 	list-style: none;
 	margin-bottom: 10px;
 	text-indent: -20px;
 }
 .aboutMain ol > li:before {
-  content: counter(list, lower-alpha) ") ";
-  counter-increment: list;
+	content: counter(list, lower-alpha) ") ";
+	counter-increment: list;
 }
 .row {
 	max-width: 1000px;
@@ -355,7 +353,7 @@ summary:focus {
 
 .anchor {
 	width: 100%;
-  text-align: center;
+	text-align: center;
 	font-size: small;
 }
 
@@ -403,21 +401,6 @@ summary:focus {
 .tabbutton:hover, .tabselected:hover {
     color: white;
 }
-
-/* Create an active/current tablink class */
-.tabselected {
-    background-color: #00BFFF;
-}
-
-/*.aboutcontent {
-	#border: 14px solid #d6bcd6;
-	#border-top: 5px solid #00BFFF;
-	width: 75px;
-	overflow: hidden;
-	#height: 105%;
-	scroll: no;
-	display: block;
-}*/
 
 .aboutFrame {
     border-top: 5px solid #00BFFF;
