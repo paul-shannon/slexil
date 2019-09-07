@@ -34,6 +34,22 @@ app.scripts.config.serve_locally = True
 server = app.server
 
 
+#------------------------------------------------------------------------------------------------------------------------
+# this route handles the download of zipped up "demo input" zip file,
+# in this case, infernoDemo.zip, which a new slexil user can run through the webapp to
+# learn the ropes
+# we may want to further qualify the route path to something like '/demos/<filename>'
+# for better separation in the slexil webapp directory structure
+#----------------------------------------------------------------------------------------------------
+@app.server.route('/demos/<filename>')
+def downloadZip(filename):
+    print("==== download zip: %s" % filename)
+    path = os.path.join("demos", filename)
+    return flask.send_file(path,
+                           mimetype='application/zip',
+                           as_attachment=True)
+
+
 # ------------------------------------------------------------------------------------------------------------------------
 # this route handles the download of zipped up "demo input" zip file,
 # in this case, infernoDemo.zip, which a new slexil user can run through the webapp to
@@ -303,7 +319,8 @@ def create_introduction():
                         "download a demo by clicking on the button to the right.")
 
     button = html.Button('download demo', className='demoButton')
-    contents = [html.A(button, href='demos/infernoDemo.zip', className="buttonCell"), html.Div(id="intro", children=[text],className="introText")]
+    contents = [html.A(button, href='demos/infernoDemo.zip', className="buttonCell"), 
+                html.Div(id="intro", children=[text],className="introText")]
     div = html.Div(children=contents, className='introduction', id='preamble')
 
     return div
@@ -405,10 +422,10 @@ app.layout = html.Div(
     id='outerDiv'
 )
 # ----------------------------------------------------------------------------------------------------
-@app.server.route('/about.html')
-def serve_static():
-    print("serve static")
-    return flask.send_file("about.html")
+#@app.server.route('/about.html')
+#def serve_static():
+#    print("serve static")
+#    return flask.send_file("about.html")
 
 # ----------------------------------------------------------------------------------------------------
 @app.callback(Output('frame', 'src'),
