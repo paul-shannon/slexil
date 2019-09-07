@@ -18,3 +18,5 @@ dash_html_components
 dash-dangerously-set-inner-html
 yattag
 bs4
+soundfile
+
