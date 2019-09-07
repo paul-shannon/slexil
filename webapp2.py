@@ -404,11 +404,6 @@ app.layout = html.Div(
     className="row",
     id='outerDiv'
 )
-# ----------------------------------------------------------------------------------------------------
-@app.server.route('/about.html')
-def serve_static():
-    print("serve static")
-    return flask.send_file("about.html")
 
 # ----------------------------------------------------------------------------------------------------
 @app.callback(Output('frame', 'src'),
@@ -1011,10 +1006,10 @@ def createZipFile(projectDir, projectTitle):
 
 # ----------------------------------------------------------------------------------------------------
 # enable these lines for running from bash and python
-if __name__ == "__main__":
-  app.run_server(host='0.0.0.0', port=60041)
+# if __name__ == "__main__":
+#   app.run_server(host='0.0.0.0', port=60041)
 
 # enable these lines if running with gunicorn
-# if __name__ == "__main__":
-#     server = app.server
-#     app.run()
+if __name__ == "__main__":
+    server = app.server
+    app.run()
