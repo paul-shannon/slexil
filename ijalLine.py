@@ -274,38 +274,36 @@ class IjalLine:
                 with htmlDoc.tag("div", klass="speech-tier"):
                     htmlDoc.asis(self.getSpokenText())
 
-                    transcription2 = self.getTranscription2()
-                    if transcription2 != None:
-                        with htmlDoc.tag("div", klass="secondTranscription-tier"):
-                            htmlDoc.asis(self.getTranscription2())
+            transcription2 = self.getTranscription2()
+            if transcription2 != None:
+                with htmlDoc.tag("div", klass="secondTranscription-tier"):
+                   htmlDoc.asis(self.getTranscription2())
 
-                    morphemes = self.getMorphemes()
-                    # print(morphemes)
-                    if (len(morphemes) > 0):
-                        with htmlDoc.tag("div", klass="morpheme-tier", style=styleString):
-                            for morpheme in morphemes:
-                                # print(morpheme)
-                                with htmlDoc.tag("div", klass="morpheme-cell"):
-                                    htmlDoc.asis(morpheme)
+            morphemes = self.getMorphemes()
+            if (len(morphemes) > 0):
+               with htmlDoc.tag("div", klass="morpheme-tier", style=styleString):
+                  for morpheme in morphemes:
+                      with htmlDoc.tag("div", klass="morpheme-cell"):
+                          htmlDoc.asis(morpheme)
 
-                    morphemeGlosses = self.getMorphemeGlosses()
-                    if (len(morphemeGlosses) > 0):
-                        with htmlDoc.tag("div", klass="morpheme-tier", style=styleString):
-                            for morphemeGloss in self.getMorphemeGlosses():
-                                with htmlDoc.tag("div", klass="morpheme-cell"):
-                                    mg = MorphemeGloss(morphemeGloss, self.grammaticalTerms)
-                                    mg.parse()
-                                    mg.toHTML(htmlDoc)
+            morphemeGlosses = self.getMorphemeGlosses()
+            if (len(morphemeGlosses) > 0):
+               with htmlDoc.tag("div", klass="morpheme-tier", style=styleString):
+                  for morphemeGloss in self.getMorphemeGlosses():
+                      with htmlDoc.tag("div", klass="morpheme-cell"):
+                          mg = MorphemeGloss(morphemeGloss, self.grammaticalTerms)
+                          mg.parse()
+                          mg.toHTML(htmlDoc)
 
-                    translation = self.getTranslation()
-                    if translation:
-                        with htmlDoc.tag("div", klass="freeTranslation-tier"):
-                            htmlDoc.asis(self.getTranslation())
+            translation = self.getTranslation()
+            if translation:
+               with htmlDoc.tag("div", klass="freeTranslation-tier"):
+                   htmlDoc.asis(self.getTranslation())
 
-                    translation2 = self.getTranslation2()
-                    if translation2 != None:
-                        with htmlDoc.tag("div", klass="freeTranslation-tier"):
-                            htmlDoc.text(translation2)
+            translation2 = self.getTranslation2()
+            if translation2 != None:
+               with htmlDoc.tag("div", klass="freeTranslation-tier"):
+                   htmlDoc.text(translation2)
 
 
 # ------------------------------------------------------------------------------------------------------------------------
