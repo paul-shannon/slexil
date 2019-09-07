@@ -72,15 +72,18 @@
 .mainDiv {
 	max-width: 975px;
 	margin-left: 25px;
+	font-family: Arial;
 }
 
 .mainDivAbout {
 	#max-width: 975px;
 	margin-left: 25px;
 	border-top: 5px solid #00BFFF;
+	font-family: Arial;
 }
 
 .aboutMain {
+    border-top: 5px solid #00BFFF;
 	padding-left: 25px;
 	font-family: Arial;
 	height: 110%;
@@ -199,6 +202,7 @@
 	width: 100%;
 	height: 100%;
 	display: inline-block;
+	font-family: Arial;
 }
 
 .introText {
@@ -263,7 +267,7 @@
 	border-width: 5px 0 2px 0;
 	border-color: #00BFFF;
 	max-width: 975px;
-	font-family:Arial;
+	font-family: Arial;
 }
 summary {
 	font-size: 14pt;
@@ -402,7 +406,7 @@ summary:focus {
     color: white;
 }
 
-.aboutFrame {
+/*.aboutFrame {
     border-top: 5px solid #00BFFF;
 	#border: 14px solid #d6bcd6;
 	display: block;
@@ -418,4 +422,8 @@ summary:focus {
 
 #frame::-webkit-scrollbar {
     display: none;
-}
+}*/
+
+.smallCaps {font-variant: small-caps}
+
+h3 {font-size: 14pt;}
