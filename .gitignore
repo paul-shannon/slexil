@@ -10,7 +10,7 @@ explorations/generateEAF/pythonDemos/daylight1/audio/a*.wav
 # C extensions
 *.so
 
-PROJECTS/
+PROJECTS/*
 # Distribution / packaging
 .Python
 build/
