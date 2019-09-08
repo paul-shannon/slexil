@@ -297,12 +297,12 @@ def create_allDivs():
 
 # ----------------------------------------------------------------------------------------------------
 def create_introduction():
-    text = dcc.Markdown("**SLEXIL** is software for creating animated HTML files from texts prepared "
-                        "in [ELAN](https://tla.mpi.nl/tools/tla-tools/elan/). Users can access this site to upload the "
-                        ".eaf and .wav portions of ELAN projects and download an HTML file and accompanying CSS, JavaScript, "
-                        "and parsed audio files that can be embedded on a webpage or viewed in a "
-                        "browser on any computer. There is a [video tutorial] (https://youtu.be/ijqnk57J9G8) on YouTube and you can "
-                        "download a demo by clicking on the button to the right.")
+    text = dcc.Markdown('''**SLEXIL** is software for creating animated HTML files from texts prepared 
+                        in [ELAN](https://tla.mpi.nl/tools/tla-tools/elan/). Users can access this site to upload the 
+                        .eaf and .wav portions of ELAN projects and download an HTML file and accompanying CSS, JavaScript, 
+                        and parsed audio files that can be embedded on a webpage or viewed in a browser on any computer. 
+                        You can find a [video tutorial] (https://youtu.be/ijqnk57J9G8) on using SLEXIL on YouTube 
+                        and or download a demo project to practice with by clicking on the button to the right.''')
 
     button = html.Button('download demo', className='demoButton')
     contents = [html.A(button, href='demos/infernoDemo.zip', className="buttonCell"), html.Div(id="intro", children=[text],className="introText")]
@@ -1008,10 +1008,10 @@ def createZipFile(projectDir, projectTitle):
 
 # ----------------------------------------------------------------------------------------------------
 # enable these lines for running from bash and python
-# if __name__ == "__main__":
-#   app.run_server(host='0.0.0.0', port=60041)
+if __name__ == "__main__":
+  app.run_server(host='0.0.0.0', port=60041)
 
 # enable these lines if running with gunicorn
-if __name__ == "__main__":
-    server = app.server
-    app.run()
+# if __name__ == "__main__":
+#     server = app.server
+#     app.run()
