@@ -41,10 +41,12 @@ server = app.server
 # we may want to further qualify the route path to something like '/demos/<filename>'
 # for better separation in the slexil webapp directory structure
 # ----------------------------------------------------------------------------------------------------
-# @app.server.route('/<path:urlpath>')
-# def serve_static(urlpath):
-#     print("serve static, path: %s" % urlpath)
-#     return flask.send_file("about.html")
+@app.server.route('/demos/<filename>')
+def downloadZip(filename):
+    path = os.path.join("demos", filename)
+    return flask.send_file(path,
+                           mimetype='application/zip',
+                           as_attachment=True)
 
 # ----------------------------------------------------------------------------------------------------
 # @app.server.route('/<filename>')
