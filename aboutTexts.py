@@ -22,7 +22,7 @@ class AboutTexts:
         abbr = self.makeAbbr()
         download = self.makeDownload()
         credits = self.makeCredits()
-        anchor = html.Div(html.A("top", className="anchor", href="#top"))
+        anchor = html.Div(html.A("top", href="#top"), className="anchor")
 
         children = [basics, ELAN, sound, abbr, download, credits, anchor]
 
@@ -35,8 +35,8 @@ class AboutTexts:
         animated HTML from ELAN projects for the presentation and playback of texts. SLEXIL is 
         compatible with any modern web browser and does not require the user to install any 
         software on their computers. Project components (.eaf file, sound file, list of 
-        abbreviations) can be uploaded through the web interface, configured, and previewed, then 
-        downloaded to the user’s computer. This software is Open Source and source code for the 
+        abbreviations) can be uploaded through the web interface and configured; SLEXIL then builds a webpage which can 
+        be previewed and downloaded to the user’s computer. This software is Open Source and source code for the 
         project can be found on [GitHub] (https://github.com/paul-shannon/slexil).''')
 
         basics = html.Div(className='aboutContents',children=[title,text])
@@ -95,8 +95,8 @@ class AboutTexts:
                             html.Span(className="smallCaps", children=['pl',html.Sub('excl')]),
                             '''” would be listed as “1pl<sub>excl</sub>”. Use “<sup></sup>” tags for superscripting in the same way.'''])
         ])
-        text3 = dcc.Markdown('''Super/subscripting applied to lexical items rather than grammatical abbreviations may "
-                            "have to be applied manually in the HTML file itself.''')
+        text3 = dcc.Markdown('''Super/subscripting applied to lexical items rather than grammatical abbreviations may 
+        have to be applied manually in the HTML file itself.''')
 
         abbr = html.Div(className='aboutContents',children=[title,text1,text2,text3])
         return abbr
@@ -106,10 +106,10 @@ class AboutTexts:
         text = dcc.Markdown('''Once you have built your SLEXIL project on the website, it can be downloaded as a folder 
         to your computer. The folder will be named for the title of your project and contains the 
         following: 1) an .html file, also named after your project; 2) a folder called “audio” 
-        that contains the sound files needed by the project; 3) a CSS style sheet; 4) a ERRORS log 
+        that contains the sound files needed by the project; 3) a CSS style sheet; 4) an ERRORS log 
         file (this will be empty if all went well); 5) two Javascript files used by the project 
         for playback. The .html file can be opened in any browser and will support line-by-line 
-        and continuous playback as long as it is in the same folder as the other project files; 
+        and continuous playback as long as it is in the same folder as the other project components; 
         the CSS stylesheet can be edited to change the look of the page to your heart’s content. 
         The project can be uploaded to any webserver and will continue to work as long as the 
         directory structure is maintained (or appropriate changes are made to the .html file). 
@@ -123,7 +123,7 @@ class AboutTexts:
     def makeCredits(self):
         title = html.H3("Credits")
         text = dcc.Markdown('''SLEXIL was created (in no particular order) by David Beck and Paul Shannon. Feedback, 
-        bug reports, and requests for assistance can be sent to [David] (mailto:dbeck@ualberta.ca)</a>.''')
+        bug reports, and requests for assistance can be sent to [David] (mailto:david.beck@ualberta.ca).''')
 
         credits = html.Div(className='aboutContents',children=[title,text])
         return credits
