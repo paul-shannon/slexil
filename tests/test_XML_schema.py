@@ -18,14 +18,16 @@ def createText():
     print("--- testing normal file")
     elanXmlFilename = "../infernoDemo/inferno-threeLines.eaf"
     validFile = validate_EAF(elanXmlFilename)
-    print("--- testing file with HTML tags")
-    elanXmlFilename = "../testData/prayer/Prayer_HTML_tags.eaf"
-    validFile = validate_EAF(elanXmlFilename)
     print("--- testing file with broken HTML tags")
     elanXmlFilename = "../testData/prayer/Prayer_broken-HTML_tags.eaf"
     validFile = validate_EAF(elanXmlFilename)
     if not validFile:
         return False
+    print("--- testing file with HTML tags")
+    elanXmlFilename = "../testData/prayer/Prayer_HTML_tags.eaf"
+    validFile = validate_EAF(elanXmlFilename)
+    if not validFile:
+        print("=== failed to validate file with tags")
     targetDirectory = "../testData/prayer/audio"
     soundFile = os.path.join(targetDirectory, audioFilename)
     projectDirectory = "../testData/prayer"
@@ -70,10 +72,10 @@ def validate_EAF(filename):
         # return eaf_validationMessage, filename
 
 def runTests(display=False):
-    test_for_HTML_tags()
+    test_for_HTML_tags(display)
 
 
-def test_for_HTML_tags():
+def test_for_HTML_tags(display):
     print("--- test_for_HTML_tags")
 
     text = createText()
@@ -86,6 +88,14 @@ def test_for_HTML_tags():
     assert (list(tbl['value']) == ['SZC-Chatino', 'English Translation-cp-cp', 'Tokenization-cp', 'POS-cp'])
     assert (list(tbl['count']) == [9, 9, 111, 111])
 
+    htmlText = text.toHTML()
+    filename = "prayer.html"
+    f = open(filename, "w")
+    f.write(indent(htmlText))
+    f.close()
+
+    if (display):
+        os.system("open %s" % filename)
 
 if __name__ == '__main__':
     runTests()

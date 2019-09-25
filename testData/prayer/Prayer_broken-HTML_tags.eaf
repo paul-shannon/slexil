@@ -28,7 +28,7 @@
     <TIER ANNOTATOR="Hilaria Cruz" DEFAULT_LOCALE="en" LINGUISTIC_TYPE_REF="default-lt" PARTICIPANT="Simón Zurita Cruz" TIER_ID="SZC-Chatino">
         <ANNOTATION>
             <ALIGNABLE_ANNOTATION ANNOTATION_ID="a1" TIME_SLOT_REF1="ts1" TIME_SLOT_REF2="ts2">
-                <ANNOTATION_VALUE>Ndiyo<sup>20<sup>si14 Sa3nta24 Ay3ma24</ANNOTATION_VALUE>
+                <ANNOTATION_VALUE>Ndiyo&lt;sup&gt;20&lt;sup&gt;si14 Sa3nta24 Ay3ma24</ANNOTATION_VALUE>
             </ALIGNABLE_ANNOTATION>
         </ANNOTATION>
         <ANNOTATION>
