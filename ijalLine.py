@@ -290,7 +290,7 @@ class IjalLine:
             if (len(morphemeGlosses) > 0):
                with htmlDoc.tag("div", klass="morpheme-tier", style=styleString):
                   for morphemeGloss in self.getMorphemeGlosses():
-                      with htmlDoc.tag("div", klass="morpheme-cell"):
+                      #with htmlDoc.tag("div", klass="morpheme-cell"):
                           mg = MorphemeGloss(morphemeGloss, self.grammaticalTerms)
                           mg.parse()
                           mg.toHTML(htmlDoc)
@@ -305,7 +305,9 @@ class IjalLine:
                with htmlDoc.tag("div", klass="freeTranslation-tier"):
                    htmlDoc.text(translation2)
 
-
+               # create an empty div, experimentally used for explanatory morpheme text
+            with htmlDoc.tag("div", klass="morphemeInfo"):
+                pass;
 # ------------------------------------------------------------------------------------------------------------------------
 def findChildren(doc, rootElement):
     elementsToDo = [rootElement]
