@@ -38,14 +38,14 @@ function trackAnnotations() {
 				currentAnnotationID = currentAnnotation.id;
 				currentLineID = currentAnnotationID.replace('a','');
 				currentLine = document.getElementById(currentLineID);
-				setCurrentAnnotation(currentLine);
+				selectCurrentAnnotation(currentLine);
 				}
-			} 	
+			}
 	}
 }
 //----------------------------------------------------------------------------------------------------
 
-function setCurrentAnnotation(currentLine) {
+function selectCurrentAnnotation(currentLine) {
         if (annotationPlaying != currentLine) {
             annotationPlaying.className ='line-wrapper';
             if (scrollingOn = true) {
@@ -55,7 +55,7 @@ function setCurrentAnnotation(currentLine) {
 					},1000);
 			}
         }
-        currentLine.className += ' current-line';      
+        currentLine.className += ' current-line';
         annotationPlaying = currentLine;
         if (! scrollingOn) {isScrolledIntoView(annotationPlaying)}
 }
@@ -117,7 +117,7 @@ function recPaused()
 
 //this was supposed to jump the animation to a  point in the recording if the user set
 //it with the slider control, but it has all kinds of bizarre knock on effects; it seems
-//like the seeked event is triggered during a slide, not when the slide is finished, so 
+//like the seeked event is triggered during a slide, not when the slide is finished, so
 //you get a long queue of events calling this function(??)
 
 function moveToSliderPosition()
@@ -132,7 +132,7 @@ function moveToSliderPosition()
 // 		$('html,body').animate({
 // 			scrollTop: currentLineOffset.top-halfWindow
 // 			},1000);
-// 		currentLine.className += ' current-line';      
+// 		currentLine.className += ' current-line';
 //         annotationPlaying = currentLine;
 	}
 }
