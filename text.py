@@ -185,29 +185,29 @@ class Text:
 				htmlDoc.asis('<meta charset="UTF-8">')
 				htmlDoc.asis(self.getJQuery())
 				htmlDoc.asis(self.getCSS())
-				with htmlDoc.tag('body'):
-					for i in lineNumbers:
-						if(not self.quiet):
-							print("line %d/%d" % (i, self.lineCount))
-						#line = IjalLine(self.xmlDoc, i, self.tierGuide,self.audioTable[i], self.grammaticalTerms)
-						#line = IjalLine(self.xmlDoc, i, self.tierGuide, str(i+1), self.grammaticalTerms)
-						line = IjalLine(self.xmlDoc, i, self.tierGuide, self.grammaticalTerms)
-						line.parse()
-						start = line.getStartTime()
-						end = line.getEndTime()
-						timeCodesForLine = [start,end]
-						timeCodesForText.append(timeCodesForLine)
-						with htmlDoc.tag("div",  klass="line-wrapper", id=i+1):
-							tbl = line.getTable()
-							#lineID = tbl.ix[0]['ANNOTATION_ID']
-							lineID = tbl.iloc[0][tbl.columns.values.tolist().index('ANNOTATION_ID')]
-							with htmlDoc.tag("div", klass="line-sidebar"):
-								line.htmlLeadIn(htmlDoc, self.audioPath, )
-							line.toHTML(htmlDoc)
-				with htmlDoc.tag("div", klass="spacer"):
-					htmlDoc.asis('')
-				htmlDoc.asis(self.getPlayer())
-				htmlDoc.asis(self.getJavascript(timeCodesForText))
+			with htmlDoc.tag('body'):
+				for i in lineNumbers:
+					if(not self.quiet):
+						print("line %d/%d" % (i, self.lineCount))
+					#line = IjalLine(self.xmlDoc, i, self.tierGuide,self.audioTable[i], self.grammaticalTerms)
+					#line = IjalLine(self.xmlDoc, i, self.tierGuide, str(i+1), self.grammaticalTerms)
+					line = IjalLine(self.xmlDoc, i, self.tierGuide, self.grammaticalTerms)
+					line.parse()
+					start = line.getStartTime()
+					end = line.getEndTime()
+					timeCodesForLine = [start,end]
+					timeCodesForText.append(timeCodesForLine)
+					with htmlDoc.tag("div",  klass="line-wrapper", id=i+1):
+						tbl = line.getTable()
+						#lineID = tbl.ix[0]['ANNOTATION_ID']
+						lineID = tbl.iloc[0][tbl.columns.values.tolist().index('ANNOTATION_ID')]
+						with htmlDoc.tag("div", klass="line-sidebar"):
+							line.htmlLeadIn(htmlDoc, self.audioPath, )
+						line.toHTML(htmlDoc)
+					with htmlDoc.tag("div", klass="spacer"):
+						htmlDoc.asis('')
+					htmlDoc.asis(self.getPlayer())
+					htmlDoc.asis(self.getJavascript(timeCodesForText))
 		self.htmlDoc = htmlDoc
 		self.htmlText = htmlDoc.getvalue()
 		return(self.htmlText)
