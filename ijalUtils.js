@@ -5,10 +5,6 @@ var rec = document.getElementById("audioplayer");
 var annotationPlaying = null;
 var currentLine = null;
 var currentAnnotation = 'none';
-var rec = document.getElementById("audioplayer");
-var annotationPlaying = null;
-var currentLine = null;
-var currentAnnotation = 'none';
 var scrollingOn = false;
 var halfWindow = window.innerHeight/3;
 var fullRecIsPlaying = false;
@@ -22,7 +18,7 @@ function playSample(audioID)
 }
 //----------------------------------------------------------------------------------------------------
 
-annotationPlaying = document.getElementById('1');
+//annotationPlaying = document.getElementById('1');
 rec.ontimeupdate = function() {trackAnnotations()};
 rec.onended = function() {removeFinalHighlight()};
 rec.onplay = function() {recPlay()};
@@ -32,6 +28,13 @@ rec.onpause = function() {recPaused()}
 function trackAnnotations() {
 	if (fullRecIsPlaying) {
 		currentAnnotation = findCurrentAnnotation(rec.currentTime);
+    findAnnotations(currentAnnotation);
+	}
+}
+//----------------------------------------------------------------------------------------------------
+
+function findAnnotations(currentAnnotation) {
+		//currentAnnotation = findCurrentAnnotation(time);
 		halfWindow = (window.innerHeight/4);
 		if (currentAnnotation != 'none') {
 			if (currentAnnotation != null) {
@@ -41,20 +44,18 @@ function trackAnnotations() {
 				selectCurrentAnnotation(currentLine);
 				}
 			}
-	}
 }
 //----------------------------------------------------------------------------------------------------
-
 function selectCurrentAnnotation(currentLine) {
         if (annotationPlaying != currentLine) {
             annotationPlaying.className ='line-wrapper';
             if (scrollingOn = true) {
-				currentLineOffset = $(annotationPlaying).offset()
-				$('html,body').animate({
-					scrollTop: currentLineOffset.top-halfWindow
-					},1000);
-			}
-        }
+				          currentLineOffset = $(annotationPlaying).offset()
+				              $('html,body').animate({
+					                   scrollTop: currentLineOffset.top-halfWindow
+					                      },1000);
+			           }
+            }
         currentLine.className += ' current-line';
         annotationPlaying = currentLine;
         if (! scrollingOn) {isScrolledIntoView(annotationPlaying)}
@@ -100,12 +101,15 @@ function isScrolledIntoView(elem)
 
 function recPlay()
 {
-	fullRecIsPlaying = true;
-	if (rec.played.length <= 1) {
-		$('html,body').animate({
-			scrollTop: 0
-			},1000);
-		}
+  if (annotationPlaying == null) {
+    annotationPlaying = document.getElementById('1');
+  }
+  currentLineOffset = $(annotationPlaying).offset()
+      $('html,body').animate({
+             scrollTop: currentLineOffset.top-halfWindow
+                },1000);
+  findAnnotations(annotationPlaying);
+  fullRecIsPlaying = true;
 }
 //----------------------------------------------------------------------------------------------------
 
