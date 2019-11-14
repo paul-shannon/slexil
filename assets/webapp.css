@@ -355,6 +355,15 @@ summary:focus {
 	#float: right;
 }
 
+.soundfiletimewarning {
+	color: red;
+	padding-left: 30px;
+	margin-top: -26px;
+	margin-bottom: 20px;
+	grid-column: 2;
+	#float: right;
+}
+
 .anchor {
 	width: 975px;
 	text-align: center;

@@ -163,6 +163,7 @@ def create_soundFileUploaderTab():
 
     children = [html.Div([create_soundFileUploader()]),
                 textArea,
+                html.Div("This can take a minute or two for large files.", className="soundfiletimewarning"),
                 button,
                 textArea2
                 ]
