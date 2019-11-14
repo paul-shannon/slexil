@@ -1,7 +1,8 @@
 import os.path
 import pandas as pd
 from xml.etree import ElementTree as etree
-from scipy.io.wavfile import *
+from soundfile import * #as soundfile
+#from scipy.io.wavfile import *
 import pdb
 
 class AudioExtractor:
@@ -48,7 +49,7 @@ class AudioExtractor:
 
     def extract(self, quiet=True):
        tbl = self.determineStartAndEndTimes()
-       rate, mtx = read(self.audioFilename)
+       mtx, rate = read(self.audioFilename)
        mtx.shape
        mtx.shape[0]/rate   # 5812410, 2
        samples = mtx.shape[0]
@@ -64,7 +65,7 @@ class AudioExtractor:
            sampleFilename = "%s/%s.wav" % (self.targetDirectory, phraseID)
            if(not quiet):
               print("--- %d) writing %d samples to %s" % (i, phrase.shape[0], sampleFilename))
-           write(sampleFilename, rate, phrase)
+           write(sampleFilename, phrase, rate)
 
     def makeStartStopTable(self,tbl):
         CSV = tbl.to_csv(index=False)

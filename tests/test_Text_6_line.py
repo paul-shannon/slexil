@@ -11,7 +11,7 @@ pd.set_option('display.width', 1000)
 
 #----------------------------------------------------------------------------------------------------
 def runTests(display=False):
-	#test_HowDaylightWasStolen(display)
+	test_HowDaylightWasStolen(display)
 	test_Chatino_6_Line_from_webapp(display)
 
 #----------------------------------------------------------------------------------------------------
@@ -52,9 +52,9 @@ def test_HowDaylightWasStolen(display):
 	
 	text = Text("../testData/harryMosesDaylight/daylight_1_4.eaf",
 				"../testData/harryMosesDaylight/audioPhrases",
-				grammaticalTermsFile=None)
-
-	text.getTable(1)
+				grammaticalTermsFile=None,
+				tierGuideFile="../testData/harryMosesDaylight/tierGuide.yaml",
+				projectDirectory="../testData/harryMosesDaylight")
 
 	htmlText = text.toHTML()
 	if(display):

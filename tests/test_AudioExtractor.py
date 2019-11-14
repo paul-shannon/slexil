@@ -15,7 +15,6 @@ def runTests():
     test_extract_prayer()
     test_extract_aktzini()
     test_extract_plumedSerpent()
-    #test_GoldenEagle4()
     test_extract_Aymara_final()
 
 
@@ -119,7 +118,7 @@ def test_extract_plumedSerpent():
                         "../testData/plumedSerpent/audioPhrases")
     ea.extract(quiet=True)
     fileList = [f for f in os.listdir("../testData/plumedSerpent/audioPhrases") if not f.startswith('.')]
-    assert(len(fileList) == 15)
+    assert(len(fileList) == 16)
 
 
 if __name__ == '__main__':

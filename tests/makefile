@@ -42,9 +42,6 @@ test_Text_6_line:
 test_Text:
 	python3 test_Text.py
 
-test_Text:
-	python3 test_Text.py
-
 test_TranslationLine:
 	python3 test_TranslationLine.py
 

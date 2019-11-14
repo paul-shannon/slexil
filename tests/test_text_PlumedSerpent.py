@@ -18,7 +18,7 @@ def runTests():
 def createText():
 	audioFilename = "Chicahuaxtla Triqui - La serpiente emplumada 04-28-2016.wav"
 	elanXmlFilename="../testData/plumedSerpent/TRS_Plumed_Serpent_Legend_05-15-2017.eaf"
-	targetDirectory = "../testData/plumedSerpent/audio"
+	targetDirectory = "../testData/plumedSerpent/audioPhrases"
 	soundFile = os.path.join(targetDirectory,audioFilename)
 	ae = AudioExtractor(audioFilename, elanXmlFilename, targetDirectory)
 	ae.determineStartAndEndTimes()
@@ -38,10 +38,22 @@ def test_constructor():
 	text = createText()
 	assert(text.validInputs())
 	tbl = text.getTierSummary()
-	assert(tbl.shape == (4,3))
-	assert(list(tbl['key']) == ['speech', 'translation', 'morpheme', 'morphemeGloss'])
-	assert(list(tbl['value']) == ['TRS-Ortho', 'Free Translation', 'Tokenization-cp', 'Tokenization-Gloss-cp'])
-	assert(list(tbl['count']) == [15, 15, 15, 141])
+	try:
+		assert(tbl.shape == (5,3))
+	except AssertionError as e:
+		raise Exception(tbl.shape)
+	try:
+		assert(list(tbl['key']) == ['morpheme', 'morphemeGloss', 'speech', 'transcription2', 'translation'])
+	except AssertionError as e:
+		raise Exception(list(tbl['key']))
+	try:
+		assert(list(tbl['value']) == ['Tokenization-cp', 'Tokenization-Gloss-cp', 'TRS-Ortho', 'TRS Broad IPA', 'Free Translation'])
+	except AssertionError as e:
+		raise Exception(list(tbl['value']))
+	try:
+		assert(list(tbl['count']) == [15, 15, 15, 141, 141])
+	except AssertionError as e:
+		raise Exception(list(tbl['count']))
 
 def test_toHTML(display):
 
@@ -49,7 +61,10 @@ def test_toHTML(display):
 	text = createText()	
 
 	tbl = text.getLineAsTable(0)
-	assert(tbl.shape == (10, 14))
+	try:
+		assert(tbl.shape == (11, 14))
+	except AssertionError as e:
+		raise Exception(tbl.shape)
 
 	htmlText = text.toHTML()
 	filename = "plumedSerpent.html"
