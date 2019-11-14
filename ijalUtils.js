@@ -23,7 +23,8 @@ rec.ontimeupdate = function() {trackAnnotations()};
 rec.onended = function() {removeFinalHighlight()};
 rec.onplay = function() {recPlay()};
 rec.onpause = function() {recPaused()}
-//rec.onseeked = function() {moveToSliderPosition()};
+rec.onseeked = function() {moveToSliderPosition()};
+// rec.addEventListener("seeked",moveToSliderPosition());
 
 function trackAnnotations() {
 	if (fullRecIsPlaying) {
@@ -34,13 +35,10 @@ function trackAnnotations() {
 //----------------------------------------------------------------------------------------------------
 
 function findAnnotations(currentAnnotation) {
-		//currentAnnotation = findCurrentAnnotation(time);
 		halfWindow = (window.innerHeight/4);
 		if (currentAnnotation != 'none') {
 			if (currentAnnotation != null) {
-				currentAnnotationID = currentAnnotation.id;
-				currentLineID = currentAnnotationID.replace('a','');
-				currentLine = document.getElementById(currentLineID);
+				currentLine = document.getElementById(currentAnnotation.id);
 				selectCurrentAnnotation(currentLine);
 				}
 			}
@@ -50,10 +48,10 @@ function selectCurrentAnnotation(currentLine) {
         if (annotationPlaying != currentLine) {
             annotationPlaying.className ='line-wrapper';
             if (scrollingOn = true) {
-				          currentLineOffset = $(annotationPlaying).offset()
-				              $('html,body').animate({
+				          currentLineOffset = $(annotationPlaying).offset();
+				          $('html,body').animate({
 					                   scrollTop: currentLineOffset.top-halfWindow
-					                      },1000);
+					                   },1000);
 			           }
             }
         currentLine.className += ' current-line';
@@ -104,10 +102,10 @@ function recPlay()
   if (annotationPlaying == null) {
     annotationPlaying = document.getElementById('1');
   }
-  currentLineOffset = $(annotationPlaying).offset()
-      $('html,body').animate({
-             scrollTop: currentLineOffset.top-halfWindow
-                },1000);
+  currentLineOffset = $(annotationPlaying).offset();
+  $('html,body').animate({
+            scrollTop: currentLineOffset.top-halfWindow
+            },1000);
   findAnnotations(annotationPlaying);
   fullRecIsPlaying = true;
 }
@@ -119,24 +117,30 @@ function recPaused()
 }
 //----------------------------------------------------------------------------------------------------
 
-//this was supposed to jump the animation to a  point in the recording if the user set
-//it with the slider control, but it has all kinds of bizarre knock on effects; it seems
-//like the seeked event is triggered during a slide, not when the slide is finished, so
-//you get a long queue of events calling this function(??)
+//jump the animation to a point in the recording the user sets with slider control
 
 function moveToSliderPosition()
 {
-	currentAnnotation = findCurrentAnnotation(rec.currentTime);
-	if (currentAnnotation) {
-		console.log(currentAnnotation.id)
-		currentAnnotationID = currentAnnotation.id;
-		currentLineID = currentAnnotationID.replace('a','');
-		currentLine = document.getElementById(currentLineID);
-// 		currentLineOffset = $(currentLine).offset();
-// 		$('html,body').animate({
-// 			scrollTop: currentLineOffset.top-halfWindow
-// 			},1000);
-// 		currentLine.className += ' current-line';
-//         annotationPlaying = currentLine;
+  if (fullRecIsPlaying) {
+    annotationPlaying.className ='line-wrapper';
+  	lineIDNumber = slideToAnnotation()
+    currentLine = document.getElementById(lineIDNumber);
+    currentLineOffset = $(currentLine).offset();
+    $('html,body').stop(true).animate({
+   			scrollTop: currentLineOffset.top-halfWindow
+      },1000);
+    currentLine.className += ' current-line';
+    annotationPlaying = currentLine;
 	}
+}
+
+function slideToAnnotation()
+{
+    time_ms = rec.currentTime;
+    for (var i = 0; i < window.annotations.length; i++) {
+      annotation = window.annotations[i];
+      if ((time_ms <= annotation.end/1000)) {
+          return annotation.id;
+      }
+  }
 }
