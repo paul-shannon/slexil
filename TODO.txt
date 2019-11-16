@@ -1,12 +1,3 @@
 • terminal output indicates a lot of activity when project title textarea is changed(?), make sure that this is okay (or at least inconsequential)
 • progress bar or something for Upload .eaf
 
-/Users/David/Open Source/slexil/audioExtractor.py:58: FutureWarning:
-
-
-.ix is deprecated. Please use
-.loc for label based indexing or
-.iloc for positional indexing
-
-See the documentation here:
-http://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#ix-indexer-is-deprecated
