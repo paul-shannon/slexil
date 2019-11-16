@@ -1,9 +1,4 @@
 morpheme: morphemes
 morphemeGloss: morphemeGloss
 speech: italianSpeech
-<<<<<<< HEAD
 translation: english
-=======
-translation: english
-morphemePacking: tabs
->>>>>>> master

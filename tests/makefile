@@ -10,6 +10,7 @@ ijalLine:
 audioExtractor:
 	python3 test_AudioExtractor.py
 	python3 test_startStopTable.py
+	python3 test_Audio_formats.py
 
 text_monkeyAndThunder:
 	python3 test_text_MonkeyAndThunder.py

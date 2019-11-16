@@ -36,23 +36,16 @@ class Text:
 		self.grammaticalTermsFile = grammaticalTermsFile
 		self.tierGuideFile = tierGuideFile
 		self.projectDirectory = projectDirectory
-		#self.startStopTable = self.makeStartStopTable()
 		self.validInputs()
 		self.quiet = quiet
 		self.xmlDoc = etree.parse(self.xmlFilename)
 		self.lineCount = len(self.xmlDoc.findall("TIER/ANNOTATION/ALIGNABLE_ANNOTATION"))
 		with open(tierGuideFile, 'r') as f:
 			self.tierGuide = yaml.safe_load(f)
-		#self
 		if os.path.isfile(os.path.join(projectDirectory,"ERRORS.log")):
 			os.remove(os.path.join(projectDirectory,"ERRORS.log"))
 		logging.basicConfig(filename=os.path.join(projectDirectory,"ERRORS.log"),format="%(levelname)s %(message)s")
 		logging.getLogger().setLevel(logging.WARNING)
-
-	#def discoverTiers(self):
-	#  tmpDoc = etree.parse(self.xmlFilename)
-	#  tierIDs = [tier.attrib["TIER_ID"] for tier in tmpDoc.findall("TIER")]
-	#  return(tierIDs)
 
 	def getTierSummary(self):
 		tmpDoc = etree.parse(self.xmlFilename)
