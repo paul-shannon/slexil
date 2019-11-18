@@ -110,7 +110,7 @@ venv.bak/
 
 bin/
 
-testTextPyData/*/audio
-testTextPyData/GoldenEagle
-testData/*/audio
-testData/*/audioPhrases
+#testTextPyData/*/audio
+#testTextPyData/GoldenEagle
+#testData/*/audio
+#testData/*/audioPhrases
