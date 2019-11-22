@@ -304,6 +304,9 @@ class IjalLine:
             if translation2 != None:
                with htmlDoc.tag("div", klass="freeTranslation-tier"):
                    htmlDoc.text(translation2)
+               # add a div to hold annotations
+            with htmlDoc.tag("div", klass="annotationDiv"):
+                pass;
 
 
 # ------------------------------------------------------------------------------------------------------------------------
