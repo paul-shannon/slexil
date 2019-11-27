@@ -56,7 +56,7 @@ def downloadProjectZipFile(urlpath):
     fullPath = os.path.join("PROJECTS", urlpath)
     dirname = os.path.dirname(fullPath)
     filename = os.path.basename(fullPath)
-    if urlpath[-4:] =="html":
+    if urlpath[-4:] =="html" or urlpath[-3:] =="css":
         print("=== populate textArea from %s" % urlpath)
         return flask.send_file(os.path.join(fullPath))
     if urlpath[-3:] == 'zip':
