@@ -178,6 +178,7 @@ class Text:
 				htmlDoc.asis('<meta charset="UTF-8"/>')
 				htmlDoc.asis(self.getJQuery())
 				htmlDoc.asis(self.getCSS())
+				htmlDoc.asis("<!-- customizationHook -->")
 			with htmlDoc.tag('body'):
 				for i in lineNumbers:
 					if(not self.quiet):
