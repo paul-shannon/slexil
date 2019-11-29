@@ -59,6 +59,12 @@ def downloadProjectZipFile(urlpath):
     if urlpath[-4:] =="html" or urlpath[-3:] =="css":
         print("=== populate textArea from %s" % urlpath)
         return flask.send_file(os.path.join(fullPath))
+    elif urlpath[-3:] == "wav":
+        print("=== call audio file from %s" % urlpath)
+        return flask.send_file(os.path.join(fullPath))
+    elif urlpath[-2:] == "js":
+        print("=== call javascript file from %s" % urlpath)
+        return flask.send_file(os.path.join(fullPath))
     if urlpath[-3:] == 'zip':
         print("=== serve_static_file")
         print("urlpath:  %s" % urlpath)
