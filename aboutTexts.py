@@ -20,11 +20,12 @@ class AboutTexts:
         ELAN = self.makeELAN()
         sound = self.makeSound()
         abbr = self.makeAbbr()
+        preview = self.makePreview()
         download = self.makeDownload()
         credits = self.makeCredits()
         anchor = html.Div(html.A("top", href="#top"), className="anchor")
 
-        children = [basics, ELAN, sound, abbr, download, credits, anchor]
+        children = [basics, ELAN, sound, abbr, preview, download, credits, anchor]
 
         mainDiv = html.Div(className="aboutMain", children=children)
         return mainDiv
@@ -36,7 +37,7 @@ class AboutTexts:
         compatible with any modern web browser and does not require the user to install any 
         software on their computers. Project components (.eaf file, sound file, list of 
         abbreviations) can be uploaded through the web interface and configured; SLEXIL then builds a webpage which can 
-        be previewed and downloaded to the user’s computer. This software is Open Source and source code for the 
+        be previewed and downloaded to the user’s computer. This software is Open Source; source code for the 
         project can be found on [GitHub] (https://github.com/paul-shannon/slexil).''')
 
         basics = html.Div(className='aboutContents',children=[title,text])
@@ -91,15 +92,28 @@ class AboutTexts:
                               html.Span("pl", className="smallCaps"),
         '''” or “1”, “2”, “3”;''']),
             html.Li(children=['''Abbreviations that include subparts in superscript or subscript should be included in 
-            the list along with HTML tags for super- or subscripting—for example, “1''',
+            the list along with HTML tags for super- or subscripting—for example, “''',
                             html.Span(className="smallCaps", children=['pl',html.Sub('excl')]),
-                            '''” would be listed as “1pl<sub>excl</sub>”. Use “<sup></sup>” tags for superscripting in the same way.'''])
+                            '''” would be listed as “pl<sub>excl</sub>”. Use “<sup></sup>” tags for superscripting in the same way.'''])
         ])
         text3 = dcc.Markdown('''Super/subscripting applied to lexical items rather than grammatical abbreviations may 
-        have to be applied manually in the HTML file itself.''')
+        have to be applied manually in the ELAN or HTML file itself.''')
 
         abbr = html.Div(className='aboutContents',children=[title,text1,text2,text3])
         return abbr
+
+    def makePreview(self):
+        title = html.H3("Page preview")
+        text = dcc.Markdown('''On clicking the "Show page" button, a preview of your webpage will be generated, showing 
+                the formatted and styled text as it will look in most browsers. Note, however, that the line by line playback 
+                icons and the audioplayer visible in the window may not be functional, depending on which browser and 
+                which platform you are using to run SLEXIL. On a Mac, Chrome allows both line by line and continuous 
+                playback, Firefox supports only line by line playback, and neither work in Safari. We have not tested 
+                playback in the preview window on other browsers, or on Windows or Linux platforms. Playback should be
+                fully functional in the downloaded project regardless.''')
+
+        preview = html.Div(className='aboutContents',children=[title,text])
+        return preview
 
     def makeDownload(self):
         title = html.H3("Working with the downloaded project")
@@ -123,7 +137,7 @@ class AboutTexts:
     def makeCredits(self):
         title = html.H3("Credits")
         text = dcc.Markdown('''SLEXIL was created (in no particular order) by David Beck and Paul Shannon. Feedback, 
-        bug reports, and requests for assistance can be sent to [David] (mailto:david.beck@ualberta.ca).''')
+        bug reports, requests for assistance, and lavish praise can be sent to [David] (mailto:david.beck@ualberta.ca).''')
 
         credits = html.Div(className='aboutContents',children=[title,text])
         return credits
