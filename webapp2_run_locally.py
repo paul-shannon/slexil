@@ -372,12 +372,6 @@ app.layout = html.Div(
     id='outerDiv'
 )
 
-# ----------------------------------------------------------------------------------------------------
-@app.callback(Output('frame', 'src'),
-            [Input('frame', 'children')])
-def setSourceForAboutIframe(children):
-    print('====== setting source for about iFrame')
-    return('about.html')
 
 # ----------------------------------------------------------------------------------------------------
 @app.callback(Output('tab_contents', 'children'),
