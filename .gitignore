@@ -115,6 +115,10 @@ testTextPyData/
 tests/
 testData/
 testTextPy/
+
+#explorations
+explorations/downloadZipFile/PROJECTS/
+explorations/generateEAF/pythonDemos/daylight1/
 #testTextPyData/GoldenEagle
 #testData/*/audio
 #testData/*/audioPhrases
