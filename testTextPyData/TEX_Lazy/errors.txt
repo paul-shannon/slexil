@@ -1,0 +1,4 @@
+missing morph at line #120
+missing gloss at line #120
+missing morph at line #259
+missing morph at line #295

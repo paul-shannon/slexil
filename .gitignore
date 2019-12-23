@@ -111,15 +111,15 @@ venv.bak/
 bin/
 
 #test suites
-testTextPyData/
-tests/
-testData/
-testTextPy/
+#testTextPyData/
+#tests/
+#testData/
+#testTextPy/
 
 #explorations
-explorations/downloadZipFile/PROJECTS/
-explorations/generateEAF/pythonDemos/daylight1/
-explorations/playAudioInSequence/
+#explorations/downloadZipFile/PROJECTS/
+#explorations/generateEAF/pythonDemos/daylight1/
+#explorations/playAudioInSequence/
 #testTextPyData/GoldenEagle
 #testData/*/audio
 #testData/*/audioPhrases

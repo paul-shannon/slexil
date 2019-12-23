@@ -1,0 +1,6 @@
+speech: lushootseedSpeech
+translation: englishTranslation
+morpheme: tabDelimitedPhonemes
+morphemeGloss:  tabDelimitedPhonemeGloss
+morphemePacking: tabs
+
