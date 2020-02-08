@@ -16,7 +16,7 @@ sampleLines = ["hab=3A=mouth•cry",
 
 
 #----------------------------------------------------------------------------------------------------
-grammaticalTermsFiles = ["../testData/monkeyAndThunder/grammaticalTerms.txt",
+grammaticalTermsFiles = ["../testData/inferno-threeLines/grammaticalTerms_2.txt",
                          "../testData/inferno-threeLines/grammaticalTerms.txt"]
 grammaticalTerms = []
 for file in grammaticalTermsFiles:

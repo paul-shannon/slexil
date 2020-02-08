@@ -13,12 +13,10 @@ def runTests():
 def test_makestartStopTable():
 
     print("--- test_makestartStopTable")
-    ea = AudioExtractor("../testData/harryMosesDaylight/daylight_1_4.wav",
-                        "../testData/harryMosesDaylight/daylight_1_4.eaf",
-                        "../testData/harryMosesDaylight/audioPhrases")
+    ea = AudioExtractor("../testData/inferno-threeLines/inferno-threeLines.wav",
+                        "../testData/inferno-threeLines/inferno-threeLines.eaf",
+                        "../testData/inferno-threeLines/audio")
     ea.extract()
-    # print(tbl)
-
 
 if __name__ == '__main__':
     runTests()

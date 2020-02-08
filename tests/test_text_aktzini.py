@@ -31,7 +31,6 @@ def createText():
 				grammaticalTermsFile=grammaticalTermsFile,
 				tierGuideFile=tierGuideFile,
 				projectDirectory=projectDirectory,
-				startStopTable=times,
 				quiet=False)
 	return(text)
 

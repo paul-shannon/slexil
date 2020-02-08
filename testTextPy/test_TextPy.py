@@ -18,10 +18,6 @@ pd.set_option('display.width', 1000)
 
 # ----------------------------------------------------------------------------------------------------
 def runTests(display=False):
-    # test_Inferno_numbering(display)--these two tests are no longer relevant as annotations are not numbered
-    # test_Aymara_numbering(display) --sequentially in the .eaf file anyway, so line ≠ annotation always
-    # test_Riverwoman(display) --.eaf file for this one has gone missing
-
     test_MonkeyAndThunder(display)
     test_Fishwoman(display)
     test_Merchant(display)

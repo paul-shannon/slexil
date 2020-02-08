@@ -16,20 +16,20 @@ pd.set_option('display.width', 1000)
 def runTests(display=False):
     test_wav(display)
     test_ogg(display)
-    #test_mp3(display)
+    test_mp3(display)
 
 # ----------------------------------------------------------------------------------------------------
 def test_wav(display):
 
     print("--- test_wav")
-    audioFilename = "daylight_1_4.wav"
-    elanXmlFilename = "../testData/harryMosesDaylight/daylight_1_4.eaf"
-    targetDirectory = "../testData/harryMosesDaylight/audio"
-    projectDirectory = "../testData/harryMosesDaylight"
+    audioFilename = "inferno-threeLines.wav"
+    elanXmlFilename = "../testData/inferno-threeLines/inferno-threeLines.eaf"
+    targetDirectory = "../testData/inferno-threeLines/audio"
+    projectDirectory = "../testData/inferno-threeLines"
     soundFile = os.path.join(projectDirectory, audioFilename)
     print(soundFile)
-    tierGuideFile = "../testData/harryMosesDaylight/tierGuide.yaml"
-    grammaticalTermsFile = "../testData/harryMosesDaylight/grammaticalTerms.txt"
+    tierGuideFile = "../testData/inferno-threeLines/tierGuide.yaml"
+    grammaticalTermsFile = "../testData/inferno-threeLines/grammaticalTerms.txt"
     ae = AudioExtractor(soundFile, elanXmlFilename, targetDirectory)
     ae.validInputs()
     ae.extract(False)
@@ -42,7 +42,7 @@ def test_wav(display):
 
     htmlText = text.toHTML()
     if (display):
-        filename = "../testData/harryMosesDaylight/daylightwav.html"
+        filename = "../testData/inferno-threeLines/inferno-threeLineswav.html"
         f = open(filename, "w")
         f.write(indent(htmlText))
         f.close()
@@ -52,16 +52,21 @@ def test_wav(display):
 def test_mp3(display):
 
     print("--- test_mp3")
-    audioFilename = "daylight_1_4.mp3"
-    elanXmlFilename = "../testData/harryMosesDaylight/daylight_1_4.eaf"
-    targetDirectory = "../testData/harryMosesDaylight/audio"
-    projectDirectory = "../testData/harryMosesDaylight"
+    audioFilename = "inferno-threeLines.mp3"
+    elanXmlFilename = "../testData/inferno-threeLines/inferno-threeLines.eaf"
+    targetDirectory = "../testData/inferno-threeLines/audio"
+    projectDirectory = "../testData/inferno-threeLines"
     soundFile = os.path.join(projectDirectory, audioFilename)
-    tierGuideFile = "../testData/harryMosesDaylight/tierGuide.yaml"
-    grammaticalTermsFile = "../testData/harryMosesDaylight/grammaticalTerms.txt"
+    print(soundFile)
+    tierGuideFile = "../testData/inferno-threeLines/tierGuide.yaml"
+    grammaticalTermsFile = "../testData/inferno-threeLines/grammaticalTerms.txt"
     ae = AudioExtractor(soundFile, elanXmlFilename, targetDirectory)
     ae.validInputs()
-    ae.extract(False)
+    try:
+        ae.extract(False)
+    except RuntimeError:
+        print('mp3 file format not supported')
+        pass
     times = ae.startStopTable
     text = Text(elanXmlFilename,
                 soundFile,
@@ -71,7 +76,7 @@ def test_mp3(display):
 
     htmlText = text.toHTML()
     if (display):
-        filename = "../testData/harryMosesDaylight/daylightmp3.html"
+        filename = "../testData/inferno-threeLines/inferno-threeLinesmp3.html"
         f = open(filename, "w")
         f.write(indent(htmlText))
         f.close()
@@ -81,14 +86,14 @@ def test_mp3(display):
 def test_ogg(display):
 
     print("--- test_ogg")
-    audioFilename = "daylight_1_4.ogg"
-    elanXmlFilename = "../testData/harryMosesDaylight/daylight_1_4.eaf"
-    targetDirectory = "../testData/harryMosesDaylight/audio"
-    projectDirectory = "../testData/harryMosesDaylight"
+    audioFilename = "inferno-threeLines.ogg"
+    elanXmlFilename = "../testData/inferno-threeLines/inferno-threeLines.eaf"
+    targetDirectory = "../testData/inferno-threeLines/audio"
+    projectDirectory = "../testData/inferno-threeLines"
     soundFile = os.path.join(projectDirectory, audioFilename)
     print(soundFile)
-    tierGuideFile = "../testData/harryMosesDaylight/tierGuide.yaml"
-    grammaticalTermsFile = "../testData/harryMosesDaylight/grammaticalTerms.txt"
+    tierGuideFile = "../testData/inferno-threeLines/tierGuide.yaml"
+    grammaticalTermsFile = "../testData/inferno-threeLines/grammaticalTerms.txt"
     ae = AudioExtractor(soundFile, elanXmlFilename, targetDirectory)
     ae.validInputs()
     ae.extract(False)
@@ -101,7 +106,7 @@ def test_ogg(display):
 
     htmlText = text.toHTML()
     if (display):
-        filename = "../testData/harryMosesDaylight/daylightogg.html"
+        filename = "../testData/inferno-threeLines/inferno-threeLinesogg.html"
         f = open(filename, "w")
         f.write(indent(htmlText))
         f.close()

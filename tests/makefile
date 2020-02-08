@@ -1,4 +1,4 @@
-all: morphemeGloss ijalLine audioExtractor text_daylight text_monkeyAndThunder  text_PlumedSerpent text_prayer test_chatino5 test_chatino6 test_Text_6_line test_Text test_TranslationLine text_lokono test_TextPy test_text_Halkomelem test_XML_schema
+all: morphemeGloss ijalLine audioExtractor text_daylight text_monkeyAndThunder  text_PlumedSerpent text_prayer test_chatino5 test_chatino6 test_Text_6_line test_Text test_TranslationLine text_lokono test_TextPy test_text_Halkomelem test_XML_schema test_aktzini
 
 
 morphemeGloss:
@@ -54,3 +54,6 @@ test_text_Halkomelem:
 
 test_XML_schema:
 	python3 test_XML_schema.py
+
+test_aktzini
+    python3 test_text_aktzini.py
