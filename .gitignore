@@ -111,10 +111,10 @@ venv.bak/
 bin/
 
 #test suites
-#testTextPyData/
-#tests/
-#testData/
-#testTextPy/
+testTextPyData/
+tests/
+testData/
+testTextPy/
 
 #explorations
 #explorations/downloadZipFile/PROJECTS/
